@@ -4,7 +4,7 @@ export const projectTimelineConflictScenario: Scenario = {
   id: 'project-timeline-conflict',
   title: 'Project Timeline Conflict',
   description: 'Resolve a timeline conflict between two departments under tight deadlines and high visibility.',
-  situation: 'You're a product designer embedded in a cross-functional team. Engineering estimates the new feature will take 3 months, but marketing has already committed to clients that it will be ready in 6 weeks. The design is central to the product experience, and you're being asked to reduce scope or speed up timelines to help the team move faster. Both sides are looking to you to help find a path forward.',
+  situation: 'You\'re a product designer embedded in a cross-functional team. Engineering estimates the new feature will take 3 months, but marketing has already committed to clients that it will be ready in 6 weeks. The design is central to the product experience, and you're being asked to reduce scope or speed up timelines to help the team move faster. Both sides are looking to you to help find a path forward.',
   roleContext: {
     yourRole: 'Product Designer',
     stakeholders: 'Engineering Manager, Marketing Lead, Product Manager, Clients',
@@ -16,7 +16,7 @@ export const projectTimelineConflictScenario: Scenario = {
     {
       id: 'side-with-engineering',
       text: 'Support the engineering timeline and recommend sticking to quality-focused design processes.',
-      feedback: 'You're advocating for realistic delivery and user-centered design, but may be seen as inflexible by marketing or leadership.',
+      feedback: 'You\'re advocating for realistic delivery and user-centered design, but may be seen as inflexible by marketing or leadership.',
       consequences: {
         immediate: 'Engineering appreciates the support; marketing pushes back.',
         shortTerm: 'Some client frustration; design quality is maintained.',
@@ -35,7 +35,7 @@ export const projectTimelineConflictScenario: Scenario = {
       consequences: {
         immediate: 'Teams feel progress is possible.',
         shortTerm: 'Clients get a usable first version.',
-        longTerm: 'You're seen as pragmatic and adaptive, but some design debt may accumulate.'
+        longTerm: 'You\'re seen as pragmatic and adaptive, but some design debt may accumulate.'
       },
       impactAreas: [
         { area: 'decision-making', impact: 7 },
@@ -46,7 +46,7 @@ export const projectTimelineConflictScenario: Scenario = {
     {
       id: 'escalate-to-manager',
       text: 'Raise the conflict with your design manager and ask for support navigating trade-offs.',
-      feedback: 'This brings in needed support but may signal you're not ready to lead through ambiguity on your own.',
+      feedback: 'This brings in needed support but may signal you\'re not ready to lead through ambiguity on your own.',
       consequences: {
         immediate: 'You get guidance and relief from pressure.',
         shortTerm: 'The manager aligns with product leadership.',
@@ -76,7 +76,7 @@ export const projectTimelineConflictScenario: Scenario = {
     {
       id: 'client-check-in',
       text: 'Ask the PM to connect you with client-facing teams to better understand what matters most to users for the first launch.',
-      feedback: 'This approach shows curiosity and user empathy. It may help prioritize what's essential while building trust across functions.',
+      feedback: 'This approach shows curiosity and user empathy. It may help prioritize what\'s essential while building trust across functions.',
       consequences: {
         immediate: 'You gain user insight and marketing feels included.',
         shortTerm: 'Design scope adjusts with real input.',
