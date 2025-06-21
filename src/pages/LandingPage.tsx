@@ -10,21 +10,113 @@ import {
   MessageCircle, 
   Target, 
   Users, 
-  Volume2 
+  Volume2,
+  Settings
 } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 import Button from '../components/Button';
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const [email, setEmail] = useState('');
+  const [showDevPanel, setShowDevPanel] = useState(false);
   
   // Show returning user section if user exists
   const isReturningUser = user !== null;
+
+  // Development helper function
+  const quickStartWithArchetype = (archetype: string) => {
+    setUser({
+      id: crypto.randomUUID(),
+      name: 'Test User',
+      archetype: archetype,
+      completedScenarios: [],
+      growthAreas: [],
+      streaks: {
+        current: 0,
+        longest: 0,
+        lastActivity: new Date()
+      },
+      badges: [],
+      level: 1,
+      totalXP: 0
+    });
+    navigate('/dashboard');
+  };
   
   return (
     <div className="min-h-screen">
+      {/* Development Panel - Only show in development */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="fixed top-4 right-4 z-50">
+          <button
+            onClick={() => setShowDevPanel(!showDevPanel)}
+            className="bg-gray-800 text-white p-2 rounded-full shadow-lg hover:bg-gray-700 transition-colors"
+            title="Development Tools"
+          >
+            <Settings size={16} />
+          </button>
+          
+          {showDevPanel && (
+            <div className="absolute top-12 right-0 bg-white border border-gray-200 rounded-lg shadow-xl p-4 w-64">
+              <h3 className="font-semibold text-gray-900 mb-3">Quick Test Access</h3>
+              <p className="text-sm text-gray-600 mb-4">Skip assessment and go directly to dashboard:</p>
+              <div className="space-y-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  fullWidth
+                  onClick={() => quickStartWithArchetype('builder')}
+                >
+                  🔨 Test as Builder
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  fullWidth
+                  onClick={() => quickStartWithArchetype('executor')}
+                >
+                  🎯 Test as Executor
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  fullWidth
+                  onClick={() => quickStartWithArchetype('catalyst')}
+                >
+                  ⚡ Test as Catalyst
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  fullWidth
+                  onClick={() => quickStartWithArchetype('visionary')}
+                >
+                  👁️ Test as Visionary
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  fullWidth
+                  onClick={() => quickStartWithArchetype('connector')}
+                >
+                  🤝 Test as Connector
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  fullWidth
+                  onClick={() => quickStartWithArchetype('analyst')}
+                >
+                  🧠 Test as Analyst
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-600 to-indigo-500 text-white">
         <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
