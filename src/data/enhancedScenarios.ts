@@ -145,7 +145,7 @@ export const enhancedScenarios: Scenario[] = [
             {
               skill: 'Active Listening',
               reason: 'Essential for effective coaching conversations',
-              link: '/topics/foundational-mindsets/active-listening'
+              link: '/topics/foundational-mindsets/assertiveness'
             },
             {
               skill: 'Powerful Questioning',
