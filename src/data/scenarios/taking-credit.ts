@@ -180,7 +180,68 @@ export const takingCreditScenario: Scenario = {
         { area: 'assertiveness', impact: 5 },
         { area: 'emotional-intelligence', impact: 4 },
         { area: 'decision-making', impact: 6 }
-      ]
+      ],
+      enhancedConsequences: {
+        severity: {
+          immediate: 'neutral' as const,
+          shortTerm: 'negative' as const,
+          longTerm: 'negative' as const
+        },
+        confidence: {
+          immediate: 'high' as const,
+          shortTerm: 'medium' as const,
+          longTerm: 'medium' as const
+        },
+        stakeholderImpacts: [
+          {
+            stakeholder: 'Sarah (Colleague)',
+            impact: 'May feel betrayed if she learns about the escalation without direct conversation first',
+            severity: 'negative' as const
+          },
+          {
+            stakeholder: 'Your Manager',
+            impact: 'Appreciates being informed but may question why you didn\'t try direct resolution first',
+            severity: 'neutral' as const
+          },
+          {
+            stakeholder: 'Strategy Team',
+            impact: 'May view you as someone who escalates conflicts rather than resolving them collaboratively',
+            severity: 'negative' as const
+          }
+        ],
+        alternatives: {
+          immediate: 'Try a direct conversation with Sarah first, then escalate if needed',
+          shortTerm: 'Use your manager as a coach for how to handle the situation rather than asking them to intervene',
+          longTerm: 'Develop skills in direct conflict resolution to handle similar situations independently'
+        },
+        mitigation: {
+          immediate: 'Frame the discussion with your manager as seeking advice rather than asking for intervention',
+          shortTerm: 'Let Sarah know you\'ve discussed the situation with your manager to maintain transparency',
+          longTerm: 'Focus on building direct communication skills for future collaborative challenges'
+        },
+        reflectionPrompts: [
+          'What makes you feel that management involvement is necessary at this stage?',
+          'How might escalating first affect your reputation as a collaborative team member?',
+          'What skills could you develop to handle this situation more directly?'
+        ],
+        skillRecommendations: [
+          {
+            skill: 'Direct Communication',
+            reason: 'Learn to address workplace conflicts before they require management intervention',
+            link: '/topics/foundational-mindsets/assertiveness'
+          },
+          {
+            skill: 'Peer Relationship Management',
+            reason: 'Understand how to navigate professional relationships and conflicts effectively',
+            link: '/library/peer-relationships'
+          }
+        ],
+        realWorldExample: {
+          title: 'Finance Team Credit Dispute',
+          description: 'A financial analyst immediately escalated to their manager when a colleague took credit for their budget analysis without trying direct conversation first.',
+          outcome: 'The manager resolved the immediate issue but advised the analyst to try direct communication first in the future. The colleague relationship remained strained for months.'
+        }
+      }
     },
     {
       id: 'strategic-follow-up',
@@ -195,7 +256,67 @@ export const takingCreditScenario: Scenario = {
         { area: 'assertiveness', impact: 6 },
         { area: 'emotional-intelligence', impact: 7 },
         { area: 'decision-making', impact: 8 }
-      ]
+      ],
+      enhancedConsequences: {
+        severity: {
+          immediate: 'positive' as const,
+          shortTerm: 'positive' as const,
+          longTerm: 'positive' as const
+        },
+        confidence: {
+          immediate: 'high' as const,
+          shortTerm: 'high' as const,
+          longTerm: 'high' as const
+        },
+        stakeholderImpacts: [
+          {
+            stakeholder: 'Sarah (Colleague)',
+            impact: 'May realize her oversight without direct confrontation, preserving the working relationship',
+            severity: 'neutral' as const
+          },
+          {
+            stakeholder: 'Senior Leadership',
+            impact: 'Gains appreciation for your strategic thinking and collaborative approach to building on ideas',
+            severity: 'positive' as const
+          },
+          {
+            stakeholder: 'Strategy Team',
+            impact: 'Sees professional way to handle recognition issues and build on collaborative work',
+            severity: 'positive' as const
+          }
+        ],
+        alternatives: {
+          shortTerm: 'Still have a private conversation with Sarah about collaboration expectations',
+          longTerm: 'Establish more formal processes for documenting individual contributions in team projects'
+        },
+        mitigation: {
+          immediate: 'Frame the email as building on the presentation rather than correcting it',
+          shortTerm: 'Include Sarah in the follow-up communication to maintain collaborative appearance',
+          longTerm: 'Use this as a model for proactive visibility in future strategic projects'
+        },
+        reflectionPrompts: [
+          'How can you build your reputation while maintaining positive team relationships?',
+          'What additional value can you provide that showcases your strategic thinking?',
+          'How might this approach influence how you handle future collaborative projects?'
+        ],
+        skillRecommendations: [
+          {
+            skill: 'Strategic Communication',
+            reason: 'Learn to build visibility and influence through thoughtful professional communication',
+            link: '/topics/foundational-mindsets/assertiveness'
+          },
+          {
+            skill: 'Executive Presence',
+            reason: 'Understand how to build recognition and credibility with senior leadership',
+            link: '/library/executive-presence'
+          }
+        ],
+        realWorldExample: {
+          title: 'Product Strategy Follow-up Success',
+          description: 'A product manager sent thoughtful follow-up insights after a colleague\'s presentation, naturally highlighting their collaborative contributions.',
+          outcome: 'Leadership began recognizing both team members as strategic thinkers. The approach actually strengthened the collaborative relationship and led to more joint strategic projects.'
+        }
+      }
     },
     {
       id: 'let-it-go',
@@ -210,7 +331,68 @@ export const takingCreditScenario: Scenario = {
         { area: 'assertiveness', impact: 2 },
         { area: 'emotional-intelligence', impact: 5 },
         { area: 'decision-making', impact: 3 }
-      ]
+      ],
+      enhancedConsequences: {
+        severity: {
+          immediate: 'negative' as const,
+          shortTerm: 'negative' as const,
+          longTerm: 'negative' as const
+        },
+        confidence: {
+          immediate: 'high' as const,
+          shortTerm: 'medium' as const,
+          longTerm: 'low' as const
+        },
+        stakeholderImpacts: [
+          {
+            stakeholder: 'Sarah (Colleague)',
+            impact: 'May not realize the impact of her actions and could repeat this behavior',
+            severity: 'neutral' as const
+          },
+          {
+            stakeholder: 'Senior Leadership',
+            impact: 'Continues to have incomplete understanding of your strategic contributions',
+            severity: 'negative' as const
+          },
+          {
+            stakeholder: 'Strategy Team',
+            impact: 'May see this as acceptable behavior for taking credit for collaborative work',
+            severity: 'negative' as const
+          }
+        ],
+        alternatives: {
+          immediate: 'At minimum, document your contributions for future reference',
+          shortTerm: 'Find other ways to showcase your strategic thinking to leadership',
+          longTerm: 'Develop assertiveness skills to handle similar situations more proactively'
+        },
+        mitigation: {
+          immediate: 'Start building stronger direct relationships with leadership through other strategic initiatives',
+          shortTerm: 'Be more proactive about documenting and communicating your contributions in future projects',
+          longTerm: 'Seek feedback on how to better position your strategic work for recognition'
+        },
+        reflectionPrompts: [
+          'What are the long-term career implications of not addressing this situation?',
+          'How might your silence be interpreted by colleagues and leadership?',
+          'What would you advise a friend or mentee in this same situation?'
+        ],
+        skillRecommendations: [
+          {
+            skill: 'Professional Assertiveness',
+            reason: 'Learn to advocate for your contributions and career interests appropriately',
+            link: '/topics/foundational-mindsets/assertiveness'
+          },
+          {
+            skill: 'Career Strategy',
+            reason: 'Understand how to build visibility and recognition for your professional contributions',
+            link: '/library/career-strategy'
+          }
+        ],
+        realWorldExample: {
+          title: 'Research Team Recognition Gap',
+          description: 'A research analyst consistently let colleagues take credit for their insights, thinking their work would speak for itself.',
+          outcome: 'Over two years, the analyst was passed over for promotions while colleagues who took credit advanced. They eventually had to change teams to get proper recognition for their strategic capabilities.'
+        }
+      }
     },
     {
       id: 'collaborative-reframe',
@@ -225,7 +407,68 @@ export const takingCreditScenario: Scenario = {
         { area: 'assertiveness', impact: 7 },
         { area: 'emotional-intelligence', impact: 8 },
         { area: 'decision-making', impact: 7 }
-      ]
+      ],
+      enhancedConsequences: {
+        severity: {
+          immediate: 'positive' as const,
+          shortTerm: 'positive' as const,
+          longTerm: 'positive' as const
+        },
+        confidence: {
+          immediate: 'medium' as const,
+          shortTerm: 'high' as const,
+          longTerm: 'high' as const
+        },
+        stakeholderImpacts: [
+          {
+            stakeholder: 'Sarah (Colleague)',
+            impact: 'Appreciates the supportive approach and may recognize the need to be more inclusive in future presentations',
+            severity: 'positive' as const
+          },
+          {
+            stakeholder: 'Senior Leadership',
+            impact: 'Sees both strategic thinking and collaborative leadership skills',
+            severity: 'positive' as const
+          },
+          {
+            stakeholder: 'Strategy Team',
+            impact: 'Observes professional way to handle recognition while building on team work',
+            severity: 'positive' as const
+          }
+        ],
+        alternatives: {
+          immediate: 'If you\'re not comfortable speaking up in the moment, use the follow-up email approach instead',
+          shortTerm: 'Have a private conversation with Sarah about collaboration expectations going forward',
+          longTerm: 'Establish clearer upfront agreements about presentation roles in collaborative projects'
+        },
+        mitigation: {
+          immediate: 'Frame your comments as building on "our analysis" rather than correcting Sarah',
+          shortTerm: 'Follow up privately with Sarah to ensure she understood your collaborative intent',
+          longTerm: 'Use this as a model for proactive collaboration and visibility in strategic work'
+        },
+        reflectionPrompts: [
+          'How can you assert your contributions while appearing collaborative and supportive?',
+          'What additional insights can you provide that showcase your strategic thinking?',
+          'How might this approach influence future collaborative dynamics with Sarah?'
+        ],
+        skillRecommendations: [
+          {
+            skill: 'Collaborative Leadership',
+            reason: 'Learn to build your reputation while strengthening team relationships',
+            link: '/topics/foundational-mindsets/assertiveness'
+          },
+          {
+            skill: 'Strategic Presence',
+            reason: 'Understand how to demonstrate value and expertise in high-stakes meetings',
+            link: '/library/strategic-presence'
+          }
+        ],
+        realWorldExample: {
+          title: 'Business Development Team Success',
+          description: 'A business analyst built on a colleague\'s client presentation by adding strategic context, naturally highlighting their collaborative contributions.',
+          outcome: 'The client was impressed with the team\'s depth of thinking. Both team members gained recognition, and their collaborative approach became a model for future client presentations.'
+        }
+      }
     }
   ],
   growthAreas: ['assertiveness', 'emotional-intelligence', 'decision-making'],
