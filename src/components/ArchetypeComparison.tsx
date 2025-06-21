@@ -45,6 +45,21 @@ const ArchetypeComparison: React.FC<ArchetypeComparisonProps> = ({
     }
   };
 
+  const getColumnHighlight = (archetype: string) => {
+    if (archetype === currentArchetype) {
+      switch (archetype) {
+        case 'builder': return 'bg-green-100 border-l-4 border-green-500';
+        case 'executor': return 'bg-blue-100 border-l-4 border-blue-500';
+        case 'catalyst': return 'bg-orange-100 border-l-4 border-orange-500';
+        case 'visionary': return 'bg-purple-100 border-l-4 border-purple-500';
+        case 'connector': return 'bg-pink-100 border-l-4 border-pink-500';
+        case 'analyst': return 'bg-indigo-100 border-l-4 border-indigo-500';
+        default: return 'bg-gray-100 border-l-4 border-gray-500';
+      }
+    }
+    return '';
+  };
+
   const comparisonData = [
     {
       aspect: 'Primary Focus',
@@ -154,23 +169,35 @@ const ArchetypeComparison: React.FC<ArchetypeComparisonProps> = ({
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-gray-200">
-                    <th className="text-left py-2 font-medium text-gray-700">Aspect</th>
-                    <th className="text-left py-2 font-medium text-green-700">Builder</th>
-                    <th className="text-left py-2 font-medium text-blue-700">Executor</th>
-                    <th className="text-left py-2 font-medium text-orange-700">Catalyst</th>
+                    <th className="text-left py-3 px-2 font-medium text-gray-700">Aspect</th>
+                    <th className={`text-left py-3 px-3 font-medium text-green-700 ${getColumnHighlight('builder')}`}>
+                      Builder
+                    </th>
+                    <th className={`text-left py-3 px-3 font-medium text-blue-700 ${getColumnHighlight('executor')}`}>
+                      Executor
+                    </th>
+                    <th className={`text-left py-3 px-3 font-medium text-orange-700 ${getColumnHighlight('catalyst')}`}>
+                      Catalyst
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {comparisonData.map((row, index) => (
                     <tr key={index} className="border-b border-gray-100">
-                      <td className="py-3 font-medium text-gray-800">{row.aspect}</td>
-                      <td className={`py-3 ${currentArchetype === 'builder' ? 'font-semibold text-green-800' : 'text-gray-600'}`}>
+                      <td className="py-3 px-2 font-medium text-gray-800">{row.aspect}</td>
+                      <td className={`py-3 px-3 ${getColumnHighlight('builder')} ${
+                        currentArchetype === 'builder' ? 'font-semibold text-green-800' : 'text-gray-600'
+                      }`}>
                         {row.builder}
                       </td>
-                      <td className={`py-3 ${currentArchetype === 'executor' ? 'font-semibold text-blue-800' : 'text-gray-600'}`}>
+                      <td className={`py-3 px-3 ${getColumnHighlight('executor')} ${
+                        currentArchetype === 'executor' ? 'font-semibold text-blue-800' : 'text-gray-600'
+                      }`}>
                         {row.executor}
                       </td>
-                      <td className={`py-3 ${currentArchetype === 'catalyst' ? 'font-semibold text-orange-800' : 'text-gray-600'}`}>
+                      <td className={`py-3 px-3 ${getColumnHighlight('catalyst')} ${
+                        currentArchetype === 'catalyst' ? 'font-semibold text-orange-800' : 'text-gray-600'
+                      }`}>
                         {row.catalyst}
                       </td>
                     </tr>
@@ -178,6 +205,14 @@ const ArchetypeComparison: React.FC<ArchetypeComparisonProps> = ({
                 </tbody>
               </table>
             </div>
+            {currentArchetype && (
+              <div className="mt-4 text-center">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                  Your archetype is highlighted
+                </span>
+              </div>
+            )}
           </Card>
         </div>
       )}
