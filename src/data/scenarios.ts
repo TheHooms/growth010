@@ -468,32 +468,32 @@ export const scenarios: Scenario[] = [
     xpReward: 50
   },
   {
-    id: 'team-credit-conflict',
+    id: 'taking-credit',
     title: 'Taking Credit for Team Work',
-    description: 'Navigate a situation where a teammate is taking credit for your contributions in front of leadership.',
-    situation: 'You\'ve been working closely with Jordan on a high-visibility project for the past month. You developed the core algorithm and Jordan handled the implementation. During today\'s executive presentation, Jordan presented the entire solution as "my innovative approach" and "the system I built," without mentioning your contributions. The executives were impressed and praised Jordan\'s "brilliant work." After the meeting, your manager approached Jordan to discuss a potential promotion based on this "outstanding individual contribution."',
+    description: 'Address a situation where a teammate is taking credit for your contributions in front of stakeholders.',
+    situation: 'You\'re a Senior Software Engineer working on a high-visibility feature redesign. During yesterday\'s stakeholder demo, your teammate Jordan presented the new architecture you designed and implemented, referring to it as "my solution" and "the approach I developed." This is the third time in two months Jordan has taken credit for your work in front of leadership. Your manager wasn\'t in the meeting, but the VP of Engineering and Product Director were both present and seemed impressed with "Jordan\'s" technical innovation.',
     roleContext: {
       yourRole: 'Senior Software Engineer',
-      teamSize: '8-person product development team',
-      timeline: 'This happened during today\'s quarterly executive review',
-      stakes: 'Promotion opportunities and recognition for career advancement',
-      pressure: 'Other team members witnessed the presentation and are watching how you handle this',
-      stakeholders: 'Jordan (teammate), your manager, executives, other team members',
-      history: 'You and Jordan have collaborated well in the past, and this behavior is new'
+      teamSize: '8-person engineering team',
+      timeline: 'This pattern has occurred 3 times over 2 months',
+      stakes: 'High-visibility feature with executive attention, impacts promotion discussions',
+      pressure: 'Annual performance reviews are coming up in 6 weeks',
+      stakeholders: 'VP of Engineering, Product Director, Engineering Manager, team members',
+      history: 'You and Jordan joined the team around the same time and have similar seniority levels'
     },
     choices: [
       {
-        id: 'immediate-confrontation',
-        text: 'Immediately address Jordan privately after the meeting to express your concerns about the misrepresentation.',
-        feedback: 'This direct approach shows assertiveness and addresses the issue quickly, but timing and emotional state could affect how the conversation goes. Your immediate reaction might come across as accusatory.',
+        id: 'immediate-correction',
+        text: 'Speak up immediately in the next team meeting to clarify your contributions and set the record straight.',
+        feedback: 'Taking immediate action shows assertiveness and prevents the pattern from continuing, but doing it publicly might create team tension and could be perceived as confrontational by leadership.',
         consequences: {
-          immediate: 'Jordan becomes defensive and claims they didn\'t mean to exclude you, but the damage to executive perception is already done.',
-          shortTerm: 'The relationship with Jordan becomes tense, and they may be more guarded in future collaborations.',
-          longTerm: 'You establish boundaries but may be seen as someone who creates conflict, potentially affecting team dynamics and future project assignments.'
+          immediate: 'Jordan feels called out publicly and becomes defensive, creating visible team tension.',
+          shortTerm: 'Leadership notices the conflict and may question both your professionalism and Jordan\'s integrity.',
+          longTerm: 'While your contributions become clear, the public confrontation may damage team dynamics and your reputation for collaboration.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 8 },
-          { area: 'emotional-intelligence', impact: 4 },
+          { area: 'emotional-intelligence', impact: 3 },
           { area: 'decision-making', impact: 5 }
         ],
         enhancedConsequences: {
@@ -510,67 +510,234 @@ export const scenarios: Scenario[] = [
           stakeholderImpacts: [
             {
               stakeholder: 'Jordan (Teammate)',
-              impact: 'Feels attacked and becomes defensive, may damage working relationship and future collaboration',
+              impact: 'Feels publicly embarrassed and may become defensive or retaliatory',
               severity: 'negative' as const
             },
             {
-              stakeholder: 'Team Members',
-              impact: 'May see you as confrontational or may respect you for standing up for yourself',
-              severity: 'neutral' as const
+              stakeholder: 'Engineering Team',
+              impact: 'Witnesses uncomfortable confrontation, may feel tension and choose sides',
+              severity: 'negative' as const
             },
             {
-              stakeholder: 'Manager',
-              impact: 'Unaware of the conflict, still has incorrect impression of individual contributions',
+              stakeholder: 'VP of Engineering',
+              impact: 'Questions team dynamics and both engineers\' professionalism',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Engineering Manager',
+              impact: 'Concerned about team conflict and may need to mediate',
               severity: 'negative' as const
             }
           ],
           alternatives: {
-            immediate: 'Wait until emotions settle and plan a more strategic conversation',
-            shortTerm: 'Focus on documenting your contributions for future reference',
-            longTerm: 'Build a pattern of making your contributions visible proactively'
+            immediate: 'Address Jordan privately first before making any public corrections',
+            shortTerm: 'Document your contributions and share them with your manager in a one-on-one',
+            longTerm: 'Focus on building a pattern of visible ownership rather than reactive corrections'
           },
           mitigation: {
-            immediate: 'Approach with curiosity rather than accusation: "I noticed our collaboration wasn\'t mentioned..."',
-            shortTerm: 'Suggest joint follow-up with leadership to clarify the collaborative nature',
-            longTerm: 'Establish clear communication protocols for future joint presentations'
+            immediate: 'If you do speak up, frame it collaboratively: "Jordan and I worked together on this, and I\'d like to share the technical details I contributed"',
+            shortTerm: 'Follow up with Jordan privately to discuss collaboration and credit-sharing going forward',
+            longTerm: 'Establish clearer communication about individual contributions before future presentations'
           },
           reflectionPrompts: [
-            'How might your emotional state affect how Jordan receives your feedback?',
-            'What would be the most constructive way to address this while preserving the working relationship?',
-            'How can you ensure your contributions are visible without creating team conflict?'
+            'How might public confrontation affect your long-term working relationship with Jordan?',
+            'What would be the most professional way to ensure your contributions are recognized?',
+            'How can you address this pattern while maintaining team cohesion?'
           ],
           skillRecommendations: [
             {
-              skill: 'Difficult Conversations',
-              reason: 'Learning to address sensitive topics with teammates while maintaining relationships',
+              skill: 'Professional Communication',
+              reason: 'Learn to address credit issues without creating public confrontation',
               link: '/topics/foundational-mindsets/assertiveness'
             },
             {
-              skill: 'Emotional Regulation',
-              reason: 'Managing your emotional response when feeling overlooked or undervalued',
-              link: '/topics/foundational-mindsets/emotional-intelligence'
+              skill: 'Conflict De-escalation',
+              reason: 'Understand how to handle workplace disputes constructively',
+              link: '/library/conflict-resolution'
             }
           ],
           realWorldExample: {
-            title: 'Software Team Collaboration Conflict',
-            description: 'A developer immediately confronted a teammate who took credit for their code architecture in a demo to stakeholders.',
-            outcome: 'The teammate became defensive and their relationship deteriorated. The developer was later excluded from high-visibility projects because they were seen as "difficult to work with."'
+            title: 'Data Scientist\'s Public Correction',
+            description: 'A data scientist called out a colleague in a team meeting for taking credit for their machine learning model.',
+            outcome: 'While the contributions were clarified, the public confrontation created lasting team tension. Leadership viewed both engineers as difficult to work with, affecting both their career prospects.'
           }
         }
       },
       {
-        id: 'strategic-documentation',
-        text: 'Document your contributions and schedule a separate meeting with your manager to clarify your role in the project.',
-        feedback: 'This measured approach protects your interests while avoiding immediate conflict. It demonstrates professionalism and gives you time to present your case thoughtfully.',
+        id: 'private-conversation',
+        text: 'Have a direct, private conversation with Jordan about the pattern and establish clear boundaries.',
+        feedback: 'This approach addresses the issue directly while maintaining professionalism and team harmony. It gives Jordan a chance to correct the behavior and shows maturity in handling workplace conflicts.',
         consequences: {
-          immediate: 'You maintain composure and avoid confrontation, but Jordan\'s narrative remains unchallenged for now.',
-          shortTerm: 'Your manager gains clarity on your contributions, but Jordan may feel blindsided when they learn you went to management.',
-          longTerm: 'You protect your career interests and establish a record of your work, though it may create tension with Jordan and questions about team communication.'
+          immediate: 'Jordan either acknowledges the issue and commits to change, or becomes defensive about their behavior.',
+          shortTerm: 'If Jordan responds positively, future collaborations improve and credit is shared appropriately.',
+          longTerm: 'You build a reputation for handling conflicts professionally and either resolve the issue or have clear documentation for escalation.'
         },
         impactAreas: [
-          { area: 'assertiveness', impact: 6 },
-          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'assertiveness', impact: 7 },
+          { area: 'emotional-intelligence', impact: 8 },
+          { area: 'decision-making', impact: 7 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'neutral' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'medium' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Jordan (Teammate)',
+              impact: 'Has opportunity to understand impact and correct behavior without public embarrassment',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Engineering Team',
+              impact: 'Benefits from improved collaboration without witnessing conflict',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Engineering Manager',
+              impact: 'Appreciates your mature approach to conflict resolution',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'VP of Engineering',
+              impact: 'Unaware of the issue but benefits from improved team dynamics',
+              severity: 'neutral' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'If Jordan is defensive, suggest involving your manager as a mediator',
+            shortTerm: 'Document the conversation and monitor whether behavior changes',
+            longTerm: 'If pattern continues, escalate to management with clear examples'
+          },
+          mitigation: {
+            immediate: 'Prepare specific examples and focus on impact rather than intent',
+            shortTerm: 'Follow up in writing to confirm agreements about future collaboration',
+            longTerm: 'Establish regular check-ins about project contributions and recognition'
+          },
+          reflectionPrompts: [
+            'How can you approach this conversation to maximize the chance of a positive outcome?',
+            'What specific examples will help Jordan understand the impact of their behavior?',
+            'How will you know if this conversation was successful?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Difficult Conversations',
+              reason: 'Master the art of addressing sensitive topics with colleagues',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Boundary Setting',
+              reason: 'Learn to establish and maintain professional boundaries effectively',
+              link: '/library/professional-boundaries'
+            }
+          ],
+          realWorldExample: {
+            title: 'Product Manager\'s Direct Approach',
+            description: 'A product manager had a private conversation with a colleague who was taking credit for their market research and strategy work.',
+            outcome: 'The colleague was initially defensive but ultimately acknowledged the issue. They established a system for clearly attributing contributions in future presentations, and their working relationship actually improved.'
+          }
+        }
+      },
+      {
+        id: 'proactive-visibility',
+        text: 'Focus on making your contributions more visible through documentation, demos, and proactive communication.',
+        feedback: 'This approach builds long-term visibility and ownership without direct confrontation. It\'s professional and constructive, though it may take longer to address the immediate credit issue.',
+        consequences: {
+          immediate: 'Jordan continues taking credit in the short term, but you begin establishing clearer ownership patterns.',
+          shortTerm: 'Your contributions become more visible to leadership through your own efforts and documentation.',
+          longTerm: 'You build a strong reputation for technical leadership and clear communication, making future credit issues less likely.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 5 },
+          { area: 'emotional-intelligence', impact: 6 },
           { area: 'decision-making', impact: 8 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'neutral' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Jordan (Teammate)',
+              impact: 'Continues current behavior initially but may adjust as your visibility increases',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'Engineering Team',
+              impact: 'Benefits from better documentation and clearer project communication',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Engineering Manager',
+              impact: 'Gains better visibility into your contributions and technical leadership',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'VP of Engineering',
+              impact: 'Develops clearer understanding of your technical capabilities and impact',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Combine this approach with a private conversation with Jordan',
+            shortTerm: 'If Jordan continues taking credit despite your increased visibility, escalate the issue',
+            longTerm: 'Consider whether this passive approach is sufficient for your career goals'
+          },
+          mitigation: {
+            immediate: 'Start documenting contributions immediately and share with your manager',
+            shortTerm: 'Volunteer to present your own work in future stakeholder meetings',
+            longTerm: 'Build relationships directly with leadership to ensure your work is recognized'
+          },
+          reflectionPrompts: [
+            'How can you increase visibility of your work without appearing self-promotional?',
+            'What documentation and communication practices will best showcase your contributions?',
+            'Is this approach sufficient to address the immediate impact on your career progression?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Self-Advocacy',
+              reason: 'Learn to promote your work and achievements professionally',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Technical Communication',
+              reason: 'Master the art of documenting and presenting technical work effectively',
+              link: '/library/technical-communication'
+            }
+          ],
+          realWorldExample: {
+            title: 'Software Architect\'s Documentation Strategy',
+            description: 'A software architect started documenting all design decisions and presenting monthly architecture reviews after a colleague took credit for their system design.',
+            outcome: 'Within six months, leadership clearly understood their technical contributions. The colleague stopped taking credit as the architect\'s ownership became undeniable through consistent documentation and presentation.'
+          }
+        }
+      },
+      {
+        id: 'manager-escalation',
+        text: 'Discuss the situation with your manager and ask for guidance on how to handle the credit attribution issue.',
+        feedback: 'Involving your manager provides official support and guidance, but may be seen as escalating too quickly without attempting direct resolution first.',
+        consequences: {
+          immediate: 'Your manager becomes aware of the issue and may investigate or mediate.',
+          shortTerm: 'The situation gets official attention, but Jordan may feel blindsided if they haven\'t been approached directly.',
+          longTerm: 'You have management support, but may be perceived as someone who escalates conflicts rather than resolving them independently.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 4 },
+          { area: 'emotional-intelligence', impact: 5 },
+          { area: 'decision-making', impact: 6 }
         ],
         enhancedConsequences: {
           severity: {
@@ -586,141 +753,71 @@ export const scenarios: Scenario[] = [
           stakeholderImpacts: [
             {
               stakeholder: 'Jordan (Teammate)',
-              impact: 'May feel betrayed when they discover you went to management without talking to them first',
+              impact: 'May feel blindsided by management involvement without direct conversation first',
               severity: 'negative' as const
             },
             {
-              stakeholder: 'Manager',
-              impact: 'Appreciates the clarification and documentation, gains accurate understanding of contributions',
-              severity: 'positive' as const
+              stakeholder: 'Engineering Team',
+              impact: 'May view you as someone who escalates issues rather than resolving them directly',
+              severity: 'neutral' as const
             },
             {
-              stakeholder: 'Team Members',
-              impact: 'May see you as professional and strategic, or may worry about team trust and communication',
+              stakeholder: 'Engineering Manager',
+              impact: 'Appreciates being informed but may prefer you try direct resolution first',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'VP of Engineering',
+              impact: 'Unaware unless manager escalates further, but benefits from resolution',
               severity: 'neutral' as const
             }
           ],
           alternatives: {
-            immediate: 'Combine documentation with a direct conversation with Jordan first',
-            shortTerm: 'Suggest a joint meeting with your manager to discuss the project collaboration',
-            longTerm: 'Establish team norms for how collaborative work is presented and credited'
+            immediate: 'Ask your manager for advice on how to approach Jordan directly first',
+            shortTerm: 'Use manager as a resource for coaching rather than immediate intervention',
+            longTerm: 'Develop skills to handle similar situations independently in the future'
           },
           mitigation: {
-            immediate: 'Let Jordan know you plan to clarify contributions with your manager',
-            shortTerm: 'Frame the manager conversation as clarifying collaboration rather than correcting Jordan',
-            longTerm: 'Work with Jordan to establish better communication for future joint presentations'
+            immediate: 'Frame the conversation as seeking guidance rather than asking for intervention',
+            shortTerm: 'Suggest trying direct conversation with Jordan first, with manager as backup',
+            longTerm: 'Document the guidance received and apply it to future workplace conflicts'
           },
           reflectionPrompts: [
-            'How can you protect your interests while maintaining team trust?',
-            'What systems could prevent this situation from happening again?',
-            'How might going to your manager first affect your relationship with Jordan and team dynamics?'
+            'What would you want to try on your own before involving management?',
+            'How can you use your manager as a resource while still developing your own conflict resolution skills?',
+            'What would make this escalation feel appropriate and professional?'
           ],
           skillRecommendations: [
             {
-              skill: 'Professional Documentation',
-              reason: 'Learning to track and communicate your contributions effectively',
-              link: '/topics/foundational-mindsets/self-awareness'
+              skill: 'Manager Relationships',
+              reason: 'Learn when and how to involve your manager in workplace issues effectively',
+              link: '/library/manager-relationships'
             },
             {
-              skill: 'Stakeholder Communication',
-              reason: 'Understanding how to navigate multiple relationships when addressing workplace issues',
-              link: '/topics/foundational-mindsets/decision-making'
-            }
-          ],
-          realWorldExample: {
-            title: 'Product Manager\'s Strategic Approach',
-            description: 'A PM documented their contributions to a successful feature launch after a teammate took full credit in a leadership presentation.',
-            outcome: 'The manager appreciated the clarification and the PM received proper recognition, but the teammate felt undermined and their collaboration became strained.'
-          }
-        }
-      },
-      {
-        id: 'collaborative-correction',
-        text: 'Approach Jordan to suggest a joint follow-up presentation that properly highlights the collaborative nature of the work.',
-        feedback: 'This collaborative approach addresses the issue while maintaining the relationship and demonstrating team leadership. It shows maturity and focus on shared success.',
-        consequences: {
-          immediate: 'Jordan may be receptive to the collaborative approach or may resist if they prefer the individual recognition.',
-          shortTerm: 'If successful, both of you get proper credit and demonstrate strong teamwork to leadership.',
-          longTerm: 'You build a reputation as someone who handles conflicts constructively and values team collaboration over individual recognition.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 7 },
-          { area: 'emotional-intelligence', impact: 9 },
-          { area: 'decision-making', impact: 7 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'positive' as const,
-            shortTerm: 'positive' as const,
-            longTerm: 'positive' as const
-          },
-          confidence: {
-            immediate: 'medium' as const,
-            shortTerm: 'high' as const,
-            longTerm: 'high' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Jordan (Teammate)',
-              impact: 'Appreciates the collaborative approach and opportunity to correct the situation together',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Manager',
-              impact: 'Sees strong teamwork and collaboration, gains accurate understanding of contributions',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Team Members',
-              impact: 'Witnesses positive conflict resolution and collaborative leadership',
-              severity: 'positive' as const
-            }
-          ],
-          alternatives: {
-            shortTerm: 'If Jordan resists, you may need to be more direct about the importance of accurate representation',
-            longTerm: 'Consider establishing team presentation guidelines to prevent future issues'
-          },
-          mitigation: {
-            immediate: 'Frame it as an opportunity to showcase teamwork rather than correcting a mistake',
-            shortTerm: 'Prepare talking points that highlight both contributions naturally',
-            longTerm: 'Use this as a model for how to handle similar situations in the future'
-          },
-          reflectionPrompts: [
-            'How can you frame this conversation to feel collaborative rather than corrective?',
-            'What would make Jordan want to participate in a joint follow-up?',
-            'How might this approach strengthen your working relationship and team dynamics?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Collaborative Problem Solving',
-              reason: 'Learning to address conflicts in ways that strengthen rather than damage relationships',
-              link: '/topics/foundational-mindsets/emotional-intelligence'
-            },
-            {
-              skill: 'Influence Without Authority',
-              reason: 'Developing skills to guide outcomes when you can\'t simply direct others',
+              skill: 'Conflict Resolution',
+              reason: 'Develop skills to handle peer conflicts independently when possible',
               link: '/topics/foundational-mindsets/assertiveness'
             }
           ],
           realWorldExample: {
-            title: 'Design Team\'s Joint Presentation',
-            description: 'Two designers suggested a joint follow-up after one was inadvertently excluded from credit in a client presentation.',
-            outcome: 'The joint presentation was well-received, both designers got proper recognition, and they became known as a strong collaborative partnership for future projects.'
+            title: 'UX Designer\'s Management Consultation',
+            description: 'A UX designer consulted their manager about a colleague taking credit for design concepts, asking for advice on how to address it.',
+            outcome: 'The manager provided coaching on having direct conversations and offered to mediate if needed. The designer successfully resolved the issue directly and gained valuable conflict resolution skills.'
           }
         }
       },
       {
-        id: 'let-it-slide',
-        text: 'Let it go this time and focus on making your contributions more visible in future projects.',
-        feedback: 'This approach avoids conflict and focuses on future prevention, but may signal that you\'re willing to accept being overlooked, potentially setting a precedent.',
+        id: 'ignore-and-document',
+        text: 'Continue focusing on your work while quietly documenting instances for potential future reference.',
+        feedback: 'This avoids immediate conflict but allows the pattern to continue, potentially impacting your career progression and team dynamics. It may be seen as passive and could enable the behavior.',
         consequences: {
-          immediate: 'No immediate conflict, but Jordan\'s incorrect narrative stands and executives have the wrong impression.',
-          shortTerm: 'Jordan may continue this behavior, and you may miss out on recognition and advancement opportunities.',
-          longTerm: 'You may be consistently overlooked for contributions, affecting your career progression and team standing.'
+          immediate: 'Jordan continues taking credit without any pushback or awareness of the impact.',
+          shortTerm: 'Your contributions remain underrecognized by leadership, potentially affecting performance reviews.',
+          longTerm: 'The pattern becomes established, Jordan\'s reputation grows at your expense, and you may miss promotion opportunities.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 2 },
-          { area: 'emotional-intelligence', impact: 5 },
+          { area: 'emotional-intelligence', impact: 4 },
           { area: 'decision-making', impact: 3 }
         ],
         enhancedConsequences: {
@@ -737,203 +834,137 @@ export const scenarios: Scenario[] = [
           stakeholderImpacts: [
             {
               stakeholder: 'Jordan (Teammate)',
-              impact: 'May interpret your silence as acceptance, potentially continuing this behavior',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Manager',
-              impact: 'Maintains incorrect understanding of individual contributions and capabilities',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Team Members',
-              impact: 'May lose respect for your willingness to advocate for yourself',
-              severity: 'negative' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'At minimum, document the situation for future reference',
-            shortTerm: 'Find subtle ways to make your contributions visible without direct confrontation',
-            longTerm: 'Develop a proactive strategy for ensuring your work is properly attributed'
-          },
-          mitigation: {
-            immediate: 'Start documenting your contributions more systematically',
-            shortTerm: 'Increase your visibility in team meetings and project updates',
-            longTerm: 'Build relationships with leadership to ensure your work is recognized'
-          },
-          reflectionPrompts: [
-            'What message does your silence send to Jordan and other team members?',
-            'How might this pattern affect your career advancement and team relationships?',
-            'What are you afraid might happen if you address this situation directly?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Self-Advocacy',
-              reason: 'Learning to stand up for yourself professionally without creating unnecessary conflict',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Visibility Strategies',
-              reason: 'Developing proactive approaches to ensure your contributions are recognized',
-              link: '/topics/foundational-mindsets/self-awareness'
-            }
-          ],
-          realWorldExample: {
-            title: 'Marketing Team Member\'s Silence',
-            description: 'A marketing specialist chose not to address a colleague taking credit for their campaign strategy in a leadership presentation.',
-            outcome: 'The colleague was promoted based on the "innovative strategy," while the specialist was passed over for advancement. The pattern continued with future projects.'
-          }
-        }
-      },
-      {
-        id: 'public-clarification',
-        text: 'Send a follow-up email to the meeting attendees highlighting the collaborative nature of the project and your specific contributions.',
-        feedback: 'This approach ensures the record is corrected publicly but may be seen as passive-aggressive or undermining Jordan. It addresses the immediate issue but could damage relationships.',
-        consequences: {
-          immediate: 'The executives and your manager see your contributions, but Jordan feels publicly undermined.',
-          shortTerm: 'You get proper recognition, but Jordan may retaliate or become defensive in future collaborations.',
-          longTerm: 'You establish a pattern of self-advocacy but may be seen as someone who doesn\'t handle conflicts directly, potentially affecting team trust.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 5 },
-          { area: 'emotional-intelligence', impact: 3 },
-          { area: 'decision-making', impact: 4 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'neutral' as const,
-            shortTerm: 'negative' as const,
-            longTerm: 'negative' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'medium' as const,
-            longTerm: 'medium' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Jordan (Teammate)',
-              impact: 'Feels publicly embarrassed and undermined, likely to damage working relationship significantly',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Manager',
-              impact: 'Gets accurate information but may question why this wasn\'t handled directly between teammates',
+              impact: 'Continues behavior without understanding its impact, potentially damaging their own reputation long-term',
               severity: 'neutral' as const
             },
             {
-              stakeholder: 'Team Members',
-              impact: 'May see this as passive-aggressive and worry about team communication and trust',
+              stakeholder: 'Engineering Team',
+              impact: 'May lose respect for your willingness to advocate for yourself',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Engineering Manager',
+              impact: 'Remains unaware of the issue and may make decisions based on incomplete information',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'VP of Engineering',
+              impact: 'Develops incorrect understanding of team contributions and capabilities',
               severity: 'negative' as const
             }
           ],
           alternatives: {
-            immediate: 'Talk to Jordan first before sending any public communication',
-            shortTerm: 'Suggest Jordan send the clarification email themselves',
-            longTerm: 'Focus on preventing similar situations through better upfront communication'
+            immediate: 'Set a timeline for how long you\'ll document before taking action',
+            shortTerm: 'Use documentation as preparation for a direct conversation or escalation',
+            longTerm: 'Recognize that passive approaches may not be sufficient for career advancement'
           },
           mitigation: {
-            immediate: 'Frame the email as additional context rather than a correction',
-            shortTerm: 'Have a direct conversation with Jordan about the email before or after sending',
-            longTerm: 'Work on building more direct communication skills for future conflicts'
+            immediate: 'At minimum, ensure your manager is aware of your actual contributions',
+            shortTerm: 'Consider whether this approach aligns with your career goals and values',
+            longTerm: 'Develop assertiveness skills to handle similar situations more proactively'
           },
           reflectionPrompts: [
-            'How might a public correction affect your relationship with Jordan and team dynamics?',
-            'What would be the most professional way to ensure accurate information reaches leadership?',
-            'How can you balance self-advocacy with maintaining team relationships?'
+            'What are you hoping will happen if you don\'t address this directly?',
+            'How might this passive approach affect your career progression and team standing?',
+            'What would need to change for you to feel comfortable taking more direct action?'
           ],
           skillRecommendations: [
             {
-              skill: 'Direct Communication',
-              reason: 'Learning to address issues directly rather than through indirect methods',
+              skill: 'Assertiveness Training',
+              reason: 'Build confidence to address workplace issues that affect your career',
               link: '/topics/foundational-mindsets/assertiveness'
             },
             {
-              skill: 'Professional Email Communication',
-              reason: 'Understanding how to communicate sensitive information professionally',
-              link: '/topics/foundational-mindsets/emotional-intelligence'
+              skill: 'Career Self-Advocacy',
+              reason: 'Learn to promote your work and protect your professional interests',
+              link: '/library/career-advocacy'
             }
           ],
           realWorldExample: {
-            title: 'Engineering Team Email Clarification',
-            description: 'A software engineer sent a follow-up email to leadership clarifying their contributions after a teammate took credit in a presentation.',
-            outcome: 'While the engineer got proper recognition, the teammate felt publicly humiliated and their relationship became hostile, affecting future project collaborations.'
+            title: 'Research Scientist\'s Passive Approach',
+            description: 'A research scientist documented instances of a colleague taking credit for their research contributions but never addressed it directly.',
+            outcome: 'After two years, the colleague was promoted to lead researcher while the original scientist was passed over. The documentation was never used, and the pattern had become so established that leadership viewed the colleague as the primary contributor.'
           }
         }
       },
       {
-        id: 'seek-team-support',
-        text: 'Talk to other team members who witnessed the presentation to get their perspective and potential support.',
-        feedback: 'This approach builds coalition and validates your perspective, but could be seen as creating drama or politics within the team. It may help you understand how others perceived the situation.',
+        id: 'collaborative-presentation',
+        text: 'Suggest that you and Jordan co-present future work to ensure both contributions are clearly represented.',
+        feedback: 'This approach addresses the issue constructively while maintaining the working relationship. It creates a framework for shared credit and may prevent future issues.',
         consequences: {
-          immediate: 'You gain perspective and potentially allies, but may be seen as gossiping or creating team divisions.',
-          shortTerm: 'Team members may support you or may distance themselves from what they see as workplace politics.',
-          longTerm: 'You either build a support network or create a reputation for involving others in conflicts, affecting team dynamics and your professional relationships.'
+          immediate: 'Jordan may agree to collaborate or resist sharing the spotlight, revealing their intentions.',
+          shortTerm: 'If successful, future presentations clearly show both contributions and leadership sees your technical skills.',
+          longTerm: 'You establish a pattern of visible collaboration and shared ownership, while building your presentation skills and leadership visibility.'
         },
         impactAreas: [
-          { area: 'assertiveness', impact: 4 },
-          { area: 'emotional-intelligence', impact: 6 },
-          { area: 'decision-making', impact: 5 }
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 7 }
         ],
         enhancedConsequences: {
           severity: {
-            immediate: 'neutral' as const,
-            shortTerm: 'negative' as const,
-            longTerm: 'negative' as const
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
           },
           confidence: {
             immediate: 'medium' as const,
-            shortTerm: 'medium' as const,
-            longTerm: 'low' as const
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
           },
           stakeholderImpacts: [
             {
               stakeholder: 'Jordan (Teammate)',
-              impact: 'May feel ganged up on if they learn about team discussions, further damaging the relationship',
-              severity: 'negative' as const
+              impact: 'Opportunity to collaborate genuinely while maintaining face, may reveal true intentions',
+              severity: 'positive' as const
             },
             {
-              stakeholder: 'Team Members',
-              impact: 'May feel uncomfortable being pulled into a conflict between teammates',
-              severity: 'negative' as const
+              stakeholder: 'Engineering Team',
+              impact: 'Benefits from seeing collaborative model and clearer project ownership',
+              severity: 'positive' as const
             },
             {
-              stakeholder: 'Manager',
-              impact: 'May become aware of team drama and question the team\'s ability to handle conflicts professionally',
-              severity: 'negative' as const
+              stakeholder: 'Engineering Manager',
+              impact: 'Sees both engineers\' contributions clearly and appreciates collaborative approach',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'VP of Engineering',
+              impact: 'Gains accurate understanding of team capabilities and sees strong collaboration',
+              severity: 'positive' as const
             }
           ],
           alternatives: {
-            immediate: 'Seek advice from a trusted mentor outside the team',
-            shortTerm: 'Focus on direct communication with Jordan rather than building coalitions',
-            longTerm: 'Develop skills to handle conflicts independently without involving others'
+            immediate: 'If Jordan resists, it provides clear evidence of their intentions for escalation',
+            shortTerm: 'Use this as a test case - if it works, expand to other collaborative projects',
+            longTerm: 'If Jordan continues taking credit despite agreements, you have clear grounds for escalation'
           },
           mitigation: {
-            immediate: 'If you do talk to teammates, focus on seeking advice rather than building support',
-            shortTerm: 'Keep any conversations confidential and professional',
-            longTerm: 'Use this experience to develop better direct conflict resolution skills'
+            immediate: 'Prepare talking points about the benefits of collaborative presentation',
+            shortTerm: 'Document agreements about who presents which sections',
+            longTerm: 'Build your own presentation skills so you\'re comfortable in leadership settings'
           },
           reflectionPrompts: [
-            'What are you hoping to achieve by involving other team members?',
-            'How might this approach affect team dynamics and your professional relationships?',
-            'What would be the most direct and professional way to address this situation?'
+            'How can you frame this suggestion to make it appealing to Jordan?',
+            'What would Jordan\'s response tell you about their intentions and character?',
+            'How might this collaborative approach benefit your own career development?'
           ],
           skillRecommendations: [
             {
-              skill: 'Conflict Resolution',
-              reason: 'Learning to handle interpersonal conflicts directly without involving others',
-              link: '/topics/foundational-mindsets/emotional-intelligence'
+              skill: 'Collaborative Leadership',
+              reason: 'Learn to create win-win solutions that advance everyone\'s interests',
+              link: '/topics/foundational-mindsets/decision-making'
             },
             {
-              skill: 'Professional Boundaries',
-              reason: 'Understanding when and how to involve others in workplace conflicts',
-              link: '/topics/foundational-mindsets/decision-making'
+              skill: 'Presentation Skills',
+              reason: 'Build confidence in presenting your technical work to leadership',
+              link: '/library/technical-presentations'
             }
           ],
           realWorldExample: {
-            title: 'Product Team Coalition Building',
-            description: 'A product manager talked to several teammates about a colleague taking credit, hoping to build support for addressing the issue.',
-            outcome: 'The team became divided, with some supporting each side. The manager eventually had to intervene to address the team dysfunction, and both individuals were counseled about professional communication.'
+            title: 'DevOps Engineer\'s Partnership Proposal',
+            description: 'A DevOps engineer suggested co-presenting infrastructure improvements with a colleague who had been taking credit for their automation work.',
+            outcome: 'The colleague initially resisted but eventually agreed. The co-presentations were successful, and both engineers gained visibility. The colleague stopped taking sole credit and they developed a strong working partnership.'
           }
         }
       }
@@ -943,112 +974,510 @@ export const scenarios: Scenario[] = [
     xpReward: 50
   },
   {
-    id: 'cross-functional-conflict',
-    title: 'Cross-Functional Team Conflict',
-    description: 'Resolve a heated disagreement between engineering and marketing teams that\'s blocking a critical project.',
-    situation: 'The engineering team insists on a 3-month timeline for a new feature, while marketing has already promised it to key clients in 6 weeks. Both teams are digging in their heels, and the project is at a standstill.',
+    id: 'cross-functional-disagreement',
+    title: 'Cross-Functional Feature Disagreement',
+    description: 'Navigate a heated disagreement with a designer about user experience decisions that\'s blocking your development work.',
+    situation: 'You\'re a Frontend Developer working on a critical user onboarding flow. The UX Designer, Sam, insists on a complex multi-step animation sequence that you believe will hurt performance and accessibility. You\'ve raised technical concerns twice, but Sam dismisses them as "implementation details" and says the design is non-negotiable for user engagement. The Product Manager is pressuring both of you to finalize the approach by Friday so development can proceed. Your attempts to suggest alternatives have been met with "that\'s not how users think" and "just make it work." The tension is affecting your daily standups and other team members are starting to notice.',
     roleContext: {
-      yourRole: 'Product Director',
-      stakeholders: 'Engineering Manager, Marketing Director, 3 key enterprise clients',
-      timeline: 'Client demos scheduled in 6 weeks, contract renewals depend on this feature',
-      stakes: '$2M in potential revenue at risk',
-      history: 'This is the third time this year these teams have clashed over timelines'
+      yourRole: 'Frontend Developer',
+      teamSize: '12-person product team (4 engineers, 2 designers, 2 PMs, 4 others)',
+      timeline: 'Feature must be completed in 3 weeks, design decision needed by Friday',
+      stakes: 'Critical user onboarding flow affecting conversion rates and user retention',
+      pressure: 'Product Manager escalating urgency, other team members witnessing tension',
+      stakeholders: 'UX Designer Sam, Product Manager, Engineering Lead, other developers',
+      history: 'You and Sam have worked together for 6 months with generally good collaboration'
     },
     choices: [
       {
-        id: 'side-with-engineering',
-        text: 'Support the engineering timeline and work with marketing to reset client expectations.',
-        feedback: 'This shows respect for technical expertise and realistic planning, but may damage client relationships and marketing credibility.',
+        id: 'technical-deep-dive',
+        text: 'Prepare a detailed technical presentation showing performance data and accessibility concerns to make your case.',
+        feedback: 'This data-driven approach demonstrates professionalism and technical expertise, but may come across as trying to override design decisions with technical arguments, potentially escalating the conflict.',
         consequences: {
-          immediate: 'Engineering feels supported, marketing feels undermined.',
-          shortTerm: 'Difficult client conversations, potential contract delays, but higher quality delivery.',
-          longTerm: 'Better engineering-product relationship, but marketing may lose trust in your support.'
+          immediate: 'Sam feels like you\'re trying to undermine their design expertise with technical jargon.',
+          shortTerm: 'The presentation may convince the Product Manager, but could damage your working relationship with Sam.',
+          longTerm: 'You establish yourself as technically thorough but may be seen as difficult to collaborate with by designers.'
         },
         impactAreas: [
-          { area: 'decision-making', impact: 7 },
-          { area: 'assertiveness', impact: 6 },
-          { area: 'emotional-intelligence', impact: 4 }
-        ]
-      },
-      {
-        id: 'compromise-solution',
-        text: 'Facilitate a compromise by identifying which features can be delivered in 6 weeks vs. 3 months.',
-        feedback: 'This collaborative approach addresses both teams\' concerns and may preserve client relationships while maintaining technical quality.',
-        consequences: {
-          immediate: 'Both teams feel heard and work together on prioritization.',
-          shortTerm: 'Partial feature delivery meets client needs, full delivery follows later.',
-          longTerm: 'Stronger cross-functional collaboration and a model for future conflicts.'
-        },
-        impactAreas: [
-          { area: 'decision-making', impact: 8 },
           { area: 'assertiveness', impact: 7 },
-          { area: 'emotional-intelligence', impact: 8 }
-        ]
+          { area: 'emotional-intelligence', impact: 4 },
+          { area: 'decision-making', impact: 6 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'negative' as const,
+            shortTerm: 'neutral' as const,
+            longTerm: 'neutral' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'medium' as const,
+            longTerm: 'medium' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Sam (UX Designer)',
+              impact: 'Feels their design expertise is being challenged and may become more defensive',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Product Manager',
+              impact: 'Appreciates data-driven approach but concerned about team dynamics',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'Engineering Lead',
+              impact: 'Supports technical rigor but may worry about cross-functional relationships',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'Development Team',
+              impact: 'Sees you advocating for technical best practices but may worry about design conflicts',
+              severity: 'neutral' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Include Sam in preparing the presentation to make it collaborative',
+            shortTerm: 'Focus on user impact rather than just technical metrics',
+            longTerm: 'Build stronger relationships with design team through regular technical-design collaboration'
+          },
+          mitigation: {
+            immediate: 'Frame the presentation as exploring options together rather than proving Sam wrong',
+            shortTerm: 'Acknowledge the design goals and show how technical constraints can be addressed creatively',
+            longTerm: 'Establish regular design-engineering collaboration sessions to prevent future conflicts'
+          },
+          reflectionPrompts: [
+            'How can you present technical concerns without undermining Sam\'s design expertise?',
+            'What would make this feel collaborative rather than adversarial?',
+            'How might Sam\'s perspective on user engagement be valid alongside your technical concerns?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Cross-Functional Communication',
+              reason: 'Learn to translate technical concerns into design and business language',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Collaborative Problem Solving',
+              reason: 'Master techniques for finding solutions that address multiple stakeholder concerns',
+              link: '/library/collaborative-solutions'
+            }
+          ],
+          realWorldExample: {
+            title: 'Mobile Developer\'s Performance Presentation',
+            description: 'A mobile developer created a detailed performance analysis to challenge a designer\'s complex animation requirements.',
+            outcome: 'While the technical arguments were sound, the designer felt attacked and their collaboration suffered for months. The PM had to mediate future design-engineering discussions.'
+          }
+        }
       },
       {
-        id: 'escalate-decision',
-        text: 'Escalate to executive leadership to make the final call on priorities.',
-        feedback: 'While this removes the burden of a difficult decision, it may signal inability to handle cross-functional leadership challenges.',
+        id: 'collaborative-prototyping',
+        text: 'Suggest building a quick prototype together to test both the user experience and technical feasibility.',
+        feedback: 'This collaborative approach addresses both design and technical concerns while maintaining the working relationship. It provides concrete evidence for decision-making and demonstrates problem-solving partnership.',
         consequences: {
-          immediate: 'Immediate pressure relief, but teams may see you as unable to lead.',
-          shortTerm: 'Executive decision may not consider all nuances, leading to suboptimal outcomes.',
-          longTerm: 'Reduced credibility as a leader who can handle complex situations independently.'
+          immediate: 'Sam appreciates the collaborative approach and agrees to explore options together.',
+          shortTerm: 'You both learn from the prototyping process and find a solution that addresses user experience and technical constraints.',
+          longTerm: 'You establish a strong pattern of design-engineering collaboration and become known as someone who finds creative solutions.'
         },
         impactAreas: [
-          { area: 'decision-making', impact: 3 },
-          { area: 'assertiveness', impact: 2 },
-          { area: 'emotional-intelligence', impact: 4 }
-        ]
-      },
-      {
-        id: 'root-cause-analysis',
-        text: 'Pause the timeline debate and facilitate a session to understand why these conflicts keep happening.',
-        feedback: 'This addresses systemic issues rather than just the immediate problem, though it requires time and may not solve the current crisis.',
-        consequences: {
-          immediate: 'Teams may be frustrated by the delay, but appreciate the focus on long-term solutions.',
-          shortTerm: 'You identify process gaps and communication issues that have been causing repeated conflicts.',
-          longTerm: 'Stronger cross-functional processes prevent future conflicts, but current client situation still needs resolution.'
-        },
-        impactAreas: [
-          { area: 'decision-making', impact: 6 },
-          { area: 'assertiveness', impact: 5 },
-          { area: 'emotional-intelligence', impact: 7 }
-        ]
-      },
-      {
-        id: 'external-resources',
-        text: 'Explore bringing in contractors or external resources to meet the aggressive timeline.',
-        feedback: 'This creative solution attempts to satisfy both teams\' constraints, though it adds cost and complexity.',
-        consequences: {
-          immediate: 'Both teams are open to exploring this option, reducing immediate tension.',
-          shortTerm: 'If budget is approved, you can potentially meet the timeline; if not, you\'re back to the original conflict.',
-          longTerm: 'Success demonstrates resourcefulness; failure may be seen as avoiding tough decisions.'
-        },
-        impactAreas: [
-          { area: 'decision-making', impact: 7 },
           { area: 'assertiveness', impact: 6 },
-          { area: 'emotional-intelligence', impact: 6 }
-        ]
+          { area: 'emotional-intelligence', impact: 8 },
+          { area: 'decision-making', impact: 8 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Sam (UX Designer)',
+              impact: 'Feels respected and included in problem-solving, maintains design ownership while addressing concerns',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Product Manager',
+              impact: 'Sees effective collaboration and gets concrete data for decision-making',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Engineering Lead',
+              impact: 'Appreciates collaborative approach and technical problem-solving',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Development Team',
+              impact: 'Learns from collaborative model and sees effective cross-functional partnership',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'If Sam resists prototyping, suggest involving the Product Manager in the discussion',
+            shortTerm: 'Use prototyping results to inform broader design-engineering collaboration practices',
+            longTerm: 'Establish regular prototyping sessions for complex features'
+          },
+          mitigation: {
+            immediate: 'Set clear expectations about what the prototype will test and how decisions will be made',
+            shortTerm: 'Document learnings from the prototyping process for future reference',
+            longTerm: 'Build prototyping into the standard design-engineering workflow'
+          },
+          reflectionPrompts: [
+            'How can you frame prototyping as validating Sam\'s design vision rather than challenging it?',
+            'What would make this prototyping session feel collaborative and productive?',
+            'How might this approach strengthen your working relationship with the design team?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Rapid Prototyping',
+              reason: 'Learn techniques for quickly testing design and technical concepts together',
+              link: '/library/rapid-prototyping'
+            },
+            {
+              skill: 'Design-Engineering Collaboration',
+              reason: 'Master the art of bridging design vision with technical implementation',
+              link: '/topics/foundational-mindsets/emotional-intelligence'
+            }
+          ],
+          realWorldExample: {
+            title: 'React Developer\'s Prototype Partnership',
+            description: 'A React developer suggested prototyping a complex interaction with their designer to test both user experience and performance.',
+            outcome: 'The prototyping session revealed insights neither had considered alone. They found a solution that achieved the design goals with better performance, and their collaboration became a model for the team.'
+          }
+        }
       },
       {
-        id: 'client-negotiation',
-        text: 'Directly engage with clients to understand their flexibility and explore alternative solutions.',
-        feedback: 'This customer-centric approach may reveal options not considered, but requires strong client relationships and negotiation skills.',
+        id: 'pm-mediation',
+        text: 'Ask the Product Manager to facilitate a discussion about balancing user experience goals with technical constraints.',
+        feedback: 'Involving the PM provides neutral mediation and business context, but may signal inability to resolve cross-functional conflicts independently and could slow down the decision-making process.',
         consequences: {
-          immediate: 'Clients appreciate direct communication and may reveal flexibility in requirements.',
-          shortTerm: 'You may discover alternative solutions or phased approaches that work for everyone.',
-          longTerm: 'Stronger client relationships and reputation as someone who finds creative solutions.'
+          immediate: 'The PM schedules a meeting to discuss the trade-offs, but Sam may feel like you\'re escalating unnecessarily.',
+          shortTerm: 'The PM helps find a compromise, but the underlying collaboration issues between you and Sam remain unaddressed.',
+          longTerm: 'You may be seen as someone who needs management intervention for cross-functional disagreements.'
         },
         impactAreas: [
-          { area: 'decision-making', impact: 8 },
-          { area: 'assertiveness', impact: 8 },
-          { area: 'emotional-intelligence', impact: 7 }
-        ]
+          { area: 'assertiveness', impact: 4 },
+          { area: 'emotional-intelligence', impact: 5 },
+          { area: 'decision-making', impact: 5 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'neutral' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'neutral' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'medium' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Sam (UX Designer)',
+              impact: 'May feel like you escalated instead of working together, but appreciates PM involvement',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'Product Manager',
+              impact: 'Appreciates being involved but may prefer you resolve cross-functional issues independently',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'Engineering Lead',
+              impact: 'Neutral about PM involvement but may note your approach to conflict resolution',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'Development Team',
+              impact: 'Sees you seeking appropriate help but may question your collaboration skills',
+              severity: 'neutral' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Try one more direct conversation with Sam before involving the PM',
+            shortTerm: 'Use PM mediation as a learning opportunity for future cross-functional collaboration',
+            longTerm: 'Develop skills to handle similar disagreements independently'
+          },
+          mitigation: {
+            immediate: 'Frame PM involvement as seeking business context rather than mediation',
+            shortTerm: 'Work with Sam to establish better collaboration practices going forward',
+            longTerm: 'Build stronger relationships with design team to prevent future escalations'
+          },
+          reflectionPrompts: [
+            'What could you try with Sam directly before involving the PM?',
+            'How can you use this situation to improve your cross-functional collaboration skills?',
+            'What would make PM involvement feel appropriate rather than like an escalation?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Cross-Functional Conflict Resolution',
+              reason: 'Learn to navigate disagreements between different disciplines effectively',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Stakeholder Management',
+              reason: 'Understand when and how to involve different stakeholders in decision-making',
+              link: '/library/stakeholder-management'
+            }
+          ],
+          realWorldExample: {
+            title: 'Backend Developer\'s PM Escalation',
+            description: 'A backend developer asked their PM to mediate a disagreement with a designer about API response times affecting user experience.',
+            outcome: 'The PM helped find a solution, but the developer was later passed over for a cross-functional lead role due to concerns about their ability to collaborate independently with other disciplines.'
+          }
+        }
+      },
+      {
+        id: 'compromise-proposal',
+        text: 'Propose a phased approach: implement a simpler version now and enhance it later based on performance data.',
+        feedback: 'This solution-oriented approach addresses both immediate timeline pressure and long-term goals. It shows strategic thinking and willingness to find middle ground while maintaining technical standards.',
+        consequences: {
+          immediate: 'Sam considers the proposal but may worry about the enhanced version never being implemented.',
+          shortTerm: 'If accepted, you deliver on time with a solution that can evolve, building trust with both Sam and the PM.',
+          longTerm: 'You establish a reputation for finding practical solutions to complex problems and become a go-to person for cross-functional challenges.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 7 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 9 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'medium' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Sam (UX Designer)',
+              impact: 'Appreciates that their design vision is preserved while addressing immediate concerns',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Product Manager',
+              impact: 'Loves the strategic approach that addresses timeline while planning for enhancement',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Engineering Lead',
+              impact: 'Appreciates the technical pragmatism and strategic thinking',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Development Team',
+              impact: 'Learns from the strategic approach and sees effective problem-solving',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'If Sam resists, offer to commit to specific timeline for the enhanced version',
+            shortTerm: 'Use performance data from the simple version to inform the enhancement',
+            longTerm: 'Apply this phased approach to other complex design-engineering challenges'
+          },
+          mitigation: {
+            immediate: 'Create clear success metrics for the simple version and enhancement criteria',
+            shortTerm: 'Document the enhancement plan and get commitment from PM for future development time',
+            longTerm: 'Build this phased approach into standard design-engineering workflow'
+          },
+          reflectionPrompts: [
+            'How can you make the phased approach feel like a win for Sam\'s design goals?',
+            'What commitments would make Sam comfortable with starting simpler?',
+            'How might this approach become a model for future design-engineering collaboration?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Strategic Problem Solving',
+              reason: 'Learn to find solutions that address multiple stakeholder concerns over time',
+              link: '/topics/foundational-mindsets/decision-making'
+            },
+            {
+              skill: 'Iterative Development',
+              reason: 'Master the art of delivering value incrementally while building toward larger goals',
+              link: '/library/iterative-development'
+            }
+          ],
+          realWorldExample: {
+            title: 'Full-Stack Developer\'s Phased Solution',
+            description: 'A full-stack developer proposed implementing a complex data visualization in phases when the designer wanted everything at once but performance was a concern.',
+            outcome: 'The phased approach was successful. The simple version launched on time and performed well, and the enhanced version was implemented two months later. Both the designer and PM praised the strategic thinking.'
+          }
+        }
+      },
+      {
+        id: 'user-research-proposal',
+        text: 'Suggest conducting quick user testing to validate both the design approach and technical concerns.',
+        feedback: 'This user-centered approach provides objective data for decision-making and shows respect for both design methodology and technical concerns. It may take additional time but leads to better outcomes.',
+        consequences: {
+          immediate: 'Sam appreciates the user-centered approach, though may worry about timeline impact.',
+          shortTerm: 'User research provides clear direction and both you and Sam feel validated by data-driven decisions.',
+          longTerm: 'You become known for advocating user-centered decision-making and evidence-based development practices.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 8 },
+          { area: 'decision-making', impact: 8 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'medium' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Sam (UX Designer)',
+              impact: 'Feels respected as you\'re advocating for their core methodology of user-centered design',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Product Manager',
+              impact: 'Appreciates user-focused approach but may be concerned about timeline impact',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'Engineering Lead',
+              impact: 'Supports evidence-based decision making and user-focused development',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Development Team',
+              impact: 'Learns the value of user research in technical decision-making',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'If timeline is too tight, suggest quick guerrilla testing or existing user data analysis',
+            shortTerm: 'Use research results to inform not just this feature but broader design-engineering practices',
+            longTerm: 'Advocate for building user research into the standard development process'
+          },
+          mitigation: {
+            immediate: 'Propose a rapid testing approach that fits within the timeline constraints',
+            shortTerm: 'Ensure research questions address both user experience and technical performance concerns',
+            longTerm: 'Build relationships with user research team to streamline future collaboration'
+          },
+          reflectionPrompts: [
+            'How can you frame user research as supporting both design vision and technical excellence?',
+            'What rapid research methods could provide valuable insights within timeline constraints?',
+            'How might this approach change how your team makes design and technical decisions?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'User-Centered Development',
+              reason: 'Learn to incorporate user research into technical decision-making processes',
+              link: '/library/user-centered-development'
+            },
+            {
+              skill: 'Research Collaboration',
+              reason: 'Master working with designers and researchers to validate technical approaches',
+              link: '/topics/foundational-mindsets/emotional-intelligence'
+            }
+          ],
+          realWorldExample: {
+            title: 'Frontend Developer\'s Research Advocacy',
+            description: 'A frontend developer suggested user testing when disagreeing with a designer about navigation complexity and performance trade-offs.',
+            outcome: 'The research revealed that users valued speed over complex animations. Both the developer and designer learned valuable insights, and they established user testing as standard practice for major feature decisions.'
+          }
+        }
+      },
+      {
+        id: 'technical-alternative',
+        text: 'Research and propose alternative technical implementations that could achieve Sam\'s design goals more efficiently.',
+        feedback: 'This proactive approach shows technical creativity and respect for design goals. It demonstrates problem-solving skills and willingness to find solutions rather than just pointing out problems.',
+        consequences: {
+          immediate: 'Sam is intrigued by your effort to find technical solutions that support their design vision.',
+          shortTerm: 'You either find a viable alternative that satisfies both concerns, or gain Sam\'s appreciation for the technical complexity involved.',
+          longTerm: 'You build a reputation as a creative problem-solver who bridges design and engineering effectively.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 7 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'medium' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Sam (UX Designer)',
+              impact: 'Appreciates your effort to support their design vision and learns about technical possibilities',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Product Manager',
+              impact: 'Impressed by proactive problem-solving and technical creativity',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Engineering Lead',
+              impact: 'Values the technical research and creative approach to constraints',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Development Team',
+              impact: 'Learns new technical approaches and sees effective design-engineering collaboration',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'If no good alternatives exist, the research itself demonstrates the technical constraints clearly',
+            shortTerm: 'Use the research process to educate Sam about technical possibilities and limitations',
+            longTerm: 'Build a library of technical alternatives for common design patterns'
+          },
+          mitigation: {
+            immediate: 'Set realistic expectations about research timeline and potential outcomes',
+            shortTerm: 'Document findings for future reference and team learning',
+            longTerm: 'Establish regular design-engineering collaboration to explore technical possibilities early'
+          },
+          reflectionPrompts: [
+            'How can you approach this research as supporting Sam\'s goals rather than proving them wrong?',
+            'What would you learn about technical possibilities even if you don\'t find a perfect solution?',
+            'How might this research process strengthen your collaboration with the design team?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Technical Research',
+              reason: 'Learn to efficiently explore technical alternatives for design challenges',
+              link: '/library/technical-research'
+            },
+            {
+              skill: 'Creative Problem Solving',
+              reason: 'Master finding innovative solutions that satisfy multiple constraints',
+              link: '/topics/foundational-mindsets/decision-making'
+            }
+          ],
+          realWorldExample: {
+            title: 'JavaScript Developer\'s Animation Research',
+            description: 'A JavaScript developer researched alternative animation libraries when a designer wanted complex transitions that would hurt performance.',
+            outcome: 'The research uncovered a new library that achieved the design goals with better performance. The designer was impressed by the technical creativity, and they established a pattern of exploring technical alternatives together.'
+          }
+        }
       }
     ],
-    growthAreas: ['decision-making', 'assertiveness', 'emotional-intelligence'],
-    difficulty: 'applied',
-    xpReward: 75
+    growthAreas: ['assertiveness', 'emotional-intelligence', 'decision-making'],
+    difficulty: 'foundational',
+    xpReward: 50
   }
 ];
 
