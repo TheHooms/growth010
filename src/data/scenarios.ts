@@ -1,5 +1,6 @@
 import { Scenario } from '../types';
 
+// Force cache refresh - all 9 scenarios are present
 export const scenarios: Scenario[] = [
   {
     id: 'difficult-feedback',
