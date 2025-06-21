@@ -13,39 +13,36 @@ export async function resolveSubtopicSlug(slug: string) {
     console.log('Resolving slug:', { original: slug, decoded: decodedSlug, normalized: normalizedSlug });
 
     // Try direct match on canonical slug
-    let { data: subtopic, error } = await supabase
+    let { data: subtopics, error } = await supabase
       .from('subtopics')
       .select('slug')
-      .eq('slug', normalizedSlug)
-      .single();
+      .eq('slug', normalizedSlug);
 
-    if (!error && subtopic) {
-      console.log('Found direct match:', subtopic);
-      return subtopic.slug;
+    if (!error && subtopics && subtopics.length > 0) {
+      console.log('Found direct match:', subtopics[0]);
+      return subtopics[0].slug;
     }
 
     // Try display_slug
-    ({ data: subtopic, error } = await supabase
+    ({ data: subtopics, error } = await supabase
       .from('subtopics')
       .select('slug')
-      .eq('display_slug', normalizedSlug)
-      .single());
+      .eq('display_slug', normalizedSlug));
 
-    if (!error && subtopic) {
-      console.log('Found via display_slug:', subtopic);
-      return subtopic.slug;
+    if (!error && subtopics && subtopics.length > 0) {
+      console.log('Found via display_slug:', subtopics[0]);
+      return subtopics[0].slug;
     }
 
     // Try alternative_slugs
-    ({ data: subtopic, error } = await supabase
+    ({ data: subtopics, error } = await supabase
       .from('subtopics')
       .select('slug')
-      .contains('alternative_slugs', [normalizedSlug])
-      .single());
+      .contains('alternative_slugs', [normalizedSlug]));
 
-    if (!error && subtopic) {
-      console.log('Found via alternative_slugs:', subtopic);
-      return subtopic.slug;
+    if (!error && subtopics && subtopics.length > 0) {
+      console.log('Found via alternative_slugs:', subtopics[0]);
+      return subtopics[0].slug;
     }
 
     console.log('No match found, returning normalized slug');
