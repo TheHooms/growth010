@@ -2,7 +2,6 @@ import { Scenario } from '../../types';
 
 // Import all scenario files
 import { difficultFeedbackScenario } from './difficult-feedback';
-import { crossFunctionalConflictScenario } from './cross-functional-conflict';
 import { performanceReviewDisagreementScenario } from './performance-review-disagreement';
 import { resourceAllocationConflictScenario } from './resource-allocation-conflict';
 import { careerGrowth1on1Scenario } from './career-growth-1on1';
@@ -15,7 +14,6 @@ import { projectTimelineConflictScenario } from './project-timeline-conflict';
 // Export all scenarios as an array
 export const scenarios: Scenario[] = [
   difficultFeedbackScenario,
-  crossFunctionalConflictScenario,
   performanceReviewDisagreementScenario,
   resourceAllocationConflictScenario,
   careerGrowth1on1Scenario,
