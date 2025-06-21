@@ -22,6 +22,15 @@ const ScenarioPage: React.FC = () => {
   const enhancedScenario = id ? getEnhancedScenarioById(id) : null;
   const scenario = enhancedScenario || (id ? getScenarioById(id) : null);
   
+  // Debug logging
+  useEffect(() => {
+    if (scenario) {
+      console.log('Scenario loaded:', scenario.title);
+      console.log('Number of choices:', scenario.choices.length);
+      console.log('Choice IDs:', scenario.choices.map(c => c.id));
+    }
+  }, [scenario]);
+  
   useEffect(() => {
     if (!scenario) {
       navigate('/scenarios');
@@ -152,22 +161,32 @@ const ScenarioPage: React.FC = () => {
             <h3 className="text-xl font-semibold text-gray-800 mb-4">How would you respond?</h3>
             <p className="text-gray-600 mb-6">Choose the approach that best reflects how you would handle this situation:</p>
             
+            {/* Debug info */}
+            <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-sm text-yellow-800">
+                Debug: Found {scenario.choices.length} choices for scenario "{scenario.title}"
+              </p>
+            </div>
+            
             <div className="space-y-4">
-              {scenario.choices.map((choice, index) => (
-                <Card 
-                  key={choice.id} 
-                  className="border border-gray-200 hover:border-blue-300 transition-all duration-200 hover:shadow-md"
-                  onClick={() => handleSelectChoice(choice.id)}
-                  hover
-                >
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                      <span className="text-blue-600 font-semibold text-sm">{String.fromCharCode(65 + index)}</span>
+              {scenario.choices.map((choice, index) => {
+                console.log(`Rendering choice ${index + 1}:`, choice.id, choice.text.substring(0, 50) + '...');
+                return (
+                  <Card 
+                    key={choice.id} 
+                    className="border border-gray-200 hover:border-blue-300 transition-all duration-200 hover:shadow-md"
+                    onClick={() => handleSelectChoice(choice.id)}
+                    hover
+                  >
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <span className="text-blue-600 font-semibold text-sm">{String.fromCharCode(65 + index)}</span>
+                      </div>
+                      <p className="text-gray-700 flex-1">{choice.text}</p>
                     </div>
-                    <p className="text-gray-700 flex-1">{choice.text}</p>
-                  </div>
-                </Card>
-              ))}
+                  </Card>
+                );
+              })}
             </div>
             
             <div className="mt-6 text-center">
