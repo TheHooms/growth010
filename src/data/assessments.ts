@@ -11,22 +11,27 @@ export const archetypeAssessment: Assessment = {
         {
           id: 'q1-a',
           text: 'Look for innovative, out-of-the-box solutions',
-          archetypePoints: { visionary: 3, executor: 0, connector: 1, analyst: 1 }
+          archetypePoints: { visionary: 3, executor: 0, connector: 1, analyst: 1, catalyst: 2, builder: 1 }
         },
         {
           id: 'q1-b',
           text: 'Break it down into actionable steps and execute methodically',
-          archetypePoints: { visionary: 0, executor: 3, connector: 0, analyst: 2 }
+          archetypePoints: { visionary: 0, executor: 3, connector: 0, analyst: 2, catalyst: 0, builder: 3 }
         },
         {
           id: 'q1-c',
           text: 'Gather input from others to find a collaborative solution',
-          archetypePoints: { visionary: 1, executor: 0, connector: 3, analyst: 0 }
+          archetypePoints: { visionary: 1, executor: 0, connector: 3, analyst: 0, catalyst: 1, builder: 0 }
         },
         {
           id: 'q1-d',
           text: 'Analyze all available data to find the most logical approach',
-          archetypePoints: { visionary: 1, executor: 1, connector: 0, analyst: 3 }
+          archetypePoints: { visionary: 1, executor: 1, connector: 0, analyst: 3, catalyst: 0, builder: 1 }
+        },
+        {
+          id: 'q1-e',
+          text: 'Push for immediate action to get momentum going',
+          archetypePoints: { visionary: 1, executor: 1, connector: 0, analyst: 0, catalyst: 3, builder: 2 }
         }
       ]
     },
@@ -37,22 +42,27 @@ export const archetypeAssessment: Assessment = {
         {
           id: 'q2-a',
           text: 'Share big ideas and inspire new directions',
-          archetypePoints: { visionary: 3, executor: 0, connector: 1, analyst: 0 }
+          archetypePoints: { visionary: 3, executor: 0, connector: 1, analyst: 0, catalyst: 2, builder: 0 }
         },
         {
           id: 'q2-b',
           text: 'Focus on action items and next steps',
-          archetypePoints: { visionary: 0, executor: 3, connector: 0, analyst: 1 }
+          archetypePoints: { visionary: 0, executor: 3, connector: 0, analyst: 1, catalyst: 2, builder: 3 }
         },
         {
           id: 'q2-c',
           text: 'Ensure everyone\'s perspective is heard and valued',
-          archetypePoints: { visionary: 0, executor: 0, connector: 3, analyst: 0 }
+          archetypePoints: { visionary: 0, executor: 0, connector: 3, analyst: 0, catalyst: 1, builder: 0 }
         },
         {
           id: 'q2-d',
           text: 'Question assumptions and analyze potential outcomes',
-          archetypePoints: { visionary: 1, executor: 1, connector: 0, analyst: 3 }
+          archetypePoints: { visionary: 1, executor: 1, connector: 0, analyst: 3, catalyst: 0, builder: 1 }
+        },
+        {
+          id: 'q2-e',
+          text: 'Energize the room and push for decisions',
+          archetypePoints: { visionary: 1, executor: 1, connector: 1, analyst: 0, catalyst: 3, builder: 1 }
         }
       ]
     },
@@ -63,22 +73,27 @@ export const archetypeAssessment: Assessment = {
         {
           id: 'q3-a',
           text: 'I\'m creating something new or transformative',
-          archetypePoints: { visionary: 3, executor: 0, connector: 0, analyst: 1 }
+          archetypePoints: { visionary: 3, executor: 0, connector: 0, analyst: 1, catalyst: 2, builder: 3 }
         },
         {
           id: 'q3-b',
           text: 'I complete tasks and hit my targets',
-          archetypePoints: { visionary: 0, executor: 3, connector: 0, analyst: 1 }
+          archetypePoints: { visionary: 0, executor: 3, connector: 0, analyst: 1, catalyst: 1, builder: 2 }
         },
         {
           id: 'q3-c',
           text: 'I help others succeed and strengthen team bonds',
-          archetypePoints: { visionary: 0, executor: 0, connector: 3, analyst: 0 }
+          archetypePoints: { visionary: 0, executor: 0, connector: 3, analyst: 0, catalyst: 1, builder: 0 }
         },
         {
           id: 'q3-d',
           text: 'I solve complex problems through careful analysis',
-          archetypePoints: { visionary: 1, executor: 1, connector: 0, analyst: 3 }
+          archetypePoints: { visionary: 1, executor: 1, connector: 0, analyst: 3, catalyst: 0, builder: 1 }
+        },
+        {
+          id: 'q3-e',
+          text: 'I drive change and see momentum building',
+          archetypePoints: { visionary: 2, executor: 1, connector: 1, analyst: 0, catalyst: 3, builder: 1 }
         }
       ]
     },
@@ -89,22 +104,27 @@ export const archetypeAssessment: Assessment = {
         {
           id: 'q4-a',
           text: 'Focused on possibilities and my potential',
-          archetypePoints: { visionary: 3, executor: 0, connector: 1, analyst: 0 }
+          archetypePoints: { visionary: 3, executor: 0, connector: 1, analyst: 0, catalyst: 2, builder: 1 }
         },
         {
           id: 'q4-b',
           text: 'Clear, direct, and actionable',
-          archetypePoints: { visionary: 0, executor: 3, connector: 0, analyst: 2 }
+          archetypePoints: { visionary: 0, executor: 3, connector: 0, analyst: 2, catalyst: 1, builder: 3 }
         },
         {
           id: 'q4-c',
           text: 'Delivered with empathy and care for the relationship',
-          archetypePoints: { visionary: 0, executor: 0, connector: 3, analyst: 0 }
+          archetypePoints: { visionary: 0, executor: 0, connector: 3, analyst: 0, catalyst: 0, builder: 0 }
         },
         {
           id: 'q4-d',
           text: 'Detailed, evidence-based, and logical',
-          archetypePoints: { visionary: 0, executor: 1, connector: 0, analyst: 3 }
+          archetypePoints: { visionary: 0, executor: 1, connector: 0, analyst: 3, catalyst: 0, builder: 1 }
+        },
+        {
+          id: 'q4-e',
+          text: 'Energizing and focused on moving forward',
+          archetypePoints: { visionary: 1, executor: 1, connector: 1, analyst: 0, catalyst: 3, builder: 2 }
         }
       ]
     },
@@ -115,22 +135,68 @@ export const archetypeAssessment: Assessment = {
         {
           id: 'q5-a',
           text: 'Innovative, inspiring, and forward-thinking',
-          archetypePoints: { visionary: 3, executor: 0, connector: 1, analyst: 0 }
+          archetypePoints: { visionary: 3, executor: 0, connector: 1, analyst: 0, catalyst: 2, builder: 1 }
         },
         {
           id: 'q5-b',
           text: 'Reliable, organized, and results-oriented',
-          archetypePoints: { visionary: 0, executor: 3, connector: 0, analyst: 1 }
+          archetypePoints: { visionary: 0, executor: 3, connector: 0, analyst: 1, catalyst: 0, builder: 2 }
         },
         {
           id: 'q5-c',
           text: 'Empathetic, collaborative, and supportive',
-          archetypePoints: { visionary: 0, executor: 0, connector: 3, analyst: 0 }
+          archetypePoints: { visionary: 0, executor: 0, connector: 3, analyst: 0, catalyst: 1, builder: 0 }
         },
         {
           id: 'q5-d',
           text: 'Thoughtful, precise, and analytical',
-          archetypePoints: { visionary: 0, executor: 1, connector: 0, analyst: 3 }
+          archetypePoints: { visionary: 0, executor: 1, connector: 0, analyst: 3, catalyst: 0, builder: 1 }
+        },
+        {
+          id: 'q5-e',
+          text: 'Energetic, influential, and action-oriented',
+          archetypePoints: { visionary: 1, executor: 1, connector: 1, analyst: 0, catalyst: 3, builder: 2 }
+        },
+        {
+          id: 'q5-f',
+          text: 'Persistent, hands-on, and delivery-focused',
+          archetypePoints: { visionary: 1, executor: 2, connector: 0, analyst: 1, catalyst: 1, builder: 3 }
+        }
+      ]
+    },
+    {
+      id: 'q6',
+      text: 'When starting a new project, I typically:',
+      options: [
+        {
+          id: 'q6-a',
+          text: 'Envision the end goal and work backwards',
+          archetypePoints: { visionary: 3, executor: 1, connector: 0, analyst: 1, catalyst: 1, builder: 2 }
+        },
+        {
+          id: 'q6-b',
+          text: 'Create a detailed plan with clear milestones',
+          archetypePoints: { visionary: 0, executor: 3, connector: 0, analyst: 2, catalyst: 0, builder: 2 }
+        },
+        {
+          id: 'q6-c',
+          text: 'Bring the team together to align on approach',
+          archetypePoints: { visionary: 1, executor: 0, connector: 3, analyst: 0, catalyst: 1, builder: 0 }
+        },
+        {
+          id: 'q6-d',
+          text: 'Research best practices and analyze requirements',
+          archetypePoints: { visionary: 0, executor: 1, connector: 0, analyst: 3, catalyst: 0, builder: 1 }
+        },
+        {
+          id: 'q6-e',
+          text: 'Jump in quickly to build momentum',
+          archetypePoints: { visionary: 1, executor: 1, connector: 0, analyst: 0, catalyst: 3, builder: 1 }
+        },
+        {
+          id: 'q6-f',
+          text: 'Start building something tangible right away',
+          archetypePoints: { visionary: 1, executor: 2, connector: 0, analyst: 0, catalyst: 2, builder: 3 }
         }
       ]
     }

@@ -51,7 +51,9 @@ const AssessmentPage: React.FC = () => {
       visionary: 0,
       executor: 0,
       connector: 0,
-      analyst: 0
+      analyst: 0,
+      catalyst: 0,
+      builder: 0
     };
     
     // Calculate scores for each archetype based on answers

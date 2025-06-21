@@ -72,6 +72,42 @@ export const archetypes: Archetype[] = [
       'Sometimes misses emotional context'
     ],
     growthAreas: ['decision-making', 'emotional-intelligence', 'assertiveness']
+  },
+  {
+    id: 'catalyst',
+    name: 'The Catalyst',
+    description: 'A dynamic change-maker who sparks momentum, energizes teams, and drives action through influence. Catalysts thrive in ambiguity and help break inertia by pushing ideas and people into motion.',
+    strengths: [
+      'Energizing and motivating others',
+      'Driving change and momentum',
+      'Thriving in ambiguous situations',
+      'Breaking through inertia'
+    ],
+    challenges: [
+      'May push too hard or too fast',
+      'Can overlook the need for stability',
+      'Might struggle with routine tasks',
+      'Sometimes impatient with slower processes'
+    ],
+    growthAreas: ['emotional-intelligence', 'self-awareness', 'decision-making']
+  },
+  {
+    id: 'builder',
+    name: 'The Builder',
+    description: 'A hands-on creator who takes ideas from concept to completion through ownership, persistence, and structured effort. Builders combine creativity and execution to deliver real, lasting results.',
+    strengths: [
+      'Taking ownership and accountability',
+      'Persistent and determined',
+      'Combining creativity with execution',
+      'Delivering tangible results'
+    ],
+    challenges: [
+      'May become too focused on perfection',
+      'Can struggle with delegation',
+      'Might resist changing direction mid-project',
+      'Sometimes overlooks team dynamics'
+    ],
+    growthAreas: ['assertiveness', 'emotional-intelligence', 'self-awareness']
   }
 ];
 
