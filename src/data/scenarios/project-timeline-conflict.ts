@@ -4,7 +4,7 @@ export const projectTimelineConflictScenario: Scenario = {
   id: 'project-timeline-conflict',
   title: 'Project Timeline Conflict',
   description: 'Resolve a timeline conflict between two departments under tight deadlines and high visibility.',
-  situation: 'You\'re a product designer embedded in a cross-functional team. Engineering estimates the new feature will take 3 months, but marketing has already committed to clients that it will be ready in 6 weeks. The design is central to the product experience, and you're being asked to reduce scope or speed up timelines to help the team move faster. Both sides are looking to you to help find a path forward.',
+  situation: 'You\'re a product designer embedded in a cross-functional team. Engineering estimates the new feature will take 3 months, but marketing has already committed to clients that it will be ready in 6 weeks. The design is central to the product experience, and you\'re being asked to reduce scope or speed up timelines to help the team move faster. Both sides are looking to you to help find a path forward.',
   roleContext: {
     yourRole: 'Product Designer',
     stakeholders: 'Engineering Manager, Marketing Lead, Product Manager, Clients',
