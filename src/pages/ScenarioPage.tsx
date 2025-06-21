@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, Users, Clock, AlertTriangle } from 'lucide-react';
 import { getScenarioById } from '../data/scenarios';
 import { useUser } from '../context/UserContext';
 import Button from '../components/Button';
@@ -9,7 +9,7 @@ import Card from '../components/Card';
 const ScenarioPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { addCompletedScenario, updateGrowthArea } = useUser();
+  const { addCompletedScenario, updateGrowthArea, updateStreak } = useUser();
   
   const [step, setStep] = useState<'intro' | 'scenario' | 'choice' | 'feedback' | 'reflection'>('intro');
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
@@ -46,6 +46,9 @@ const ScenarioPage: React.FC = () => {
       // Mark scenario as completed
       addCompletedScenario(scenario.id);
       
+      // Update streak
+      updateStreak();
+      
       // Update growth areas based on the choice made
       const choice = scenario.choices.find(c => c.id === selectedChoice);
       if (choice) {
@@ -70,6 +73,38 @@ const ScenarioPage: React.FC = () => {
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">{scenario.title}</h2>
             <p className="text-gray-700 mb-6">{scenario.description}</p>
+            
+            {/* Role Context */}
+            <Card className="bg-blue-50 border border-blue-200 mb-6">
+              <h3 className="font-semibold text-blue-800 mb-4 flex items-center">
+                <Users className="w-5 h-5 mr-2" />
+                Your Role & Context
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="font-medium text-blue-700">Your Role:</span>
+                  <p className="text-blue-800">{scenario.roleContext.yourRole}</p>
+                </div>
+                {scenario.roleContext.teamSize && (
+                  <div>
+                    <span className="font-medium text-blue-700">Team Size:</span>
+                    <p className="text-blue-800">{scenario.roleContext.teamSize}</p>
+                  </div>
+                )}
+                {scenario.roleContext.timeline && (
+                  <div>
+                    <span className="font-medium text-blue-700">Timeline:</span>
+                    <p className="text-blue-800">{scenario.roleContext.timeline}</p>
+                  </div>
+                )}
+                {scenario.roleContext.stakes && (
+                  <div>
+                    <span className="font-medium text-blue-700">Stakes:</span>
+                    <p className="text-blue-800">{scenario.roleContext.stakes}</p>
+                  </div>
+                )}
+              </div>
+            </Card>
             
             <div className="flex flex-wrap gap-2 mb-6">
               {scenario.growthAreas.map((area) => (
@@ -103,7 +138,7 @@ const ScenarioPage: React.FC = () => {
               {scenario.choices.map((choice) => (
                 <Card 
                   key={choice.id} 
-                  className="border border-gray-200 hover:border-blue-300"
+                  className="border border-gray-200 hover:border-blue-300 transition-colors"
                   onClick={() => handleSelectChoice(choice.id)}
                   hover
                 >
@@ -154,11 +189,11 @@ const ScenarioPage: React.FC = () => {
       case 'feedback':
         return (
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Feedback</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Expert Analysis</h2>
             
             {selectedChoiceData && (
-              <div className="mb-8">
-                <div className="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+              <div className="mb-8 space-y-6">
+                <div className="bg-white border border-gray-200 rounded-lg p-6">
                   <h3 className="font-semibold text-gray-800 mb-2">Your Approach:</h3>
                   <p className="text-gray-700">{selectedChoiceData.text}</p>
                 </div>
@@ -167,7 +202,7 @@ const ScenarioPage: React.FC = () => {
                   <h3 className="font-semibold text-gray-800 mb-2">Expert Analysis:</h3>
                   <p className="text-gray-700 mb-6">{selectedChoiceData.feedback}</p>
                   
-                  <h3 className="font-semibold text-gray-800 mb-2">Impact on Growth Areas:</h3>
+                  <h3 className="font-semibold text-gray-800 mb-4">Impact on Growth Areas:</h3>
                   <div className="space-y-4">
                     {selectedChoiceData.impactAreas.map((impact) => (
                       <div key={impact.area}>
@@ -191,6 +226,28 @@ const ScenarioPage: React.FC = () => {
                         </div>
                       </div>
                     ))}
+                  </div>
+                </div>
+
+                {/* Consequences */}
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                  <h3 className="font-semibold text-gray-800 mb-4 flex items-center">
+                    <AlertTriangle className="w-5 h-5 mr-2 text-yellow-600" />
+                    Potential Consequences
+                  </h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-medium text-yellow-800">Immediate Impact:</h4>
+                      <p className="text-yellow-700 text-sm">{selectedChoiceData.consequences.immediate}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-yellow-800">Short-term (1-3 months):</h4>
+                      <p className="text-yellow-700 text-sm">{selectedChoiceData.consequences.shortTerm}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-yellow-800">Long-term (6+ months):</h4>
+                      <p className="text-yellow-700 text-sm">{selectedChoiceData.consequences.longTerm}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -244,7 +301,7 @@ const ScenarioPage: React.FC = () => {
               <Button 
                 onClick={handleComplete}
               >
-                Complete Scenario
+                Complete Scenario (+50 XP)
               </Button>
               <p className="text-sm text-gray-500 mt-2">
                 Your growth areas will be updated based on your choices.
@@ -264,7 +321,7 @@ const ScenarioPage: React.FC = () => {
             className="flex items-center text-blue-600 hover:text-blue-800"
           >
             <ArrowLeft size={16} className="mr-1" />
-            Back to Scenarios
+            Back to Practice Modules
           </button>
         </div>
         
