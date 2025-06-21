@@ -8,10 +8,12 @@ export const scenarios: Scenario[] = [
     situation: 'You manage a team member who consistently misses deadlines and produces work that requires significant revision. Their performance is affecting the team\'s results, but they seem unaware of the issue. You need to address this problem in your upcoming one-on-one meeting.',
     roleContext: {
       yourRole: 'Senior Product Manager',
-      reporteeRole: 'Junior Product Analyst',
       teamSize: '8-person cross-functional team',
       timeline: 'This has been ongoing for 3 months',
-      stakes: 'Team morale is declining, and you have a major product launch in 6 weeks'
+      stakes: 'Team morale is declining, and you have a major product launch in 6 weeks',
+      pressure: 'Your manager is asking questions about team velocity',
+      stakeholders: 'Engineering team, Design team, QA, and Product Leadership',
+      history: 'This team member was a strong performer in their previous role'
     },
     choices: [
       {
@@ -69,9 +71,41 @@ export const scenarios: Scenario[] = [
           { area: 'assertiveness', impact: 1 },
           { area: 'emotional-intelligence', impact: 3 }
         ]
+      },
+      {
+        id: 'collaborative-solution',
+        text: 'Frame it as a team challenge and work together to identify obstacles and create an improvement plan.',
+        feedback: 'This collaborative approach maintains the relationship while addressing performance, though it may take longer to see results.',
+        consequences: {
+          immediate: 'The team member feels supported rather than criticized and opens up about challenges.',
+          shortTerm: 'You gain insights into systemic issues affecting performance and build stronger trust.',
+          longTerm: 'The team member becomes more proactive about seeking help and the team culture improves overall.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 5 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 6 }
+        ]
+      },
+      {
+        id: 'escalate-to-hr',
+        text: 'Document the issues and involve HR to ensure proper process and protect yourself legally.',
+        feedback: 'While this protects you procedurally, it may damage trust and miss opportunities for genuine improvement through direct leadership.',
+        consequences: {
+          immediate: 'The team member feels blindsided and the relationship becomes formal and distant.',
+          shortTerm: 'HR processes may improve documentation but could create an adversarial dynamic.',
+          longTerm: 'You may be seen as someone who doesn\'t handle difficult conversations directly, affecting team trust.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 3 },
+          { area: 'emotional-intelligence', impact: 2 },
+          { area: 'decision-making', impact: 4 }
+        ]
       }
     ],
-    growthAreas: ['assertiveness', 'emotional-intelligence', 'communication']
+    growthAreas: ['assertiveness', 'emotional-intelligence', 'communication'],
+    difficulty: 'foundational',
+    xpReward: 50
   },
   {
     id: 'strategic-decision',
@@ -145,9 +179,41 @@ export const scenarios: Scenario[] = [
           { area: 'people-focus', impact: 5 },
           { area: 'risk-taking', impact: 3 }
         ]
+      },
+      {
+        id: 'data-driven-pilot',
+        text: 'Run small pilots of each option to gather data before making the full investment decision.',
+        feedback: 'This methodical approach reduces risk and provides evidence for decision-making, though it may delay benefits and require more management overhead.',
+        consequences: {
+          immediate: 'Team appreciates the thoughtful approach, but some may be frustrated by the delay.',
+          shortTerm: 'You gather valuable data and can make a more informed decision, but competitors may move faster.',
+          longTerm: 'Higher confidence in the final choice and better team buy-in, though you may miss time-sensitive opportunities.'
+        },
+        impactAreas: [
+          { area: 'analytical-thinking', impact: 9 },
+          { area: 'people-focus', impact: 6 },
+          { area: 'risk-taking', impact: 5 }
+        ]
+      },
+      {
+        id: 'seek-additional-budget',
+        text: 'Present a business case to leadership for additional budget to pursue multiple initiatives.',
+        feedback: 'This shows initiative and strategic thinking, but success depends on your influence with leadership and the company\'s financial position.',
+        consequences: {
+          immediate: 'Leadership either appreciates your strategic thinking or questions why you can\'t work within constraints.',
+          shortTerm: 'If successful, you can pursue multiple priorities; if not, you\'re back to the original decision with less time.',
+          longTerm: 'Success enhances your reputation as a strategic leader; failure may limit future budget requests and autonomy.'
+        },
+        impactAreas: [
+          { area: 'analytical-thinking', impact: 7 },
+          { area: 'people-focus', impact: 4 },
+          { area: 'risk-taking', impact: 7 }
+        ]
       }
     ],
-    growthAreas: ['decision-making', 'strategic-thinking', 'resource-management']
+    growthAreas: ['decision-making', 'strategic-thinking', 'resource-management'],
+    difficulty: 'applied',
+    xpReward: 75
   },
   {
     id: 'cross-functional-conflict',
@@ -206,9 +272,56 @@ export const scenarios: Scenario[] = [
           { area: 'assertiveness', impact: 2 },
           { area: 'emotional-intelligence', impact: 4 }
         ]
+      },
+      {
+        id: 'root-cause-analysis',
+        text: 'Pause the timeline debate and facilitate a session to understand why these conflicts keep happening.',
+        feedback: 'This addresses systemic issues rather than just the immediate problem, though it requires time and may not solve the current crisis.',
+        consequences: {
+          immediate: 'Teams may be frustrated by the delay, but appreciate the focus on long-term solutions.',
+          shortTerm: 'You identify process gaps and communication issues that have been causing repeated conflicts.',
+          longTerm: 'Stronger cross-functional processes prevent future conflicts, but current client situation still needs resolution.'
+        },
+        impactAreas: [
+          { area: 'decision-making', impact: 6 },
+          { area: 'assertiveness', impact: 5 },
+          { area: 'emotional-intelligence', impact: 7 }
+        ]
+      },
+      {
+        id: 'external-resources',
+        text: 'Explore bringing in contractors or external resources to meet the aggressive timeline.',
+        feedback: 'This creative solution attempts to satisfy both teams\' constraints, though it adds cost and complexity.',
+        consequences: {
+          immediate: 'Both teams are open to exploring this option, reducing immediate tension.',
+          shortTerm: 'If budget is approved, you can potentially meet the timeline; if not, you\'re back to the original conflict.',
+          longTerm: 'Success demonstrates resourcefulness; failure may be seen as avoiding tough decisions.'
+        },
+        impactAreas: [
+          { area: 'decision-making', impact: 7 },
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 6 }
+        ]
+      },
+      {
+        id: 'client-negotiation',
+        text: 'Directly engage with clients to understand their flexibility and explore alternative solutions.',
+        feedback: 'This customer-centric approach may reveal options not considered, but requires strong client relationships and negotiation skills.',
+        consequences: {
+          immediate: 'Clients appreciate direct communication and may reveal flexibility in requirements.',
+          shortTerm: 'You may discover alternative solutions or phased approaches that work for everyone.',
+          longTerm: 'Stronger client relationships and reputation as someone who finds creative solutions.'
+        },
+        impactAreas: [
+          { area: 'decision-making', impact: 8 },
+          { area: 'assertiveness', impact: 8 },
+          { area: 'emotional-intelligence', impact: 7 }
+        ]
       }
     ],
-    growthAreas: ['decision-making', 'assertiveness', 'emotional-intelligence']
+    growthAreas: ['decision-making', 'assertiveness', 'emotional-intelligence'],
+    difficulty: 'applied',
+    xpReward: 75
   }
 ];
 
