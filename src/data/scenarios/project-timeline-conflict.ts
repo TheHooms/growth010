@@ -16,6 +16,21 @@ export const projectTimelineConflictScenario: Scenario = {
   },
   choices: [
     {
+      id: 'collaborative-meeting',
+      text: 'Schedule a joint meeting with both teams to understand what\'s truly critical and explore creative solutions together.',
+      feedback: 'This collaborative approach builds alignment and often reveals innovative solutions that neither team considered independently.',
+      consequences: {
+        immediate: 'Both teams feel heard and engage in productive problem-solving together.',
+        shortTerm: 'You discover creative compromises and build stronger cross-functional relationships.',
+        longTerm: 'You establish yourself as a collaborative leader who can bridge departmental divides and find win-win solutions.'
+      },
+      impactAreas: [
+        { area: 'assertiveness', impact: 7 },
+        { area: 'emotional-intelligence', impact: 9 },
+        { area: 'decision-making', impact: 8 }
+      ]
+    },
+    {
       id: 'support-engineering',
       text: 'Support engineering\'s 3-month timeline and help marketing reset client expectations.',
       feedback: 'This approach prioritizes quality and technical feasibility, but requires difficult conversations with clients and may impact revenue goals.',
@@ -61,21 +76,6 @@ export const projectTimelineConflictScenario: Scenario = {
       ]
     },
     {
-      id: 'escalate-decision',
-      text: 'Present the trade-offs to the VP of Product and let them make the final decision.',
-      feedback: 'While this ensures senior leadership involvement, it may be seen as avoiding responsibility and missing an opportunity to demonstrate strategic thinking.',
-      consequences: {
-        immediate: 'VP makes the decision but you may be seen as not taking ownership.',
-        shortTerm: 'Conflict is resolved but your influence in future cross-functional decisions may be reduced.',
-        longTerm: 'You may be excluded from strategic discussions and seen as someone who escalates rather than solves problems.'
-      },
-      impactAreas: [
-        { area: 'assertiveness', impact: 3 },
-        { area: 'emotional-intelligence', impact: 4 },
-        { area: 'decision-making', impact: 4 }
-      ]
-    },
-    {
       id: 'user-research',
       text: 'Propose rapid user research to validate which features are essential for the initial launch.',
       feedback: 'This data-driven approach provides objective criteria for decisions, though it adds time to an already tight timeline.',
@@ -88,6 +88,21 @@ export const projectTimelineConflictScenario: Scenario = {
         { area: 'assertiveness', impact: 6 },
         { area: 'emotional-intelligence', impact: 6 },
         { area: 'decision-making', impact: 8 }
+      ]
+    },
+    {
+      id: 'escalate-decision',
+      text: 'Present the trade-offs to the VP of Product and let them make the final decision.',
+      feedback: 'While this ensures senior leadership involvement, it may be seen as avoiding responsibility and missing an opportunity to demonstrate strategic thinking.',
+      consequences: {
+        immediate: 'VP makes the decision but you may be seen as not taking ownership.',
+        shortTerm: 'Conflict is resolved but your influence in future cross-functional decisions may be reduced.',
+        longTerm: 'You may be excluded from strategic discussions and seen as someone who escalates rather than solves problems.'
+      },
+      impactAreas: [
+        { area: 'assertiveness', impact: 3 },
+        { area: 'emotional-intelligence', impact: 4 },
+        { area: 'decision-making', impact: 4 }
       ]
     }
   ],
