@@ -686,106 +686,106 @@ export const scenarios: Scenario[] = [
   {
     id: 'performance-review-disagreement',
     title: 'Performance Review Disagreement',
-    description: 'Navigate a situation where you strongly disagree with your manager\'s assessment of your performance.',
-    situation: 'Your annual performance review rated you as "meets expectations" despite what you believe was an exceptional year. You led a successful product launch, mentored two junior colleagues, and exceeded your sales targets by 15%. Your manager cited "communication issues" and "need for more strategic thinking" as areas holding you back from a higher rating. You feel this assessment is unfair and doesn\'t reflect your actual contributions.',
+    description: 'Challenge an unfair performance assessment while maintaining a professional relationship with your manager.',
+    situation: 'Your annual performance review rated you as "meets expectations" despite exceeding all your goals and receiving positive client feedback. Your manager cited "communication style" as an area for improvement but provided no specific examples. You believe this assessment doesn\'t reflect your actual performance and may impact your career progression.',
     roleContext: {
-      yourRole: 'Senior Marketing Specialist',
+      yourRole: 'Marketing Specialist',
       teamSize: '8-person marketing team',
       timeline: 'Performance review cycle just completed, promotion decisions happening in 2 weeks',
-      stakes: 'Promotion to Marketing Manager role and 20% salary increase at stake',
-      pressure: 'You know two peers received "exceeds expectations" ratings for what you consider lesser contributions',
-      stakeholders: 'Direct manager, HR Business Partner, Marketing Director, junior team members you mentored',
-      history: 'This is your third year in the role, previous reviews were "exceeds expectations"'
+      stakes: 'Potential promotion to Senior Marketing Specialist and 15% salary increase',
+      pressure: 'This is your second year in role, and you were expecting a promotion',
+      stakeholders: 'Direct manager, HR Business Partner, Marketing Director',
+      history: 'You\'ve consistently received positive feedback throughout the year in 1:1s'
     },
     choices: [
       {
-        id: 'formal-review-request',
-        text: 'Request a formal review of your performance assessment through HR processes.',
-        feedback: 'This approach ensures proper documentation and process, but may strain your relationship with your manager and could be seen as confrontational.',
+        id: 'direct-challenge',
+        text: 'Directly challenge the assessment with specific examples of your achievements and request a revision.',
+        feedback: 'This assertive approach ensures your accomplishments are recognized, but could strain your relationship with your manager if not handled diplomatically.',
         consequences: {
-          immediate: 'Your manager feels challenged and the relationship becomes more formal and distant.',
-          shortTerm: 'HR review may or may not change the rating, but the process creates tension in daily interactions.',
-          longTerm: 'You may get a fair assessment, but your manager might be less likely to advocate for you in future opportunities.'
+          immediate: 'Your manager becomes defensive about their assessment decision.',
+          shortTerm: 'The review may be reconsidered, but your working relationship becomes tense.',
+          longTerm: 'You might get the recognition you deserve, but future feedback could be more critical.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 8 },
-          { area: 'emotional-intelligence', impact: 3 },
+          { area: 'emotional-intelligence', impact: 4 },
           { area: 'decision-making', impact: 6 }
         ]
       },
       {
-        id: 'direct-conversation',
-        text: 'Schedule a private meeting with your manager to discuss the assessment and seek specific feedback.',
-        feedback: 'This direct approach shows maturity and openness to feedback while advocating for yourself. It maintains the relationship while addressing your concerns.',
+        id: 'seek-clarification',
+        text: 'Ask for specific examples of communication issues and create a development plan to address them.',
+        feedback: 'This collaborative approach shows professionalism and growth mindset, though it may not address the underlying fairness issue.',
         consequences: {
-          immediate: 'Your manager appreciates the professional approach and is willing to have an open dialogue.',
-          shortTerm: 'You gain clarity on expectations and may be able to address the specific concerns raised.',
-          longTerm: 'Stronger working relationship and clearer path to improvement, though the current rating may not change.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 7 },
-          { area: 'emotional-intelligence', impact: 8 },
-          { area: 'decision-making', impact: 7 }
-        ]
-      },
-      {
-        id: 'gather-evidence',
-        text: 'Compile detailed documentation of your achievements and request a follow-up discussion.',
-        feedback: 'This methodical approach provides concrete evidence for your case and shows professionalism, though it may come across as defensive.',
-        consequences: {
-          immediate: 'Your manager sees your preparation and takes your concerns more seriously.',
-          shortTerm: 'The documentation helps clarify your contributions, potentially leading to a revised assessment.',
-          longTerm: 'You establish a pattern of documenting achievements, which helps in future reviews.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 6 },
-          { area: 'emotional-intelligence', impact: 5 },
-          { area: 'decision-making', impact: 8 }
-        ]
-      },
-      {
-        id: 'seek-peer-feedback',
-        text: 'Ask colleagues and mentees for feedback to better understand the "communication issues" mentioned.',
-        feedback: 'This shows self-awareness and genuine interest in improvement, though it may not directly address the rating dispute.',
-        consequences: {
-          immediate: 'Colleagues appreciate being asked and provide valuable insights into your working style.',
-          shortTerm: 'You gain a better understanding of how others perceive you and can address any real issues.',
-          longTerm: 'Improved self-awareness and stronger relationships, positioning you better for future reviews.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 4 },
-          { area: 'emotional-intelligence', impact: 9 },
-          { area: 'decision-making', impact: 5 }
-        ]
-      },
-      {
-        id: 'accept-and-improve',
-        text: 'Accept the rating gracefully and ask for a specific development plan to address the concerns.',
-        feedback: 'This mature response focuses on growth rather than dispute, though it may not address potential unfairness in the current assessment.',
-        consequences: {
-          immediate: 'Your manager is impressed by your professionalism and willingness to grow.',
-          shortTerm: 'You get clear guidance on improvement areas and strong manager support for development.',
-          longTerm: 'Strong relationship with your manager and clear path to promotion, though you may miss this cycle.'
+          immediate: 'Your manager appreciates your receptiveness to feedback.',
+          shortTerm: 'You work on communication skills, but the unfair assessment stands.',
+          longTerm: 'You develop professionally, but may miss this promotion cycle despite strong performance.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 3 },
           { area: 'emotional-intelligence', impact: 7 },
-          { area: 'decision-making', impact: 6 }
+          { area: 'decision-making', impact: 5 }
         ]
       },
       {
-        id: 'propose-360-feedback',
-        text: 'Suggest implementing a 360-degree feedback process to get a more comprehensive view of your performance.',
-        feedback: 'This innovative approach shows leadership thinking and could benefit the entire team, while addressing your specific situation.',
+        id: 'document-and-escalate',
+        text: 'Document your achievements and escalate to HR or your manager\'s supervisor for a fair review.',
+        feedback: 'This formal approach protects your interests but may damage your relationship with your direct manager permanently.',
         consequences: {
-          immediate: 'Your manager is intrigued by the suggestion and sees your strategic thinking.',
-          shortTerm: 'Implementation takes time, but you demonstrate leadership in improving team processes.',
-          longTerm: 'You become known as someone who drives positive change, though immediate rating concerns remain unresolved.'
+          immediate: 'Your manager feels blindsided and the relationship becomes adversarial.',
+          shortTerm: 'HR investigates and may adjust your review, but team dynamics suffer.',
+          longTerm: 'You get fair treatment but may need to transfer teams or find a new role.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 7 },
+          { area: 'emotional-intelligence', impact: 3 },
+          { area: 'decision-making', impact: 8 }
+        ]
+      },
+      {
+        id: 'gather-peer-feedback',
+        text: 'Collect feedback from colleagues and clients to build a case for your performance level.',
+        feedback: 'This evidence-based approach strengthens your position while maintaining professionalism, though it takes time and effort.',
+        consequences: {
+          immediate: 'You gather strong evidence of your performance and impact.',
+          shortTerm: 'You can present a compelling case for review adjustment with third-party validation.',
+          longTerm: 'Your manager respects your thorough approach, and you get fair recognition.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 6 },
           { area: 'emotional-intelligence', impact: 6 },
-          { area: 'decision-making', impact: 9 }
+          { area: 'decision-making', impact: 7 }
+        ]
+      },
+      {
+        id: 'accept-and-plan',
+        text: 'Accept the review but ask for clear expectations and support to reach the next level.',
+        feedback: 'This diplomatic approach preserves relationships but may not address the fairness issue or your immediate career goals.',
+        consequences: {
+          immediate: 'Your manager is pleased with your attitude and receptiveness.',
+          shortTerm: 'You get clear development guidance but miss this promotion opportunity.',
+          longTerm: 'Strong relationship with your manager, but slower career progression than deserved.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 2 },
+          { area: 'emotional-intelligence', impact: 8 },
+          { area: 'decision-making', impact: 4 }
+        ]
+      },
+      {
+        id: 'request-mediation',
+        text: 'Request a three-way conversation with HR to discuss the assessment and find a path forward.',
+        feedback: 'This balanced approach seeks resolution while maintaining professionalism, though it requires HR support and manager cooperation.',
+        consequences: {
+          immediate: 'HR facilitates a constructive conversation about performance expectations.',
+          shortTerm: 'You reach a mutual understanding and potentially adjust the review.',
+          longTerm: 'Improved communication with your manager and clearer performance standards.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 5 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 6 }
         ]
       }
     ],
@@ -796,71 +796,26 @@ export const scenarios: Scenario[] = [
   {
     id: 'resource-allocation-conflict',
     title: 'Resource Allocation Conflict',
-    description: 'Address a situation where your manager consistently assigns the most interesting projects to other team members.',
-    situation: 'Over the past six months, you\'ve noticed that your manager consistently assigns high-visibility, strategic projects to two specific team members while giving you routine maintenance work and smaller initiatives. When the latest exciting project—redesigning the company\'s flagship product—was announced, it was again assigned to your colleague who joined the team after you. You feel your skills and experience are being underutilized, and you\'re concerned this pattern is limiting your career growth and learning opportunities.',
+    description: 'Address unequal project assignments that are limiting your growth opportunities and visibility.',
+    situation: 'You\'ve noticed that high-visibility projects consistently go to certain team members while you\'re assigned routine maintenance work. When you raised this with your manager, they said you need to "prove yourself" first, but you feel stuck in a cycle where you can\'t prove yourself without better opportunities.',
     roleContext: {
-      yourRole: 'Senior UX Designer',
+      yourRole: 'UX Designer',
       teamSize: '6-person design team',
-      timeline: 'This pattern has been ongoing for 6 months',
-      stakes: 'Career advancement and skill development opportunities',
-      pressure: 'You\'re considering looking for opportunities elsewhere if this continues',
-      stakeholders: 'Design Manager, fellow designers, Product team, your career development',
-      history: 'You\'ve been with the company for 2 years, have strong performance reviews, but haven\'t worked on a major project in 8 months'
+      timeline: 'Project assignments for next quarter being decided this week',
+      stakes: 'Career growth and skill development opportunities',
+      pressure: 'You\'ve been in the role for 18 months with limited advancement',
+      stakeholders: 'Design Manager, Product Managers, Senior Designers',
+      history: 'You\'ve completed all assigned projects successfully but haven\'t been given stretch opportunities'
     },
     choices: [
       {
-        id: 'direct-manager-conversation',
-        text: 'Schedule a one-on-one with your manager to directly discuss project assignments and your career goals.',
-        feedback: 'This direct approach shows professionalism and advocacy for your career while maintaining the relationship. It gives your manager a chance to explain and adjust.',
+        id: 'propose-specific-projects',
+        text: 'Research upcoming projects and propose specific ones where you could add value and grow.',
+        feedback: 'This proactive approach demonstrates initiative and strategic thinking about your development, showing you\'re serious about growth.',
         consequences: {
-          immediate: 'Your manager becomes aware of your concerns and may not have realized the pattern.',
-          shortTerm: 'You get clarity on assignment criteria and may see more balanced project distribution.',
-          longTerm: 'Stronger communication with your manager and more intentional career development conversations.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 8 },
-          { area: 'emotional-intelligence', impact: 7 },
-          { area: 'decision-making', impact: 6 }
-        ]
-      },
-      {
-        id: 'propose-project-rotation',
-        text: 'Suggest implementing a project rotation system to ensure all team members get diverse experiences.',
-        feedback: 'This systemic approach benefits the entire team while addressing your specific concern. It shows leadership thinking and collaborative problem-solving.',
-        consequences: {
-          immediate: 'Your manager appreciates the team-focused suggestion and sees your strategic thinking.',
-          shortTerm: 'Implementation creates more equitable project distribution across the team.',
-          longTerm: 'You become known as someone who improves team processes and advocates for fairness.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 6 },
-          { area: 'emotional-intelligence', impact: 8 },
-          { area: 'decision-making', impact: 9 }
-        ]
-      },
-      {
-        id: 'volunteer-for-projects',
-        text: 'Proactively volunteer for upcoming projects and clearly express your interest in challenging work.',
-        feedback: 'This proactive approach shows initiative and enthusiasm, though it may not address the underlying assignment patterns.',
-        consequences: {
-          immediate: 'Your manager sees your enthusiasm and may consider you for future projects.',
-          shortTerm: 'You get more visibility for your interests, but may still face the same assignment patterns.',
-          longTerm: 'Reputation as someone eager to take on challenges, though systemic issues may persist.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 5 },
-          { area: 'emotional-intelligence', impact: 4 },
-          { area: 'decision-making', impact: 5 }
-        ]
-      },
-      {
-        id: 'seek-cross-functional-opportunities',
-        text: 'Build relationships with other teams to find project opportunities outside your direct manager\'s assignments.',
-        feedback: 'This creative approach expands your network and opportunities while working around the current limitation.',
-        consequences: {
-          immediate: 'Other teams appreciate your initiative and may include you in their projects.',
-          shortTerm: 'You gain diverse experience and visibility across the organization.',
-          longTerm: 'Broader network and reputation, though it may not solve the core team dynamic issue.'
+          immediate: 'Your manager appreciates your initiative and specific preparation.',
+          shortTerm: 'You\'re more likely to get assigned to projects that match your interests and growth goals.',
+          longTerm: 'You develop a reputation as someone who takes ownership of their career development.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 7 },
@@ -869,33 +824,78 @@ export const scenarios: Scenario[] = [
         ]
       },
       {
-        id: 'document-and-escalate',
-        text: 'Document the pattern of assignments and discuss with HR or your manager\'s supervisor.',
-        feedback: 'This formal approach ensures the issue is addressed at a higher level, but may damage your relationship with your direct manager.',
+        id: 'request-mentorship',
+        text: 'Ask for mentorship from senior team members and guidance on how to position yourself for better projects.',
+        feedback: 'This approach builds relationships and shows humility while seeking growth, though it may take longer to see results.',
         consequences: {
-          immediate: 'Your manager feels blindsided and the relationship becomes strained.',
-          shortTerm: 'Higher-level attention may lead to changes, but daily working relationship suffers.',
-          longTerm: 'Potential resolution of the issue, but possible long-term tension with your manager.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 9 },
-          { area: 'emotional-intelligence', impact: 3 },
-          { area: 'decision-making', impact: 7 }
-        ]
-      },
-      {
-        id: 'peer-collaboration',
-        text: 'Collaborate with colleagues who get interesting projects to gain exposure and learning opportunities.',
-        feedback: 'This collaborative approach builds relationships and creates learning opportunities, though it may not address the root assignment issue.',
-        consequences: {
-          immediate: 'Colleagues are willing to share knowledge and include you in their work.',
-          shortTerm: 'You gain skills and visibility through collaboration and knowledge sharing.',
-          longTerm: 'Strong peer relationships and expanded skills, but assignment patterns may continue.'
+          immediate: 'Senior team members are flattered and willing to help guide your development.',
+          shortTerm: 'You gain insights into how project assignments work and what skills to develop.',
+          longTerm: 'Strong internal advocates help you get better opportunities over time.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 4 },
           { area: 'emotional-intelligence', impact: 8 },
-          { area: 'decision-making', impact: 5 }
+          { area: 'decision-making', impact: 6 }
+        ]
+      },
+      {
+        id: 'document-pattern',
+        text: 'Document the pattern of project assignments and present data showing the disparity to your manager.',
+        feedback: 'This analytical approach provides objective evidence of the issue, though it may come across as confrontational.',
+        consequences: {
+          immediate: 'Your manager is surprised by the data and realizes the pattern exists.',
+          shortTerm: 'Project assignments become more equitable, but some tension exists in the relationship.',
+          longTerm: 'You get better opportunities but may be seen as someone who escalates issues formally.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 8 },
+          { area: 'emotional-intelligence', impact: 5 },
+          { area: 'decision-making', impact: 7 }
+        ]
+      },
+      {
+        id: 'volunteer-for-extra-work',
+        text: 'Volunteer for additional responsibilities and side projects to demonstrate your capabilities.',
+        feedback: 'This approach shows dedication and creates opportunities to prove yourself, though it increases your workload significantly.',
+        consequences: {
+          immediate: 'Your manager sees your enthusiasm and gives you additional responsibilities.',
+          shortTerm: 'You gain experience and visibility through extra work, but work-life balance suffers.',
+          longTerm: 'You prove your capabilities and earn better project assignments, but may experience burnout.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 5 },
+          { area: 'emotional-intelligence', impact: 4 },
+          { area: 'decision-making', impact: 6 }
+        ]
+      },
+      {
+        id: 'seek-external-opportunities',
+        text: 'Look for growth opportunities outside your immediate team, such as cross-functional projects or committees.',
+        feedback: 'This creative approach expands your network and creates new paths for growth, though it may not solve the immediate team dynamic.',
+        consequences: {
+          immediate: 'You find new opportunities to contribute and grow outside your direct team.',
+          shortTerm: 'You gain experience and visibility across the organization.',
+          longTerm: 'You build a strong internal network and may find opportunities to transfer to teams that value your contributions more.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 8 }
+        ]
+      },
+      {
+        id: 'schedule-career-conversation',
+        text: 'Schedule a dedicated career development conversation to understand what specific criteria are used for project assignments.',
+        feedback: 'This direct but professional approach seeks clarity on expectations while showing commitment to growth.',
+        consequences: {
+          immediate: 'Your manager clarifies the criteria and expectations for getting better projects.',
+          shortTerm: 'You have a clear roadmap for earning more challenging assignments.',
+          longTerm: 'Transparent communication leads to better project assignments as you meet the stated criteria.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 7 }
         ]
       }
     ],
@@ -906,106 +906,106 @@ export const scenarios: Scenario[] = [
   {
     id: 'career-growth-1on1',
     title: 'Seeking Career Growth in Project-Focused 1:1s',
-    description: 'Redirect your one-on-one meetings from project updates to meaningful career development discussions.',
-    situation: 'Your weekly one-on-one meetings with your manager have become routine project status updates. Every week, the conversation focuses on deliverables, deadlines, and operational issues. When you try to bring up career development, training opportunities, or your long-term goals, your manager quickly redirects back to immediate work priorities. You\'re feeling stuck in your current role and frustrated that you\'re not getting the mentorship and growth guidance you need to advance your career.',
+    description: 'Redirect your 1:1 meetings from project updates to career development and growth conversations.',
+    situation: 'Your weekly 1:1s with your manager have become routine project status updates. When you try to discuss career development, your manager quickly redirects to current work priorities. You feel like you\'re missing opportunities for mentorship and growth guidance that could help advance your career.',
     roleContext: {
       yourRole: 'Financial Analyst',
       teamSize: '12-person finance team',
-      timeline: 'This pattern has been consistent for the past 8 months',
-      stakes: 'Career advancement and professional development',
-      pressure: 'You see peers in other departments getting promoted while you feel stagnant',
-      stakeholders: 'Direct manager, Finance Director, your professional development',
-      history: 'You\'ve been in the role for 18 months, consistently meet targets, but haven\'t had substantive career conversations'
+      timeline: 'Weekly 1:1 meetings, performance review season approaching in 6 weeks',
+      stakes: 'Career advancement and skill development opportunities',
+      pressure: 'You want to be promoted to Senior Analyst within the next year',
+      stakeholders: 'Finance Manager, Finance Director, cross-functional partners',
+      history: 'You\'ve been in role for 14 months and consistently deliver quality work on time'
     },
     choices: [
       {
-        id: 'send-agenda-beforehand',
-        text: 'Send a structured agenda before each 1:1 that includes both project updates and career development topics.',
-        feedback: 'This proactive approach sets clear expectations and ensures career topics get dedicated time. It shows professionalism and planning.',
+        id: 'agenda-ownership',
+        text: 'Take ownership of the 1:1 agenda by sending topics in advance focused on your development.',
+        feedback: 'This proactive approach demonstrates initiative and helps ensure your priorities get discussed, though it requires consistent effort.',
         consequences: {
-          immediate: 'Your manager appreciates the structure and comes prepared for both types of discussions.',
-          shortTerm: 'More balanced conversations that address both immediate work and long-term growth.',
-          longTerm: 'Consistent career development discussions lead to clearer growth path and opportunities.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 6 },
-          { area: 'emotional-intelligence', impact: 6 },
-          { area: 'decision-making', impact: 8 }
-        ]
-      },
-      {
-        id: 'request-separate-meetings',
-        text: 'Ask for separate monthly career development meetings in addition to weekly operational 1:1s.',
-        feedback: 'This approach acknowledges both needs while creating dedicated space for growth conversations. It shows respect for operational needs while advocating for development.',
-        consequences: {
-          immediate: 'Your manager understands the importance of career development and agrees to the additional time.',
-          shortTerm: 'Clear separation allows for focused discussions on both operational and developmental topics.',
-          longTerm: 'Structured approach to career development with regular progress check-ins and goal setting.'
+          immediate: 'Your manager appreciates the structure and comes prepared to discuss your topics.',
+          shortTerm: 'Your 1:1s become more valuable for your development and career planning.',
+          longTerm: 'You build a stronger relationship with your manager and get better guidance on advancement.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 7 },
-          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'emotional-intelligence', impact: 6 },
           { area: 'decision-making', impact: 7 }
         ]
       },
       {
-        id: 'direct-conversation-about-pattern',
-        text: 'Have a direct conversation about the meeting pattern and express your need for career guidance.',
-        feedback: 'This honest approach addresses the issue directly while maintaining professionalism. It gives your manager insight into your career aspirations.',
+        id: 'separate-meetings',
+        text: 'Request separate monthly career development meetings in addition to regular project check-ins.',
+        feedback: 'This approach creates dedicated time for growth conversations while maintaining project communication, though it requires more time commitment.',
         consequences: {
-          immediate: 'Your manager realizes they\'ve been too focused on operations and commits to better balance.',
-          shortTerm: 'Immediate improvement in meeting quality with more attention to your development needs.',
-          longTerm: 'Stronger manager relationship and more intentional career development support.'
+          immediate: 'Your manager agrees to dedicated development time and appreciates the separation.',
+          shortTerm: 'You get focused career guidance without project pressures interfering.',
+          longTerm: 'Consistent development conversations lead to clearer advancement path and better opportunities.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 8 }
+        ]
+      },
+      {
+        id: 'direct-conversation',
+        text: 'Have a direct conversation about your career goals and ask for specific guidance on advancement.',
+        feedback: 'This straightforward approach clarifies your ambitions and requests specific support, though it may catch your manager off-guard.',
+        consequences: {
+          immediate: 'Your manager understands your career aspirations and commitment to growth.',
+          shortTerm: 'You get specific advice on skills to develop and opportunities to pursue.',
+          longTerm: 'Your manager becomes an active advocate for your advancement and provides ongoing guidance.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 8 },
+          { area: 'emotional-intelligence', impact: 5 },
+          { area: 'decision-making', impact: 7 }
+        ]
+      },
+      {
+        id: 'project-connection',
+        text: 'Connect current projects to your development goals and ask how each assignment builds relevant skills.',
+        feedback: 'This approach links immediate work to long-term growth, making development discussions feel more relevant to your manager.',
+        consequences: {
+          immediate: 'Your manager sees how you\'re thinking strategically about your development.',
+          shortTerm: 'Project assignments become more intentional about building specific skills.',
+          longTerm: 'You get more challenging work that aligns with your career goals and advancement timeline.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 5 },
           { area: 'emotional-intelligence', impact: 8 },
+          { area: 'decision-making', impact: 7 }
+        ]
+      },
+      {
+        id: 'seek-alternative-mentorship',
+        text: 'Find mentorship and career guidance from other senior team members or leaders in the organization.',
+        feedback: 'This approach diversifies your support network and may provide different perspectives, though it doesn\'t solve the immediate manager relationship.',
+        consequences: {
+          immediate: 'You build relationships with other leaders who can provide career guidance.',
+          shortTerm: 'You get diverse perspectives on advancement and skill development.',
+          longTerm: 'Strong internal network supports your career growth, though your direct manager relationship may remain transactional.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 7 },
           { area: 'decision-making', impact: 6 }
         ]
       },
       {
         id: 'propose-development-plan',
         text: 'Create a personal development plan and ask your manager to help you execute it.',
-        feedback: 'This initiative shows ownership of your career while engaging your manager as a partner in your growth.',
+        feedback: 'This organized approach shows initiative and makes it easy for your manager to support your growth with a clear framework.',
         consequences: {
-          immediate: 'Your manager is impressed by your initiative and becomes more invested in your development.',
-          shortTerm: 'Clear development goals provide structure for career-focused conversations.',
-          longTerm: 'Accelerated career growth with manager support and clear milestones.'
+          immediate: 'Your manager is impressed by your preparation and clear thinking about development.',
+          shortTerm: 'You have a structured approach to skill building with your manager\'s support.',
+          longTerm: 'Systematic development leads to promotion readiness and strong manager advocacy.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 7 },
           { area: 'emotional-intelligence', impact: 6 },
-          { area: 'decision-making', impact: 9 }
-        ]
-      },
-      {
-        id: 'seek-mentorship-elsewhere',
-        text: 'Find mentorship and career guidance from other senior leaders while maintaining operational 1:1s.',
-        feedback: 'This approach gets your needs met while working around your manager\'s limitations, though it may not address the core relationship issue.',
-        consequences: {
-          immediate: 'You find valuable mentorship from other leaders who are willing to invest in your growth.',
-          shortTerm: 'Expanded network and diverse perspectives on career development.',
-          longTerm: 'Strong professional relationships across the organization, though manager relationship remains limited.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 6 },
-          { area: 'emotional-intelligence', impact: 7 },
           { area: 'decision-making', impact: 8 }
-        ]
-      },
-      {
-        id: 'escalate-to-hr',
-        text: 'Discuss the lack of career development support with HR or your manager\'s supervisor.',
-        feedback: 'This formal approach ensures your development needs are addressed at a higher level, but may strain your direct manager relationship.',
-        consequences: {
-          immediate: 'Your manager feels criticized and the relationship becomes more formal.',
-          shortTerm: 'Higher-level intervention may improve development support but creates tension.',
-          longTerm: 'Potential career advancement through organizational support, but possible long-term manager relationship issues.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 9 },
-          { area: 'emotional-intelligence', impact: 3 },
-          { area: 'decision-making', impact: 5 }
         ]
       }
     ],
