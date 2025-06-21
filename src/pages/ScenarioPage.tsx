@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ChevronLeft, ChevronRight, Users, Clock, AlertTriangle } from 'lucide-react';
 import { getScenarioById } from '../data/scenarios';
-import { getEnhancedScenarioById } from '../data/enhancedScenarios';
 import { useUser } from '../context/UserContext';
 import Button from '../components/Button';
 import Card from '../components/Card';
@@ -18,9 +17,8 @@ const ScenarioPage: React.FC = () => {
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
   const [reflectionText, setReflectionText] = useState('');
   
-  // Get scenario data - try enhanced first, then fallback to regular
-  const enhancedScenario = id ? getEnhancedScenarioById(id) : null;
-  const scenario = enhancedScenario || (id ? getScenarioById(id) : null);
+  // Get scenario data from the single scenarios file
+  const scenario = id ? getScenarioById(id) : null;
   
   // Debug logging
   useEffect(() => {
@@ -160,13 +158,6 @@ const ScenarioPage: React.FC = () => {
             
             <h3 className="text-xl font-semibold text-gray-800 mb-4">How would you respond?</h3>
             <p className="text-gray-600 mb-6">Choose the approach that best reflects how you would handle this situation:</p>
-            
-            {/* Debug info */}
-            <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <p className="text-sm text-yellow-800">
-                Debug: Found {scenario.choices.length} choices for scenario "{scenario.title}"
-              </p>
-            </div>
             
             <div className="space-y-4">
               {scenario.choices.map((choice, index) => {
