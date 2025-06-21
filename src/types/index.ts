@@ -68,6 +68,45 @@ export interface Choice {
     area: string;
     impact: number;
   }[];
+  enhancedConsequences?: {
+    severity: {
+      immediate: 'positive' | 'neutral' | 'negative';
+      shortTerm: 'positive' | 'neutral' | 'negative';
+      longTerm: 'positive' | 'neutral' | 'negative';
+    };
+    confidence: {
+      immediate: 'high' | 'medium' | 'low';
+      shortTerm: 'high' | 'medium' | 'low';
+      longTerm: 'high' | 'medium' | 'low';
+    };
+    stakeholderImpacts: {
+      stakeholder: string;
+      impact: string;
+      severity: 'positive' | 'neutral' | 'negative';
+    }[];
+    alternatives?: {
+      immediate?: string;
+      shortTerm?: string;
+      longTerm?: string;
+    };
+    mitigation?: {
+      immediate?: string;
+      shortTerm?: string;
+      longTerm?: string;
+    };
+    reflectionPrompts: string[];
+    skillRecommendations: {
+      skill: string;
+      reason: string;
+      link: string;
+    }[];
+    realWorldExample?: {
+      title: string;
+      description: string;
+      outcome: string;
+    };
+    industryContext?: string;
+  };
 }
 
 export interface Assessment {

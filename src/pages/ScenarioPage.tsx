@@ -2,21 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ChevronLeft, ChevronRight, Users, Clock, AlertTriangle } from 'lucide-react';
 import { getScenarioById } from '../data/scenarios';
+import { getEnhancedScenarioById } from '../data/enhancedScenarios';
 import { useUser } from '../context/UserContext';
 import Button from '../components/Button';
 import Card from '../components/Card';
+import ConsequenceTimeline from '../components/ConsequenceTimeline';
+import ConsequenceAnalysis from '../components/ConsequenceAnalysis';
 
 const ScenarioPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { addCompletedScenario, updateGrowthArea, updateStreak } = useUser();
+  const { addCompletedScenario, updateGrowthArea, updateStreak, user } = useUser();
   
   const [step, setStep] = useState<'intro' | 'scenario' | 'choice' | 'feedback' | 'reflection'>('intro');
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
   const [reflectionText, setReflectionText] = useState('');
   
-  // Get scenario data
-  const scenario = id ? getScenarioById(id) : null;
+  // Get scenario data - try enhanced first, then fallback to regular
+  const enhancedScenario = id ? getEnhancedScenarioById(id) : null;
+  const scenario = enhancedScenario || (id ? getScenarioById(id) : null);
   
   useEffect(() => {
     if (!scenario) {
@@ -103,6 +107,18 @@ const ScenarioPage: React.FC = () => {
                     <p className="text-blue-800">{scenario.roleContext.stakes}</p>
                   </div>
                 )}
+                {scenario.roleContext.pressure && (
+                  <div>
+                    <span className="font-medium text-blue-700">Pressure:</span>
+                    <p className="text-blue-800">{scenario.roleContext.pressure}</p>
+                  </div>
+                )}
+                {scenario.roleContext.stakeholders && (
+                  <div>
+                    <span className="font-medium text-blue-700">Key Stakeholders:</span>
+                    <p className="text-blue-800">{scenario.roleContext.stakeholders}</p>
+                  </div>
+                )}
               </div>
             </Card>
             
@@ -179,7 +195,7 @@ const ScenarioPage: React.FC = () => {
                 onClick={handleContinueToFeedback}
                 className="flex items-center"
               >
-                See Feedback
+                See Analysis
                 <ChevronRight size={16} className="ml-1" />
               </Button>
             </div>
@@ -229,27 +245,51 @@ const ScenarioPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Consequences */}
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-                  <h3 className="font-semibold text-gray-800 mb-4 flex items-center">
-                    <AlertTriangle className="w-5 h-5 mr-2 text-yellow-600" />
-                    Potential Consequences
-                  </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-medium text-yellow-800">Immediate Impact:</h4>
-                      <p className="text-yellow-700 text-sm">{selectedChoiceData.consequences.immediate}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-yellow-800">Short-term (1-3 months):</h4>
-                      <p className="text-yellow-700 text-sm">{selectedChoiceData.consequences.shortTerm}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-yellow-800">Long-term (6+ months):</h4>
-                      <p className="text-yellow-700 text-sm">{selectedChoiceData.consequences.longTerm}</p>
+                {/* Enhanced Consequences */}
+                {selectedChoiceData.enhancedConsequences && (
+                  <div className="space-y-6">
+                    <ConsequenceTimeline
+                      consequences={selectedChoiceData.consequences}
+                      severity={selectedChoiceData.enhancedConsequences.severity}
+                      confidence={selectedChoiceData.enhancedConsequences.confidence}
+                      alternatives={selectedChoiceData.enhancedConsequences.alternatives}
+                      mitigation={selectedChoiceData.enhancedConsequences.mitigation}
+                      userArchetype={user?.archetype}
+                    />
+
+                    <ConsequenceAnalysis
+                      stakeholderImpacts={selectedChoiceData.enhancedConsequences.stakeholderImpacts}
+                      industryContext={selectedChoiceData.enhancedConsequences.industryContext}
+                      realWorldExample={selectedChoiceData.enhancedConsequences.realWorldExample}
+                      reflectionPrompts={selectedChoiceData.enhancedConsequences.reflectionPrompts}
+                      skillRecommendations={selectedChoiceData.enhancedConsequences.skillRecommendations}
+                    />
+                  </div>
+                )}
+
+                {/* Fallback for scenarios without enhanced consequences */}
+                {!selectedChoiceData.enhancedConsequences && (
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                    <h3 className="font-semibold text-gray-800 mb-4 flex items-center">
+                      <AlertTriangle className="w-5 h-5 mr-2 text-yellow-600" />
+                      Potential Consequences
+                    </h3>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-medium text-yellow-800">Immediate Impact:</h4>
+                        <p className="text-yellow-700 text-sm">{selectedChoiceData.consequences.immediate}</p>
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-yellow-800">Short-term (1-3 months):</h4>
+                        <p className="text-yellow-700 text-sm">{selectedChoiceData.consequences.shortTerm}</p>
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-yellow-800">Long-term (6+ months):</h4>
+                        <p className="text-yellow-700 text-sm">{selectedChoiceData.consequences.longTerm}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             )}
             
@@ -301,7 +341,7 @@ const ScenarioPage: React.FC = () => {
               <Button 
                 onClick={handleComplete}
               >
-                Complete Scenario (+50 XP)
+                Complete Scenario (+{scenario.xpReward || 50} XP)
               </Button>
               <p className="text-sm text-gray-500 mt-2">
                 Your growth areas will be updated based on your choices.
@@ -314,7 +354,7 @@ const ScenarioPage: React.FC = () => {
   
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-6">
           <button 
             onClick={() => navigate('/scenarios')}
