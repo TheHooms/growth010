@@ -150,17 +150,30 @@ const ScenarioPage: React.FC = () => {
             </div>
             
             <h3 className="text-xl font-semibold text-gray-800 mb-4">How would you respond?</h3>
+            <p className="text-gray-600 mb-6">Choose the approach that best reflects how you would handle this situation:</p>
+            
             <div className="space-y-4">
-              {scenario.choices.map((choice) => (
+              {scenario.choices.map((choice, index) => (
                 <Card 
                   key={choice.id} 
-                  className="border border-gray-200 hover:border-blue-300 transition-colors"
+                  className="border border-gray-200 hover:border-blue-300 transition-all duration-200 hover:shadow-md"
                   onClick={() => handleSelectChoice(choice.id)}
                   hover
                 >
-                  <p className="text-gray-700">{choice.text}</p>
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-blue-600 font-semibold text-sm">{String.fromCharCode(65 + index)}</span>
+                    </div>
+                    <p className="text-gray-700 flex-1">{choice.text}</p>
+                  </div>
                 </Card>
               ))}
+            </div>
+            
+            <div className="mt-6 text-center">
+              <p className="text-sm text-gray-500">
+                {scenario.choices.length} response options available
+              </p>
             </div>
           </div>
         );
