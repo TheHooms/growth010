@@ -470,505 +470,36 @@ export const scenarios: Scenario[] = [
   {
     id: 'taking-credit',
     title: 'Taking Credit for Team Work',
-    description: 'Address a colleague who is taking credit for your contributions in team meetings and presentations.',
-    situation: 'You\'ve been working closely with Jordan on a major client proposal for the past month. You developed the core strategy and did most of the research, while Jordan handled the presentation design and client relationship. In yesterday\'s team meeting, Jordan presented the proposal to leadership and consistently used "I" language when describing the strategy and research, making it sound like they did all the work. Several colleagues approached you afterward asking if you were involved at all. You have a one-on-one with Jordan scheduled for this afternoon to discuss next steps on the project.',
+    description: 'Address a colleague who is taking credit for your collaborative work in front of leadership.',
+    situation: 'During a quarterly business review meeting with senior leadership, your colleague Sarah presents the strategic analysis you both worked on together for the past month. However, she presents it as "my analysis" and "my recommendations," barely mentioning your contributions. This analysis was actually your original framework that she helped refine. After the meeting, several executives approach Sarah to congratulate her on the "excellent work," and you overhear your VP mention considering her for a promotion based on this strategic thinking. You need to decide how to handle this situation.',
     roleContext: {
       yourRole: 'Senior Business Analyst',
-      teamSize: '8-person strategy team',
-      timeline: 'This happened yesterday, one-on-one scheduled for today',
-      stakes: 'Major client proposal worth $500K, leadership visibility on the project',
-      pressure: 'Other team members are questioning your contribution level',
-      stakeholders: 'Jordan (colleague), team leadership, strategy team members, client',
-      history: 'You and Jordan have collaborated successfully on 2 previous projects over the past 6 months'
+      teamSize: 'Cross-functional strategy team of 8 people',
+      timeline: 'This project took 1 month of collaborative work',
+      stakes: 'Quarterly business review with C-suite executives, promotion considerations',
+      pressure: 'Your contributions are being overlooked in front of senior leadership',
+      stakeholders: 'VP of Strategy, C-suite executives, strategy team members, Sarah',
+      history: 'You and Sarah have collaborated successfully on previous projects'
     },
     choices: [
       {
-        id: 'direct-confrontation',
-        text: 'Address it directly: "I noticed you used \'I\' language when presenting our strategy work yesterday. I want to make sure my contributions are recognized."',
-        feedback: 'This direct approach ensures your concerns are clearly communicated and sets boundaries for future collaboration. However, it may create tension if Jordan becomes defensive, potentially affecting your working relationship.',
+        id: 'immediate-correction',
+        text: 'Immediately speak up in the meeting to clarify your contributions to the analysis.',
+        feedback: 'While this ensures your contributions are recognized, interrupting in a senior leadership meeting may come across as unprofessional and could damage relationships with both Sarah and leadership.',
         consequences: {
-          immediate: 'Jordan becomes defensive and the conversation becomes tense.',
-          shortTerm: 'Your working relationship becomes strained, affecting collaboration on current projects.',
-          longTerm: 'You establish clear boundaries, but Jordan may avoid working with you or speak negatively about you to others.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 9 },
-          { area: 'emotional-intelligence', impact: 4 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'negative' as const,
-            shortTerm: 'negative' as const,
-            longTerm: 'neutral' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'medium' as const,
-            longTerm: 'medium' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Jordan (Colleague)',
-              impact: 'Feels attacked and becomes defensive, may damage the working relationship',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Strategy Team',
-              impact: 'May perceive tension between you and Jordan, affecting team dynamics',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Team Leadership',
-              impact: 'Unaware of the conflict but may notice decreased collaboration quality',
-              severity: 'neutral' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'Start with curiosity: "I\'d love to talk about how we present our collaborative work to leadership"',
-            shortTerm: 'Focus on future collaboration rather than past grievances',
-            longTerm: 'Establish clear agreements about credit and recognition upfront in future projects'
-          },
-          mitigation: {
-            immediate: 'Acknowledge Jordan\'s presentation skills and client relationship strengths first',
-            shortTerm: 'Suggest creating a collaboration charter for future projects',
-            longTerm: 'Document contributions more clearly in shared project materials'
-          },
-          reflectionPrompts: [
-            'How might Jordan have perceived their role in the project differently than you did?',
-            'What could you have done earlier in the project to ensure clear credit allocation?',
-            'How can you address this while maintaining a productive working relationship?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Difficult Conversations',
-              reason: 'Learn to address sensitive topics while maintaining professional relationships',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Collaborative Agreements',
-              reason: 'Establish clear expectations for credit and recognition in team projects',
-              link: '/library/collaboration-frameworks'
-            }
-          ],
-          realWorldExample: {
-            title: 'Marketing Team Credit Dispute',
-            description: 'A marketing analyst directly confronted a colleague who took credit for their campaign research in a leadership presentation.',
-            outcome: 'The colleague became defensive and their relationship deteriorated. Future collaborations were awkward, and both had to work through HR to establish better working agreements.'
-          }
-        }
-      },
-      {
-        id: 'clarify-contributions',
-        text: 'Ask for clarification: "I want to make sure we\'re aligned on our roles. Can you walk me through how you see our contributions to this project?"',
-        feedback: 'This approach opens dialogue and gives Jordan a chance to acknowledge your contributions without direct confrontation. It\'s collaborative and may reveal different perspectives on the work division.',
-        consequences: {
-          immediate: 'Jordan has an opportunity to recognize your contributions and clarify the situation.',
-          shortTerm: 'You gain insight into their perspective and can address any misunderstandings collaboratively.',
-          longTerm: 'You build a foundation for better communication and clearer role definition in future projects.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 6 },
-          { area: 'emotional-intelligence', impact: 8 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'positive' as const,
-            shortTerm: 'positive' as const,
-            longTerm: 'positive' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'high' as const,
-            longTerm: 'medium' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Jordan (Colleague)',
-              impact: 'Feels respected and has opportunity to clarify without losing face',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Strategy Team',
-              impact: 'Benefits from improved collaboration model between team members',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Team Leadership',
-              impact: 'Sees effective conflict resolution and professional collaboration',
-              severity: 'positive' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'If Jordan doesn\'t acknowledge your contributions, be more direct about specific examples',
-            shortTerm: 'Document the conversation outcomes and agreements for future reference',
-            longTerm: 'Use this as a template for role clarification in other collaborative relationships'
-          },
-          mitigation: {
-            immediate: 'Prepare specific examples of your contributions to reference if needed',
-            shortTerm: 'Follow up with a summary email outlining agreed-upon roles and recognition',
-            longTerm: 'Proactively establish contribution agreements at the start of future projects'
-          },
-          reflectionPrompts: [
-            'What did you learn about Jordan\'s perspective on the project collaboration?',
-            'How can you use this conversation style to prevent similar issues in the future?',
-            'What assumptions did you make about credit and recognition that weren\'t explicitly discussed?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Active Listening',
-              reason: 'Essential for understanding different perspectives in collaborative conflicts',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Collaborative Communication',
-              reason: 'Learn to address issues while strengthening working relationships',
-              link: '/library/collaborative-communication'
-            }
-          ],
-          realWorldExample: {
-            title: 'Consulting Team Role Clarification',
-            description: 'A consultant used clarifying questions when a colleague took credit for their analysis in a client presentation.',
-            outcome: 'The colleague realized the oversight and publicly acknowledged the contributions in the next client meeting. Their working relationship actually strengthened through the honest conversation.'
-          }
-        }
-      },
-      {
-        id: 'document-contributions',
-        text: 'Focus on documentation: "For our next presentation, should we create a slide showing our individual contributions to help leadership understand our team\'s capabilities?"',
-        feedback: 'This forward-looking approach addresses the issue indirectly while creating systems to prevent future problems. It\'s diplomatic but may not fully address the current situation.',
-        consequences: {
-          immediate: 'Jordan agrees to better documentation, but your current contributions remain unrecognized.',
-          shortTerm: 'Future projects have clearer attribution, but colleagues may still question your role in this project.',
-          longTerm: 'You establish better processes but may be seen as someone who doesn\'t advocate strongly for themselves.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 4 },
-          { area: 'emotional-intelligence', impact: 6 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'neutral' as const,
-            shortTerm: 'positive' as const,
-            longTerm: 'neutral' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'high' as const,
-            longTerm: 'medium' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Jordan (Colleague)',
-              impact: 'Appreciates the diplomatic approach and agrees to better processes',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Strategy Team',
-              impact: 'May still have unclear understanding of your contributions to current project',
-              severity: 'neutral' as const
-            },
-            {
-              stakeholder: 'Team Leadership',
-              impact: 'Benefits from improved project documentation but may miss your current contributions',
-              severity: 'neutral' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'Also address the current project: "And for this project, should we clarify our roles for leadership?"',
-            shortTerm: 'Find opportunities to naturally mention your contributions in team settings',
-            longTerm: 'Be more proactive about self-advocacy while maintaining diplomatic approach'
-          },
-          mitigation: {
-            immediate: 'Suggest updating the current project documentation to reflect contributions',
-            shortTerm: 'Volunteer to present portions of future work that showcase your expertise',
-            longTerm: 'Build a reputation for your specific skills through consistent visibility'
-          },
-          reflectionPrompts: [
-            'How can you balance diplomacy with ensuring your contributions are recognized?',
-            'What opportunities exist to naturally showcase your work without seeming self-promotional?',
-            'How might your indirect approach be perceived by colleagues and leadership?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Self-Advocacy',
-              reason: 'Learn to promote your contributions while maintaining professional relationships',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Strategic Visibility',
-              reason: 'Understand how to gain recognition for your work in team environments',
-              link: '/library/strategic-visibility'
-            }
-          ],
-          realWorldExample: {
-            title: 'Product Team Documentation Success',
-            description: 'A product manager suggested contribution tracking after a colleague took credit for their feature research.',
-            outcome: 'The team adopted better documentation practices, but the PM had to work harder to get recognition for past contributions. Leadership eventually recognized their pattern of strong research work.'
-          }
-        }
-      },
-      {
-        id: 'seek-ally-support',
-        text: 'Build support: "I want to make sure our team understands both of our contributions. Would you be open to me presenting the research methodology in our next team meeting?"',
-        feedback: 'This approach seeks to gain visibility for your work while giving Jordan a face-saving way to share credit. It\'s strategic and collaborative, though it requires Jordan\'s cooperation.',
-        consequences: {
-          immediate: 'Jordan may agree, giving you a platform to showcase your contributions.',
-          shortTerm: 'You gain visibility for your work and establish your expertise with the team.',
-          longTerm: 'You build a reputation for your specific skills while maintaining a working relationship with Jordan.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 7 },
-          { area: 'emotional-intelligence', impact: 7 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'positive' as const,
-            shortTerm: 'positive' as const,
-            longTerm: 'positive' as const
-          },
-          confidence: {
-            immediate: 'medium' as const,
-            shortTerm: 'high' as const,
-            longTerm: 'high' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Jordan (Colleague)',
-              impact: 'Can maintain face while sharing the spotlight, likely to cooperate',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Strategy Team',
-              impact: 'Gains better understanding of both team members\' expertise and contributions',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Team Leadership',
-              impact: 'Sees collaborative approach and gets clearer picture of team capabilities',
-              severity: 'positive' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'If Jordan resists, ask what format would work better for sharing both perspectives',
-            shortTerm: 'Suggest alternating presentation responsibilities on different project aspects',
-            longTerm: 'Establish regular knowledge-sharing sessions where team members present their expertise'
-          },
-          mitigation: {
-            immediate: 'Prepare a compelling case for why your presentation would benefit the team',
-            shortTerm: 'Ensure your presentation clearly demonstrates your expertise without diminishing Jordan',
-            longTerm: 'Continue to seek visibility opportunities while supporting colleagues\' success'
-          },
-          reflectionPrompts: [
-            'How can you create win-win scenarios where both you and your colleagues can shine?',
-            'What unique expertise do you bring that the team would benefit from understanding better?',
-            'How might this approach change the dynamic of future collaborations?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Strategic Influence',
-              reason: 'Learn to gain visibility and recognition through collaborative approaches',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Presentation Skills',
-              reason: 'Develop ability to showcase your expertise effectively in team settings',
-              link: '/library/presentation-skills'
-            }
-          ],
-          realWorldExample: {
-            title: 'Research Team Knowledge Sharing',
-            description: 'A data scientist asked to present their methodology after a colleague took credit for their analysis approach.',
-            outcome: 'The presentation was well-received, establishing the data scientist as the go-to expert for that type of analysis. The colleague became more collaborative in future projects.'
-          }
-        }
-      },
-      {
-        id: 'ignore-and-document',
-        text: 'Let it go for now but document your contributions more clearly in future projects to prevent this from happening again.',
-        feedback: 'This avoids immediate conflict but doesn\'t address the current situation. While it may preserve the relationship short-term, it could signal that you\'re okay with not receiving credit.',
-        consequences: {
-          immediate: 'No immediate conflict, but your contributions remain unrecognized.',
-          shortTerm: 'Jordan may continue this behavior, and colleagues may underestimate your capabilities.',
-          longTerm: 'You may be passed over for opportunities because your contributions aren\'t visible to leadership.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 2 },
-          { area: 'emotional-intelligence', impact: 4 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'negative' as const,
-            shortTerm: 'negative' as const,
-            longTerm: 'negative' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'medium' as const,
-            longTerm: 'low' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Jordan (Colleague)',
-              impact: 'May interpret silence as acceptance and continue taking credit',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Strategy Team',
-              impact: 'Continues to have unclear understanding of your actual contributions',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Team Leadership',
-              impact: 'May undervalue your capabilities and pass you over for opportunities',
-              severity: 'negative' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'Address it diplomatically now rather than letting it fester',
-            shortTerm: 'Find natural opportunities to clarify your role in the project',
-            longTerm: 'Develop a systematic approach to ensuring your contributions are visible'
-          },
-          mitigation: {
-            immediate: 'At minimum, send a follow-up email summarizing your contributions to the project',
-            shortTerm: 'Volunteer for visible roles in upcoming projects',
-            longTerm: 'Build relationships with leadership to ensure they understand your capabilities'
-          },
-          reflectionPrompts: [
-            'What message does your silence send about your willingness to advocate for yourself?',
-            'How might this pattern affect your career progression and opportunities?',
-            'What would you advise a friend or colleague in this same situation?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Self-Advocacy',
-              reason: 'Essential for career progression and ensuring your contributions are recognized',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Professional Courage',
-              reason: 'Learn to address uncomfortable situations that affect your professional standing',
-              link: '/library/professional-courage'
-            }
-          ],
-          realWorldExample: {
-            title: 'Finance Team Missed Opportunities',
-            description: 'A financial analyst repeatedly let colleagues take credit for their work, hoping to avoid conflict.',
-            outcome: 'Over time, leadership viewed the analyst as a support player rather than a strategic contributor. They were passed over for a promotion that went to a colleague who had taken credit for several of their analyses.'
-          }
-        }
-      },
-      {
-        id: 'escalate-to-manager',
-        text: 'Discuss the situation with your manager to get guidance on how to handle credit and recognition issues.',
-        feedback: 'This approach seeks guidance and creates awareness with leadership, but may be seen as escalating a peer conflict rather than handling it directly first.',
-        consequences: {
-          immediate: 'Your manager becomes aware of the situation and may provide guidance.',
-          shortTerm: 'You get support for addressing the issue, but Jordan may feel blindsided if they learn about it.',
-          longTerm: 'You establish a pattern of seeking management help for peer conflicts, which may affect how you\'re viewed as a collaborator.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 3 },
-          { area: 'emotional-intelligence', impact: 5 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'neutral' as const,
-            shortTerm: 'neutral' as const,
-            longTerm: 'negative' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'medium' as const,
-            longTerm: 'medium' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Jordan (Colleague)',
-              impact: 'May feel betrayed if they learn about the escalation without direct conversation first',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Strategy Team',
-              impact: 'May view you as someone who escalates peer issues rather than resolving them directly',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Team Leadership',
-              impact: 'Appreciates awareness but may prefer you handle peer conflicts directly first',
-              severity: 'neutral' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'Try a direct conversation with Jordan first, then escalate if needed',
-            shortTerm: 'Use your manager as a coach for how to handle the conversation, not to intervene',
-            longTerm: 'Develop skills for handling peer conflicts independently'
-          },
-          mitigation: {
-            immediate: 'Frame it as seeking advice rather than asking for intervention',
-            shortTerm: 'Let Jordan know you\'re seeking guidance on collaboration best practices',
-            longTerm: 'Build reputation for resolving conflicts constructively and independently'
-          },
-          reflectionPrompts: [
-            'What skills could you develop to handle this type of situation independently?',
-            'How might your colleagues perceive your approach to conflict resolution?',
-            'What would demonstrate stronger professional maturity in this situation?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Peer Conflict Resolution',
-              reason: 'Learn to address conflicts with colleagues before involving management',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Professional Relationships',
-              reason: 'Understand how to maintain productive relationships while addressing issues',
-              link: '/library/professional-relationships'
-            }
-          ],
-          realWorldExample: {
-            title: 'Operations Team Escalation Backfire',
-            description: 'An operations specialist went to their manager about a colleague taking credit, without trying direct conversation first.',
-            outcome: 'The manager advised them to handle it directly first. When the colleague learned about the escalation, trust was damaged and future collaborations became difficult.'
-          }
-        }
-      }
-    ],
-    growthAreas: ['assertiveness', 'emotional-intelligence', 'self-advocacy'],
-    difficulty: 'foundational',
-    xpReward: 50
-  },
-  {
-    id: 'cross-functional-feature-disagreement',
-    title: 'Cross-Functional Feature Disagreement',
-    description: 'Navigate a technical disagreement with a UX designer about feature implementation that\'s blocking development progress.',
-    situation: 'You\'re a Frontend Developer working on a critical user onboarding flow. The UX Designer, Sam, has created designs with complex animations and micro-interactions that they believe are essential for user engagement. However, you\'re concerned these will significantly impact page load times and accessibility, especially for users with slower devices or disabilities. The designs would require 3-4 additional days of development and testing, but your sprint deadline is in 5 days. Sam is passionate about the user experience vision and feels that simplifying the animations would compromise the product quality. You need to find a path forward that works for both the technical constraints and user experience goals.',
-    roleContext: {
-      yourRole: 'Frontend Developer',
-      teamSize: '6-person product team (2 developers, 1 designer, 1 PM, 2 QA)',
-      timeline: 'Sprint deadline in 5 days, feature needs to ship next week',
-      stakes: 'Critical user onboarding flow affecting conversion rates',
-      pressure: 'Product Manager is asking for daily updates, stakeholders expect on-time delivery',
-      stakeholders: 'Sam (UX Designer), Product Manager, QA team, end users',
-      history: 'You and Sam have worked together for 8 months with generally good collaboration'
-    },
-    choices: [
-      {
-        id: 'technical-veto',
-        text: 'Explain the technical constraints and recommend simpler alternatives: "These animations will hurt performance and accessibility. Let me show you some lighter alternatives that achieve similar goals."',
-        feedback: 'This approach prioritizes technical best practices and user accessibility, which are important considerations. However, dismissing the design vision without collaborative exploration may damage your working relationship with Sam and miss opportunities for creative solutions.',
-        consequences: {
-          immediate: 'Sam feels their design expertise is being dismissed and becomes defensive about the user experience vision.',
-          shortTerm: 'You implement simpler animations, meeting the deadline but potentially compromising user engagement metrics.',
-          longTerm: 'Sam may be less likely to collaborate closely with you on future projects, and the team may see you as inflexible on design requirements.'
+          immediate: 'The room becomes uncomfortable, and leadership may view you as petty or difficult to work with.',
+          shortTerm: 'Sarah feels embarrassed and your working relationship becomes strained, affecting future collaborations.',
+          longTerm: 'You may be seen as someone who creates drama in important meetings, potentially hurting your own advancement opportunities.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 8 },
-          { area: 'emotional-intelligence', impact: 3 }
+          { area: 'emotional-intelligence', impact: 3 },
+          { area: 'decision-making', impact: 4 }
         ],
         enhancedConsequences: {
           severity: {
             immediate: 'negative' as const,
-            shortTerm: 'neutral' as const,
+            shortTerm: 'negative' as const,
             longTerm: 'negative' as const
           },
           confidence: {
@@ -978,294 +509,67 @@ export const scenarios: Scenario[] = [
           },
           stakeholderImpacts: [
             {
-              stakeholder: 'Sam (UX Designer)',
-              impact: 'Feels their expertise is undervalued and design vision is being compromised',
+              stakeholder: 'Sarah (Colleague)',
+              impact: 'Feels publicly embarrassed and may become defensive or hostile toward future collaboration',
               severity: 'negative' as const
             },
             {
-              stakeholder: 'Product Manager',
-              impact: 'Appreciates meeting the deadline but may be concerned about team collaboration',
-              severity: 'neutral' as const
+              stakeholder: 'Senior Leadership',
+              impact: 'May view you as unprofessional or difficult to work with in high-stakes meetings',
+              severity: 'negative' as const
             },
             {
-              stakeholder: 'End Users',
-              impact: 'Benefit from better performance and accessibility, but may have less engaging experience',
-              severity: 'positive' as const
+              stakeholder: 'Strategy Team',
+              impact: 'Witnesses workplace conflict and may feel uncomfortable about team dynamics',
+              severity: 'negative' as const
             }
           ],
           alternatives: {
-            immediate: 'Start by acknowledging the design vision: "I love the user experience you\'re creating. Let\'s explore how to achieve this within our technical constraints."',
-            shortTerm: 'Propose a phased approach where core animations ship now and enhanced ones come later',
-            longTerm: 'Establish regular design-development collaboration sessions to catch these issues earlier'
+            immediate: 'Wait until after the meeting to address this privately with Sarah first',
+            shortTerm: 'Schedule a follow-up meeting with leadership to present additional insights from the analysis',
+            longTerm: 'Establish clear collaboration agreements upfront for future strategic projects'
           },
           mitigation: {
-            immediate: 'Show specific examples of how your alternatives still support the user experience goals',
-            shortTerm: 'Offer to implement one signature animation that balances impact with performance',
-            longTerm: 'Create shared guidelines for balancing design ambition with technical constraints'
+            immediate: 'If you must speak, frame it as "Sarah and I developed this framework together" rather than correcting her',
+            shortTerm: 'Have a private conversation with Sarah about collaboration expectations going forward',
+            longTerm: 'Focus on building your own reputation through consistent high-quality strategic work'
           },
           reflectionPrompts: [
-            'How can you advocate for technical best practices while respecting design expertise?',
-            'What opportunities exist to find creative solutions that satisfy both perspectives?',
-            'How might your approach affect future cross-functional collaboration?'
+            'How might public correction affect your professional relationships and reputation?',
+            'What would be the most strategic way to ensure your contributions are recognized?',
+            'How can you prevent this situation from happening in future collaborative projects?'
           ],
           skillRecommendations: [
             {
-              skill: 'Cross-Functional Communication',
-              reason: 'Learn to bridge technical and design perspectives effectively',
+              skill: 'Professional Communication',
+              reason: 'Learn to address sensitive issues without damaging professional relationships',
               link: '/topics/foundational-mindsets/assertiveness'
             },
             {
-              skill: 'Collaborative Problem Solving',
-              reason: 'Develop skills for finding solutions that satisfy multiple constraints',
-              link: '/library/collaborative-problem-solving'
+              skill: 'Strategic Influence',
+              reason: 'Understand how to build visibility and recognition in professional settings',
+              link: '/library/strategic-influence'
             }
           ],
           realWorldExample: {
-            title: 'E-commerce Team Animation Conflict',
-            description: 'A developer vetoed complex checkout animations due to performance concerns, implementing basic transitions instead.',
-            outcome: 'The feature shipped on time with good performance, but user engagement metrics were lower than expected. The designer felt their expertise wasn\'t valued and became less collaborative on future projects.'
+            title: 'Consulting Team Presentation Conflict',
+            description: 'A consultant interrupted a client presentation to correct a colleague who was taking credit for their analysis.',
+            outcome: 'The client meeting became awkward, the colleague relationship was damaged, and the consultant was later counseled by their manager about professional meeting behavior.'
           }
         }
       },
       {
-        id: 'compromise-solution',
-        text: 'Propose a middle ground: "What if we implement the core animations now and add the more complex interactions in a follow-up sprint? This way we can ship on time and still achieve your vision."',
-        feedback: 'This collaborative approach acknowledges both the design vision and technical constraints while finding a practical path forward. It demonstrates problem-solving skills and maintains the working relationship, though it requires careful prioritization of which features to include.',
+        id: 'private-conversation',
+        text: 'Approach Sarah privately after the meeting to discuss the situation and your concerns.',
+        feedback: 'This approach maintains professionalism while addressing the issue directly. It gives Sarah a chance to explain and potentially correct the situation without public embarrassment.',
         consequences: {
-          immediate: 'Sam appreciates that you\'re working to preserve their vision while addressing technical concerns.',
-          shortTerm: 'You ship a version that balances user experience with performance, meeting the deadline with a plan for enhancement.',
-          longTerm: 'You build a reputation as a collaborative problem-solver who can bridge design and development concerns effectively.'
+          immediate: 'You maintain composure in the meeting, and leadership sees you as professional.',
+          shortTerm: 'Sarah may apologize and help clarify your contributions in future interactions with leadership.',
+          longTerm: 'You build a reputation for handling conflicts maturely while protecting your professional interests.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 7 },
-          { area: 'emotional-intelligence', impact: 8 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'positive' as const,
-            shortTerm: 'positive' as const,
-            longTerm: 'positive' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'high' as const,
-            longTerm: 'high' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Sam (UX Designer)',
-              impact: 'Feels heard and sees a path to achieving their vision, even if phased',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Product Manager',
-              impact: 'Appreciates the collaborative solution and clear plan for meeting deadlines',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'End Users',
-              impact: 'Get improved experience on schedule with promise of further enhancements',
-              severity: 'positive' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'If timeline is too tight, suggest A/B testing simpler vs. complex animations',
-            shortTerm: 'Propose user research to validate which animations have the most impact',
-            longTerm: 'Establish a design system that balances ambition with technical feasibility'
-          },
-          mitigation: {
-            immediate: 'Clearly define which animations are included in phase 1 vs. phase 2',
-            shortTerm: 'Set specific success metrics to evaluate the effectiveness of the phased approach',
-            longTerm: 'Document lessons learned to improve future design-development collaboration'
-          },
-          reflectionPrompts: [
-            'How did finding middle ground strengthen your working relationship with Sam?',
-            'What did you learn about balancing competing priorities in cross-functional work?',
-            'How can you apply this collaborative approach to other technical disagreements?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Negotiation Skills',
-              reason: 'Essential for finding win-win solutions in cross-functional disagreements',
-              link: '/topics/foundational-mindsets/decision-making'
-            },
-            {
-              skill: 'Project Planning',
-              reason: 'Learn to break complex features into manageable phases',
-              link: '/library/project-planning'
-            }
-          ],
-          realWorldExample: {
-            title: 'SaaS Product Animation Compromise',
-            description: 'A frontend developer and designer agreed to phase complex dashboard animations, shipping core functionality first.',
-            outcome: 'The initial release met deadlines and user feedback guided which advanced animations to prioritize. The collaborative approach became a model for other feature development.'
-          }
-        }
-      },
-      {
-        id: 'data-driven-approach',
-        text: 'Suggest testing both approaches: "Let\'s implement a simple version now to meet our deadline, then A/B test it against your full vision to see which performs better with real users."',
-        feedback: 'This evidence-based approach removes personal opinions from the decision and focuses on user outcomes. It\'s professional and collaborative, though it requires additional development time and may delay getting the full vision implemented.',
-        consequences: {
-          immediate: 'Sam agrees to the testing approach, appreciating the focus on user data rather than assumptions.',
-          shortTerm: 'You ship on time with a plan for optimization, and gather valuable user behavior data.',
-          longTerm: 'You establish a culture of data-driven design decisions and build trust through evidence-based collaboration.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 6 },
-          { area: 'emotional-intelligence', impact: 7 },
-          { area: 'decision-making', impact: 9 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'positive' as const,
-            shortTerm: 'positive' as const,
-            longTerm: 'positive' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'high' as const,
-            longTerm: 'high' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Sam (UX Designer)',
-              impact: 'Appreciates the scientific approach and opportunity to validate design decisions',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Product Manager',
-              impact: 'Values the data-driven approach and clear plan for optimization',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'End Users',
-              impact: 'Benefit from evidence-based design decisions that prioritize their actual needs',
-              severity: 'positive' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'If A/B testing isn\'t feasible, suggest user interviews or usability testing',
-            shortTerm: 'Propose analytics tracking to measure engagement with current animations',
-            longTerm: 'Establish regular user research cycles to inform design decisions'
-          },
-          mitigation: {
-            immediate: 'Ensure you have proper analytics setup to measure meaningful metrics',
-            shortTerm: 'Define clear success criteria and timeline for the testing period',
-            longTerm: 'Create a framework for making design decisions based on user data'
-          },
-          reflectionPrompts: [
-            'How did focusing on user data change the dynamic of the disagreement?',
-            'What did you learn about using evidence to resolve subjective design decisions?',
-            'How can you apply this data-driven approach to other cross-functional challenges?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Data-Driven Decision Making',
-              reason: 'Essential for resolving subjective disagreements with objective evidence',
-              link: '/topics/foundational-mindsets/decision-making'
-            },
-            {
-              skill: 'User Research Methods',
-              reason: 'Learn to gather and interpret user feedback for design decisions',
-              link: '/library/user-research'
-            }
-          ],
-          realWorldExample: {
-            title: 'Mobile App Onboarding Test',
-            description: 'A developer and designer A/B tested simple vs. animated onboarding flows to resolve a performance vs. engagement debate.',
-            outcome: 'Data showed that moderate animations increased completion rates without significantly impacting performance. The team used this approach for future feature decisions.'
-          }
-        }
-      },
-      {
-        id: 'seek-pm-guidance',
-        text: 'Involve the Product Manager: "Sam and I have different perspectives on the animation complexity. Can you help us prioritize what\'s most important for this release?"',
-        feedback: 'This approach brings in the Product Manager to help make the decision based on business priorities. While it can provide clarity, it may be seen as escalating a technical disagreement rather than resolving it collaboratively.',
-        consequences: {
-          immediate: 'The PM provides guidance on priorities, but you and Sam may feel like you couldn\'t resolve the issue independently.',
-          shortTerm: 'You get a clear decision and direction, but the underlying collaboration challenge remains unaddressed.',
-          longTerm: 'You may develop a pattern of escalating design-development disagreements rather than building direct problem-solving skills.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 4 },
-          { area: 'emotional-intelligence', impact: 5 },
-          { area: 'decision-making', impact: 3 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'neutral' as const,
-            shortTerm: 'neutral' as const,
-            longTerm: 'negative' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'medium' as const,
-            longTerm: 'medium' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Sam (UX Designer)',
-              impact: 'May feel that the technical concerns weren\'t addressed collaboratively',
-              severity: 'neutral' as const
-            },
-            {
-              stakeholder: 'Product Manager',
-              impact: 'Appreciates being involved but may prefer team members resolve technical issues independently',
-              severity: 'neutral' as const
-            },
-            {
-              stakeholder: 'Development Team',
-              impact: 'May see this as a pattern of not resolving cross-functional issues directly',
-              severity: 'negative' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'Try collaborative problem-solving first, then involve PM if needed',
-            shortTerm: 'Use PM input as guidance while maintaining ownership of the technical solution',
-            longTerm: 'Develop skills for resolving design-development conflicts independently'
-          },
-          mitigation: {
-            immediate: 'Frame it as seeking business priority guidance rather than conflict resolution',
-            shortTerm: 'Work with Sam to present unified options to the PM rather than competing perspectives',
-            longTerm: 'Build stronger direct collaboration skills to reduce need for escalation'
-          },
-          reflectionPrompts: [
-            'What skills could you develop to resolve this type of disagreement independently?',
-            'How might frequent escalation affect your reputation as a collaborative team member?',
-            'What would demonstrate stronger professional maturity in cross-functional conflicts?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Conflict Resolution',
-              reason: 'Learn to address disagreements directly before involving management',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Cross-Functional Leadership',
-              reason: 'Develop ability to guide collaborative solutions across disciplines',
-              link: '/library/cross-functional-leadership'
-            }
-          ],
-          realWorldExample: {
-            title: 'Fintech Team Escalation Pattern',
-            description: 'A developer frequently involved the PM in design-development disagreements rather than working directly with designers.',
-            outcome: 'The PM eventually asked the developer to try resolving issues directly first. The pattern affected the developer\'s reputation as someone who could handle cross-functional collaboration independently.'
-          }
-        }
-      },
-      {
-        id: 'technical-deep-dive',
-        text: 'Offer to collaborate on the technical implementation: "Let me show you exactly what these animations would require technically, and we can work together to find the best approach."',
-        feedback: 'This educational approach helps Sam understand the technical implications while involving them in finding solutions. It builds mutual understanding and collaboration skills, though it requires time investment in explanation and joint problem-solving.',
-        consequences: {
-          immediate: 'Sam gains insight into the technical complexity and becomes more engaged in finding feasible solutions.',
-          shortTerm: 'You work together to identify which animations provide the most user value for the technical cost.',
-          longTerm: 'You build a stronger working relationship based on mutual understanding and shared problem-solving.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 5 },
-          { area: 'emotional-intelligence', impact: 9 },
+          { area: 'emotional-intelligence', impact: 8 },
           { area: 'decision-making', impact: 7 }
         ],
         enhancedConsequences: {
@@ -1276,389 +580,68 @@ export const scenarios: Scenario[] = [
           },
           confidence: {
             immediate: 'high' as const,
-            shortTerm: 'high' as const,
-            longTerm: 'high' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Sam (UX Designer)',
-              impact: 'Gains technical understanding and feels respected as a collaborative partner',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Product Manager',
-              impact: 'Sees strong cross-functional collaboration and informed decision-making',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Development Team',
-              impact: 'Benefits from improved design-development collaboration model',
-              severity: 'positive' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'If time is limited, focus on the most impactful animations first',
-            shortTerm: 'Create documentation of technical constraints for future design reference',
-            longTerm: 'Establish regular design-development collaboration sessions'
-          },
-          mitigation: {
-            immediate: 'Set clear time boundaries for the technical deep-dive session',
-            shortTerm: 'Document the decisions made for future similar situations',
-            longTerm: 'Create shared resources that help designers understand technical implications'
-          },
-          reflectionPrompts: [
-            'How did involving Sam in the technical details change their perspective?',
-            'What did you learn about the value of educating rather than just advocating?',
-            'How can you apply this collaborative approach to other cross-functional challenges?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Technical Communication',
-              reason: 'Essential for explaining complex technical concepts to non-technical colleagues',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Collaborative Design',
-              reason: 'Learn to work with designers to create technically feasible solutions',
-              link: '/library/collaborative-design'
-            }
-          ],
-          realWorldExample: {
-            title: 'Healthcare App Collaboration Success',
-            description: 'A developer walked a designer through performance implications of complex animations, leading to innovative lightweight solutions.',
-            outcome: 'The designer learned to consider technical constraints early in the design process. Their collaboration became a model for the team, and they created several award-winning features together.'
-          }
-        }
-      },
-      {
-        id: 'deadline-extension',
-        text: 'Propose extending the timeline: "These animations are important for user experience. Can we negotiate a 2-3 day extension to implement them properly while maintaining performance?"',
-        feedback: 'This approach prioritizes the design vision and user experience while acknowledging the technical complexity. However, it may not be feasible given business constraints and could set a precedent for extending deadlines when facing technical challenges.',
-        consequences: {
-          immediate: 'Sam appreciates your support for the design vision, but the timeline extension may not be approved.',
-          shortTerm: 'If approved, you deliver a high-quality feature that meets both design and technical standards, but potentially delay other work.',
-          longTerm: 'You may be seen as someone who struggles with time estimation or who prioritizes perfection over delivery, affecting future project planning.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 6 },
-          { area: 'emotional-intelligence', impact: 6 },
-          { area: 'decision-making', impact: 4 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'neutral' as const,
-            shortTerm: 'neutral' as const,
-            longTerm: 'negative' as const
-          },
-          confidence: {
-            immediate: 'medium' as const,
-            shortTerm: 'low' as const,
-            longTerm: 'low' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Sam (UX Designer)',
-              impact: 'Appreciates the support for design quality but may worry about project viability',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Product Manager',
-              impact: 'Concerned about timeline reliability and impact on other planned work',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Business Stakeholders',
-              impact: 'May lose confidence in the team\'s ability to deliver on commitments',
-              severity: 'negative' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'Propose a phased delivery instead of extending the entire timeline',
-            shortTerm: 'Suggest reducing scope in other areas to accommodate the animation work',
-            longTerm: 'Improve estimation processes to account for design complexity upfront'
-          },
-          mitigation: {
-            immediate: 'Present a clear plan for how the extra time would be used effectively',
-            shortTerm: 'Offer to work extra hours to minimize the timeline impact',
-            longTerm: 'Develop better processes for identifying technical complexity during planning'
-          },
-          reflectionPrompts: [
-            'How can you balance quality aspirations with business delivery commitments?',
-            'What could have been done earlier in the process to avoid this timeline conflict?',
-            'How might requesting extensions affect your reputation for reliable delivery?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Project Estimation',
-              reason: 'Learn to better estimate technical complexity during planning phases',
-              link: '/library/project-estimation'
-            },
-            {
-              skill: 'Scope Management',
-              reason: 'Develop skills for balancing quality with delivery constraints',
-              link: '/library/scope-management'
-            }
-          ],
-          realWorldExample: {
-            title: 'E-learning Platform Timeline Challenge',
-            description: 'A developer requested timeline extensions for complex interactive features, citing user experience importance.',
-            outcome: 'Extensions were rarely approved, and the developer gained a reputation for poor estimation. They learned to propose phased delivery approaches instead.'
-          }
-        }
-      }
-    ],
-    growthAreas: ['assertiveness', 'emotional-intelligence', 'decision-making'],
-    difficulty: 'foundational',
-    xpReward: 50
-  },
-  {
-    id: 'research-data-conflict',
-    title: 'Research Data Interpretation Conflict',
-    description: 'Navigate a disagreement with a colleague about how to interpret and present user research findings to stakeholders.',
-    situation: 'You\'re a UX Researcher who just completed a comprehensive study on user behavior for a new feature. Your colleague Maya, a Product Marketing Manager, has reviewed the data and wants to present it to leadership with a focus on the positive metrics that support launching the feature quickly. However, you\'ve identified some concerning usability issues and user pain points that suggest the feature needs significant refinement before launch. Maya argues that the positive data points are strong enough to move forward and that highlighting the negatives will unnecessarily delay an important business initiative. You have a joint presentation to the executive team scheduled for tomorrow morning.',
-    roleContext: {
-      yourRole: 'UX Researcher',
-      teamSize: '12-person product organization',
-      timeline: 'Executive presentation tomorrow morning, feature launch planned for next month',
-      stakes: 'Major feature launch with significant revenue expectations',
-      pressure: 'Leadership is eager to see progress on this strategic initiative',
-      stakeholders: 'Maya (Product Marketing Manager), Executive team, Product team, End users',
-      history: 'You and Maya have collaborated on 3 previous projects with mixed success'
-    },
-    choices: [
-      {
-        id: 'insist-full-picture',
-        text: 'Insist on presenting the complete findings: "We need to show leadership both the opportunities and the risks. It\'s our responsibility to give them all the data to make an informed decision."',
-        feedback: 'This approach prioritizes research integrity and ensures leadership has complete information for decision-making. However, it may create tension with Maya and could be perceived as blocking business progress if not presented constructively.',
-        consequences: {
-          immediate: 'Maya becomes frustrated and argues that you\'re being overly cautious and potentially damaging the business opportunity.',
-          shortTerm: 'Leadership appreciates the thorough analysis but may delay the launch, affecting revenue targets and team morale.',
-          longTerm: 'You build a reputation for research integrity, but Maya and other business stakeholders may be hesitant to collaborate with you on future projects.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 9 },
-          { area: 'emotional-intelligence', impact: 4 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'negative' as const,
-            shortTerm: 'neutral' as const,
-            longTerm: 'neutral' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'high' as const,
-            longTerm: 'medium' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Maya (Product Marketing Manager)',
-              impact: 'Feels that business objectives are being undermined by over-cautious research approach',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Executive Team',
-              impact: 'Appreciates comprehensive data but may be frustrated by potential delays',
-              severity: 'neutral' as const
-            },
-            {
-              stakeholder: 'End Users',
-              impact: 'Benefit from thorough consideration of their needs and pain points',
-              severity: 'positive' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'Frame the concerns as opportunities for improvement rather than blockers',
-            shortTerm: 'Propose a phased launch that addresses critical issues first',
-            longTerm: 'Establish clearer criteria for balancing research findings with business timelines'
-          },
-          mitigation: {
-            immediate: 'Acknowledge Maya\'s business perspective and suggest collaborative framing',
-            shortTerm: 'Offer solutions and recommendations alongside the identified problems',
-            longTerm: 'Build stronger relationships with business stakeholders to improve collaboration'
-          },
-          reflectionPrompts: [
-            'How can you maintain research integrity while being a collaborative business partner?',
-            'What would help Maya see the value in presenting a complete picture?',
-            'How might you frame concerning findings as opportunities rather than obstacles?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Stakeholder Communication',
-              reason: 'Learn to present research findings in ways that support business decision-making',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Business Acumen',
-              reason: 'Understand how to balance research rigor with business needs',
-              link: '/library/business-acumen'
-            }
-          ],
-          realWorldExample: {
-            title: 'SaaS Platform Research Conflict',
-            description: 'A UX researcher insisted on presenting negative usability findings despite marketing pressure to focus on positive metrics.',
-            outcome: 'The launch was delayed by two months, but the final product had much higher user satisfaction. However, the researcher\'s relationship with the marketing team remained strained for months.'
-          }
-        }
-      },
-      {
-        id: 'balanced-narrative',
-        text: 'Propose a balanced narrative: "Let\'s present the strong positive indicators that support moving forward, while also outlining the specific improvements that will maximize our success."',
-        feedback: 'This approach acknowledges both perspectives and frames the research findings constructively. It maintains research integrity while supporting business objectives, though it requires careful messaging to avoid diluting important concerns.',
-        consequences: {
-          immediate: 'Maya appreciates the collaborative approach and you work together to craft a compelling but honest presentation.',
-          shortTerm: 'Leadership gets a realistic view of the opportunity with clear next steps, leading to a more informed launch strategy.',
-          longTerm: 'You build a reputation as a researcher who can balance rigor with business partnership, strengthening future collaborations.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 7 },
-          { area: 'emotional-intelligence', impact: 8 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'positive' as const,
-            shortTerm: 'positive' as const,
-            longTerm: 'positive' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'high' as const,
-            longTerm: 'high' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Maya (Product Marketing Manager)',
-              impact: 'Feels heard and sees a path to present positive business case while addressing concerns',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Executive Team',
-              impact: 'Gets realistic assessment with clear action plan for success',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'End Users',
-              impact: 'Benefit from research-informed improvements while getting new features sooner',
-              severity: 'positive' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'If Maya resists, suggest A/B testing to validate different approaches',
-            shortTerm: 'Propose user feedback loops during the launch to monitor concerns',
-            longTerm: 'Establish regular research-marketing collaboration frameworks'
-          },
-          mitigation: {
-            immediate: 'Ensure critical usability issues are clearly highlighted as priorities',
-            shortTerm: 'Create specific metrics to track the concerns during launch',
-            longTerm: 'Document lessons learned for future research-business collaborations'
-          },
-          reflectionPrompts: [
-            'How did reframing concerns as opportunities change the collaboration dynamic?',
-            'What did you learn about presenting research findings to support business goals?',
-            'How can you apply this balanced approach to other stakeholder relationships?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Strategic Communication',
-              reason: 'Essential for presenting research in ways that drive action',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Cross-Functional Collaboration',
-              reason: 'Learn to work effectively with business stakeholders',
-              link: '/library/cross-functional-collaboration'
-            }
-          ],
-          realWorldExample: {
-            title: 'E-commerce Research Success',
-            description: 'A researcher and marketer collaborated to present checkout research findings as optimization opportunities rather than problems.',
-            outcome: 'Leadership approved a phased launch with built-in improvements. The feature exceeded performance targets and the research-marketing partnership became a model for other teams.'
-          }
-        }
-      },
-      {
-        id: 'defer-to-maya',
-        text: 'Support Maya\'s approach: "You know the business context better than I do. Let\'s focus on the positive metrics and I can share the detailed findings with the product team separately."',
-        feedback: 'This approach prioritizes the working relationship and acknowledges Maya\'s business expertise. However, it may compromise research integrity and could lead to poor product decisions if critical issues aren\'t addressed.',
-        consequences: {
-          immediate: 'Maya is pleased with your collaboration and you present a unified front to leadership.',
-          shortTerm: 'Leadership approves the launch timeline, but the unaddressed usability issues may surface after launch.',
-          longTerm: 'You may be seen as accommodating but could lose credibility as an independent research voice if problems emerge.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 3 },
-          { area: 'emotional-intelligence', impact: 6 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'positive' as const,
-            shortTerm: 'negative' as const,
-            longTerm: 'negative' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
             shortTerm: 'medium' as const,
-            longTerm: 'low' as const
+            longTerm: 'high' as const
           },
           stakeholderImpacts: [
             {
-              stakeholder: 'Maya (Product Marketing Manager)',
-              impact: 'Appreciates the support and sees you as a collaborative partner',
+              stakeholder: 'Sarah (Colleague)',
+              impact: 'Appreciates the private approach and opportunity to address the situation without public embarrassment',
               severity: 'positive' as const
             },
             {
-              stakeholder: 'Executive Team',
-              impact: 'Makes decisions based on incomplete information, potentially leading to poor outcomes',
-              severity: 'negative' as const
+              stakeholder: 'Senior Leadership',
+              impact: 'Continues to see you as professional and collaborative, may gain respect for your maturity',
+              severity: 'positive' as const
             },
             {
-              stakeholder: 'End Users',
-              impact: 'May experience the unaddressed usability issues after launch',
-              severity: 'negative' as const
+              stakeholder: 'Strategy Team',
+              impact: 'Observes professional behavior and conflict resolution skills',
+              severity: 'positive' as const
             }
           ],
           alternatives: {
-            immediate: 'Suggest a compromise where key concerns are mentioned as "areas to monitor"',
-            shortTerm: 'Ensure the product team has access to the complete findings',
-            longTerm: 'Establish clearer guidelines for when research concerns must be escalated'
+            immediate: 'Document your contributions before the conversation in case you need to escalate later',
+            shortTerm: 'If Sarah doesn\'t respond well, consider involving your manager for guidance',
+            longTerm: 'Establish written collaboration agreements for future strategic projects'
           },
           mitigation: {
-            immediate: 'Document your concerns and share them with relevant stakeholders',
-            shortTerm: 'Propose post-launch research to validate the decisions',
-            longTerm: 'Build processes to ensure research integrity while supporting business goals'
+            immediate: 'Prepare talking points about the collaborative nature of the work and your specific contributions',
+            shortTerm: 'Follow up with Sarah about how to handle similar situations in the future',
+            longTerm: 'Build stronger relationships with leadership through other strategic initiatives'
           },
           reflectionPrompts: [
-            'What are the long-term consequences of not advocating for important research findings?',
-            'How can you be collaborative while maintaining your professional responsibility?',
-            'What would you do differently if similar usability issues emerged post-launch?'
+            'How can you frame this conversation to be constructive rather than accusatory?',
+            'What outcome would you consider successful from this private discussion?',
+            'How might this approach strengthen your professional relationship with Sarah?'
           ],
           skillRecommendations: [
             {
-              skill: 'Professional Courage',
-              reason: 'Learn when and how to advocate for important research findings',
+              skill: 'Difficult Conversations',
+              reason: 'Learn to address sensitive workplace issues while maintaining professional relationships',
               link: '/topics/foundational-mindsets/assertiveness'
             },
             {
-              skill: 'Research Ethics',
-              reason: 'Understand your responsibility to represent user needs accurately',
-              link: '/library/research-ethics'
+              skill: 'Collaborative Leadership',
+              reason: 'Understand how to protect your interests while building strong team partnerships',
+              link: '/library/collaborative-leadership'
             }
           ],
           realWorldExample: {
-            title: 'Mobile App Launch Compromise',
-            description: 'A researcher deferred to marketing pressure and downplayed navigation issues in a user study.',
-            outcome: 'The app launched on schedule but received poor user reviews for confusing navigation. The researcher lost credibility when the issues they had identified became public complaints.'
+            title: 'Marketing Strategy Team Resolution',
+            description: 'A marketing analyst privately addressed a colleague who took credit for their campaign strategy in a leadership presentation.',
+            outcome: 'The colleague apologized and made sure to highlight the analyst\'s contributions in follow-up communications. Their working relationship actually strengthened, and they became trusted strategic partners.'
           }
         }
       },
       {
-        id: 'separate-presentations',
-        text: 'Suggest separate presentations: "What if you present the business case and market opportunity, and I present the user research findings? This way leadership gets both perspectives clearly."',
-        feedback: 'This approach allows both perspectives to be heard without forcing a compromise. However, it may appear disjointed to leadership and could highlight the disagreement rather than resolving it collaboratively.',
+        id: 'document-and-escalate',
+        text: 'Document the situation and discuss it with your manager to ensure your contributions are properly recognized.',
+        feedback: 'This approach ensures proper documentation and management awareness, but may be seen as going around Sarah rather than addressing the issue directly first.',
         consequences: {
-          immediate: 'Maya agrees to the separate presentations, but leadership may notice the lack of alignment between teams.',
-          shortTerm: 'Leadership gets complete information but may be confused by seemingly conflicting perspectives.',
-          longTerm: 'You maintain research integrity, but the lack of cross-functional collaboration may be seen as a team dysfunction.'
+          immediate: 'You feel protected by involving management, but Sarah may feel blindsided if she learns about it.',
+          shortTerm: 'Your manager may help clarify your contributions, but your relationship with Sarah could be damaged.',
+          longTerm: 'You may be seen as someone who escalates rather than resolves conflicts directly, which could affect future collaborative opportunities.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 5 },
@@ -1672,69 +655,69 @@ export const scenarios: Scenario[] = [
             longTerm: 'negative' as const
           },
           confidence: {
-            immediate: 'medium' as const,
+            immediate: 'high' as const,
             shortTerm: 'medium' as const,
-            longTerm: 'low' as const
+            longTerm: 'medium' as const
           },
           stakeholderImpacts: [
             {
-              stakeholder: 'Maya (Product Marketing Manager)',
-              impact: 'Accepts the solution but may see it as avoiding collaborative problem-solving',
-              severity: 'neutral' as const
-            },
-            {
-              stakeholder: 'Executive Team',
-              impact: 'Gets complete information but may question team alignment and collaboration',
+              stakeholder: 'Sarah (Colleague)',
+              impact: 'May feel betrayed if she learns about the escalation without direct conversation first',
               severity: 'negative' as const
             },
             {
-              stakeholder: 'Product Team',
-              impact: 'May see this as a sign of poor cross-functional collaboration',
+              stakeholder: 'Your Manager',
+              impact: 'Appreciates being informed but may question why you didn\'t try direct resolution first',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'Strategy Team',
+              impact: 'May view you as someone who escalates conflicts rather than resolving them collaboratively',
               severity: 'negative' as const
             }
           ],
           alternatives: {
-            immediate: 'Propose a joint presentation with clearly defined sections for each perspective',
-            shortTerm: 'Work together to create a unified narrative that incorporates both viewpoints',
-            longTerm: 'Establish better processes for aligning research and marketing perspectives'
+            immediate: 'Try a direct conversation with Sarah first, then escalate if needed',
+            shortTerm: 'Use your manager as a coach for how to handle the situation rather than asking them to intervene',
+            longTerm: 'Develop skills in direct conflict resolution to handle similar situations independently'
           },
           mitigation: {
-            immediate: 'Coordinate with Maya to ensure the presentations complement rather than contradict each other',
-            shortTerm: 'Debrief with leadership to explain the different but complementary perspectives',
-            longTerm: 'Invest in building stronger collaborative relationships with business stakeholders'
+            immediate: 'Frame the discussion with your manager as seeking advice rather than asking for intervention',
+            shortTerm: 'Let Sarah know you\'ve discussed the situation with your manager to maintain transparency',
+            longTerm: 'Focus on building direct communication skills for future collaborative challenges'
           },
           reflectionPrompts: [
-            'How might separate presentations be perceived by leadership?',
-            'What does this approach say about your ability to collaborate across functions?',
-            'How could you have worked with Maya to create a unified perspective?'
+            'What makes you feel that management involvement is necessary at this stage?',
+            'How might escalating first affect your reputation as a collaborative team member?',
+            'What skills could you develop to handle this situation more directly?'
           ],
           skillRecommendations: [
             {
-              skill: 'Conflict Resolution',
-              reason: 'Learn to resolve disagreements rather than working around them',
+              skill: 'Direct Communication',
+              reason: 'Learn to address workplace conflicts before they require management intervention',
               link: '/topics/foundational-mindsets/assertiveness'
             },
             {
-              skill: 'Cross-Functional Leadership',
-              reason: 'Develop skills for creating alignment across different perspectives',
-              link: '/library/cross-functional-leadership'
+              skill: 'Peer Relationship Management',
+              reason: 'Understand how to navigate professional relationships and conflicts effectively',
+              link: '/library/peer-relationships'
             }
           ],
           realWorldExample: {
-            title: 'Fintech Product Presentation Split',
-            description: 'Research and marketing teams gave separate presentations about a new feature due to disagreement on findings.',
-            outcome: 'Leadership was confused by the apparent lack of alignment and asked the teams to come back with a unified recommendation. The teams had to rebuild their collaboration from scratch.'
+            title: 'Finance Team Credit Dispute',
+            description: 'A financial analyst immediately escalated to their manager when a colleague took credit for their budget analysis without trying direct conversation first.',
+            outcome: 'The manager resolved the immediate issue but advised the analyst to try direct communication first in the future. The colleague relationship remained strained for months.'
           }
         }
       },
       {
-        id: 'propose-pilot-approach',
-        text: 'Suggest a pilot strategy: "What if we propose launching with a limited user group first? This lets us move forward while validating our research findings with real usage data."',
-        feedback: 'This approach finds middle ground by allowing business progress while addressing research concerns through real-world validation. It demonstrates strategic thinking and risk management, though it may require additional resources and timeline adjustments.',
+        id: 'strategic-follow-up',
+        text: 'Send a follow-up email to the leadership team with additional insights, naturally highlighting your collaborative role.',
+        feedback: 'This approach allows you to demonstrate your strategic thinking while subtly clarifying your contributions without creating direct conflict.',
         consequences: {
-          immediate: 'Maya sees the value in reducing risk while still moving forward, and you collaborate on a compelling pilot proposal.',
-          shortTerm: 'Leadership approves the pilot approach, allowing for data-driven iteration before full launch.',
-          longTerm: 'You establish a reputation for finding creative solutions that balance research rigor with business needs.'
+          immediate: 'Leadership sees additional value from you and begins to understand your role in the analysis.',
+          shortTerm: 'You build your own reputation for strategic thinking while maintaining professional relationships.',
+          longTerm: 'You establish yourself as a strategic contributor in leadership\'s minds while avoiding workplace drama.'
         },
         impactAreas: [
           { area: 'assertiveness', impact: 6 },
@@ -1754,128 +737,203 @@ export const scenarios: Scenario[] = [
           },
           stakeholderImpacts: [
             {
-              stakeholder: 'Maya (Product Marketing Manager)',
-              impact: 'Appreciates the strategic approach that allows business progress with reduced risk',
+              stakeholder: 'Sarah (Colleague)',
+              impact: 'May realize her oversight without direct confrontation, preserving the working relationship',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'Senior Leadership',
+              impact: 'Gains appreciation for your strategic thinking and collaborative approach to building on ideas',
               severity: 'positive' as const
             },
             {
-              stakeholder: 'Executive Team',
-              impact: 'Values the risk management approach and data-driven decision making',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'End Users',
-              impact: 'Benefit from more refined product based on pilot feedback',
+              stakeholder: 'Strategy Team',
+              impact: 'Sees professional way to handle recognition issues and build on collaborative work',
               severity: 'positive' as const
             }
           ],
           alternatives: {
-            immediate: 'If pilot isn\'t feasible, suggest A/B testing different versions of the feature',
-            shortTerm: 'Propose specific metrics and success criteria for the pilot',
-            longTerm: 'Establish pilot testing as standard practice for major feature launches'
+            shortTerm: 'Still have a private conversation with Sarah about collaboration expectations',
+            longTerm: 'Establish more formal processes for documenting individual contributions in team projects'
           },
           mitigation: {
-            immediate: 'Define clear pilot parameters and success metrics upfront',
-            shortTerm: 'Ensure rapid feedback collection and analysis during the pilot',
-            longTerm: 'Document learnings to improve future research-business collaboration'
+            immediate: 'Frame the email as building on the presentation rather than correcting it',
+            shortTerm: 'Include Sarah in the follow-up communication to maintain collaborative appearance',
+            longTerm: 'Use this as a model for proactive visibility in future strategic projects'
           },
           reflectionPrompts: [
-            'How did proposing a pilot change the dynamic from conflict to collaboration?',
-            'What did you learn about finding solutions that address multiple stakeholder concerns?',
-            'How can you apply this strategic thinking to other research-business tensions?'
+            'How can you build your reputation while maintaining positive team relationships?',
+            'What additional value can you provide that showcases your strategic thinking?',
+            'How might this approach influence how you handle future collaborative projects?'
           ],
           skillRecommendations: [
             {
-              skill: 'Strategic Thinking',
-              reason: 'Essential for finding solutions that balance multiple business constraints',
-              link: '/topics/foundational-mindsets/decision-making'
+              skill: 'Strategic Communication',
+              reason: 'Learn to build visibility and influence through thoughtful professional communication',
+              link: '/topics/foundational-mindsets/assertiveness'
             },
             {
-              skill: 'Risk Management',
-              reason: 'Learn to propose approaches that mitigate risks while enabling progress',
-              link: '/library/risk-management'
+              skill: 'Executive Presence',
+              reason: 'Understand how to build recognition and credibility with senior leadership',
+              link: '/library/executive-presence'
             }
           ],
           realWorldExample: {
-            title: 'Social Media Platform Pilot Success',
-            description: 'A researcher and marketer collaborated on a pilot launch after disagreeing about user engagement research findings.',
-            outcome: 'The pilot revealed that user concerns were valid but manageable with specific design changes. The full launch was highly successful and the pilot approach became standard practice.'
+            title: 'Product Strategy Follow-up Success',
+            description: 'A product manager sent thoughtful follow-up insights after a colleague\'s presentation, naturally highlighting their collaborative contributions.',
+            outcome: 'Leadership began recognizing both team members as strategic thinkers. The approach actually strengthened the collaborative relationship and led to more joint strategic projects.'
           }
         }
       },
       {
-        id: 'escalate-to-leadership',
-        text: 'Escalate the decision: "This is an important strategic decision. Should we ask leadership how they want to balance the business opportunity against the user experience concerns?"',
-        feedback: 'This approach puts the decision in leadership\'s hands and ensures they\'re aware of the trade-offs. However, it may be seen as an inability to resolve cross-functional disagreements and could create unnecessary escalation.',
+        id: 'let-it-go',
+        text: 'Accept the situation and focus on building your reputation through future work rather than addressing this incident.',
+        feedback: 'While this avoids immediate conflict, it may set a precedent that your contributions can be overlooked and could impact your career advancement opportunities.',
         consequences: {
-          immediate: 'Maya may feel that you\'re undermining the collaboration by escalating the disagreement.',
-          shortTerm: 'Leadership makes the decision but may question why the team couldn\'t align on the approach.',
-          longTerm: 'You may develop a reputation for escalating conflicts rather than resolving them collaboratively.'
+          immediate: 'You avoid any workplace drama, but your contributions remain unrecognized by leadership.',
+          shortTerm: 'Sarah may continue this behavior, and you may miss out on recognition and advancement opportunities.',
+          longTerm: 'Your strategic contributions may be consistently undervalued, potentially limiting your career growth and influence.'
         },
         impactAreas: [
-          { area: 'assertiveness', impact: 4 },
-          { area: 'emotional-intelligence', impact: 3 },
-          { area: 'decision-making', impact: 5 }
+          { area: 'assertiveness', impact: 2 },
+          { area: 'emotional-intelligence', impact: 5 },
+          { area: 'decision-making', impact: 3 }
         ],
         enhancedConsequences: {
           severity: {
             immediate: 'negative' as const,
-            shortTerm: 'neutral' as const,
+            shortTerm: 'negative' as const,
             longTerm: 'negative' as const
           },
           confidence: {
-            immediate: 'medium' as const,
+            immediate: 'high' as const,
             shortTerm: 'medium' as const,
             longTerm: 'low' as const
           },
           stakeholderImpacts: [
             {
-              stakeholder: 'Maya (Product Marketing Manager)',
-              impact: 'Feels that the collaboration failed and may be less likely to work closely in the future',
+              stakeholder: 'Sarah (Colleague)',
+              impact: 'May not realize the impact of her actions and could repeat this behavior',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'Senior Leadership',
+              impact: 'Continues to have incomplete understanding of your strategic contributions',
               severity: 'negative' as const
             },
             {
-              stakeholder: 'Executive Team',
-              impact: 'Questions the team\'s ability to collaborate and make decisions independently',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Product Team',
-              impact: 'May see this as a pattern of poor cross-functional collaboration',
+              stakeholder: 'Strategy Team',
+              impact: 'May see this as acceptable behavior for taking credit for collaborative work',
               severity: 'negative' as const
             }
           ],
           alternatives: {
-            immediate: 'Try collaborative problem-solving approaches before escalating',
-            shortTerm: 'Use leadership input as guidance while maintaining ownership of the solution',
-            longTerm: 'Develop stronger skills for resolving cross-functional disagreements'
+            immediate: 'At minimum, document your contributions for future reference',
+            shortTerm: 'Find other ways to showcase your strategic thinking to leadership',
+            longTerm: 'Develop assertiveness skills to handle similar situations more proactively'
           },
           mitigation: {
-            immediate: 'Frame it as seeking strategic guidance rather than conflict resolution',
-            shortTerm: 'Work with Maya to present unified options rather than competing perspectives',
-            longTerm: 'Invest in building stronger collaborative relationships'
+            immediate: 'Start building stronger direct relationships with leadership through other strategic initiatives',
+            shortTerm: 'Be more proactive about documenting and communicating your contributions in future projects',
+            longTerm: 'Seek feedback on how to better position your strategic work for recognition'
           },
           reflectionPrompts: [
-            'What collaborative approaches could you try before escalating to leadership?',
-            'How might frequent escalation affect your reputation as a team player?',
-            'What skills could you develop to resolve these types of disagreements independently?'
+            'What are the long-term career implications of not addressing this situation?',
+            'How might your silence be interpreted by colleagues and leadership?',
+            'What would you advise a friend or mentee in this same situation?'
           ],
           skillRecommendations: [
             {
-              skill: 'Conflict Resolution',
-              reason: 'Essential for resolving disagreements without escalation',
+              skill: 'Professional Assertiveness',
+              reason: 'Learn to advocate for your contributions and career interests appropriately',
               link: '/topics/foundational-mindsets/assertiveness'
             },
             {
-              skill: 'Collaborative Problem Solving',
-              reason: 'Learn to find solutions that satisfy multiple stakeholder perspectives',
-              link: '/library/collaborative-problem-solving'
+              skill: 'Career Strategy',
+              reason: 'Understand how to build visibility and recognition for your professional contributions',
+              link: '/library/career-strategy'
             }
           ],
           realWorldExample: {
-            title: 'Healthcare App Research Escalation',
-            description: 'A researcher escalated a disagreement with marketing about user safety findings rather than working toward a collaborative solution.',
-            outcome: 'Leadership resolved the immediate issue but asked both team members to work on their collaboration skills. The researcher was seen as someone who couldn\'t handle cross-functional relationships.'
+            title: 'Research Team Recognition Gap',
+            description: 'A research analyst consistently let colleagues take credit for their insights, thinking their work would speak for itself.',
+            outcome: 'Over two years, the analyst was passed over for promotions while colleagues who took credit advanced. They eventually had to change teams to get proper recognition for their strategic capabilities.'
+          }
+        }
+      },
+      {
+        id: 'collaborative-reframe',
+        text: 'Publicly build on Sarah\'s presentation by adding your perspective, naturally highlighting the collaborative nature of the work.',
+        feedback: 'This approach allows you to demonstrate your contributions while appearing collaborative and supportive, though it requires quick thinking and confidence in the moment.',
+        consequences: {
+          immediate: 'Leadership sees your strategic thinking and begins to understand the collaborative nature of the work.',
+          shortTerm: 'You build your reputation while maintaining a positive relationship with Sarah.',
+          longTerm: 'You establish yourself as both a strategic thinker and a collaborative team player in leadership\'s perception.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 7 },
+          { area: 'emotional-intelligence', impact: 8 },
+          { area: 'decision-making', impact: 7 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'medium' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Sarah (Colleague)',
+              impact: 'Appreciates the supportive approach and may recognize the need to be more inclusive in future presentations',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Senior Leadership',
+              impact: 'Sees both strategic thinking and collaborative leadership skills',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Strategy Team',
+              impact: 'Observes professional way to handle recognition while building on team work',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'If you\'re not comfortable speaking up in the moment, use the follow-up email approach instead',
+            shortTerm: 'Have a private conversation with Sarah about collaboration expectations going forward',
+            longTerm: 'Establish clearer upfront agreements about presentation roles in collaborative projects'
+          },
+          mitigation: {
+            immediate: 'Frame your comments as building on "our analysis" rather than correcting Sarah',
+            shortTerm: 'Follow up privately with Sarah to ensure she understood your collaborative intent',
+            longTerm: 'Use this as a model for proactive collaboration and visibility in strategic work'
+          },
+          reflectionPrompts: [
+            'How can you assert your contributions while appearing collaborative and supportive?',
+            'What additional insights can you provide that showcase your strategic thinking?',
+            'How might this approach influence future collaborative dynamics with Sarah?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Collaborative Leadership',
+              reason: 'Learn to build your reputation while strengthening team relationships',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Strategic Presence',
+              reason: 'Understand how to demonstrate value and expertise in high-stakes meetings',
+              link: '/library/strategic-presence'
+            }
+          ],
+          realWorldExample: {
+            title: 'Business Development Team Success',
+            description: 'A business analyst built on a colleague\'s client presentation by adding strategic context, naturally highlighting their collaborative contributions.',
+            outcome: 'The client was impressed with the team\'s depth of thinking. Both team members gained recognition, and their collaborative approach became a model for future client presentations.'
           }
         }
       }
@@ -1885,38 +943,115 @@ export const scenarios: Scenario[] = [
     xpReward: 50
   },
   {
-    id: 'client-feedback-disagreement',
-    title: 'Client Feedback Implementation Disagreement',
-    description: 'Navigate a conflict with a colleague about how to respond to challenging client feedback that could impact project scope and timeline.',
-    situation: 'You\'re a Graphic Designer working on a major rebranding project for a key client. Your colleague Alex, an Account Manager, just received feedback from the client requesting significant changes to the visual direction you\'ve spent three weeks developing. The client wants a "more corporate and traditional" look, which goes against the modern, innovative brand strategy that was approved in the initial brief. Alex is pushing to implement all the client\'s requests immediately to maintain the relationship, but you believe these changes will result in a generic, outdated brand that won\'t serve the client\'s long-term goals. The client presentation is scheduled for Friday (in 3 days), and Alex wants to show revised concepts that incorporate all their feedback.',
+    id: 'cross-functional-disagreement',
+    title: 'Cross-Functional Feature Disagreement',
+    description: 'Navigate a technical disagreement with a UX designer about feature implementation that\'s blocking development progress.',
+    situation: 'You\'re a frontend developer working on a new user dashboard feature. The UX designer, Maya, has created a design that requires complex animations and micro-interactions that you believe will significantly impact page performance and loading times. When you raised these concerns, Maya insisted that the user experience is paramount and that "technical limitations shouldn\'t compromise good design." The feature is due for review with the product manager in two days, and you need to find a path forward that works for both the user experience and technical performance.',
     roleContext: {
-      yourRole: 'Senior Graphic Designer',
-      teamSize: '8-person creative agency team',
-      timeline: 'Client presentation in 3 days, final deliverables due in 2 weeks',
-      stakes: '$150K rebranding project, potential for ongoing retainer work',
-      pressure: 'Client relationship is critical for agency growth, but brand integrity is also important',
-      stakeholders: 'Alex (Account Manager), Client stakeholders, Creative Director, Agency leadership',
-      history: 'You and Alex have worked together for 18 months with generally good collaboration'
+      yourRole: 'Frontend Developer',
+      teamSize: 'Cross-functional product team of 6 people',
+      timeline: 'Feature review scheduled in 2 days, sprint ends in 1 week',
+      stakes: 'User dashboard is a key feature for Q4 product goals',
+      pressure: 'Product manager expects demo-ready feature, performance metrics are being monitored',
+      stakeholders: 'UX Designer (Maya), Product Manager, Backend Developer, QA Engineer',
+      history: 'You and Maya have worked well together on previous features'
     },
     choices: [
       {
-        id: 'defend-creative-vision',
-        text: 'Stand firm on the creative direction: "These changes will undermine the brand strategy we all agreed on. We need to educate the client on why the original direction serves their goals better."',
-        feedback: 'This approach prioritizes design integrity and long-term brand success, which is important for professional credibility. However, it may strain the client relationship and put Alex in a difficult position with account management.',
+        id: 'implement-as-designed',
+        text: 'Implement the design exactly as specified and address performance issues later if they arise.',
+        feedback: 'This approach maintains team harmony and respects the design process, but may create technical debt and performance problems that are harder to fix later.',
         consequences: {
-          immediate: 'Alex becomes stressed about the client relationship and feels you\'re not supporting the business side of the project.',
-          shortTerm: 'The client may be frustrated by pushback on their feedback, potentially affecting the project timeline and relationship.',
-          longTerm: 'You maintain design integrity but may be seen as difficult to work with by account management and clients.'
+          immediate: 'Maya feels supported and the design vision is preserved for the upcoming review.',
+          shortTerm: 'Performance issues may emerge during testing, requiring significant rework under time pressure.',
+          longTerm: 'Technical debt accumulates, and you may be seen as someone who doesn\'t advocate for technical best practices.'
         },
         impactAreas: [
-          { area: 'assertiveness', impact: 9 },
-          { area: 'emotional-intelligence', impact: 3 }
+          { area: 'assertiveness', impact: 3 },
+          { area: 'emotional-intelligence', impact: 6 },
+          { area: 'decision-making', impact: 4 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'neutral' as const,
+            shortTerm: 'negative' as const,
+            longTerm: 'negative' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'medium' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Maya (UX Designer)',
+              impact: 'Feels respected and supported, maintains confidence in the collaborative process',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Product Manager',
+              impact: 'Gets the expected demo but may face performance issues that delay release',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Development Team',
+              impact: 'May lose confidence in your technical advocacy and decision-making',
+              severity: 'negative' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Propose a phased implementation where core functionality comes first, animations second',
+            shortTerm: 'Set up performance monitoring to catch issues early in the development cycle',
+            longTerm: 'Establish technical review processes earlier in the design phase'
+          },
+          mitigation: {
+            immediate: 'Document the performance risks and timeline for addressing them',
+            shortTerm: 'Implement performance monitoring and set clear metrics for acceptable performance',
+            longTerm: 'Work with Maya to establish design-development collaboration guidelines'
+          },
+          reflectionPrompts: [
+            'How might avoiding technical advocacy affect your professional reputation?',
+            'What are the long-term implications of accumulating technical debt?',
+            'How can you better communicate technical constraints during the design phase?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Technical Communication',
+              reason: 'Learn to articulate technical concerns in terms of user and business impact',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Cross-functional Collaboration',
+              reason: 'Understand how to balance technical and design considerations effectively',
+              link: '/library/cross-functional-collaboration'
+            }
+          ],
+          realWorldExample: {
+            title: 'E-commerce Platform Performance Issues',
+            description: 'A developer implemented complex animations as designed without addressing performance concerns, thinking they could optimize later.',
+            outcome: 'The feature caused significant page load delays, leading to user complaints and a rushed redesign that took three weeks to fix during a critical sales period.'
+          }
+        }
+      },
+      {
+        id: 'refuse-implementation',
+        text: 'Firmly decline to implement the design as specified, insisting on a simpler version for performance reasons.',
+        feedback: 'While this protects technical quality, it may damage your relationship with Maya and could be seen as inflexible or not collaborative.',
+        consequences: {
+          immediate: 'Maya feels frustrated and may view you as difficult to work with or not understanding user needs.',
+          shortTerm: 'The design-development relationship becomes strained, affecting future collaboration.',
+          longTerm: 'You may be seen as someone who blocks creative solutions, potentially limiting your involvement in design decisions.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 8 },
+          { area: 'emotional-intelligence', impact: 3 },
+          { area: 'decision-making', impact: 5 }
         ],
         enhancedConsequences: {
           severity: {
             immediate: 'negative' as const,
             shortTerm: 'negative' as const,
-            longTerm: 'neutral' as const
+            longTerm: 'negative' as const
           },
           confidence: {
             immediate: 'high' as const,
@@ -1925,368 +1060,66 @@ export const scenarios: Scenario[] = [
           },
           stakeholderImpacts: [
             {
-              stakeholder: 'Alex (Account Manager)',
-              impact: 'Feels unsupported and worried about maintaining the critical client relationship',
+              stakeholder: 'Maya (UX Designer)',
+              impact: 'Feels dismissed and may lose trust in the collaborative design-development process',
               severity: 'negative' as const
             },
             {
-              stakeholder: 'Client Stakeholders',
-              impact: 'May feel their feedback is being dismissed and question the agency\'s responsiveness',
+              stakeholder: 'Product Manager',
+              impact: 'May see you as inflexible and not focused on user experience goals',
               severity: 'negative' as const
             },
             {
-              stakeholder: 'Creative Director',
-              impact: 'May appreciate design integrity but be concerned about client satisfaction',
+              stakeholder: 'Development Team',
+              impact: 'May appreciate technical advocacy but could see approach as too confrontational',
               severity: 'neutral' as const
             }
           ],
           alternatives: {
-            immediate: 'Propose presenting both directions to show the strategic rationale',
-            shortTerm: 'Suggest a collaborative workshop with the client to explore their concerns',
-            longTerm: 'Establish clearer processes for handling creative feedback with clients'
+            immediate: 'Propose specific alternative solutions that balance performance and user experience',
+            shortTerm: 'Collaborate with Maya to find creative solutions that meet both technical and design goals',
+            longTerm: 'Establish better upfront communication about technical constraints in the design process'
           },
           mitigation: {
-            immediate: 'Acknowledge Alex\'s client relationship concerns and propose a joint approach',
-            shortTerm: 'Prepare compelling rationale for the original direction with business benefits',
-            longTerm: 'Build stronger relationships with account management to improve collaboration'
+            immediate: 'Explain the user impact of performance issues, not just technical concerns',
+            shortTerm: 'Work with Maya to prototype alternative approaches that preserve the design intent',
+            longTerm: 'Build stronger relationships by showing flexibility and creative problem-solving'
           },
           reflectionPrompts: [
-            'How can you advocate for design quality while supporting business relationships?',
-            'What would help Alex feel more confident about defending the creative direction?',
-            'How might you frame design decisions in terms of client business goals?'
+            'How can you advocate for technical quality while maintaining collaborative relationships?',
+            'What alternative solutions might achieve both performance and user experience goals?',
+            'How might your approach affect future design-development collaboration?'
           ],
           skillRecommendations: [
             {
-              skill: 'Client Communication',
-              reason: 'Learn to present creative rationale in business terms that clients understand',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Cross-Functional Collaboration',
-              reason: 'Understand how to work with account management to serve client needs',
-              link: '/library/cross-functional-collaboration'
-            }
-          ],
-          realWorldExample: {
-            title: 'Tech Startup Rebrand Conflict',
-            description: 'A designer refused to implement client feedback that would make their logo more "corporate," insisting on the modern direction.',
-            outcome: 'The client felt unheard and switched agencies. The designer maintained their creative integrity but the agency lost a significant account and the designer\'s relationship with account management suffered.'
-          }
-        }
-      },
-      {
-        id: 'compromise-approach',
-        text: 'Propose a strategic compromise: "Let\'s create concepts that address their concerns while preserving the core brand strategy. We can show them how to be more sophisticated rather than traditional."',
-        feedback: 'This approach seeks to balance client satisfaction with design integrity by finding creative solutions that address underlying concerns. It demonstrates problem-solving skills and collaboration, though it requires additional creative work.',
-        consequences: {
-          immediate: 'Alex appreciates your willingness to work with the client feedback while you maintain some creative control.',
-          shortTerm: 'You develop concepts that satisfy the client\'s concerns while preserving strategic brand elements.',
-          longTerm: 'You build a reputation as a designer who can balance creative vision with client needs, strengthening agency relationships.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 7 },
-          { area: 'emotional-intelligence', impact: 8 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'positive' as const,
-            shortTerm: 'positive' as const,
-            longTerm: 'positive' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'high' as const,
-            longTerm: 'high' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Alex (Account Manager)',
-              impact: 'Feels supported and confident about presenting solutions to the client',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Client Stakeholders',
-              impact: 'Sees their feedback being thoughtfully addressed with professional expertise',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Creative Director',
-              impact: 'Appreciates the balance of creative integrity with client service',
-              severity: 'positive' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'If compromise isn\'t possible, suggest presenting multiple options with clear rationale',
-            shortTerm: 'Propose user testing to validate which direction performs better',
-            longTerm: 'Establish better upfront alignment on brand direction and feedback processes'
-          },
-          mitigation: {
-            immediate: 'Ensure the compromise doesn\'t dilute the brand strategy beyond recognition',
-            shortTerm: 'Document the strategic rationale for the compromise decisions',
-            longTerm: 'Use this as a case study for handling similar client feedback situations'
-          },
-          reflectionPrompts: [
-            'How did finding middle ground strengthen your collaboration with Alex?',
-            'What did you learn about addressing client concerns while maintaining design quality?',
-            'How can you apply this approach to other creative-business tensions?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Creative Problem Solving',
-              reason: 'Essential for finding solutions that satisfy multiple stakeholder needs',
+              skill: 'Collaborative Problem Solving',
+              reason: 'Learn to find solutions that address multiple stakeholder concerns',
               link: '/topics/foundational-mindsets/decision-making'
             },
             {
-              skill: 'Strategic Design Thinking',
-              reason: 'Learn to balance creative vision with business constraints',
-              link: '/library/strategic-design'
+              skill: 'Influence Without Authority',
+              reason: 'Understand how to advocate for technical concerns while building relationships',
+              link: '/library/influence-without-authority'
             }
           ],
           realWorldExample: {
-            title: 'Restaurant Chain Rebrand Success',
-            description: 'A designer worked with account management to address client concerns about being "too modern" by creating sophisticated traditional elements.',
-            outcome: 'The final brand was both contemporary and approachable, exceeding client expectations. The collaborative approach led to additional projects and strengthened the agency-client relationship.'
+            title: 'Mobile App Design Conflict',
+            description: 'A mobile developer refused to implement a designer\'s complex navigation system, insisting on a simpler approach without proposing alternatives.',
+            outcome: 'The designer felt dismissed and complained to the product manager. The developer was seen as difficult to work with, and future design decisions were made without their input.'
           }
         }
       },
       {
-        id: 'implement-all-feedback',
-        text: 'Agree to implement the client\'s requests: "You\'re right about maintaining the relationship. Let me revise the concepts to match what they\'re asking for."',
-        feedback: 'This approach prioritizes the client relationship and supports Alex\'s account management goals. However, it may compromise the design quality and strategic brand direction, potentially affecting long-term brand success.',
+        id: 'collaborative-solution',
+        text: 'Propose working together to find alternative approaches that achieve the design goals while maintaining performance.',
+        feedback: 'This collaborative approach respects both design and technical concerns while building stronger cross-functional relationships and often leads to innovative solutions.',
         consequences: {
-          immediate: 'Alex is relieved and appreciates your support for the client relationship.',
-          shortTerm: 'The client is satisfied with the responsiveness, but the brand direction becomes generic and less strategic.',
-          longTerm: 'You maintain good working relationships but may compromise your creative reputation and the client\'s brand effectiveness.'
+          immediate: 'Maya feels heard and you both engage in creative problem-solving for the feature.',
+          shortTerm: 'You develop a solution that balances user experience and performance, strengthening your working relationship.',
+          longTerm: 'You build a reputation as a collaborative problem-solver who can bridge technical and design concerns effectively.'
         },
         impactAreas: [
-          { area: 'assertiveness', impact: 3 },
-          { area: 'emotional-intelligence', impact: 7 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'positive' as const,
-            shortTerm: 'neutral' as const,
-            longTerm: 'negative' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'medium' as const,
-            longTerm: 'low' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Alex (Account Manager)',
-              impact: 'Appreciates the support and feels confident about client relationship management',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Client Stakeholders',
-              impact: 'Happy with responsiveness but may end up with less effective brand strategy',
-              severity: 'neutral' as const
-            },
-            {
-              stakeholder: 'Creative Director',
-              impact: 'May be concerned about compromising design quality and strategic thinking',
-              severity: 'negative' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'Suggest implementing feedback while documenting concerns for future reference',
-            shortTerm: 'Propose measuring brand performance to validate the direction',
-            longTerm: 'Establish better processes for setting creative boundaries with clients'
-          },
-          mitigation: {
-            immediate: 'Document the strategic rationale that was compromised for future learning',
-            shortTerm: 'Suggest post-launch evaluation to measure brand effectiveness',
-            longTerm: 'Build stronger upfront alignment processes to prevent similar situations'
-          },
-          reflectionPrompts: [
-            'What are the long-term consequences of always accommodating client feedback?',
-            'How can you balance client service with professional design expertise?',
-            'What would you do differently if the brand performs poorly after launch?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Professional Boundaries',
-              reason: 'Learn when and how to advocate for design expertise',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Client Education',
-              reason: 'Develop skills for helping clients understand design strategy',
-              link: '/library/client-education'
-            }
-          ],
-          realWorldExample: {
-            title: 'Nonprofit Rebrand Compromise',
-            description: 'A designer implemented all client feedback to maintain the relationship, despite concerns about brand effectiveness.',
-            outcome: 'The client was initially happy, but the generic brand failed to differentiate them in their market. They eventually had to rebrand again, and the designer regretted not advocating for strategic design decisions.'
-          }
-        }
-      },
-      {
-        id: 'research-based-response',
-        text: 'Propose research to guide the decision: "Let\'s test both directions with their target audience. This way we can show the client which approach actually resonates with their customers."',
-        feedback: 'This approach uses data to resolve the subjective disagreement and demonstrates strategic thinking. It removes personal opinions from the decision and focuses on user outcomes, though it may require additional time and resources.',
-        consequences: {
-          immediate: 'Alex sees the value in having data to support the recommendation, and you work together to propose user testing.',
-          shortTerm: 'The client appreciates the strategic approach and agrees to user research to inform the final direction.',
-          longTerm: 'You establish a reputation for data-driven design decisions and build stronger client trust through evidence-based recommendations.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 6 },
-          { area: 'emotional-intelligence', impact: 7 },
-          { area: 'decision-making', impact: 9 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'positive' as const,
-            shortTerm: 'positive' as const,
-            longTerm: 'positive' as const
-          },
-          confidence: {
-            immediate: 'high' as const,
-            shortTerm: 'high' as const,
-            longTerm: 'high' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Alex (Account Manager)',
-              impact: 'Appreciates having data to support client conversations and reduce subjective debates',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Client Stakeholders',
-              impact: 'Values the strategic approach and feels confident in data-driven decisions',
-              severity: 'positive' as const
-            },
-            {
-              stakeholder: 'Creative Director',
-              impact: 'Sees strategic thinking and professional approach to creative decisions',
-              severity: 'positive' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'If research isn\'t feasible, suggest competitive analysis or expert review',
-            shortTerm: 'Propose A/B testing different brand elements to optimize performance',
-            longTerm: 'Establish user research as standard practice for major brand decisions'
-          },
-          mitigation: {
-            immediate: 'Ensure research methodology is appropriate for the timeline and budget',
-            shortTerm: 'Define clear success metrics and decision criteria upfront',
-            longTerm: 'Build research capabilities into the agency\'s standard creative process'
-          },
-          reflectionPrompts: [
-            'How did proposing research change the dynamic from opinion-based to evidence-based?',
-            'What did you learn about using data to resolve creative disagreements?',
-            'How can you apply this approach to other client feedback situations?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Design Research Methods',
-              reason: 'Essential for making evidence-based creative decisions',
-              link: '/library/design-research'
-            },
-            {
-              skill: 'Data-Driven Design',
-              reason: 'Learn to use research to validate and improve creative work',
-              link: '/library/data-driven-design'
-            }
-          ],
-          realWorldExample: {
-            title: 'Financial Services Brand Testing',
-            description: 'A designer and account manager used user testing to resolve disagreement about traditional vs. modern brand direction.',
-            outcome: 'Research showed that a hybrid approach performed best with the target audience. The client was impressed with the strategic process and the agency won additional projects based on their research-driven approach.'
-          }
-        }
-      },
-      {
-        id: 'involve-creative-director',
-        text: 'Escalate to the Creative Director: "This is a significant strategic decision that affects the brand direction. Should we get [Creative Director\'s name] involved to help guide the approach?"',
-        feedback: 'This approach brings in senior creative leadership to help resolve the disagreement and provide strategic guidance. However, it may be seen as an inability to resolve cross-functional conflicts independently.',
-        consequences: {
-          immediate: 'Alex may feel that you\'re escalating rather than working collaboratively to find a solution.',
-          shortTerm: 'The Creative Director provides guidance, but may question why the team couldn\'t align on the approach.',
-          longTerm: 'You may develop a reputation for escalating creative decisions rather than resolving them through collaboration.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 4 },
-          { area: 'emotional-intelligence', impact: 4 },
-          { area: 'decision-making', impact: 5 }
-        ],
-        enhancedConsequences: {
-          severity: {
-            immediate: 'neutral' as const,
-            shortTerm: 'neutral' as const,
-            longTerm: 'negative' as const
-          },
-          confidence: {
-            immediate: 'medium' as const,
-            shortTerm: 'medium' as const,
-            longTerm: 'low' as const
-          },
-          stakeholderImpacts: [
-            {
-              stakeholder: 'Alex (Account Manager)',
-              impact: 'May feel that collaborative problem-solving was abandoned in favor of escalation',
-              severity: 'negative' as const
-            },
-            {
-              stakeholder: 'Client Stakeholders',
-              impact: 'Unaware of internal process but may experience delays in response',
-              severity: 'neutral' as const
-            },
-            {
-              stakeholder: 'Creative Director',
-              impact: 'Provides guidance but may question team\'s collaborative problem-solving skills',
-              severity: 'negative' as const
-            }
-          ],
-          alternatives: {
-            immediate: 'Try collaborative approaches with Alex before involving senior leadership',
-            shortTerm: 'Use Creative Director as a resource for guidance rather than decision-making',
-            longTerm: 'Develop stronger skills for resolving creative-business tensions independently'
-          },
-          mitigation: {
-            immediate: 'Frame it as seeking strategic guidance rather than conflict resolution',
-            shortTerm: 'Work with Alex to present unified options rather than competing perspectives',
-            longTerm: 'Build stronger collaborative relationships to reduce need for escalation'
-          },
-          reflectionPrompts: [
-            'What collaborative approaches could you try before escalating to leadership?',
-            'How might frequent escalation affect your reputation as a team player?',
-            'What skills could you develop to resolve these types of disagreements independently?'
-          ],
-          skillRecommendations: [
-            {
-              skill: 'Conflict Resolution',
-              reason: 'Essential for resolving disagreements without escalation',
-              link: '/topics/foundational-mindsets/assertiveness'
-            },
-            {
-              skill: 'Cross-Functional Problem Solving',
-              reason: 'Learn to find solutions that satisfy both creative and business needs',
-              link: '/library/cross-functional-problem-solving'
-            }
-          ],
-          realWorldExample: {
-            title: 'Retail Brand Creative Escalation',
-            description: 'A designer escalated a client feedback disagreement to the Creative Director rather than working with account management.',
-            outcome: 'The Creative Director resolved the immediate issue but asked both team members to work on their collaboration skills. The designer was seen as someone who couldn\'t handle cross-functional relationships.'
-          }
-        }
-      },
-      {
-        id: 'phased-implementation',
-        text: 'Suggest a phased approach: "What if we implement some of their feedback now to show responsiveness, then propose additional refinements based on market response?"',
-        feedback: 'This approach demonstrates strategic thinking by allowing immediate client satisfaction while preserving opportunities for design optimization. It shows flexibility and long-term planning, though it requires careful management of client expectations.',
-        consequences: {
-          immediate: 'Alex appreciates the strategic approach that addresses client concerns while maintaining design opportunities.',
-          shortTerm: 'The client sees responsiveness and gets a plan for continued brand development.',
-          longTerm: 'You build a reputation for strategic thinking and client partnership while preserving design quality over time.'
-        },
-        impactAreas: [
-          { area: 'assertiveness', impact: 6 },
+          { area: 'assertiveness', impact: 7 },
           { area: 'emotional-intelligence', impact: 8 },
           { area: 'decision-making', impact: 8 }
         ],
@@ -2303,52 +1136,1475 @@ export const scenarios: Scenario[] = [
           },
           stakeholderImpacts: [
             {
-              stakeholder: 'Alex (Account Manager)',
-              impact: 'Sees strategic client relationship management with opportunities for ongoing engagement',
+              stakeholder: 'Maya (UX Designer)',
+              impact: 'Feels respected and engaged in finding solutions, learns about technical considerations',
               severity: 'positive' as const
             },
             {
-              stakeholder: 'Client Stakeholders',
-              impact: 'Feels heard and gets immediate response with plan for continued development',
+              stakeholder: 'Product Manager',
+              impact: 'Sees effective cross-functional collaboration and gets a solution that balances multiple concerns',
               severity: 'positive' as const
             },
             {
-              stakeholder: 'Creative Director',
-              impact: 'Appreciates strategic approach that balances client service with design quality',
+              stakeholder: 'Development Team',
+              impact: 'Observes good technical advocacy combined with collaborative problem-solving',
               severity: 'positive' as const
             }
           ],
           alternatives: {
-            immediate: 'If phasing isn\'t possible, suggest A/B testing different approaches',
-            shortTerm: 'Propose specific metrics to evaluate the success of each phase',
-            longTerm: 'Establish phased implementation as standard practice for major brand projects'
+            shortTerm: 'If collaboration doesn\'t yield solutions quickly, escalate to the product manager for guidance',
+            longTerm: 'Establish regular design-development collaboration sessions for future projects'
           },
           mitigation: {
-            immediate: 'Clearly define what changes are included in each phase',
-            shortTerm: 'Set specific success criteria and timeline for phase evaluation',
-            longTerm: 'Document lessons learned to improve future client feedback processes'
+            immediate: 'Set clear timeline for finding solutions given the upcoming review deadline',
+            shortTerm: 'Document the agreed-upon approach and performance expectations',
+            longTerm: 'Use this collaboration as a model for future design-development partnerships'
           },
           reflectionPrompts: [
-            'How did thinking in phases change the approach from either/or to both/and?',
-            'What did you learn about managing client expectations while preserving design quality?',
-            'How can you apply this strategic thinking to other creative-business challenges?'
+            'How can you frame technical constraints as opportunities for creative solutions?',
+            'What can you learn from Maya\'s design perspective that might inform your technical approach?',
+            'How might this collaborative approach influence future cross-functional projects?'
           ],
           skillRecommendations: [
             {
-              skill: 'Strategic Planning',
-              reason: 'Essential for balancing immediate needs with long-term goals',
+              skill: 'Design-Development Collaboration',
+              reason: 'Learn to bridge technical and design perspectives effectively',
+              link: '/topics/foundational-mindsets/decision-making'
+            },
+            {
+              skill: 'Creative Problem Solving',
+              reason: 'Understand how to find innovative solutions that satisfy multiple constraints',
+              link: '/library/creative-problem-solving'
+            }
+          ],
+          realWorldExample: {
+            title: 'SaaS Dashboard Optimization Success',
+            description: 'A frontend developer and UX designer collaborated to create a progressive loading approach that preserved complex interactions while maintaining performance.',
+            outcome: 'Their solution became a design pattern used across the product. Both gained recognition for innovative cross-functional collaboration, and their partnership became highly sought after for complex features.'
+          }
+        }
+      },
+      {
+        id: 'escalate-to-pm',
+        text: 'Bring the disagreement to the product manager to make the final decision on priorities.',
+        feedback: 'While this ensures a decision gets made, it may signal inability to resolve cross-functional conflicts independently and could damage your relationship with Maya.',
+        consequences: {
+          immediate: 'The product manager makes a decision, but both you and Maya may feel like the collaboration failed.',
+          shortTerm: 'Future design-development discussions may be more formal and less collaborative.',
+          longTerm: 'You may be seen as someone who escalates rather than solves cross-functional challenges independently.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 4 },
+          { area: 'emotional-intelligence', impact: 4 },
+          { area: 'decision-making', impact: 5 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'neutral' as const,
+            shortTerm: 'negative' as const,
+            longTerm: 'negative' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'medium' as const,
+            longTerm: 'medium' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Maya (UX Designer)',
+              impact: 'May feel that the collaborative process was abandoned and direct communication failed',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Product Manager',
+              impact: 'Has to resolve conflicts that could be handled at the team level, may question team collaboration',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Development Team',
+              impact: 'May see this as avoiding direct problem-solving and cross-functional collaboration',
+              severity: 'negative' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Try collaborative problem-solving first, then escalate if needed',
+            shortTerm: 'Use the product manager as a facilitator rather than decision-maker',
+            longTerm: 'Develop skills in cross-functional conflict resolution'
+          },
+          mitigation: {
+            immediate: 'Frame the escalation as seeking guidance rather than asking for a decision',
+            shortTerm: 'Work with Maya to present a unified set of options to the product manager',
+            longTerm: 'Focus on building direct collaboration skills for future cross-functional challenges'
+          },
+          reflectionPrompts: [
+            'What makes you feel that escalation is necessary at this stage?',
+            'How might this approach affect your future working relationship with Maya?',
+            'What collaboration skills could you develop to handle this situation more directly?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Cross-functional Conflict Resolution',
+              reason: 'Learn to resolve design-development disagreements before they require management intervention',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Peer Collaboration',
+              reason: 'Understand how to work effectively with colleagues from different disciplines',
+              link: '/library/peer-collaboration'
+            }
+          ],
+          realWorldExample: {
+            title: 'Product Team Escalation Backfire',
+            description: 'A developer immediately escalated a design disagreement to the product manager without attempting collaborative resolution.',
+            outcome: 'The product manager resolved the immediate issue but asked both team members to work on their collaboration skills. Future projects were more closely supervised, reducing their autonomy.'
+          }
+        }
+      },
+      {
+        id: 'prototype-alternatives',
+        text: 'Suggest creating quick prototypes of different approaches to test performance and user experience trade-offs.',
+        feedback: 'This data-driven approach provides objective evidence for decision-making while demonstrating technical initiative and respect for user experience research.',
+        consequences: {
+          immediate: 'Maya appreciates the user-centered approach, and you both engage in evidence-based problem-solving.',
+          shortTerm: 'You develop solutions based on actual data rather than assumptions, leading to better outcomes.',
+          longTerm: 'You build a reputation as someone who uses data and prototyping to solve complex cross-functional challenges.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 9 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Maya (UX Designer)',
+              impact: 'Appreciates the user-centered, evidence-based approach to resolving the disagreement',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Product Manager',
+              impact: 'Values the data-driven approach and gets objective evidence for decision-making',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Development Team',
+              impact: 'Sees good technical leadership and innovative problem-solving approach',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'If time is too limited for prototyping, focus on the most critical performance concerns',
+            shortTerm: 'Use prototyping results to establish design-development guidelines for future projects',
+            longTerm: 'Advocate for regular prototyping phases in the product development process'
+          },
+          mitigation: {
+            immediate: 'Set clear timeline and success criteria for the prototyping exercise',
+            shortTerm: 'Document findings to inform future design-development decisions',
+            longTerm: 'Build prototyping into the regular design-development workflow'
+          },
+          reflectionPrompts: [
+            'How can prototyping help bridge the gap between design vision and technical constraints?',
+            'What can you learn from this data-driven approach to apply to future cross-functional challenges?',
+            'How might this collaborative problem-solving approach influence team dynamics?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Rapid Prototyping',
+              reason: 'Learn to quickly test and validate design-development solutions',
+              link: '/library/rapid-prototyping'
+            },
+            {
+              skill: 'Data-Driven Decision Making',
+              reason: 'Understand how to use evidence to resolve cross-functional disagreements',
+              link: '/topics/foundational-mindsets/decision-making'
+            }
+          ],
+          realWorldExample: {
+            title: 'Fintech App Performance Optimization',
+            description: 'A developer and designer created multiple prototypes to test different interaction approaches, measuring both user engagement and performance metrics.',
+            outcome: 'They discovered a hybrid approach that achieved 95% of the design vision with minimal performance impact. Their methodology was adopted as standard practice for complex features across the company.'
+          }
+        }
+      },
+      {
+        id: 'compromise-solution',
+        text: 'Propose implementing the core interactions now and adding the complex animations in a future iteration.',
+        feedback: 'This phased approach allows for immediate progress while preserving the design vision for future enhancement, though it requires careful planning to ensure follow-through.',
+        consequences: {
+          immediate: 'Both you and Maya feel heard, and the feature can move forward for the upcoming review.',
+          shortTerm: 'The core functionality is delivered on time, with a clear plan for design enhancements.',
+          longTerm: 'You build a reputation for finding practical solutions that balance multiple concerns and timelines.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 7 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'medium' as const,
+            longTerm: 'medium' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Maya (UX Designer)',
+              impact: 'Feels that her design vision is respected and will be implemented, just in phases',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Product Manager',
+              impact: 'Gets a deliverable feature for the review with a clear roadmap for enhancements',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Development Team',
+              impact: 'Appreciates the practical approach that balances technical and design concerns',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Ensure the phased approach is formally documented and prioritized in the product roadmap',
+            shortTerm: 'Set specific success metrics for when to implement the enhanced interactions',
+            longTerm: 'Use this as a model for managing complex feature development in future projects'
+          },
+          mitigation: {
+            immediate: 'Get explicit commitment from the product manager for the future iteration',
+            shortTerm: 'Track user feedback on the core functionality to inform the enhancement phase',
+            longTerm: 'Establish clear processes for phased feature development across the team'
+          },
+          reflectionPrompts: [
+            'How can you ensure that phased approaches actually get completed rather than abandoned?',
+            'What can you learn from this compromise that applies to future cross-functional challenges?',
+            'How might this approach influence how the team handles complex features going forward?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Agile Development Practices',
+              reason: 'Learn to break complex features into deliverable phases effectively',
+              link: '/library/agile-practices'
+            },
+            {
+              skill: 'Stakeholder Management',
+              reason: 'Understand how to manage expectations and commitments across multiple stakeholders',
+              link: '/library/stakeholder-management'
+            }
+          ],
+          realWorldExample: {
+            title: 'Social Media Platform Feature Rollout',
+            description: 'A development team implemented a new content creation feature in phases, starting with core functionality and adding advanced interactions based on user feedback.',
+            outcome: 'The phased approach allowed for user testing and iteration. The final feature exceeded the original design vision and became one of the platform\'s most popular tools.'
+          }
+        }
+      }
+    ],
+    growthAreas: ['assertiveness', 'emotional-intelligence', 'decision-making'],
+    difficulty: 'foundational',
+    xpReward: 50
+  },
+  {
+    id: 'research-data-conflict',
+    title: 'Research Data Interpretation Conflict',
+    description: 'Navigate a disagreement with a product marketing manager about how to present user research findings that could impact product strategy.',
+    situation: 'You\'re a UX researcher who just completed a comprehensive user study on a new feature. The data shows that while users can complete tasks successfully, they express frustration with the complexity and would prefer a simpler approach. However, the product marketing manager, James, wants to highlight only the positive completion rates in the upcoming stakeholder presentation, arguing that "we need to show momentum to secure budget for the next quarter." He\'s concerned that presenting the user frustration data will make the feature look like a failure. The presentation to senior leadership is tomorrow, and you need to decide how to handle this conflict between research integrity and business pressure.',
+    roleContext: {
+      yourRole: 'UX Researcher',
+      teamSize: 'Product team of 8 people including PM, designers, developers',
+      timeline: 'Stakeholder presentation scheduled for tomorrow morning',
+      stakes: 'Q4 budget allocation and feature roadmap decisions',
+      pressure: 'Marketing team needs positive metrics to justify continued investment',
+      stakeholders: 'Product Marketing Manager (James), Product Manager, Senior Leadership, Design Team',
+      history: 'You and James have collaborated well on previous research presentations'
+    },
+    choices: [
+      {
+        id: 'present-full-data',
+        text: 'Insist on presenting the complete research findings, including both positive metrics and user frustration data.',
+        feedback: 'This approach maintains research integrity and provides stakeholders with complete information for decision-making, though it may create tension with marketing goals.',
+        consequences: {
+          immediate: 'James feels frustrated that you\'re not supporting the business case, creating immediate tension.',
+          shortTerm: 'Leadership gets complete information but may question the feature\'s viability, potentially affecting budget.',
+          longTerm: 'You build a reputation for research integrity, but may be seen as not understanding business needs.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 8 },
+          { area: 'emotional-intelligence', impact: 4 },
+          { area: 'decision-making', impact: 7 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'negative' as const,
+            shortTerm: 'neutral' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'medium' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'James (Product Marketing Manager)',
+              impact: 'Feels unsupported and may view you as not understanding business priorities',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Senior Leadership',
+              impact: 'Gets complete information for decision-making but may question feature investment',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'Product Team',
+              impact: 'Appreciates research integrity and complete user perspective',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Frame the user frustration as opportunities for improvement rather than failures',
+            shortTerm: 'Propose solutions alongside the problems to maintain forward momentum',
+            longTerm: 'Work with James to develop better frameworks for presenting complex research findings'
+          },
+          mitigation: {
+            immediate: 'Emphasize how addressing user concerns will lead to better long-term success',
+            shortTerm: 'Provide specific recommendations for improving the user experience',
+            longTerm: 'Build stronger relationships by showing how research supports business goals'
+          },
+          reflectionPrompts: [
+            'How can you present challenging research findings in a way that supports business goals?',
+            'What\'s the long-term impact on user experience if frustration data is ignored?',
+            'How might you better collaborate with marketing to frame research insights?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Business Communication',
+              reason: 'Learn to present research findings in business-relevant terms',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Stakeholder Influence',
+              reason: 'Understand how to advocate for user needs while supporting business objectives',
+              link: '/library/stakeholder-influence'
+            }
+          ],
+          realWorldExample: {
+            title: 'E-commerce Checkout Research Conflict',
+            description: 'A UX researcher insisted on presenting user frustration data about a new checkout flow despite marketing pressure to focus only on conversion rates.',
+            outcome: 'Leadership initially questioned the feature but ultimately invested in improvements. The enhanced checkout flow increased both conversion and satisfaction, validating the complete research approach.'
+          }
+        }
+      },
+      {
+        id: 'compromise-presentation',
+        text: 'Work with James to find a balanced way to present both the positive metrics and improvement opportunities.',
+        feedback: 'This collaborative approach respects both research integrity and business needs, potentially leading to better stakeholder understanding and decision-making.',
+        consequences: {
+          immediate: 'James feels heard and you both work together to craft a compelling narrative that includes all data.',
+          shortTerm: 'Leadership gets complete information presented in a business-friendly way, supporting informed decisions.',
+          longTerm: 'You build a reputation for being both rigorous and business-savvy, strengthening cross-functional relationships.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 7 },
+          { area: 'emotional-intelligence', impact: 8 },
+          { area: 'decision-making', impact: 8 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'James (Product Marketing Manager)',
+              impact: 'Feels supported and appreciates the collaborative approach to business communication',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Senior Leadership',
+              impact: 'Gets complete, well-framed information that supports strategic decision-making',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Product Team',
+              impact: 'Sees effective cross-functional collaboration and research-informed product strategy',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            shortTerm: 'If collaboration doesn\'t work quickly, escalate to the product manager for guidance',
+            longTerm: 'Establish regular research-marketing collaboration sessions for future projects'
+          },
+          mitigation: {
+            immediate: 'Set clear boundaries about what research findings must be included',
+            shortTerm: 'Document the agreed-upon presentation approach for future reference',
+            longTerm: 'Use this collaboration as a model for future research-marketing partnerships'
+          },
+          reflectionPrompts: [
+            'How can you frame research findings to support both user advocacy and business goals?',
+            'What can you learn from James\'s marketing perspective that improves your research communication?',
+            'How might this collaborative approach influence future research presentations?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Cross-functional Collaboration',
+              reason: 'Learn to bridge research and marketing perspectives effectively',
+              link: '/topics/foundational-mindsets/decision-making'
+            },
+            {
+              skill: 'Strategic Communication',
+              reason: 'Understand how to present research insights in business-strategic terms',
+              link: '/library/strategic-communication'
+            }
+          ],
+          realWorldExample: {
+            title: 'SaaS Platform User Research Success',
+            description: 'A UX researcher and marketing manager collaborated to present user feedback as "optimization opportunities" with clear ROI projections.',
+            outcome: 'Leadership approved both the current feature and additional budget for user experience improvements. The collaborative approach became the standard for research presentations across the company.'
+          }
+        }
+      },
+      {
+        id: 'defer-to-marketing',
+        text: 'Agree to present only the positive metrics as James suggests, focusing on business momentum.',
+        feedback: 'While this maintains team harmony and supports immediate business goals, it compromises research integrity and may lead to poor long-term product decisions.',
+        consequences: {
+          immediate: 'James feels supported and the presentation aligns with marketing objectives.',
+          shortTerm: 'Leadership may approve continued investment based on incomplete information.',
+          longTerm: 'User frustration issues remain unaddressed, potentially leading to bigger problems and loss of research credibility.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 3 },
+          { area: 'emotional-intelligence', impact: 5 },
+          { area: 'decision-making', impact: 4 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'neutral' as const,
+            shortTerm: 'negative' as const,
+            longTerm: 'negative' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'medium' as const,
+            longTerm: 'low' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'James (Product Marketing Manager)',
+              impact: 'Feels supported and gets the business-focused presentation he wanted',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Senior Leadership',
+              impact: 'Makes decisions based on incomplete information, potentially leading to poor outcomes',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Product Team',
+              impact: 'May lose trust in research integrity and user advocacy',
+              severity: 'negative' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'At minimum, document the complete findings for future reference',
+            shortTerm: 'Find other ways to communicate user concerns to the product team',
+            longTerm: 'Develop better frameworks for balancing research integrity with business needs'
+          },
+          mitigation: {
+            immediate: 'Ensure the complete research findings are documented and accessible',
+            shortTerm: 'Schedule follow-up sessions to address user experience concerns',
+            longTerm: 'Work to establish clearer guidelines for research presentation standards'
+          },
+          reflectionPrompts: [
+            'What are the long-term implications of compromising research integrity?',
+            'How might this decision affect your credibility as a user advocate?',
+            'What would you advise another researcher in this same situation?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Professional Assertiveness',
+              reason: 'Learn to advocate for research standards while maintaining business relationships',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Research Ethics',
+              reason: 'Understand how to maintain research integrity in business environments',
+              link: '/library/research-ethics'
+            }
+          ],
+          realWorldExample: {
+            title: 'Mobile App Research Compromise',
+            description: 'A researcher agreed to present only positive usability metrics, hiding significant user frustration with a new navigation system.',
+            outcome: 'The feature launched with poor user reviews and high support tickets. The researcher lost credibility when the hidden issues became apparent, and the feature required a costly redesign.'
+          }
+        }
+      },
+      {
+        id: 'escalate-to-pm',
+        text: 'Bring the disagreement to the product manager to decide on the presentation approach.',
+        feedback: 'While this ensures a decision gets made, it may signal inability to resolve cross-functional conflicts and could damage your relationship with James.',
+        consequences: {
+          immediate: 'The product manager makes a decision, but both you and James may feel the collaboration failed.',
+          shortTerm: 'Future research-marketing discussions may be more formal and less collaborative.',
+          longTerm: 'You may be seen as someone who escalates rather than solves cross-functional challenges independently.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 4 },
+          { area: 'emotional-intelligence', impact: 4 },
+          { area: 'decision-making', impact: 5 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'neutral' as const,
+            shortTerm: 'negative' as const,
+            longTerm: 'negative' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'medium' as const,
+            longTerm: 'medium' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'James (Product Marketing Manager)',
+              impact: 'May feel that the collaborative process was abandoned and direct communication failed',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Product Manager',
+              impact: 'Has to resolve conflicts that could be handled at the team level, may question team collaboration',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Product Team',
+              impact: 'May see this as avoiding direct problem-solving and cross-functional collaboration',
+              severity: 'negative' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Try collaborative problem-solving first, then escalate if needed',
+            shortTerm: 'Use the product manager as a facilitator rather than decision-maker',
+            longTerm: 'Develop skills in cross-functional conflict resolution'
+          },
+          mitigation: {
+            immediate: 'Frame the escalation as seeking guidance rather than asking for a decision',
+            shortTerm: 'Work with James to present unified options to the product manager',
+            longTerm: 'Focus on building direct collaboration skills for future cross-functional challenges'
+          },
+          reflectionPrompts: [
+            'What makes you feel that escalation is necessary at this stage?',
+            'How might this approach affect your future working relationship with James?',
+            'What collaboration skills could you develop to handle this situation more directly?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Cross-functional Conflict Resolution',
+              reason: 'Learn to resolve research-marketing disagreements before they require management intervention',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Peer Collaboration',
+              reason: 'Understand how to work effectively with colleagues from different disciplines',
+              link: '/library/peer-collaboration'
+            }
+          ],
+          realWorldExample: {
+            title: 'Product Team Research Escalation',
+            description: 'A researcher immediately escalated a presentation disagreement to the product manager without attempting collaborative resolution.',
+            outcome: 'The product manager resolved the immediate issue but asked both team members to work on their collaboration skills. Future research presentations required PM approval, reducing team autonomy.'
+          }
+        }
+      },
+      {
+        id: 'reframe-findings',
+        text: 'Propose reframing the user frustration data as "optimization opportunities" with clear improvement recommendations.',
+        feedback: 'This approach maintains research integrity while presenting findings in a business-positive way, potentially satisfying both research standards and marketing needs.',
+        consequences: {
+          immediate: 'James appreciates the business-friendly framing while you maintain research completeness.',
+          shortTerm: 'Leadership gets complete information presented as opportunities rather than problems.',
+          longTerm: 'You build a reputation for translating research insights into actionable business recommendations.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 8 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'James (Product Marketing Manager)',
+              impact: 'Appreciates the business-friendly approach while getting complete research insights',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Senior Leadership',
+              impact: 'Gets complete information framed as strategic opportunities for improvement',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Product Team',
+              impact: 'Sees research insights translated into actionable product strategy',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            shortTerm: 'Include specific ROI projections for the optimization opportunities',
+            longTerm: 'Develop standard frameworks for presenting research findings in business terms'
+          },
+          mitigation: {
+            immediate: 'Ensure the reframing doesn\'t minimize the importance of user concerns',
+            shortTerm: 'Follow up with specific timelines and resources needed for improvements',
+            longTerm: 'Use this approach as a model for future research-business communication'
+          },
+          reflectionPrompts: [
+            'How can you consistently frame research findings as business opportunities?',
+            'What business language resonates most effectively with different stakeholders?',
+            'How might this reframing approach influence how research is valued in the organization?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Business Storytelling',
+              reason: 'Learn to present research insights in compelling business narratives',
+              link: '/library/business-storytelling'
+            },
+            {
+              skill: 'Strategic Research Communication',
+              reason: 'Understand how to translate user insights into business strategy',
+              link: '/topics/foundational-mindsets/assertiveness'
+            }
+          ],
+          realWorldExample: {
+            title: 'Healthcare App Research Reframing',
+            description: 'A UX researcher reframed user confusion about a medical app as "engagement optimization opportunities" with projected user retention improvements.',
+            outcome: 'Leadership approved additional UX investment based on the clear business case. The improved app saw 40% better user retention, validating the research-driven approach and establishing the researcher as a strategic partner.'
+          }
+        }
+      }
+    ],
+    growthAreas: ['assertiveness', 'emotional-intelligence', 'decision-making'],
+    difficulty: 'foundational',
+    xpReward: 50
+  },
+  {
+    id: 'client-feedback-disagreement',
+    title: 'Client Feedback Implementation Disagreement',
+    description: 'Navigate a conflict with an account manager about implementing client feedback that you believe will compromise the creative integrity of a design project.',
+    situation: 'You\'re a graphic designer working on a rebranding project for a major client. After presenting the initial concepts, the client provided feedback requesting significant changes that you believe will weaken the design\'s impact and effectiveness. The account manager, Lisa, is pushing for immediate implementation of all client requests, saying "the client is always right, and we need to keep them happy for future business." However, you feel strongly that some of the requested changes will result in a generic, ineffective design that won\'t achieve the client\'s stated goals. The revised presentation is due in three days, and you need to find a path forward.',
+    roleContext: {
+      yourRole: 'Senior Graphic Designer',
+      teamSize: 'Creative team of 5 people plus account management',
+      timeline: 'Revised presentation due in 3 days, final deliverables in 2 weeks',
+      stakes: 'Major rebranding project worth $150K, potential for ongoing relationship',
+      pressure: 'Account manager concerned about client satisfaction and future business',
+      stakeholders: 'Account Manager (Lisa), Client, Creative Director, Design Team',
+      history: 'You and Lisa have worked successfully on previous client projects'
+    },
+    choices: [
+      {
+        id: 'implement-all-feedback',
+        text: 'Implement all client feedback as requested to maintain the relationship and avoid conflict.',
+        feedback: 'While this maintains client satisfaction in the short term, it may result in an ineffective design that doesn\'t achieve the client\'s business goals and could damage your professional reputation.',
+        consequences: {
+          immediate: 'Lisa feels supported and the client relationship remains smooth.',
+          shortTerm: 'The design may not perform well in market testing or real-world application.',
+          longTerm: 'Your portfolio includes work that doesn\'t represent your best capabilities, and the client may blame you for poor results.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 2 },
+          { area: 'emotional-intelligence', impact: 6 },
+          { area: 'decision-making', impact: 3 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'neutral' as const,
+            shortTerm: 'negative' as const,
+            longTerm: 'negative' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'medium' as const,
+            longTerm: 'low' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Lisa (Account Manager)',
+              impact: 'Feels supported and maintains smooth client relationship management',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Client',
+              impact: 'Gets what they asked for but may not achieve their business objectives',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Creative Team',
+              impact: 'May lose respect for your creative advocacy and professional standards',
+              severity: 'negative' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'At minimum, document your concerns about the design effectiveness',
+            shortTerm: 'Propose A/B testing the original vs. revised concepts',
+            longTerm: 'Develop better client education processes about design strategy'
+          },
+          mitigation: {
+            immediate: 'Ensure the client understands the potential impact of their requested changes',
+            shortTerm: 'Include performance metrics and success measures in the final presentation',
+            longTerm: 'Build stronger relationships with clients to better influence design decisions'
+          },
+          reflectionPrompts: [
+            'What are the long-term implications of compromising creative standards?',
+            'How might this decision affect your professional reputation and portfolio?',
+            'What would you advise another designer in this same situation?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Creative Advocacy',
+              reason: 'Learn to advocate for design decisions while maintaining client relationships',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Client Education',
+              reason: 'Understand how to help clients make informed design decisions',
+              link: '/library/client-education'
+            }
+          ],
+          realWorldExample: {
+            title: 'Restaurant Rebranding Compromise',
+            description: 'A designer implemented all client feedback for a restaurant rebrand, despite concerns that the changes would make the brand forgettable.',
+            outcome: 'The rebrand failed to differentiate the restaurant in a competitive market. Sales declined, and the client blamed the design team. The designer\'s reputation suffered, and the agency lost the account.'
+          }
+        }
+      },
+      {
+        id: 'refuse-changes',
+        text: 'Firmly refuse to implement the changes, insisting that your original design is the best solution.',
+        feedback: 'While this protects creative integrity, it may damage client relationships and could be seen as inflexible or not understanding business needs.',
+        consequences: {
+          immediate: 'Lisa feels frustrated and the client may view the agency as difficult to work with.',
+          shortTerm: 'The client relationship becomes strained, potentially affecting project completion and payment.',
+          longTerm: 'You may be seen as difficult to work with, limiting your involvement in client-facing projects.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 8 },
+          { area: 'emotional-intelligence', impact: 3 },
+          { area: 'decision-making', impact: 4 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'negative' as const,
+            shortTerm: 'negative' as const,
+            longTerm: 'negative' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'medium' as const,
+            longTerm: 'medium' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Lisa (Account Manager)',
+              impact: 'Feels unsupported and may struggle to maintain client relationship',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Client',
+              impact: 'May feel dismissed and question the agency\'s collaborative approach',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Creative Team',
+              impact: 'May appreciate creative advocacy but see approach as too confrontational',
+              severity: 'neutral' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Propose alternative solutions that address client concerns while maintaining design integrity',
+            shortTerm: 'Collaborate with Lisa to find creative solutions that satisfy both design and business goals',
+            longTerm: 'Establish better upfront communication about design strategy and decision-making'
+          },
+          mitigation: {
+            immediate: 'Explain the business rationale behind design decisions, not just creative preferences',
+            shortTerm: 'Work with Lisa to present alternative approaches that meet client objectives',
+            longTerm: 'Build stronger relationships by showing flexibility and collaborative problem-solving'
+          },
+          reflectionPrompts: [
+            'How can you advocate for design quality while maintaining collaborative relationships?',
+            'What alternative solutions might achieve both creative and business goals?',
+            'How might your approach affect future client-designer collaboration?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Collaborative Problem Solving',
+              reason: 'Learn to find solutions that address multiple stakeholder concerns',
               link: '/topics/foundational-mindsets/decision-making'
             },
             {
               skill: 'Client Relationship Management',
-              reason: 'Learn to manage expectations while delivering strategic value',
-              link: '/library/client-relationship-management'
+              reason: 'Understand how to advocate for design while building client trust',
+              link: '/library/client-relationships'
             }
           ],
           realWorldExample: {
-            title: 'Healthcare Brand Phased Launch',
-            description: 'A designer and account manager used phased implementation to address client concerns while preserving strategic brand direction.',
-            outcome: 'The initial phase satisfied client concerns, and market response data supported the original strategic direction. The client appreciated the thoughtful approach and extended the agency relationship.'
+            title: 'Tech Startup Logo Conflict',
+            description: 'A designer refused to implement client feedback on a logo design, insisting their original concept was superior without proposing alternatives.',
+            outcome: 'The client felt dismissed and terminated the project. The agency lost the account and the designer was removed from client-facing work. The designer\'s reputation for collaboration suffered significantly.'
+          }
+        }
+      },
+      {
+        id: 'collaborative-solution',
+        text: 'Work with Lisa to understand the client\'s underlying concerns and propose alternative solutions that address their needs while maintaining design integrity.',
+        feedback: 'This collaborative approach respects both creative standards and client relationships, often leading to innovative solutions that satisfy all stakeholders.',
+        consequences: {
+          immediate: 'Lisa feels supported and you both engage in creative problem-solving for the client.',
+          shortTerm: 'You develop solutions that address client concerns while maintaining design effectiveness.',
+          longTerm: 'You build a reputation as a collaborative professional who can balance creative and business needs effectively.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 7 },
+          { area: 'emotional-intelligence', impact: 8 },
+          { area: 'decision-making', impact: 8 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Lisa (Account Manager)',
+              impact: 'Feels supported and appreciates the collaborative approach to client challenges',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Client',
+              impact: 'Feels heard and gets solutions that address their concerns while achieving business goals',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Creative Team',
+              impact: 'Sees effective advocacy for design quality combined with collaborative problem-solving',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            shortTerm: 'If collaboration doesn\'t yield solutions quickly, escalate to the creative director for guidance',
+            longTerm: 'Establish regular client-creative collaboration sessions for future projects'
+          },
+          mitigation: {
+            immediate: 'Set clear timeline for finding solutions given the upcoming presentation deadline',
+            shortTerm: 'Document the agreed-upon approach and client expectations',
+            longTerm: 'Use this collaboration as a model for future client-creative partnerships'
+          },
+          reflectionPrompts: [
+            'How can you frame design decisions in terms of client business objectives?',
+            'What can you learn from Lisa\'s client perspective that might inform your creative approach?',
+            'How might this collaborative approach influence future client projects?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Client-Creative Collaboration',
+              reason: 'Learn to bridge creative and business perspectives effectively',
+              link: '/topics/foundational-mindsets/decision-making'
+            },
+            {
+              skill: 'Strategic Design Communication',
+              reason: 'Understand how to present creative decisions in business terms',
+              link: '/library/strategic-design'
+            }
+          ],
+          realWorldExample: {
+            title: 'Healthcare Brand Redesign Success',
+            description: 'A designer and account manager collaborated to understand why a healthcare client wanted "more corporate" branding, discovering concerns about credibility.',
+            outcome: 'They developed a solution that maintained creative impact while addressing credibility concerns. The rebrand increased patient trust and became a case study for the agency\'s strategic design approach.'
+          }
+        }
+      },
+      {
+        id: 'present-alternatives',
+        text: 'Create multiple design variations that address the client\'s concerns while preserving different levels of creative integrity.',
+        feedback: 'This approach provides the client with choices while demonstrating the impact of different design decisions, often leading to more informed client decisions.',
+        consequences: {
+          immediate: 'Lisa appreciates having options to present, and the client feels they have control over the decision.',
+          shortTerm: 'The client can see the trade-offs between different approaches and make more informed choices.',
+          longTerm: 'You build a reputation for thorough, client-focused design work while maintaining creative standards.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 8 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Lisa (Account Manager)',
+              impact: 'Appreciates having multiple options to present and feels supported in client management',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Client',
+              impact: 'Feels empowered to make informed decisions and sees the agency as thorough and professional',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Creative Team',
+              impact: 'Sees strategic approach to client work that maintains creative standards',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'If time is limited, focus on the most critical design elements for variation',
+            shortTerm: 'Use client feedback on alternatives to refine the final design direction',
+            longTerm: 'Establish this multi-option approach as standard practice for client presentations'
+          },
+          mitigation: {
+            immediate: 'Clearly explain the strategic rationale behind each design variation',
+            shortTerm: 'Guide the client toward the most effective option through strategic presentation',
+            longTerm: 'Use this approach to build stronger client relationships and design advocacy skills'
+          },
+          reflectionPrompts: [
+            'How can presenting options help clients understand the impact of design decisions?',
+            'What can you learn from client reactions to different design approaches?',
+            'How might this approach influence how you handle future client feedback?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Strategic Design Presentation',
+              reason: 'Learn to present design options in ways that guide client decision-making',
+              link: '/library/design-presentation'
+            },
+            {
+              skill: 'Client Design Education',
+              reason: 'Understand how to help clients make informed design decisions',
+              link: '/topics/foundational-mindsets/assertiveness'
+            }
+          ],
+          realWorldExample: {
+            title: 'Retail Chain Rebranding Options',
+            description: 'A designer created three logo variations showing different levels of modernization, helping a traditional retail client understand the impact of design choices.',
+            outcome: 'The client chose a middle option that modernized their brand while maintaining heritage elements. Sales increased 25% after the rebrand, and the agency won additional projects based on their strategic approach.'
+          }
+        }
+      },
+      {
+        id: 'educate-client',
+        text: 'Propose a client meeting to educate them about design strategy and the reasoning behind your original recommendations.',
+        feedback: 'This approach builds client understanding and trust while positioning you as a strategic partner, though it requires strong communication skills and client openness.',
+        consequences: {
+          immediate: 'Lisa may be concerned about challenging the client, but appreciates your strategic thinking.',
+          shortTerm: 'The client gains better understanding of design decisions and may become more collaborative.',
+          longTerm: 'You establish yourself as a strategic design consultant rather than just an implementer.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 7 },
+          { area: 'emotional-intelligence', impact: 6 },
+          { area: 'decision-making', impact: 7 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'neutral' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'medium' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Lisa (Account Manager)',
+              impact: 'May initially worry about client reaction but appreciates the strategic approach',
+              severity: 'neutral' as const
+            },
+            {
+              stakeholder: 'Client',
+              impact: 'Gains valuable design education and may become a more strategic partner',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Creative Team',
+              impact: 'Sees professional advocacy for design strategy and client education',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Start with a collaborative discussion rather than formal education session',
+            shortTerm: 'Include case studies and examples to support design recommendations',
+            longTerm: 'Establish regular strategic design consultations as part of client relationships'
+          },
+          mitigation: {
+            immediate: 'Frame the meeting as collaborative exploration rather than client education',
+            shortTerm: 'Include Lisa in the strategic discussion to maintain account management relationships',
+            longTerm: 'Use successful outcomes to build credibility for future strategic design discussions'
+          },
+          reflectionPrompts: [
+            'How can you educate clients about design strategy without appearing condescending?',
+            'What examples and case studies would most effectively support your design recommendations?',
+            'How might client education change the nature of your professional relationships?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Strategic Design Consulting',
+              reason: 'Learn to position yourself as a strategic partner rather than just a service provider',
+              link: '/library/design-consulting'
+            },
+            {
+              skill: 'Client Presentation Skills',
+              reason: 'Understand how to effectively communicate design strategy to business stakeholders',
+              link: '/topics/foundational-mindsets/assertiveness'
+            }
+          ],
+          realWorldExample: {
+            title: 'Financial Services Brand Strategy Session',
+            description: 'A designer proposed a strategy session to help a financial client understand how their brand positioning affected customer trust and acquisition.',
+            outcome: 'The client became highly engaged in the strategic process and approved a more ambitious rebrand. The relationship evolved into ongoing strategic consulting, and the designer was promoted to creative strategist.'
+          }
+        }
+      }
+    ],
+    growthAreas: ['assertiveness', 'emotional-intelligence', 'decision-making'],
+    difficulty: 'foundational',
+    xpReward: 50
+  },
+  {
+    id: 'project-timeline-conflict',
+    title: 'Project Timeline and Quality Standards Conflict',
+    description: 'Navigate a disagreement with a project coordinator about rushing a deliverable that could compromise quality standards.',
+    situation: 'You\'re a data analyst working on a quarterly market research report that informs major strategic decisions. The project coordinator, Marcus, just informed you that the deadline has been moved up by one week because "leadership needs the insights for an unexpected board meeting." However, you\'re still waiting for critical data from two key sources, and rushing the analysis could lead to incomplete or inaccurate conclusions. Marcus insists that "something is better than nothing" and that you can "update it later if needed." You know that once leadership sees preliminary data, it often becomes the basis for decisions regardless of later updates.',
+    roleContext: {
+      yourRole: 'Senior Data Analyst',
+      teamSize: 'Analytics team of 4 people plus project coordination',
+      timeline: 'Original deadline in 2 weeks, now moved to 1 week',
+      stakes: 'Quarterly strategic decisions and board presentation',
+      pressure: 'Unexpected board meeting driving accelerated timeline',
+      stakeholders: 'Project Coordinator (Marcus), Leadership Team, Board Members, Analytics Team',
+      history: 'You and Marcus have worked together on multiple successful projects'
+    },
+    choices: [
+      {
+        id: 'rush-delivery',
+        text: 'Agree to deliver the report with available data, clearly noting limitations and missing information.',
+        feedback: 'While this meets the immediate timeline need, incomplete analysis could lead to poor strategic decisions and may damage your reputation for analytical rigor.',
+        consequences: {
+          immediate: 'Marcus feels supported and leadership gets something for their board meeting.',
+          shortTerm: 'Leadership may make decisions based on incomplete data, potentially leading to suboptimal outcomes.',
+          longTerm: 'Your reputation for analytical quality may suffer, and you may be seen as someone who compromises standards under pressure.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 3 },
+          { area: 'emotional-intelligence', impact: 6 },
+          { area: 'decision-making', impact: 4 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'neutral' as const,
+            shortTerm: 'negative' as const,
+            longTerm: 'negative' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'medium' as const,
+            longTerm: 'low' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Marcus (Project Coordinator)',
+              impact: 'Feels supported and can deliver on the accelerated timeline commitment',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Leadership Team',
+              impact: 'Gets preliminary data but may make decisions based on incomplete analysis',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Analytics Team',
+              impact: 'May lose confidence in analytical standards and quality advocacy',
+              severity: 'negative' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Provide a preliminary analysis with clear confidence intervals and data gaps',
+            shortTerm: 'Propose a phased delivery with initial insights now and complete analysis later',
+            longTerm: 'Establish better processes for handling urgent analytical requests'
+          },
+          mitigation: {
+            immediate: 'Include prominent disclaimers about data limitations and confidence levels',
+            shortTerm: 'Schedule follow-up presentations when complete data becomes available',
+            longTerm: 'Work with leadership to establish realistic timelines for quality analysis'
+          },
+          reflectionPrompts: [
+            'What are the long-term implications of compromising analytical standards?',
+            'How might incomplete analysis affect strategic decision-making quality?',
+            'What would you advise another analyst in this same situation?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Analytical Integrity',
+              reason: 'Learn to maintain data quality standards while meeting business needs',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Stakeholder Communication',
+              reason: 'Understand how to communicate data limitations and confidence levels effectively',
+              link: '/library/data-communication'
+            }
+          ],
+          realWorldExample: {
+            title: 'Marketing Campaign Analysis Rush',
+            description: 'A data analyst delivered incomplete campaign performance analysis for an urgent leadership meeting, clearly noting data limitations.',
+            outcome: 'Leadership made budget decisions based on the preliminary data. When complete analysis showed different trends, significant budget adjustments were needed, and the analyst\'s credibility was questioned.'
+          }
+        }
+      },
+      {
+        id: 'refuse-timeline',
+        text: 'Firmly refuse to compromise the analysis timeline, insisting that quality data requires the full two weeks.',
+        feedback: 'While this protects analytical integrity, it may be seen as inflexible and not understanding urgent business needs.',
+        consequences: {
+          immediate: 'Marcus feels frustrated and may view you as not understanding business priorities.',
+          shortTerm: 'Leadership may be disappointed by the lack of data for their board meeting.',
+          longTerm: 'You may be seen as difficult to work with under pressure, potentially limiting your involvement in urgent projects.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 8 },
+          { area: 'emotional-intelligence', impact: 3 },
+          { area: 'decision-making', impact: 5 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'negative' as const,
+            shortTerm: 'negative' as const,
+            longTerm: 'negative' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'medium' as const,
+            longTerm: 'medium' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Marcus (Project Coordinator)',
+              impact: 'Feels unsupported and may struggle to meet leadership commitments',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Leadership Team',
+              impact: 'May feel the analytics team is not responsive to urgent business needs',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Analytics Team',
+              impact: 'May appreciate quality advocacy but see approach as too inflexible',
+              severity: 'neutral' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Propose alternative solutions that provide some insights within the timeline',
+            shortTerm: 'Collaborate with Marcus to find creative approaches that balance quality and urgency',
+            longTerm: 'Establish better upfront communication about analytical requirements and timelines'
+          },
+          mitigation: {
+            immediate: 'Explain the business risks of incomplete analysis, not just analytical concerns',
+            shortTerm: 'Work with Marcus to present alternative approaches to leadership',
+            longTerm: 'Build stronger relationships by showing flexibility and creative problem-solving'
+          },
+          reflectionPrompts: [
+            'How can you advocate for analytical quality while maintaining collaborative relationships?',
+            'What alternative solutions might provide value within the accelerated timeline?',
+            'How might your approach affect future urgent analytical requests?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Collaborative Problem Solving',
+              reason: 'Learn to find solutions that address multiple stakeholder concerns',
+              link: '/topics/foundational-mindsets/decision-making'
+            },
+            {
+              skill: 'Business Partnership',
+              reason: 'Understand how to balance analytical standards with business urgency',
+              link: '/library/business-partnership'
+            }
+          ],
+          realWorldExample: {
+            title: 'Financial Analysis Deadline Conflict',
+            description: 'A financial analyst refused to accelerate a quarterly analysis for an urgent investor meeting, insisting on the full timeline without proposing alternatives.',
+            outcome: 'Leadership felt unsupported during a critical business moment. The analyst was excluded from future urgent projects, and their influence on strategic decisions diminished significantly.'
+          }
+        }
+      },
+      {
+        id: 'collaborative-solution',
+        text: 'Work with Marcus to identify what specific insights leadership needs most urgently and propose a phased delivery approach.',
+        feedback: 'This collaborative approach respects both analytical standards and business urgency, often leading to solutions that satisfy all stakeholders.',
+        consequences: {
+          immediate: 'Marcus feels supported and you both engage in creative problem-solving for leadership needs.',
+          shortTerm: 'Leadership gets the most critical insights on time while maintaining analytical quality.',
+          longTerm: 'You build a reputation as a collaborative professional who can balance analytical rigor with business needs.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 7 },
+          { area: 'emotional-intelligence', impact: 8 },
+          { area: 'decision-making', impact: 8 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Marcus (Project Coordinator)',
+              impact: 'Feels supported and appreciates the collaborative approach to urgent business needs',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Leadership Team',
+              impact: 'Gets critical insights on time while understanding the analytical process and limitations',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Analytics Team',
+              impact: 'Sees effective advocacy for analytical quality combined with business responsiveness',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            shortTerm: 'If collaboration doesn\'t yield solutions quickly, escalate to the analytics manager for guidance',
+            longTerm: 'Establish regular communication processes for handling urgent analytical requests'
+          },
+          mitigation: {
+            immediate: 'Set clear timeline and quality expectations for the phased delivery approach',
+            shortTerm: 'Document the agreed-upon approach and follow-up schedule',
+            longTerm: 'Use this collaboration as a model for future urgent project partnerships'
+          },
+          reflectionPrompts: [
+            'How can you frame analytical requirements in terms of business decision quality?',
+            'What can you learn from Marcus\'s project perspective that might inform your analytical approach?',
+            'How might this collaborative approach influence future urgent analytical requests?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Business-Analytics Collaboration',
+              reason: 'Learn to bridge analytical and business perspectives effectively',
+              link: '/topics/foundational-mindsets/decision-making'
+            },
+            {
+              skill: 'Strategic Data Communication',
+              reason: 'Understand how to present analytical insights in business-urgent contexts',
+              link: '/library/strategic-analytics'
+            }
+          ],
+          realWorldExample: {
+            title: 'Product Launch Analytics Success',
+            description: 'A data analyst and project manager collaborated to identify the most critical metrics for an urgent product launch decision, delivering phased insights.',
+            outcome: 'Leadership got key insights for their launch decision on time, and the complete analysis later validated their choice. The collaborative approach became the standard for urgent analytical requests across the company.'
+          }
+        }
+      },
+      {
+        id: 'escalate-decision',
+        text: 'Bring the timeline conflict to your analytics manager to make the final decision on quality vs. speed trade-offs.',
+        feedback: 'While this ensures a decision gets made, it may signal inability to resolve project conflicts independently and could damage your relationship with Marcus.',
+        consequences: {
+          immediate: 'The analytics manager makes a decision, but both you and Marcus may feel the collaboration failed.',
+          shortTerm: 'Future project discussions may be more formal and less collaborative.',
+          longTerm: 'You may be seen as someone who escalates rather than solves project challenges independently.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 4 },
+          { area: 'emotional-intelligence', impact: 4 },
+          { area: 'decision-making', impact: 5 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'neutral' as const,
+            shortTerm: 'negative' as const,
+            longTerm: 'negative' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'medium' as const,
+            longTerm: 'medium' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Marcus (Project Coordinator)',
+              impact: 'May feel that the collaborative process was abandoned and direct communication failed',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Analytics Manager',
+              impact: 'Has to resolve conflicts that could be handled at the team level, may question team collaboration',
+              severity: 'negative' as const
+            },
+            {
+              stakeholder: 'Analytics Team',
+              impact: 'May see this as avoiding direct problem-solving and project collaboration',
+              severity: 'negative' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'Try collaborative problem-solving first, then escalate if needed',
+            shortTerm: 'Use the analytics manager as a facilitator rather than decision-maker',
+            longTerm: 'Develop skills in project conflict resolution'
+          },
+          mitigation: {
+            immediate: 'Frame the escalation as seeking guidance rather than asking for a decision',
+            shortTerm: 'Work with Marcus to present unified options to the analytics manager',
+            longTerm: 'Focus on building direct collaboration skills for future project challenges'
+          },
+          reflectionPrompts: [
+            'What makes you feel that escalation is necessary at this stage?',
+            'How might this approach affect your future working relationship with Marcus?',
+            'What collaboration skills could you develop to handle this situation more directly?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Project Conflict Resolution',
+              reason: 'Learn to resolve analytical-project disagreements before they require management intervention',
+              link: '/topics/foundational-mindsets/assertiveness'
+            },
+            {
+              skill: 'Cross-functional Collaboration',
+              reason: 'Understand how to work effectively with project coordinators and business stakeholders',
+              link: '/library/cross-functional-collaboration'
+            }
+          ],
+          realWorldExample: {
+            title: 'Sales Analytics Escalation',
+            description: 'A data analyst immediately escalated a timeline disagreement to their manager without attempting collaborative resolution with the project coordinator.',
+            outcome: 'The manager resolved the immediate issue but asked both team members to work on their collaboration skills. Future urgent projects required manager approval, reducing team autonomy and responsiveness.'
+          }
+        }
+      },
+      {
+        id: 'propose-alternatives',
+        text: 'Suggest alternative approaches like preliminary insights from existing data or external benchmarks to provide immediate value.',
+        feedback: 'This creative approach demonstrates analytical thinking while being responsive to business needs, often leading to innovative solutions.',
+        consequences: {
+          immediate: 'Marcus appreciates the creative problem-solving and leadership gets some insights for their meeting.',
+          shortTerm: 'You demonstrate analytical creativity while maintaining quality standards.',
+          longTerm: 'You build a reputation as a resourceful analyst who can find solutions under pressure.'
+        },
+        impactAreas: [
+          { area: 'assertiveness', impact: 6 },
+          { area: 'emotional-intelligence', impact: 7 },
+          { area: 'decision-making', impact: 8 }
+        ],
+        enhancedConsequences: {
+          severity: {
+            immediate: 'positive' as const,
+            shortTerm: 'positive' as const,
+            longTerm: 'positive' as const
+          },
+          confidence: {
+            immediate: 'high' as const,
+            shortTerm: 'high' as const,
+            longTerm: 'high' as const
+          },
+          stakeholderImpacts: [
+            {
+              stakeholder: 'Marcus (Project Coordinator)',
+              impact: 'Appreciates the creative approach and gets solutions for the urgent timeline',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Leadership Team',
+              impact: 'Gets valuable insights for their board meeting while understanding analytical limitations',
+              severity: 'positive' as const
+            },
+            {
+              stakeholder: 'Analytics Team',
+              impact: 'Sees innovative analytical thinking and creative problem-solving under pressure',
+              severity: 'positive' as const
+            }
+          ],
+          alternatives: {
+            immediate: 'If external data isn\'t available, focus on the most reliable internal data sources',
+            shortTerm: 'Use the alternative insights to inform the complete analysis approach',
+            longTerm: 'Develop a toolkit of rapid analytical approaches for urgent business needs'
+          },
+          mitigation: {
+            immediate: 'Clearly communicate the limitations and confidence levels of alternative approaches',
+            shortTerm: 'Follow up with complete analysis to validate or refine the preliminary insights',
+            longTerm: 'Use this experience to build better rapid response capabilities for the analytics team'
+          },
+          reflectionPrompts: [
+            'How can you leverage existing data and external sources to provide immediate business value?',
+            'What analytical shortcuts can provide reliable insights without compromising quality?',
+            'How might this creative approach influence how you handle future urgent requests?'
+          ],
+          skillRecommendations: [
+            {
+              skill: 'Rapid Analytics',
+              reason: 'Learn to provide quick insights while maintaining analytical rigor',
+              link: '/library/rapid-analytics'
+            },
+            {
+              skill: 'Creative Problem Solving',
+              reason: 'Understand how to find innovative solutions that satisfy multiple constraints',
+              link: '/topics/foundational-mindsets/decision-making'
+            }
+          ],
+          realWorldExample: {
+            title: 'Competitive Analysis Quick Turnaround',
+            description: 'A market analyst used industry benchmarks and existing customer data to provide immediate competitive insights for an urgent strategy meeting.',
+            outcome: 'Leadership got valuable context for their strategic discussion, and the complete analysis later confirmed the preliminary insights. The analyst became the go-to person for urgent analytical needs and was promoted to senior analyst.'
           }
         }
       }
