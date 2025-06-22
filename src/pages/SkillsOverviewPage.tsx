@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Search, Filter, BookOpen, Clock, Users } from 'lucide-react';
+import { ArrowLeft, Search, Filter, BookOpen, Clock, Users, Network } from 'lucide-react';
 import { skillCategories, skills, searchSkills, getSkillsByLevel } from '../data/skills';
 import SkillCategoryCard from '../components/SkillCategoryCard';
 import SkillCard from '../components/SkillCard';
@@ -44,6 +44,13 @@ const SkillsOverviewPage: React.FC = () => {
             </div>
             
             <div className="mt-4 md:mt-0 flex items-center space-x-4">
+              <Link
+                to="/library/skills/network"
+                className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                <Network size={16} className="mr-2" />
+                View Skills Network
+              </Link>
               <button
                 onClick={() => setShowSearch(!showSearch)}
                 className="flex items-center px-4 py-2 text-gray-600 hover:text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-50"
