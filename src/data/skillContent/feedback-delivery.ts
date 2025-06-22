@@ -143,11 +143,11 @@ export const feedbackDeliveryContent = {
       description: 'Using thoughtful, emotionally safe language when offering feedback helps reduce defensiveness and encourages collaboration. Instead of using the word "feedback" directly, consider using phrases like:',
       phrases: [
         '"Would now be a good time for me to share a few thoughts that might support our work?"',
-        '"I've been reflecting on something that could help our collaboration—can we chat for a minute?"',
-        '"I'd appreciate your take on an observation I've had—would you be open to that?"',
-        '"There's something I noticed that I believe could be useful—can I run it by you?"',
+        '"I\'ve been reflecting on something that could help our collaboration—can we chat for a minute?"',
+        '"I\'d appreciate your take on an observation I've had—would you be open to that?"',
+        '"There\'s something I noticed that I believe could be useful—can I run it by you?"',
         '"Is this a good time for a quick exchange that might help us sync better?"',
-        '"Would it be okay if I shared something that might improve how we're working together?"',
+        '"Would it be okay if I shared something that might improve how we\'re working together?"',
         '"I have a small insight that could help—would this be a good time to talk through it?"'
       ]
     },
@@ -160,7 +160,7 @@ export const feedbackDeliveryContent = {
         'Do we have enough time to unpack this? Being intentional about when and how you share feedback ensures it lands well—and strengthens rather than strains the relationship.'
       ]
     },
-    clarityNote: 'Sometimes, the feedback provider may not have full clarity on all the details and could misjudge the situation. In these moments, it's important to acknowledge that your feedback is based on your perception—which may not reflect the complete context. Invite clarification by saying, for example, "Let me know if I'm missing anything on your side." This shows humility and encourages open dialogue, making it more likely the feedback will lead to mutual understanding rather than resistance.',
+    clarityNote: 'Sometimes, the feedback provider may not have full clarity on all the details and could misjudge the situation. In these moments, it\'s important to acknowledge that your feedback is based on your perception—which may not reflect the complete context. Invite clarification by saying, for example, "Let me know if I'm missing anything on your side.\" This shows humility and encourages open dialogue, making it more likely the feedback will lead to mutual understanding rather than resistance.',
     comparisonTable: [
       {
         good: 'Timely',
@@ -180,7 +180,7 @@ export const feedbackDeliveryContent = {
       {
         good: 'Actionable',
         poor: 'Vague or abstract',
-        why: 'Clear feedback includes specific behaviors and outcomes, enabling the recipient to act on it. Abstract or general comments don't guide improvement.'
+        why: 'Clear feedback includes specific behaviors and outcomes, enabling the recipient to act on it. Abstract or general comments don\'t guide improvement.'
       },
       {
         good: 'Behavior-focused',
@@ -195,12 +195,12 @@ export const feedbackDeliveryContent = {
       {
         good: 'With permission',
         poor: 'Forced or unsolicited',
-        why: 'Asking "Is it okay if I share something I've noticed?" gives the recipient agency and prepares them to listen. It signals respect and reduces defensiveness.'
+        why: 'Asking "Is it okay if I share something I\'ve noticed?" gives the recipient agency and prepares them to listen. It signals respect and reduces defensiveness.'
       },
       {
         good: 'Open to clarification',
         poor: 'Rigid or assumptive',
-        why: 'Feedback is based on perception and may miss context. Inviting clarity (e.g., "Let me know if I'm missing anything") shows humility and encourages dialogue.'
+        why: 'Feedback is based on perception and may miss context. Inviting clarity (e.g., "Let me know if I\'m missing anything") shows humility and encourages dialogue.'
       }
     ]
   },
