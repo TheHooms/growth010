@@ -180,6 +180,56 @@ export const feedbackDeliveryContent = {
         'Do we have enough time to unpack this? Being intentional about when and how you share feedback ensures it lands well—and strengthens rather than strains the relationship.'
       ]
     },
+    escalationGuidance: {
+      title: 'When and How to Escalate',
+      description: 'Sometimes direct feedback doesn\'t lead to necessary changes. Knowing when and how to escalate appropriately is an important skill that complements effective feedback delivery.',
+      principles: [
+        'Frame escalation as help-seeking: When escalating to a manager, frame it as seeking help rather than complaining about a colleague.',
+        'Try direct feedback first: Always attempt to address issues directly with the person before involving others.',
+        'Consider impact: Only escalate issues that have significant impact on work quality, team dynamics, or business outcomes.',
+        'Maintain professionalism: Focus on behaviors and impact, not personal judgments or character assessments.'
+      ],
+      escalationProcess: {
+        title: '5-Step Escalation Process',
+        steps: [
+          'Attempt direct feedback at least once (ideally twice) using the techniques in this guide.',
+          'Document the specific behaviors, their impact, and your attempts to address them directly.',
+          'Request time with your manager, framing it as "seeking guidance on a work situation."',
+          'Present the facts objectively, focusing on work impact rather than personal frustration.',
+          'Ask for specific help: "Could you help me understand how to approach this?" or "What would you suggest as next steps?"'
+        ]
+      },
+      whenToEscalate: {
+        title: 'When Escalation Is Appropriate',
+        examples: [
+          'Repeated pattern of behavior that continues despite direct feedback',
+          'Significant impact on team deliverables or client relationships',
+          'Ethical concerns or policy violations',
+          'Situations where power dynamics make direct feedback difficult',
+          'When you\'ve tried direct feedback but the person is unreceptive or defensive'
+        ]
+      },
+      whenNotToEscalate: {
+        title: 'When Not to Escalate',
+        examples: [
+          'First-time occurrences that haven\'t been addressed directly',
+          'Minor stylistic differences or personal preferences',
+          'When you\'re emotionally charged (wait until you can be objective)',
+          'Issues that don\'t significantly impact work outcomes',
+          'When your goal is to "prove someone wrong" rather than improve the situation'
+        ]
+      },
+      impactOfPrematureEscalation: {
+        title: 'Impact of Premature Escalation',
+        consequences: [
+          'Damages trust and working relationships',
+          'Creates reputation as someone who avoids direct conversations',
+          'Overburdens managers with issues that could be resolved peer-to-peer',
+          'Reduces psychological safety in the team',
+          'May be perceived as political maneuvering rather than problem-solving'
+        ]
+      }
+    },
     clarityNote: 'Sometimes, the feedback provider may not have full clarity on all the details and could misjudge the situation. In these moments, it\'s important to acknowledge that your feedback is based on your perception—which may not reflect the complete context. Invite clarification by saying, for example, "Let me know if I\'m missing anything on your side.\" This shows humility and encourages open dialogue, making it more likely the feedback will lead to mutual understanding rather than resistance.',
     comparisonTable: [
       {
