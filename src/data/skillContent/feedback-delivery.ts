@@ -144,7 +144,7 @@ export const feedbackDeliveryContent = {
       phrases: [
         '"Would now be a good time for me to share a few thoughts that might support our work?"',
         '"I\'ve been reflecting on something that could help our collaboration—can we chat for a minute?"',
-        '"I\'d appreciate your take on an observation I've had—would you be open to that?"',
+        '"I\'d appreciate your take on an observation I\'ve had—would you be open to that?"',
         '"There\'s something I noticed that I believe could be useful—can I run it by you?"',
         '"Is this a good time for a quick exchange that might help us sync better?"',
         '"Would it be okay if I shared something that might improve how we\'re working together?"',
@@ -160,7 +160,7 @@ export const feedbackDeliveryContent = {
         'Do we have enough time to unpack this? Being intentional about when and how you share feedback ensures it lands well—and strengthens rather than strains the relationship.'
       ]
     },
-    clarityNote: 'Sometimes, the feedback provider may not have full clarity on all the details and could misjudge the situation. In these moments, it\'s important to acknowledge that your feedback is based on your perception—which may not reflect the complete context. Invite clarification by saying, for example, "Let me know if I'm missing anything on your side.\" This shows humility and encourages open dialogue, making it more likely the feedback will lead to mutual understanding rather than resistance.',
+    clarityNote: 'Sometimes, the feedback provider may not have full clarity on all the details and could misjudge the situation. In these moments, it\'s important to acknowledge that your feedback is based on your perception—which may not reflect the complete context. Invite clarification by saying, for example, "Let me know if I\'m missing anything on your side.\" This shows humility and encourages open dialogue, making it more likely the feedback will lead to mutual understanding rather than resistance.',
     comparisonTable: [
       {
         good: 'Timely',
