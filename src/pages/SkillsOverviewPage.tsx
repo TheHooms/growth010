@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, Search, Filter, BookOpen, Clock, Users, Network } from 'lucide-react';
 import { skillCategories, skills, searchSkills, getSkillsByLevel } from '../data/skills';
 import SkillCategoryCard from '../components/SkillCategoryCard';
 import SkillCard from '../components/SkillCard';
 
 const SkillsOverviewPage: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedLevel, setSelectedLevel] = useState<'all' | 'foundational' | 'applied'>('all');
+  const [selectedLevel, setSelectedLevel] = useState<'all' | 'foundational' | 'bridge' | 'advanced'>(
+    (searchParams.get('level') as any) || 'all'
+  );
   const [showSearch, setShowSearch] = useState(false);
 
   const filteredSkills = React.useMemo(() => {
@@ -21,7 +24,18 @@ const SkillsOverviewPage: React.FC = () => {
   }, [searchQuery, selectedLevel]);
 
   const foundationalCount = getSkillsByLevel('foundational').length;
-  const appliedCount = getSkillsByLevel('applied').length;
+  const bridgeCount = getSkillsByLevel('bridge').length;
+  const advancedCount = getSkillsByLevel('advanced').length;
+
+  const handleLevelFilter = (level: 'all' | 'foundational' | 'bridge' | 'advanced') => {
+    setSelectedLevel(level);
+    if (level === 'all') {
+      setSearchParams({});
+    } else {
+      setSearchParams({ level });
+    }
+    setShowSearch(true);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -87,21 +101,27 @@ const SkillsOverviewPage: React.FC = () => {
                 <select
                   id="level"
                   value={selectedLevel}
-                  onChange={(e) => setSelectedLevel(e.target.value as any)}
+                  onChange={(e) => handleLevelFilter(e.target.value as any)}
                   className="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 >
                   <option value="all">All Levels</option>
                   <option value="foundational">Foundational</option>
-                  <option value="applied">Applied</option>
+                  <option value="bridge">Bridge</option>
+                  <option value="advanced">Advanced</option>
                 </select>
               </div>
             </div>
           </div>
         )}
 
-        {/* Stats Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        {/* Clickable Stats Overview */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <button
+            onClick={() => handleLevelFilter('all')}
+            className={`bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-left hover:border-blue-300 transition-colors ${
+              selectedLevel === 'all' ? 'ring-2 ring-blue-500 border-blue-500' : ''
+            }`}
+          >
             <div className="flex items-center">
               <div className="p-3 bg-blue-100 rounded-lg">
                 <BookOpen className="w-6 h-6 text-blue-600" />
@@ -111,31 +131,58 @@ const SkillsOverviewPage: React.FC = () => {
                 <p className="text-gray-600">Total Skills</p>
               </div>
             </div>
-          </div>
+          </button>
           
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <button
+            onClick={() => handleLevelFilter('foundational')}
+            className={`bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-left hover:border-green-300 transition-colors ${
+              selectedLevel === 'foundational' ? 'ring-2 ring-green-500 border-green-500' : ''
+            }`}
+          >
             <div className="flex items-center">
               <div className="p-3 bg-green-100 rounded-lg">
                 <Users className="w-6 h-6 text-green-600" />
               </div>
               <div className="ml-4">
                 <h3 className="text-2xl font-bold text-gray-900">{foundationalCount}</h3>
-                <p className="text-gray-600">Foundational Skills</p>
+                <p className="text-gray-600">Foundational</p>
               </div>
             </div>
-          </div>
+          </button>
+
+          <button
+            onClick={() => handleLevelFilter('bridge')}
+            className={`bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-left hover:border-blue-300 transition-colors ${
+              selectedLevel === 'bridge' ? 'ring-2 ring-blue-500 border-blue-500' : ''
+            }`}
+          >
+            <div className="flex items-center">
+              <div className="p-3 bg-blue-100 rounded-lg">
+                <Clock className="w-6 h-6 text-blue-600" />
+              </div>
+              <div className="ml-4">
+                <h3 className="text-2xl font-bold text-gray-900">{bridgeCount}</h3>
+                <p className="text-gray-600">Bridge</p>
+              </div>
+            </div>
+          </button>
           
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <button
+            onClick={() => handleLevelFilter('advanced')}
+            className={`bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-left hover:border-purple-300 transition-colors ${
+              selectedLevel === 'advanced' ? 'ring-2 ring-purple-500 border-purple-500' : ''
+            }`}
+          >
             <div className="flex items-center">
               <div className="p-3 bg-purple-100 rounded-lg">
                 <Clock className="w-6 h-6 text-purple-600" />
               </div>
               <div className="ml-4">
-                <h3 className="text-2xl font-bold text-gray-900">{appliedCount}</h3>
-                <p className="text-gray-600">Applied Skills</p>
+                <h3 className="text-2xl font-bold text-gray-900">{advancedCount}</h3>
+                <p className="text-gray-600">Advanced</p>
               </div>
             </div>
-          </div>
+          </button>
         </div>
 
         {/* Search Results or Categories */}
@@ -149,7 +196,7 @@ const SkillsOverviewPage: React.FC = () => {
                 <button
                   onClick={() => {
                     setSearchQuery('');
-                    setSelectedLevel('all');
+                    handleLevelFilter('all');
                   }}
                   className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                 >

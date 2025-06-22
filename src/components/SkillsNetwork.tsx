@@ -209,18 +209,18 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
     setSelectedNode(selectedNode?.id === node.id ? null : node);
   };
 
-  // Improved zoom functions with proper limits
+  // Fixed zoom functions with proper limits and smooth scaling
   const handleZoomIn = useCallback(() => {
     setTransform(prev => ({
       ...prev,
-      scale: Math.min(prev.scale * 1.3, 5) // Max zoom 5x
+      scale: Math.min(prev.scale * 1.2, 3) // Reduced zoom increment and max zoom
     }));
   }, []);
 
   const handleZoomOut = useCallback(() => {
     setTransform(prev => ({
       ...prev,
-      scale: Math.max(prev.scale / 1.3, 0.2) // Min zoom 0.2x
+      scale: Math.max(prev.scale / 1.2, 0.3) // Reduced zoom decrement and min zoom
     }));
   }, []);
 
@@ -229,19 +229,36 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
     setSelectedNode(null);
   }, []);
 
-  // Mouse wheel zoom
+  // Improved mouse wheel zoom with proper event handling
   const handleWheel = useCallback((e: React.WheelEvent) => {
     e.preventDefault();
+    e.stopPropagation();
+    
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    
     const delta = e.deltaY > 0 ? 0.9 : 1.1;
-    setTransform(prev => ({
-      ...prev,
-      scale: Math.min(Math.max(prev.scale * delta, 0.2), 5)
-    }));
-  }, []);
+    const newScale = Math.min(Math.max(transform.scale * delta, 0.3), 3);
+    
+    // Calculate zoom center
+    const scaleDiff = newScale - transform.scale;
+    const newX = transform.x - (mouseX - transform.x) * (scaleDiff / transform.scale);
+    const newY = transform.y - (mouseY - transform.y) * (scaleDiff / transform.scale);
+    
+    setTransform({
+      scale: newScale,
+      x: newX,
+      y: newY
+    });
+  }, [transform]);
 
-  // Pan functionality
+  // Improved pan functionality
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    if (e.target === svgRef.current) {
+    if (e.target === svgRef.current || (e.target as Element).tagName === 'svg') {
+      e.preventDefault();
       setIsDragging(true);
       setDragStart({ x: e.clientX - transform.x, y: e.clientY - transform.y });
     }
@@ -249,6 +266,7 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (isDragging) {
+      e.preventDefault();
       setTransform(prev => ({
         ...prev,
         x: e.clientX - dragStart.x,
@@ -361,7 +379,7 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
       {/* Network Visualization */}
       <div 
         ref={containerRef}
-        className="relative overflow-hidden" 
+        className="relative overflow-hidden select-none" 
         style={{ height: height }}
         onWheel={handleWheel}
         onMouseDown={handleMouseDown}
@@ -373,11 +391,12 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
           ref={svgRef}
           width={width}
           height={height}
-          className="w-full h-full cursor-grab"
+          className="w-full h-full"
           style={{ 
             transform: `translate(${transform.x}px, ${transform.y}px) scale(${transform.scale})`,
             transformOrigin: '0 0',
-            transition: isDragging ? 'none' : 'transform 0.1s ease-out'
+            transition: isDragging ? 'none' : 'transform 0.1s ease-out',
+            cursor: isDragging ? 'grabbing' : 'grab'
           }}
         >
           {/* Links */}
@@ -473,6 +492,7 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
                     opacity={isHighlighted || !selectedNode ? 1 : 0.3}
                     className="cursor-pointer hover:opacity-80 transition-all duration-200"
                     onClick={() => handleNodeClick(node)}
+                    style={{ pointerEvents: 'all' }}
                   />
                   
                   {(isHighlighted || !selectedNode) && (
