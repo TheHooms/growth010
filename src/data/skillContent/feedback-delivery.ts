@@ -150,7 +150,7 @@ export const feedbackDeliveryContent = {
       'Debrief: What worked? What felt awkward?'
     ],
     liveApplication: [
-      'Give one micro-feedback comment after your next team meeting.',
+      'Offer one micro-feedback comment after your next team meeting.',
       'Consider embedding a video simulation with defensive vs. open reactions.'
     ]
   },
@@ -207,8 +207,8 @@ export const feedbackDeliveryContent = {
   ],
 
   skillTracker: {
-    selfAssessment: 'Identify your maturity level.',
-    peerFeedbackForm: 'How helpful was my last feedback to you?',
-    managerCheck: 'Rate my feedback delivery skills 1-10.'
+    selfAssessment: 'Self-assessment quiz: Identify your maturity level.',
+    peerFeedbackForm: 'Peer feedback form: "How helpful was my last feedback to you?"',
+    managerCheck: 'Manager check-in: Rate my feedback delivery skills 1-10.'
   }
 };
