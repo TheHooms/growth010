@@ -200,7 +200,7 @@ const SkillDetailPage: React.FC = () => {
                     </p>
                     <Button
                       onClick={() => setShowFullContent(true)}
-                      className="mx-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium"
+                      className="mx-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center"
                     >
                       <BookOpen className="w-5 h-5 mr-2" />
                       View Complete Skill Guide
