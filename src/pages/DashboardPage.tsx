@@ -1,11 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, BarChart2, BookOpen, Target } from 'lucide-react';
+import { ArrowRight, BarChart2, BookOpen, Target, Brain, Zap } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 import { getArchetypeById } from '../data/archetypes';
 import { scenarios } from '../data/scenarios';
 import { microAssessments } from '../data/assessments';
 import { getSkillsByLevel } from '../data/skillTaxonomy';
+import { useSkillEngine } from '../hooks/useSkillEngine';
 import Button from '../components/Button';
 import Card from '../components/Card';
 import ProgressBar from '../components/ProgressBar';
@@ -14,10 +15,12 @@ import MicroAssessmentCard from '../components/MicroAssessmentCard';
 import HighlightedTopic from '../components/HighlightedTopic';
 import ArchetypeComparison from '../components/ArchetypeComparison';
 import ProgressMotivation from '../components/ProgressMotivation';
+import SkillEngineRecommendations from '../components/SkillEngineRecommendations';
 
 const DashboardPage: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useUser();
+  const { recommendations, isLoading: skillEngineLoading } = useSkillEngine();
   
   if (!user) {
     navigate('/assessment');
@@ -44,6 +47,74 @@ const DashboardPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
+            {/* AI Skill Engine Highlight */}
+            <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200">
+              <div className="flex items-start justify-between">
+                <div className="flex items-center">
+                  <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl mr-4">
+                    <Brain className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-semibold text-gray-900 mb-1">AI Skill Engine</h2>
+                    <p className="text-gray-600">Get personalized learning recommendations powered by AI</p>
+                  </div>
+                </div>
+                <Button
+                  onClick={() => navigate('/skill-engine')}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700"
+                >
+                  <Zap className="w-4 h-4 mr-2" />
+                  Explore Engine
+                </Button>
+              </div>
+            </Card>
+
+            {/* Smart Recommendations Preview */}
+            {recommendations.length > 0 && (
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center">
+                    <Brain className="w-5 h-5 text-blue-600 mr-2" />
+                    <h2 className="text-xl font-semibold text-gray-800">Smart Recommendations</h2>
+                  </div>
+                  <Button
+                    variant="text"
+                    size="sm"
+                    onClick={() => navigate('/skill-engine')}
+                    className="flex items-center"
+                  >
+                    View All
+                    <ArrowRight size={16} className="ml-1" />
+                  </Button>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {recommendations.slice(0, 2).map((recommendation) => (
+                    <Card key={recommendation.skillId} className="border border-gray-200 hover:border-blue-300 transition-colors">
+                      <div className="flex items-start justify-between mb-3">
+                        <h3 className="font-semibold text-gray-900">{recommendation.skillName}</h3>
+                        <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">
+                          AI Recommended
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-3">
+                        {recommendation.reasoning[0]}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-gray-500">{recommendation.estimatedTime}</span>
+                        <Button
+                          size="sm"
+                          onClick={() => navigate(`/library/skills/${recommendation.skillId}`)}
+                        >
+                          Learn More
+                        </Button>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Archetype Section */}
             {archetype && (
               <div className="space-y-6">

@@ -14,6 +14,7 @@ import SkillsOverviewPage from './pages/SkillsOverviewPage';
 import SkillCategoryPage from './pages/SkillCategoryPage';
 import SkillDetailPage from './pages/SkillDetailPage';
 import SkillsNetworkPage from './pages/SkillsNetworkPage';
+import SkillEnginePage from './pages/SkillEnginePage';
 import TopicPage from './pages/TopicPage';
 import SubtopicPage from './pages/SubtopicPage';
 import AdminPage from './pages/AdminPage';
@@ -36,6 +37,7 @@ function App() {
           <Route path="/library/skills/network" element={<SkillsNetworkPage />} />
           <Route path="/library/skills/category/:categoryId" element={<SkillCategoryPage />} />
           <Route path="/library/skills/:skillId" element={<SkillDetailPage />} />
+          <Route path="/skill-engine" element={<SkillEnginePage />} />
           <Route path="/topics/:topicSlug" element={<TopicPage />} />
           <Route path="/topics/:topicSlug/:subtopicSlug" element={<SubtopicPage />} />
           <Route path="/admin" element={<AdminPage />} />
