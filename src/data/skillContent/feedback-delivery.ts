@@ -137,25 +137,72 @@ export const feedbackDeliveryContent = {
   ],
 
   commonPitfalls: {
-    goodFeedback: [
-      'Timely',
-      'Private (criticism)',
-      'Public (praise)',
-      'Actionable',
-      'Behavior-focused',
-      'Respectful',
-      'With permission'
-    ],
-    badFeedback: [
-      'Bottled up or delayed',
-      'Public or shaming',
-      'Private or hidden praise',
-      'Vague or emotional',
-      'Personal attacks',
-      'Blunt, harsh, or reactive',
-      'Imposed or forced'
-    ],
-    alwaysAsk: '"Would now be a good time for some feedback?" or "Are you open to hearing something I\'ve noticed?"'
+    description: 'This section outlines the most frequent feedback delivery mistakes and how to avoid them. Each comparison includes what good feedback looks like versus common errors, and why it matters.',
+    choosingWords: {
+      title: 'Choosing Your Words Wisely',
+      description: 'Using thoughtful, emotionally safe language when offering feedback helps reduce defensiveness and encourages collaboration. Instead of using the word "feedback" directly, consider using phrases like:',
+      phrases: [
+        '"Would now be a good time for me to share a few thoughts that might support our work?"',
+        '"I've been reflecting on something that could help our collaboration—can we chat for a minute?"',
+        '"I'd appreciate your take on an observation I've had—would you be open to that?"',
+        '"There's something I noticed that I believe could be useful—can I run it by you?"',
+        '"Is this a good time for a quick exchange that might help us sync better?"',
+        '"Would it be okay if I shared something that might improve how we're working together?"',
+        '"I have a small insight that could help—would this be a good time to talk through it?"'
+      ]
+    },
+    framingAndTiming: {
+      title: 'Why Framing and Timing Matter',
+      description: 'Words like "feedback" can unintentionally trigger stress or defensiveness. Framing it as an "observation" helps reduce those emotional barriers. Also, not every moment is the right one—timing affects receptiveness. Ask yourself:',
+      questions: [
+        'Is this person emotionally available?',
+        'Is this the right physical environment?',
+        'Do we have enough time to unpack this? Being intentional about when and how you share feedback ensures it lands well—and strengthens rather than strains the relationship.'
+      ]
+    },
+    clarityNote: 'Sometimes, the feedback provider may not have full clarity on all the details and could misjudge the situation. In these moments, it's important to acknowledge that your feedback is based on your perception—which may not reflect the complete context. Invite clarification by saying, for example, "Let me know if I'm missing anything on your side." This shows humility and encourages open dialogue, making it more likely the feedback will lead to mutual understanding rather than resistance.',
+    comparisonTable: [
+      {
+        good: 'Timely',
+        poor: 'Delayed or bottlenecked',
+        why: 'Feedback should be delivered close to the moment it occurs. Waiting too long weakens context, builds tension, or allows problems to repeat. Timeliness keeps learning fresh and impact clear.'
+      },
+      {
+        good: 'Private (for critique)',
+        poor: 'Public criticism',
+        why: 'Sharing constructive feedback in public often feels like punishment. Critique should be private to preserve dignity and psychological safety.'
+      },
+      {
+        good: 'Public (for praise)',
+        poor: 'Hidden or private praise',
+        why: 'Public recognition boosts morale and sets an example. Keeping praise private misses a chance to reinforce positive behavior and motivate others.'
+      },
+      {
+        good: 'Actionable',
+        poor: 'Vague or abstract',
+        why: 'Clear feedback includes specific behaviors and outcomes, enabling the recipient to act on it. Abstract or general comments don't guide improvement.'
+      },
+      {
+        good: 'Behavior-focused',
+        poor: 'Personal or character-based',
+        why: 'Effective feedback targets observable behaviors—not traits or identities. This avoids defensiveness and makes it easier to change.'
+      },
+      {
+        good: 'Respectful',
+        poor: 'Emotionally reactive',
+        why: 'Feedback delivered with calm and care builds trust, even when critical. Emotional outbursts erode credibility and damage relationships.'
+      },
+      {
+        good: 'With permission',
+        poor: 'Forced or unsolicited',
+        why: 'Asking "Is it okay if I share something I've noticed?" gives the recipient agency and prepares them to listen. It signals respect and reduces defensiveness.'
+      },
+      {
+        good: 'Open to clarification',
+        poor: 'Rigid or assumptive',
+        why: 'Feedback is based on perception and may miss context. Inviting clarity (e.g., "Let me know if I'm missing anything") shows humility and encourages dialogue.'
+      }
+    ]
   },
 
   caseStudy: {
