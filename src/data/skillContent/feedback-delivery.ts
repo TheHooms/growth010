@@ -120,19 +120,19 @@ export const feedbackDeliveryContent = {
   roleLevelVariants: [
     {
       role: 'Individual',
-      focus: 'Shares and receives feedback among peers. Focuses on behavior, collaboration, and mutual growth.'
+      focus: 'Shares and receives peer feedback regularly, with tact and intent.'
     },
     {
       role: 'Manager',
-      focus: 'Provides structured and performance feedback regularly. Balances direction with development.'
+      focus: 'Provides structured, developmental feedback during projects and reviews.'
     },
     {
       role: 'Partner',
-      focus: 'Shares feedback across functions where authority is shared. Maintains mutual respect.'
+      focus: 'Shares feedback across functions where authority is shared.'
     },
     {
       role: 'Director & Executive',
-      focus: 'Models high-quality feedback to reinforce culture and strategy. Builds psychological safety.'
+      focus: 'Models high-quality feedback to reinforce culture and strategy.'
     }
   ],
 
@@ -218,7 +218,7 @@ export const feedbackDeliveryContent = {
     'When celebrating wins and successful outcomes'
   ],
 
-  skillBuildingResources: [
+  learningResources: [
     {
       type: 'Article',
       title: 'Radical Candor™ by Kim Scott',
@@ -244,5 +244,27 @@ export const feedbackDeliveryContent = {
       title: 'Feedback delivery journal & checklist',
       icon: '🛠️'
     }
+  ],
+
+  skillTracker: {
+    selfAssessment: 'Self-assessment quiz: Identify your maturity level.',
+    peerFeedback: 'Peer feedback form: "How helpful was my last feedback to you?"',
+    managerReview: 'Manager assessment of feedback quality in team interactions.'
+  },
+
+  suggestedActions: [
+    'Ask "Can I offer an observation?" before diving in.',
+    'Share feedback within 24 hours of an event.',
+    'Praise publicly. Critique privately.',
+    'Keep a weekly log of feedback moments.',
+    'Use neutral, factual language ("I noticed...", "The impact was...").'
+  ],
+
+  relatedSkills: [
+    'Difficult Conversations',
+    'Professional Assertiveness',
+    'Emotional Regulation',
+    'Strategic Communication',
+    'Active Listening'
   ]
 };
