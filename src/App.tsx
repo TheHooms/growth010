@@ -10,6 +10,9 @@ import ScenarioPage from './pages/ScenarioPage';
 import ProgressPage from './pages/ProgressPage';
 import ProfilePage from './pages/ProfilePage';
 import LibraryPage from './pages/LibraryPage';
+import SkillsOverviewPage from './pages/SkillsOverviewPage';
+import SkillCategoryPage from './pages/SkillCategoryPage';
+import SkillDetailPage from './pages/SkillDetailPage';
 import TopicPage from './pages/TopicPage';
 import SubtopicPage from './pages/SubtopicPage';
 import AdminPage from './pages/AdminPage';
@@ -28,6 +31,9 @@ function App() {
           <Route path="/progress" element={<ProgressPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/library" element={<LibraryPage />} />
+          <Route path="/library/skills" element={<SkillsOverviewPage />} />
+          <Route path="/library/skills/category/:categoryId" element={<SkillCategoryPage />} />
+          <Route path="/library/skills/:skillId" element={<SkillDetailPage />} />
           <Route path="/topics/:topicSlug" element={<TopicPage />} />
           <Route path="/topics/:topicSlug/:subtopicSlug" element={<SubtopicPage />} />
           <Route path="/admin" element={<AdminPage />} />
