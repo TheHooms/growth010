@@ -13,17 +13,28 @@ import {
   Brain,
   ChevronRight,
   Zap,
-  Star
+  Star,
+  MessageCircle,
+  Send,
+  X,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import { getSkillById, getRelatedSkills, skillCategories } from '../data/skills';
 import { feedbackDeliveryContent } from '../data/skillContent/feedback-delivery';
 import SkillContentRenderer from '../components/SkillContentRenderer';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import ProgressBar from '../components/ProgressBar';
 
 const SkillDetailPage: React.FC = () => {
   const { skillId } = useParams<{ skillId: string }>();
   const [showFullContent, setShowFullContent] = useState(false);
+  const [showChatbot, setShowChatbot] = useState(false);
+  const [chatMessage, setChatMessage] = useState('');
+  const [chatHistory, setChatHistory] = useState<{role: 'user' | 'assistant', content: string}[]>([]);
+  const [selectedTimeframe, setSelectedTimeframe] = useState<'light' | 'medium' | 'deep'>('medium');
+  const [expandedSection, setExpandedSection] = useState<string | null>('overview');
   
   const skill = skillId ? getSkillById(skillId) : null;
   const relatedSkills = skillId ? getRelatedSkills(skillId) : [];
@@ -36,6 +47,7 @@ const SkillDetailPage: React.FC = () => {
   useEffect(() => {
     // Reset content view when skill changes
     setShowFullContent(false);
+    setExpandedSection('overview');
   }, [skillId]);
 
   if (!skill) {
@@ -70,6 +82,48 @@ const SkillDetailPage: React.FC = () => {
     );
   };
 
+  const getTimeEstimate = (timeframe: 'light' | 'medium' | 'deep') => {
+    const baseTime = skill.estimatedTime;
+    switch (timeframe) {
+      case 'light': return baseTime.replace(/(\d+)-(\d+)/, (_, min, max) => 
+        `${Math.floor(parseInt(min) * 0.6)}-${Math.floor(parseInt(max) * 0.6)}`);
+      case 'deep': return baseTime.replace(/(\d+)-(\d+)/, (_, min, max) => 
+        `${Math.floor(parseInt(min) * 1.5)}-${Math.floor(parseInt(max) * 1.5)}`);
+      default: return baseTime;
+    }
+  };
+
+  const handleSendMessage = () => {
+    if (!chatMessage.trim()) return;
+    
+    // Add user message to chat history
+    setChatHistory([...chatHistory, {role: 'user', content: chatMessage}]);
+    
+    // Simulate AI response
+    setTimeout(() => {
+      let response = '';
+      
+      if (chatMessage.toLowerCase().includes('difficult') || chatMessage.toLowerCase().includes('challenge')) {
+        response = "Delivering difficult feedback is challenging. Try using the SBI model (Situation-Behavior-Impact) and focus on specific behaviors rather than personality traits. Would you like me to provide an example of how to structure difficult feedback?";
+      } else if (chatMessage.toLowerCase().includes('example') || chatMessage.toLowerCase().includes('template')) {
+        response = "Here's a template for effective feedback: \"When I observed [specific situation], I noticed [specific behavior], and the impact was [outcome or feeling]. What are your thoughts?\" This structure keeps feedback objective and actionable.";
+      } else if (chatMessage.toLowerCase().includes('manager') || chatMessage.toLowerCase().includes('boss')) {
+        response = "When giving feedback to your manager, timing and framing are crucial. Request a private moment, focus on specific situations, and frame feedback in terms of how certain changes could help you be more effective in your role. Would you like specific phrases to use?";
+      } else {
+        response = "That's a great question about feedback delivery. This skill is about providing observations in a way that's constructive and actionable. The most effective feedback is specific, timely, and focused on behaviors rather than personality. Would you like to know more about a specific aspect of feedback delivery?";
+      }
+      
+      setChatHistory(prev => [...prev, {role: 'assistant', content: response}]);
+    }, 1000);
+    
+    // Clear input
+    setChatMessage('');
+  };
+
+  const toggleSection = (section: string) => {
+    setExpandedSection(expandedSection === section ? null : section);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -94,7 +148,7 @@ const SkillDetailPage: React.FC = () => {
                       {category.name}
                     </span>
                   )}
-                  {getLevelBadge(skill.level)}
+                  <span className="ml-2">{getLevelBadge(skill.level)}</span>
                 </div>
                 <h1 className="text-3xl font-bold mb-3">{skill.name}</h1>
                 <p className="text-blue-100 max-w-2xl mb-4">{skill.description}</p>
@@ -102,7 +156,17 @@ const SkillDetailPage: React.FC = () => {
                 <div className="flex flex-wrap gap-4 text-sm text-blue-100">
                   <div className="flex items-center">
                     <Clock size={16} className="mr-2" />
-                    <span>{skill.estimatedTime}</span>
+                    <span>
+                      <select 
+                        value={selectedTimeframe}
+                        onChange={(e) => setSelectedTimeframe(e.target.value as any)}
+                        className="bg-transparent border-none text-blue-100 focus:ring-0 cursor-pointer"
+                      >
+                        <option value="light" className="text-gray-900">Light: {getTimeEstimate('light')}</option>
+                        <option value="medium" className="text-gray-900">Standard: {getTimeEstimate('medium')}</option>
+                        <option value="deep" className="text-gray-900">Deep: {getTimeEstimate('deep')}</option>
+                      </select>
+                    </span>
                   </div>
                   <div className="flex items-center">
                     <BookOpen size={16} className="mr-2" />
@@ -115,7 +179,14 @@ const SkillDetailPage: React.FC = () => {
                 </div>
               </div>
               
-              <div className="mt-6 md:mt-0">
+              <div className="mt-6 md:mt-0 flex gap-3">
+                <button
+                  onClick={() => setShowChatbot(true)}
+                  className="inline-flex items-center bg-white/20 text-white px-4 py-2 rounded-lg font-medium hover:bg-white/30 transition-colors"
+                >
+                  <MessageCircle size={18} className="mr-2" />
+                  Ask AI Coach
+                </button>
                 <Link
                   to="/scenarios"
                   className="inline-flex items-center bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-50 transition-colors"
@@ -128,11 +199,67 @@ const SkillDetailPage: React.FC = () => {
           </div>
         </div>
 
+        {/* Navigation Tabs */}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-8 overflow-hidden">
+          <div className="flex overflow-x-auto">
+            <button
+              onClick={() => toggleSection('overview')}
+              className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${
+                expandedSection === 'overview' 
+                  ? 'text-blue-600 border-b-2 border-blue-600' 
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Overview
+            </button>
+            <button
+              onClick={() => toggleSection('practice')}
+              className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${
+                expandedSection === 'practice' 
+                  ? 'text-blue-600 border-b-2 border-blue-600' 
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Practice Scenarios
+            </button>
+            <button
+              onClick={() => toggleSection('techniques')}
+              className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${
+                expandedSection === 'techniques' 
+                  ? 'text-blue-600 border-b-2 border-blue-600' 
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Key Techniques
+            </button>
+            <button
+              onClick={() => toggleSection('resources')}
+              className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${
+                expandedSection === 'resources' 
+                  ? 'text-blue-600 border-b-2 border-blue-600' 
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Learning Resources
+            </button>
+            <button
+              onClick={() => toggleSection('maturity')}
+              className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${
+                expandedSection === 'maturity' 
+                  ? 'text-blue-600 border-b-2 border-blue-600' 
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Skill Maturity
+            </button>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* AI Skill Engine Insights */}
-            {skillId === 'feedback-delivery' && (
+            {skillId === 'feedback-delivery' && expandedSection === 'overview' && (
               <Card className="border border-blue-200 bg-blue-50">
                 <div className="flex items-start">
                   <div className="p-3 bg-blue-100 rounded-lg mr-4">
@@ -156,35 +283,8 @@ const SkillDetailPage: React.FC = () => {
               </Card>
             )}
 
-            {/* Prerequisites */}
-            {skill.prerequisites && skill.prerequisites.length > 0 && (
-              <Card className="border border-amber-200 bg-amber-50">
-                <div className="flex items-start">
-                  <div className="p-3 bg-amber-100 rounded-lg mr-4">
-                    <CheckCircle className="w-5 h-5 text-amber-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-amber-900 mb-3">Foundation Skills</h3>
-                    <p className="text-amber-800 text-sm mb-3">
-                      We recommend mastering these skills first:
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {skill.prerequisites.map((prereq) => (
-                        <span 
-                          key={prereq}
-                          className="bg-white text-amber-800 text-sm px-3 py-1 rounded-full border border-amber-200"
-                        >
-                          {prereq}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            )}
-
             {/* Detailed Content or Standard Content */}
-            {hasDetailedContent && skillContent ? (
+            {hasDetailedContent && skillContent && expandedSection === 'overview' ? (
               <>
                 {showFullContent ? (
                   <SkillContentRenderer content={skillContent} />
@@ -208,44 +308,83 @@ const SkillDetailPage: React.FC = () => {
                   </Card>
                 )}
               </>
-            ) : (
-              <>
-                {/* Key Techniques */}
-                <Card className="border border-gray-200 bg-white">
-                  <div className="flex items-start mb-6">
-                    <div className="p-3 bg-blue-100 rounded-lg mr-4">
-                      <Target className="w-5 h-5 text-blue-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900">Key Techniques</h3>
-                      <p className="text-gray-600 text-sm">Master these approaches for effective skill application</p>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {skill.keyTechniques.map((technique, index) => (
-                      <div key={index} className="flex items-start bg-gray-50 p-4 rounded-lg border border-gray-100">
-                        <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                          <span className="text-blue-700 font-bold text-sm">{index + 1}</span>
-                        </div>
-                        <span className="text-gray-700">{technique}</span>
-                      </div>
-                    ))}
-                  </div>
-                </Card>
+            ) : null}
 
-                {/* Practical Applications */}
-                <Card className="border border-gray-200 bg-white">
-                  <div className="flex items-start mb-6">
-                    <div className="p-3 bg-green-100 rounded-lg mr-4">
-                      <Zap className="w-5 h-5 text-green-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900">Practical Applications</h3>
-                      <p className="text-gray-600 text-sm">Real-world situations where this skill creates impact</p>
-                    </div>
+            {/* Skill Definition (Overview Tab) */}
+            {expandedSection === 'overview' && !showFullContent && (
+              <Card className="border border-gray-200 bg-white">
+                <div className="flex items-start mb-6">
+                  <div className="p-3 bg-blue-100 rounded-lg mr-4">
+                    <Target className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">Skill Definition</h3>
+                    <p className="text-gray-600 text-sm">What this skill is and why it matters</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <p className="text-gray-700">
+                    {skill.description}
+                  </p>
+                  
+                  <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                    <h4 className="font-medium text-blue-900 mb-2">Why This Skill Matters</h4>
+                    <p className="text-blue-800">
+                      {skillId === 'feedback-delivery' 
+                        ? "Effective feedback fuels growth, shapes performance, builds culture, and strengthens relationships. Poor or avoided feedback leads to confusion, stagnation, and tension."
+                        : "Mastering this skill will significantly enhance your professional effectiveness and career growth opportunities."}
+                    </p>
                   </div>
                   
+                  {skill.prerequisites && skill.prerequisites.length > 0 && (
+                    <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+                      <h4 className="font-medium text-amber-900 mb-2">Foundation Skills</h4>
+                      <p className="text-amber-800 text-sm mb-3">
+                        We recommend mastering these skills first:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {skill.prerequisites.map((prereq) => (
+                          <span 
+                            key={prereq}
+                            className="bg-white text-amber-800 text-sm px-3 py-1 rounded-full border border-amber-200"
+                          >
+                            {prereq}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </Card>
+            )}
+
+            {/* Key Techniques Tab */}
+            {expandedSection === 'techniques' && (
+              <Card className="border border-gray-200 bg-white">
+                <div className="flex items-start mb-6">
+                  <div className="p-3 bg-blue-100 rounded-lg mr-4">
+                    <Target className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">Key Techniques</h3>
+                    <p className="text-gray-600 text-sm">Master these approaches for effective skill application</p>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {skill.keyTechniques.map((technique, index) => (
+                    <div key={index} className="flex items-start bg-gray-50 p-4 rounded-lg border border-gray-100">
+                      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                        <span className="text-blue-700 font-bold text-sm">{index + 1}</span>
+                      </div>
+                      <span className="text-gray-700">{technique}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                  <h4 className="font-medium text-gray-900 mb-4">Practical Applications</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {skill.practicalApplications.map((application, index) => (
                       <div key={index} className="flex items-start bg-gray-50 p-4 rounded-lg border border-gray-100">
@@ -254,91 +393,313 @@ const SkillDetailPage: React.FC = () => {
                       </div>
                     ))}
                   </div>
-                </Card>
+                </div>
+              </Card>
+            )}
 
-                {/* Learning Resources */}
-                <Card className="border border-gray-200 bg-white">
-                  <div className="flex items-start mb-6">
-                    <div className="p-3 bg-purple-100 rounded-lg mr-4">
-                      <BookOpen className="w-5 h-5 text-purple-600" />
+            {/* Practice Scenarios Tab */}
+            {expandedSection === 'practice' && (
+              <Card className="border border-gray-200 bg-white">
+                <div className="flex items-start mb-6">
+                  <div className="p-3 bg-green-100 rounded-lg mr-4">
+                    <Users className="w-5 h-5 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">Practice Scenarios</h3>
+                    <p className="text-gray-600 text-sm">Apply this skill in realistic workplace situations</p>
+                  </div>
+                </div>
+                
+                {skillId === 'feedback-delivery' ? (
+                  <div className="space-y-6">
+                    {/* Scenario 1 */}
+                    <div className="border border-gray-200 rounded-lg overflow-hidden">
+                      <div className="bg-gray-50 p-4 border-b border-gray-200">
+                        <h4 className="font-semibold text-gray-900">Scenario 1: Meeting Dynamics</h4>
+                      </div>
+                      <div className="p-4">
+                        <p className="text-gray-700 mb-4">A peer dominates meetings, sidelining quieter voices. You need to consider the options and determine which one aligns with effective feedback principles.</p>
+                        <div className="space-y-3">
+                          <div className="flex items-center p-4 rounded-lg border border-gray-200 bg-gray-50">
+                            <div className="mr-3 flex-shrink-0">
+                              <XCircle className="w-5 h-5 text-gray-400" />
+                            </div>
+                            <div>
+                              <span className="font-medium mr-2 text-gray-900">Option A:</span>
+                              <span className="text-gray-700">
+                                Criticize them in the group meeting.
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex items-center p-4 rounded-lg border border-gray-200 bg-gray-50">
+                            <div className="mr-3 flex-shrink-0">
+                              <XCircle className="w-5 h-5 text-gray-400" />
+                            </div>
+                            <div>
+                              <span className="font-medium mr-2 text-gray-900">Option B:</span>
+                              <span className="text-gray-700">
+                                Say nothing and let it slide.
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex items-center p-4 rounded-lg border border-green-200 bg-green-50">
+                            <div className="mr-3 flex-shrink-0">
+                              <CheckCircle className="w-5 h-5 text-green-600" />
+                            </div>
+                            <div>
+                              <span className="font-medium mr-2 text-gray-900">Option C:</span>
+                              <span className="text-gray-700">
+                                Invite them for a 1:1 and share your observations.
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Scenario 2 */}
+                    <div className="border border-gray-200 rounded-lg overflow-hidden">
+                      <div className="bg-gray-50 p-4 border-b border-gray-200">
+                        <h4 className="font-semibold text-gray-900">Scenario 2: Work Quality Issues</h4>
+                      </div>
+                      <div className="p-4">
+                        <p className="text-gray-700 mb-4">A teammate submitted work with errors. This impacts your ability to move forward with your part of the project.</p>
+                        <div className="space-y-3">
+                          <div className="flex items-center p-4 rounded-lg border border-gray-200 bg-gray-50">
+                            <div className="mr-3 flex-shrink-0">
+                              <XCircle className="w-5 h-5 text-gray-400" />
+                            </div>
+                            <div>
+                              <span className="font-medium mr-2 text-gray-900">Option A:</span>
+                              <span className="text-gray-700">
+                                Fix it silently and build resentment.
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex items-center p-4 rounded-lg border border-gray-200 bg-gray-50">
+                            <div className="mr-3 flex-shrink-0">
+                              <XCircle className="w-5 h-5 text-gray-400" />
+                            </div>
+                            <div>
+                              <span className="font-medium mr-2 text-gray-900">Option B:</span>
+                              <span className="text-gray-700">
+                                Complain to their manager.
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex items-center p-4 rounded-lg border border-green-200 bg-green-50">
+                            <div className="mr-3 flex-shrink-0">
+                              <CheckCircle className="w-5 h-5 text-green-600" />
+                            </div>
+                            <div>
+                              <span className="font-medium mr-2 text-gray-900">Option C:</span>
+                              <span className="text-gray-700">
+                                Ask if they're open to feedback, and share with care.
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <Link
+                      to="/scenarios"
+                      className="inline-flex items-center justify-center w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      <Zap size={18} className="mr-2" />
+                      Practice in Full Scenarios
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="text-center py-8">
+                    <p className="text-gray-600 mb-4">
+                      Practice scenarios help you apply this skill in realistic situations.
+                    </p>
+                    <Link
+                      to="/scenarios"
+                      className="inline-flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      <Zap size={18} className="mr-2" />
+                      Explore Practice Scenarios
+                    </Link>
+                  </div>
+                )}
+              </Card>
+            )}
+
+            {/* Learning Resources Tab */}
+            {expandedSection === 'resources' && (
+              <Card className="border border-gray-200 bg-white">
+                <div className="flex items-start mb-6">
+                  <div className="p-3 bg-purple-100 rounded-lg mr-4">
+                    <BookOpen className="w-5 h-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">Learning Resources</h3>
+                    <p className="text-gray-600 text-sm">Curated materials to help you develop this skill</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-6">
+                  {/* Articles */}
+                  {skill.resources.articles && skill.resources.articles.length > 0 && (
+                    <div>
+                      <h4 className="font-medium text-gray-900 mb-3 flex items-center">
+                        <FileText className="w-4 h-4 mr-2 text-blue-500" />
+                        Articles
+                      </h4>
+                      <div className="space-y-3">
+                        {skill.resources.articles.map((article, index) => (
+                          <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors">
+                            <div>
+                              <h5 className="font-medium text-gray-900">{article.title}</h5>
+                              <p className="text-sm text-gray-600">{article.readingTime}</p>
+                            </div>
+                            <div className="bg-white p-2 rounded-full shadow-sm">
+                              <ArrowRight className="w-4 h-4 text-blue-500" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Videos */}
+                  {skill.resources.videos && skill.resources.videos.length > 0 && (
+                    <div>
+                      <h4 className="font-medium text-gray-900 mb-3 flex items-center">
+                        <Play className="w-4 h-4 mr-2 text-red-500" />
+                        Videos
+                      </h4>
+                      <div className="space-y-3">
+                        {skill.resources.videos.map((video, index) => (
+                          <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-red-200 transition-colors">
+                            <div>
+                              <h5 className="font-medium text-gray-900">{video.title}</h5>
+                              <p className="text-sm text-gray-600">{video.duration}</p>
+                            </div>
+                            <div className="bg-white p-2 rounded-full shadow-sm">
+                              <Play className="w-4 h-4 text-red-500" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Exercises */}
+                  {skill.resources.exercises && skill.resources.exercises.length > 0 && (
+                    <div>
+                      <h4 className="font-medium text-gray-900 mb-3 flex items-center">
+                        <Target className="w-4 h-4 mr-2 text-green-500" />
+                        Practice Exercises
+                      </h4>
+                      <div className="space-y-3">
+                        {skill.resources.exercises.map((exercise, index) => (
+                          <div key={index} className="p-4 bg-green-50 border border-green-100 rounded-lg hover:border-green-200 transition-colors">
+                            <h5 className="font-medium text-gray-900 mb-2">{exercise.title}</h5>
+                            <p className="text-gray-700 text-sm mb-2">{exercise.description}</p>
+                            <div className="flex items-center text-green-600 text-xs">
+                              <Clock className="w-3 h-3 mr-1" />
+                              {exercise.timeRequired}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </Card>
+            )}
+
+            {/* Skill Maturity Tab */}
+            {expandedSection === 'maturity' && (
+              <Card className="border border-gray-200 bg-white">
+                <div className="flex items-start mb-6">
+                  <div className="p-3 bg-indigo-100 rounded-lg mr-4">
+                    <Award className="w-5 h-5 text-indigo-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">Skill Maturity Levels</h3>
+                    <p className="text-gray-600 text-sm">Track your progress from novice to expert</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  {/* Level 1 */}
+                  <div className="flex items-start p-4 rounded-lg border bg-gray-50 border-gray-200">
+                    <div className="w-10 h-10 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center mr-4 flex-shrink-0">
+                      <span className="text-gray-700 font-bold">1</span>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900">Learning Resources</h3>
-                      <p className="text-gray-600 text-sm">Curated materials to help you develop this skill</p>
+                      <h4 className="font-semibold text-gray-900">Novice</h4>
+                      <p className="text-gray-700">Avoids giving feedback or shares only positive praise vaguely. Uncomfortable with constructive feedback in professional contexts.</p>
                     </div>
                   </div>
                   
-                  <div className="space-y-6">
-                    {/* Articles */}
-                    {skill.resources.articles && skill.resources.articles.length > 0 && (
-                      <div>
-                        <h4 className="font-medium text-gray-900 mb-3 flex items-center">
-                          <FileText className="w-4 h-4 mr-2 text-blue-500" />
-                          Articles
-                        </h4>
-                        <div className="space-y-3">
-                          {skill.resources.articles.map((article, index) => (
-                            <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors">
-                              <div>
-                                <h5 className="font-medium text-gray-900">{article.title}</h5>
-                                <p className="text-sm text-gray-600">{article.readingTime}</p>
-                              </div>
-                              <div className="bg-white p-2 rounded-full shadow-sm">
-                                <ArrowRight className="w-4 h-4 text-blue-500" />
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Videos */}
-                    {skill.resources.videos && skill.resources.videos.length > 0 && (
-                      <div>
-                        <h4 className="font-medium text-gray-900 mb-3 flex items-center">
-                          <Play className="w-4 h-4 mr-2 text-red-500" />
-                          Videos
-                        </h4>
-                        <div className="space-y-3">
-                          {skill.resources.videos.map((video, index) => (
-                            <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-red-200 transition-colors">
-                              <div>
-                                <h5 className="font-medium text-gray-900">{video.title}</h5>
-                                <p className="text-sm text-gray-600">{video.duration}</p>
-                              </div>
-                              <div className="bg-white p-2 rounded-full shadow-sm">
-                                <Play className="w-4 h-4 text-red-500" />
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Exercises */}
-                    {skill.resources.exercises && skill.resources.exercises.length > 0 && (
-                      <div>
-                        <h4 className="font-medium text-gray-900 mb-3 flex items-center">
-                          <Target className="w-4 h-4 mr-2 text-green-500" />
-                          Practice Exercises
-                        </h4>
-                        <div className="space-y-3">
-                          {skill.resources.exercises.map((exercise, index) => (
-                            <div key={index} className="p-4 bg-green-50 border border-green-100 rounded-lg hover:border-green-200 transition-colors">
-                              <h5 className="font-medium text-gray-900 mb-2">{exercise.title}</h5>
-                              <p className="text-gray-700 text-sm mb-2">{exercise.description}</p>
-                              <div className="flex items-center text-green-600 text-xs">
-                                <Clock className="w-3 h-3 mr-1" />
-                                {exercise.timeRequired}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                  {/* Level 2 */}
+                  <div className="flex items-start p-4 rounded-lg border bg-blue-50 border-blue-200">
+                    <div className="w-10 h-10 rounded-full bg-white border-2 border-blue-200 flex items-center justify-center mr-4 flex-shrink-0">
+                      <span className="text-blue-700 font-bold">2</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Emerging</h4>
+                      <p className="text-gray-700">Attempts to give feedback but struggles with timing, delivery, or tone. Feedback may be too harsh, too vague, or poorly timed.</p>
+                    </div>
                   </div>
-                </Card>
-              </>
+                  
+                  {/* Level 3 */}
+                  <div className="flex items-start p-4 rounded-lg border bg-green-50 border-green-200">
+                    <div className="w-10 h-10 rounded-full bg-white border-2 border-green-200 flex items-center justify-center mr-4 flex-shrink-0">
+                      <span className="text-green-700 font-bold">3</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Practicing</h4>
+                      <p className="text-gray-700">Gives feedback that is timely, clear, and focused on behavior. Balances positive and constructive feedback appropriately.</p>
+                    </div>
+                  </div>
+                  
+                  {/* Level 4 */}
+                  <div className="flex items-start p-4 rounded-lg border bg-purple-50 border-purple-200">
+                    <div className="w-10 h-10 rounded-full bg-white border-2 border-purple-200 flex items-center justify-center mr-4 flex-shrink-0">
+                      <span className="text-purple-700 font-bold">4</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Fluent</h4>
+                      <p className="text-gray-700">Adapts feedback to different personalities, roles, and situations. Delivers feedback with confidence and skill in various contexts.</p>
+                    </div>
+                  </div>
+                  
+                  {/* Level 5 */}
+                  <div className="flex items-start p-4 rounded-lg border bg-indigo-50 border-indigo-200">
+                    <div className="w-10 h-10 rounded-full bg-white border-2 border-indigo-200 flex items-center justify-center mr-4 flex-shrink-0">
+                      <span className="text-indigo-700 font-bold">5</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Shaping</h4>
+                      <p className="text-gray-700">Coaches others to give feedback effectively and models best practices consistently. Builds systems and culture that normalize constructive feedback.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                  <h4 className="font-medium text-gray-900 mb-4">Your Current Level</h4>
+                  <div className="bg-blue-50 border border-blue-100 rounded-lg p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-medium text-blue-900">Developing</span>
+                      <span className="text-sm text-blue-700">Level 2</span>
+                    </div>
+                    <ProgressBar
+                      value={35}
+                      max={100}
+                      color="blue"
+                    />
+                    <p className="text-sm text-blue-800 mt-3">
+                      You're making progress! Continue practicing in scenarios to advance to the next level.
+                    </p>
+                  </div>
+                </div>
+              </Card>
             )}
           </div>
 
@@ -359,9 +720,12 @@ const SkillDetailPage: React.FC = () => {
                   <BookOpen size={18} className="mr-2" />
                   Add to Learning Plan
                 </button>
-                <button className="flex items-center justify-center w-full bg-white text-gray-700 py-3 px-4 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
-                  <Users size={18} className="mr-2" />
-                  Share Skill
+                <button 
+                  onClick={() => setShowChatbot(true)}
+                  className="flex items-center justify-center w-full bg-white text-gray-700 py-3 px-4 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+                >
+                  <MessageCircle size={18} className="mr-2" />
+                  Ask AI Coach
                 </button>
               </div>
             </Card>
@@ -481,6 +845,102 @@ const SkillDetailPage: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* AI Chatbot */}
+      {showChatbot && (
+        <div className="fixed bottom-6 right-6 w-96 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden z-50">
+          <div className="flex items-center justify-between bg-blue-600 text-white p-4">
+            <div className="flex items-center">
+              <Brain className="w-5 h-5 mr-2" />
+              <h3 className="font-medium">AI Skill Coach</h3>
+            </div>
+            <button 
+              onClick={() => setShowChatbot(false)}
+              className="text-white hover:text-blue-100"
+            >
+              <X size={20} />
+            </button>
+          </div>
+          
+          <div className="h-80 overflow-y-auto p-4 bg-gray-50">
+            {chatHistory.length === 0 ? (
+              <div className="text-center py-8">
+                <Brain className="w-12 h-12 text-blue-200 mx-auto mb-3" />
+                <p className="text-gray-500 mb-2">Ask me anything about {skill.name}.</p>
+                <div className="space-y-2 mt-4">
+                  <button 
+                    onClick={() => {
+                      setChatMessage("How do I give difficult feedback?");
+                      handleSendMessage();
+                    }}
+                    className="block w-full text-left p-2 bg-white rounded-lg border border-gray-200 text-sm text-gray-700 hover:bg-gray-50"
+                  >
+                    How do I give difficult feedback?
+                  </button>
+                  <button 
+                    onClick={() => {
+                      setChatMessage("Can you give me an example of good feedback?");
+                      handleSendMessage();
+                    }}
+                    className="block w-full text-left p-2 bg-white rounded-lg border border-gray-200 text-sm text-gray-700 hover:bg-gray-50"
+                  >
+                    Can you give me an example of good feedback?
+                  </button>
+                  <button 
+                    onClick={() => {
+                      setChatMessage("How do I give feedback to my manager?");
+                      handleSendMessage();
+                    }}
+                    className="block w-full text-left p-2 bg-white rounded-lg border border-gray-200 text-sm text-gray-700 hover:bg-gray-50"
+                  >
+                    How do I give feedback to my manager?
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {chatHistory.map((message, index) => (
+                  <div 
+                    key={index} 
+                    className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div 
+                      className={`max-w-xs p-3 rounded-lg ${
+                        message.role === 'user' 
+                          ? 'bg-blue-600 text-white rounded-br-none' 
+                          : 'bg-white border border-gray-200 rounded-bl-none'
+                      }`}
+                    >
+                      <p className={message.role === 'user' ? 'text-white' : 'text-gray-700'}>
+                        {message.content}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          
+          <div className="p-4 border-t border-gray-200">
+            <div className="flex items-center">
+              <input
+                type="text"
+                value={chatMessage}
+                onChange={(e) => setChatMessage(e.target.value)}
+                placeholder="Ask about this skill..."
+                className="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+              />
+              <button
+                onClick={handleSendMessage}
+                className="bg-blue-600 text-white p-2 rounded-r-lg hover:bg-blue-700"
+              >
+                <Send size={20} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
