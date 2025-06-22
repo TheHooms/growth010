@@ -18,14 +18,16 @@ import {
   Send,
   X,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Award
 } from 'lucide-react';
 import { getSkillById, getRelatedSkills, skillCategories } from '../data/skills';
 import { feedbackDeliveryContent } from '../data/skillContent/feedback-delivery';
 import SkillContentRenderer from '../components/SkillContentRenderer';
-import Card from '../components/Card';
-import Button from '../components/Button';
-import ProgressBar from '../components/ProgressBar';
+import PracticeScenario from '../components/PracticeScenario';
+import Card from './Card';
+import Button from './Button';
+import ProgressBar from './ProgressBar';
 
 const SkillDetailPage: React.FC = () => {
   const { skillId } = useParams<{ skillId: string }>();
@@ -410,97 +412,17 @@ const SkillDetailPage: React.FC = () => {
                   </div>
                 </div>
                 
-                {skillId === 'feedback-delivery' ? (
+                {skillId === 'feedback-delivery' && skillContent?.microScenarios ? (
                   <div className="space-y-6">
-                    {/* Scenario 1 */}
-                    <div className="border border-gray-200 rounded-lg overflow-hidden">
-                      <div className="bg-gray-50 p-4 border-b border-gray-200">
-                        <h4 className="font-semibold text-gray-900">Scenario 1: Meeting Dynamics</h4>
-                      </div>
-                      <div className="p-4">
-                        <p className="text-gray-700 mb-4">A peer dominates meetings, sidelining quieter voices. You need to consider the options and determine which one aligns with effective feedback principles.</p>
-                        <div className="space-y-3">
-                          <div className="flex items-center p-4 rounded-lg border border-gray-200 bg-gray-50">
-                            <div className="mr-3 flex-shrink-0">
-                              <XCircle className="w-5 h-5 text-gray-400" />
-                            </div>
-                            <div>
-                              <span className="font-medium mr-2 text-gray-900">Option A:</span>
-                              <span className="text-gray-700">
-                                Criticize them in the group meeting.
-                              </span>
-                            </div>
-                          </div>
-                          <div className="flex items-center p-4 rounded-lg border border-gray-200 bg-gray-50">
-                            <div className="mr-3 flex-shrink-0">
-                              <XCircle className="w-5 h-5 text-gray-400" />
-                            </div>
-                            <div>
-                              <span className="font-medium mr-2 text-gray-900">Option B:</span>
-                              <span className="text-gray-700">
-                                Say nothing and let it slide.
-                              </span>
-                            </div>
-                          </div>
-                          <div className="flex items-center p-4 rounded-lg border border-green-200 bg-green-50">
-                            <div className="mr-3 flex-shrink-0">
-                              <CheckCircle className="w-5 h-5 text-green-600" />
-                            </div>
-                            <div>
-                              <span className="font-medium mr-2 text-gray-900">Option C:</span>
-                              <span className="text-gray-700">
-                                Invite them for a 1:1 and share your observations.
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Scenario 2 */}
-                    <div className="border border-gray-200 rounded-lg overflow-hidden">
-                      <div className="bg-gray-50 p-4 border-b border-gray-200">
-                        <h4 className="font-semibold text-gray-900">Scenario 2: Work Quality Issues</h4>
-                      </div>
-                      <div className="p-4">
-                        <p className="text-gray-700 mb-4">A teammate submitted work with errors. This impacts your ability to move forward with your part of the project.</p>
-                        <div className="space-y-3">
-                          <div className="flex items-center p-4 rounded-lg border border-gray-200 bg-gray-50">
-                            <div className="mr-3 flex-shrink-0">
-                              <XCircle className="w-5 h-5 text-gray-400" />
-                            </div>
-                            <div>
-                              <span className="font-medium mr-2 text-gray-900">Option A:</span>
-                              <span className="text-gray-700">
-                                Fix it silently and build resentment.
-                              </span>
-                            </div>
-                          </div>
-                          <div className="flex items-center p-4 rounded-lg border border-gray-200 bg-gray-50">
-                            <div className="mr-3 flex-shrink-0">
-                              <XCircle className="w-5 h-5 text-gray-400" />
-                            </div>
-                            <div>
-                              <span className="font-medium mr-2 text-gray-900">Option B:</span>
-                              <span className="text-gray-700">
-                                Complain to their manager.
-                              </span>
-                            </div>
-                          </div>
-                          <div className="flex items-center p-4 rounded-lg border border-green-200 bg-green-50">
-                            <div className="mr-3 flex-shrink-0">
-                              <CheckCircle className="w-5 h-5 text-green-600" />
-                            </div>
-                            <div>
-                              <span className="font-medium mr-2 text-gray-900">Option C:</span>
-                              <span className="text-gray-700">
-                                Ask if they're open to feedback, and share with care.
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    {skillContent.microScenarios.map((scenario) => (
+                      <PracticeScenario
+                        key={scenario.id}
+                        id={scenario.id}
+                        title={scenario.title}
+                        scenario={scenario.scenario}
+                        options={scenario.options}
+                      />
+                    ))}
                     
                     <Link
                       to="/scenarios"

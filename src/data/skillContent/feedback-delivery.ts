@@ -54,18 +54,20 @@ export const feedbackDeliveryContent = {
         {
           id: 'a',
           text: 'Criticize them in the group meeting.',
-          isRecommended: false
+          isRecommended: false,
+          explanation: 'Public criticism can create embarrassment and defensiveness. This approach damages psychological safety and may harm your relationship with the colleague. Constructive feedback should be delivered privately.'
         },
         {
           id: 'b',
           text: 'Say nothing and let it slide.',
-          isRecommended: false
+          isRecommended: false,
+          explanation: 'Avoiding the issue allows the problematic behavior to continue, which impacts team collaboration and may build resentment. Effective feedback requires addressing issues in a timely manner.'
         },
         {
           id: 'c',
           text: 'Invite them for a 1:1 and share your observations.',
           isRecommended: true,
-          icon: '✓'
+          explanation: 'This approach respects privacy, maintains psychological safety, and allows for a constructive conversation. By sharing specific observations about behaviors and their impact, you give your colleague an opportunity to reflect and adjust without public embarrassment.'
         }
       ]
     },
@@ -77,18 +79,20 @@ export const feedbackDeliveryContent = {
         {
           id: 'a',
           text: 'Fix it silently and build resentment.',
-          isRecommended: false
+          isRecommended: false,
+          explanation: 'While this avoids immediate conflict, it creates hidden resentment, doesn\'t help your colleague improve, and may lead to repeated issues. Effective feedback requires addressing problems directly rather than suppressing them.'
         },
         {
           id: 'b',
           text: 'Complain to their manager.',
-          isRecommended: false
+          isRecommended: false,
+          explanation: 'Escalating to a manager before attempting direct communication undermines trust and damages your working relationship. This approach may be seen as going behind someone\'s back and should only be used after direct feedback attempts have failed.'
         },
         {
           id: 'c',
           text: 'Ask if they\'re open to feedback, and share with care.',
           isRecommended: true,
-          icon: '✓'
+          explanation: 'This approach respects your colleague\'s agency by asking permission, focuses on specific issues rather than general criticism, and maintains the relationship. By sharing observations about the errors and their impact on the project, you provide actionable information that helps them improve.'
         }
       ]
     },
@@ -100,18 +104,45 @@ export const feedbackDeliveryContent = {
         {
           id: 'a',
           text: 'Avoid saying anything to preserve the relationship.',
-          isRecommended: false
+          isRecommended: false,
+          explanation: 'Avoiding the issue perpetuates the problem and doesn\'t give your manager an opportunity to improve. While it may feel safer in the short term, it leads to continued confusion and potentially impacts your work quality and team effectiveness.'
         },
         {
           id: 'b',
           text: 'Complain to their boss about the lack of clarity.',
-          isRecommended: false
+          isRecommended: false,
+          explanation: 'Escalating to your manager\'s supervisor without first addressing the issue directly damages trust and may be seen as undermining your manager. This approach can significantly harm your working relationship and reputation.'
         },
         {
           id: 'c',
           text: 'Request a 1:1 and share the specific impact with examples.',
           isRecommended: true,
-          icon: '✓'
+          explanation: 'This approach shows respect while addressing the issue directly. By focusing on specific examples and their impact on your work, you provide actionable feedback that helps your manager understand the problem. Framing it as a way to improve your effectiveness makes it more likely to be well-received.'
+        }
+      ]
+    },
+    {
+      id: 4,
+      title: 'Peer Performance Issues',
+      scenario: 'A colleague consistently misses deadlines that affect the team\'s ability to deliver on time.',
+      options: [
+        {
+          id: 'a',
+          text: 'Send a critical email copying the whole team.',
+          isRecommended: false,
+          explanation: 'Public criticism creates embarrassment and defensiveness. This approach damages team dynamics and psychological safety. It may also be seen as an attempt to shame rather than help, which will likely make the situation worse rather than better.'
+        },
+        {
+          id: 'b',
+          text: 'Have a private conversation focused on impact and solutions.',
+          isRecommended: true,
+          explanation: 'This approach maintains privacy and dignity while addressing the issue directly. By focusing on the impact of missed deadlines and collaboratively exploring solutions, you create an opportunity for improvement without damaging the relationship or team dynamics.'
+        },
+        {
+          id: 'c',
+          text: 'Adjust your own work to compensate without mentioning it.',
+          isRecommended: false,
+          explanation: 'While this avoids conflict, it enables the problematic behavior to continue and may lead to burnout as you take on extra work. It also prevents your colleague from receiving the feedback they need to improve and address the underlying issues.'
         }
       ]
     }
