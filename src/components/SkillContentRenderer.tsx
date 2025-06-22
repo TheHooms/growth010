@@ -245,6 +245,46 @@ const SkillContentRenderer: React.FC<SkillContentProps> = ({ content }) => {
                 <p className="text-gray-700 mb-6">{content.commonPitfalls.description}</p>
               )}
 
+              {content.commonPitfalls.selectiveFeedback && (
+                <div className="mb-8">
+                  <h4 className="font-semibold text-gray-900 mb-3">{content.commonPitfalls.selectiveFeedback.title}</h4>
+                  <p className="text-gray-700 mb-4">{content.commonPitfalls.selectiveFeedback.description}</p>
+                  
+                  {content.commonPitfalls.selectiveFeedback.principles && Array.isArray(content.commonPitfalls.selectiveFeedback.principles) && (
+                    <div className="bg-purple-50 border border-purple-100 rounded-lg p-5">
+                      <ul className="space-y-3">
+                        {content.commonPitfalls.selectiveFeedback.principles.map((principle: string, index: number) => (
+                          <li key={index} className="flex items-start">
+                            <span className="text-purple-500 mr-2 mt-1">•</span>
+                            <span className="text-gray-700">{principle}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {content.commonPitfalls.directCommunication && (
+                <div className="mb-8">
+                  <h4 className="font-semibold text-gray-900 mb-3">{content.commonPitfalls.directCommunication.title}</h4>
+                  <p className="text-gray-700 mb-4">{content.commonPitfalls.directCommunication.description}</p>
+                  
+                  {content.commonPitfalls.directCommunication.principles && Array.isArray(content.commonPitfalls.directCommunication.principles) && (
+                    <div className="bg-green-50 border border-green-100 rounded-lg p-5">
+                      <ul className="space-y-3">
+                        {content.commonPitfalls.directCommunication.principles.map((principle: string, index: number) => (
+                          <li key={index} className="flex items-start">
+                            <span className="text-green-500 mr-2 mt-1">•</span>
+                            <span className="text-gray-700">{principle}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+
               {content.commonPitfalls.choosingWords && (
                 <div className="mb-8">
                   <h4 className="font-semibold text-gray-900 mb-3">{content.commonPitfalls.choosingWords.title}</h4>

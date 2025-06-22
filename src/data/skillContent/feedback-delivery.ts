@@ -138,6 +138,26 @@ export const feedbackDeliveryContent = {
 
   commonPitfalls: {
     description: 'This section outlines the most frequent feedback delivery mistakes and how to avoid them. Each comparison includes what good feedback looks like versus common errors, and why it matters.',
+    selectiveFeedback: {
+      title: 'Being Selective About Feedback',
+      description: 'Not every observation warrants feedback. Being intentional about when and what feedback to share is crucial for maintaining team dynamics and relationships.',
+      principles: [
+        'Focus on impact: Prioritize feedback that addresses behaviors with significant impact on team performance, project outcomes, or professional relationships.',
+        'Consider team dynamics: Too much peer-to-peer feedback, especially on minor issues, can create a hypercritical environment where team members feel constantly scrutinized.',
+        'Build trust first: Feedback is most effective when delivered within established, trusting relationships. Without this foundation, even well-intentioned feedback may be perceived as criticism.',
+        'Respect autonomy: Not every difference in working style requires correction. Recognize when a behavior is simply different rather than problematic.',
+        'Ask yourself: "Is this feedback necessary for growth or am I just nitpicking?" "Will this feedback improve outcomes or just satisfy my preference?"'
+      ]
+    },
+    directCommunication: {
+      title: 'Direct Communication Principles',
+      description: 'When you do decide feedback is warranted, follow these principles:',
+      principles: [
+        'Be clear and concise: Provide direct answers to questions without unnecessary elaboration.',
+        'Focus on solutions: Frame feedback in terms of specific, actionable improvements rather than dwelling on problems.',
+        'Balance directness with empathy: Straightforward communication can coexist with kindness and consideration for others\' feelings.'
+      ]
+    },
     choosingWords: {
       title: 'Choosing Your Words Wisely',
       description: 'Using thoughtful, emotionally safe language when offering feedback helps reduce defensiveness and encourages collaboration. Instead of using the word "feedback" directly, consider using phrases like:',
