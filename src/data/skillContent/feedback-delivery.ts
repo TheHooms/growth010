@@ -6,9 +6,9 @@ export const feedbackDeliveryContent = {
   definition: {
     title: 'Skill Definition & Importance',
     description: 'Feedback Delivery is the ability to share observations, praise, or critique in a timely, respectful, and actionable way that promotes learning, alignment, and trust.',
-    coreMessage: 'Feedback is a gift. It is something the giver offers to help the receiver grow—not to punish, control, or release frustration.',
+    coreMessage: 'Feedback is a gift. It is something thoughtfully offered intended to help the receiver grow—not to punish, control, or release frustration. Effective feedback is specific, balanced, and constructive.',
     whyItMatters: 'Effective feedback fuels growth, shapes performance, builds culture, and strengthens relationships. Poor or avoided feedback leads to confusion, stagnation, and tension.',
-    trustFoundation: 'Feedback only works when there\'s psychological safety. Without trust, even constructive feedback may feel threatening.',
+    trustFoundation: 'Feedback only works when there\'s psychological safety. Without trust, even well-meaning, constructive feedback may feel threatening.',
     riskOfPoorFeedback: [
       'Avoidance of important conversations',
       'Repeated mistakes and poor performance',
@@ -21,27 +21,27 @@ export const feedbackDeliveryContent = {
     {
       level: 1,
       name: 'Novice',
-      description: 'Avoids giving feedback or shares only positive praise vaguely.'
+      description: 'Avoids giving feedback or shares only positive praise vaguely. Uncomfortable with constructive feedback in professional contexts.'
     },
     {
       level: 2,
       name: 'Emerging',
-      description: 'Attempts to give feedback but struggles with timing, delivery, or tone.'
+      description: 'Attempts to give feedback but struggles with timing, delivery, or tone. Feedback may be too harsh, too vague, or poorly timed.'
     },
     {
       level: 3,
       name: 'Practicing',
-      description: 'Gives feedback that is timely, clear, and focused on behavior.'
+      description: 'Gives feedback that is timely, clear, and focused on behavior. Balances positive and constructive feedback appropriately.'
     },
     {
       level: 4,
       name: 'Fluent',
-      description: 'Adapts feedback to different personalities, roles, and situations.'
+      description: 'Adapts feedback to different personalities, roles, and situations. Delivers feedback with confidence and skill in various contexts.'
     },
     {
       level: 5,
       name: 'Shaping',
-      description: 'Coaches others to give feedback effectively and models best practices consistently.'
+      description: 'Coaches others to give feedback effectively and models best practices consistently. Builds systems and culture that normalize constructive feedback.'
     }
   ],
 
@@ -49,7 +49,7 @@ export const feedbackDeliveryContent = {
     {
       id: 1,
       title: 'Meeting Dynamics',
-      scenario: 'A peer dominates meetings, sidelining quieter voices.',
+      scenario: 'A peer dominates meetings, sidelining quieter voices. You need to consider the options and determine which one aligns with effective feedback principles.',
       options: [
         {
           id: 'a',
@@ -72,7 +72,7 @@ export const feedbackDeliveryContent = {
     {
       id: 2,
       title: 'Work Quality Issues',
-      scenario: 'A teammate submitted work with errors.',
+      scenario: 'A teammate submitted work with errors. This impacts your ability to move forward with your part of the project.',
       options: [
         {
           id: 'a',
@@ -91,25 +91,48 @@ export const feedbackDeliveryContent = {
           icon: '✓'
         }
       ]
+    },
+    {
+      id: 3,
+      title: 'Giving Feedback to Manager',
+      scenario: 'Your manager consistently provides vague direction, causing confusion. This is affecting coordination.',
+      options: [
+        {
+          id: 'a',
+          text: 'Avoid saying anything to preserve the relationship.',
+          isRecommended: false
+        },
+        {
+          id: 'b',
+          text: 'Complain to their boss about the lack of clarity.',
+          isRecommended: false
+        },
+        {
+          id: 'c',
+          text: 'Request a 1:1 and share the specific impact with examples.',
+          isRecommended: true,
+          icon: '✓'
+        }
+      ]
     }
   ],
 
   roleLevelVariants: [
     {
-      role: 'Individual Contributor',
-      focus: 'Shares and receives feedback among peers. Focuses on behavior, impact, and collaboration.'
+      role: 'Individual',
+      focus: 'Shares and receives feedback among peers. Focuses on behavior, collaboration, and mutual growth.'
     },
     {
       role: 'Manager',
       focus: 'Provides structured and performance feedback regularly. Balances direction with development.'
     },
     {
-      role: 'Cross-Functional Lead',
-      focus: 'Many organizations struggle to handle conflict and complexity. Builds psychological safety.'
+      role: 'Partner',
+      focus: 'Shares feedback across functions where authority is shared. Maintains mutual respect.'
     },
     {
-      role: 'Executive',
-      focus: 'Models high-quality feedback culture and sets expectations. Feedback flows up and down.'
+      role: 'Director & Executive',
+      focus: 'Models high-quality feedback to reinforce culture and strategy. Builds psychological safety.'
     }
   ],
 
@@ -137,7 +160,7 @@ export const feedbackDeliveryContent = {
 
   caseStudy: {
     title: 'Mini Case Study / Story',
-    story: 'Maya, an engineer, notices her peer constantly missing deadlines, slowing the team. Instead of venting or complaining to the manager, she says, "Hey, do you have a minute? I noticed the last few handoffs came in late, and it\'s been hard to keep things on track. Can I share a few thoughts?" The peer thanks her for being direct. They discuss causes and agree on a new check-in schedule. Maya kept it brief, focused on impact, and didn\'t assume intent.'
+    story: 'Sarah, an engineer, notices her peer constantly missing deadlines, slowing the team. Instead of venting or complaining to the manager, she says, "Hey, do you have a minute? I noticed the last few handoffs came in late, and it\'s been hard to keep things on track. Can I share a few thoughts?" The peer thanks her for being direct. They discuss causes and agree on a new check-in schedule. Sarah kept it brief, focused on impact, and didn\'t assume intent.'
   },
 
   practiceOpportunities: {
@@ -159,26 +182,43 @@ export const feedbackDeliveryContent = {
     'When did I last avoid feedback I knew I should give?',
     'What fears hold me back?',
     'How do I receive feedback—graciously or defensively?',
-    'What feedback delivery style has worked best for me in the past?'
+    'What feedback delivery style has worked best for me in the past?',
+    'How can I make feedback feel more collaborative?'
   ],
 
-  suggestedActions: [
-    'Ask: "Can I offer an observation?" before diving in.',
-    'Share feedback within 24 hours of an event.',
-    'Praise publicly. Critique privately.',
-    'Keep a weekly log of feedback moments.',
-    'Use neutral, factual language ("I noticed...," "The impact was...").'
+  leaderTips: [
+    'Normalize giving and receiving feedback regularly in your team.',
+    'Model vulnerability by asking for specific feedback yourself.',
+    'Recognize and reward those who give helpful feedback to others.',
+    'Create structured opportunities for feedback exchange.',
+    'Help team members understand that feedback is about growth, not criticism.'
   ],
 
-  relatedSkills: [
-    'Difficult Conversations',
-    'Professional Assertiveness',
-    'Emotional Regulation',
-    'Strategic Communication',
-    'Active Listening'
+  feedbackPhrases: [
+    '"I noticed that..." (observation without judgment)',
+    '"When I saw/heard..." (specific situation)',
+    '"The impact was..." (focus on effects, not intent)',
+    '"What are your thoughts?" (invite dialogue)',
+    '"How can we work on this together?" (collaborative approach)',
+    '"What happened there?" (curious inquiry instead of accusation)'
   ],
 
-  learningResources: [
+  practicePrompts: [
+    'Write out exactly how you would phrase feedback for the SBI model (Situation, Behavior, Impact). Learn more about the SBI model.',
+    'What are some phrases of feedback you would give if you had to coach that person?',
+    'Write out a piece of feedback you need to give but didn\'t. What\'s holding you back?'
+  ],
+
+  coachableMoments: [
+    'When someone asks for your opinion on their work',
+    'After observing a team member create confusion or frustration',
+    'During regular 1:1 meetings with direct reports',
+    'After noticing specific behaviors',
+    'When someone makes a mistake they may not realize',
+    'When celebrating wins and successful outcomes'
+  ],
+
+  skillBuildingResources: [
     {
       type: 'Article',
       title: 'Radical Candor™ by Kim Scott',
@@ -204,11 +244,5 @@ export const feedbackDeliveryContent = {
       title: 'Feedback delivery journal & checklist',
       icon: '🛠️'
     }
-  ],
-
-  skillTracker: {
-    selfAssessment: 'Self-assessment quiz: Identify your maturity level.',
-    peerFeedbackForm: 'Peer feedback form: "How helpful was my last feedback to you?"',
-    managerCheck: 'Manager check-in: Rate my feedback delivery skills 1-10.'
-  }
+  ]
 };
