@@ -16,8 +16,8 @@ import { getSkillById, getRelatedSkills, skillCategories } from '../data/skills'
 import { feedbackDeliveryContent } from '../data/skillContent/feedback-delivery';
 import SkillCard from '../components/SkillCard';
 import SkillContentRenderer from '../components/SkillContentRenderer';
-import Card from './Card';
-import Button from './Button';
+import Card from '../components/Card';
+import Button from '../components/Button';
 
 const SkillDetailPage: React.FC = () => {
   const { skillId } = useParams<{ skillId: string }>();
