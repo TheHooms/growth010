@@ -1,22 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  CheckCircle, 
-  XCircle, 
-  Users, 
-  AlertTriangle, 
-  BookOpen, 
-  Play,
-  FileText,
-  Headphones,
-  Monitor,
-  Tool,
-  ChevronDown,
-  ChevronUp,
-  Target,
-  Award,
-  Clock,
-  MessageCircle
-} from 'lucide-react';
+import { CheckCircle, XCircle, Users, AlertTriangle, BookOpen, Play, FileText, Headphones, Monitor, PenTool as Tool, ChevronDown, ChevronUp, Target, Award, Clock, MessageCircle } from 'lucide-react';
 import Card from './Card';
 
 interface SkillContentProps {
