@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Search, Filter, ZoomIn, ZoomOut, RotateCcw, Info } from 'lucide-react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import { Search, Filter, ZoomIn, ZoomOut, RotateCcw, Info, ExternalLink } from 'lucide-react';
 import { skills } from '../data/skills';
 
 interface NetworkNode {
@@ -31,12 +32,14 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
   height = 800 
 }) => {
   const svgRef = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [selectedNode, setSelectedNode] = useState<NetworkNode | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedLevel, setSelectedLevel] = useState<string>('all');
-  const [zoom, setZoom] = useState(1);
-  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [transform, setTransform] = useState({ scale: 1, x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
   // Convert skills data to network format
   const [skillsData, setSkillsData] = useState<NetworkNode[]>([]);
@@ -206,13 +209,57 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
     setSelectedNode(selectedNode?.id === node.id ? null : node);
   };
 
-  const handleZoomIn = () => setZoom(prev => Math.min(prev * 1.2, 3));
-  const handleZoomOut = () => setZoom(prev => Math.max(prev / 1.2, 0.3));
-  const handleReset = () => {
-    setZoom(1);
-    setPan({ x: 0, y: 0 });
+  // Improved zoom functions with proper limits
+  const handleZoomIn = useCallback(() => {
+    setTransform(prev => ({
+      ...prev,
+      scale: Math.min(prev.scale * 1.3, 5) // Max zoom 5x
+    }));
+  }, []);
+
+  const handleZoomOut = useCallback(() => {
+    setTransform(prev => ({
+      ...prev,
+      scale: Math.max(prev.scale / 1.3, 0.2) // Min zoom 0.2x
+    }));
+  }, []);
+
+  const handleReset = useCallback(() => {
+    setTransform({ scale: 1, x: 0, y: 0 });
     setSelectedNode(null);
-  };
+  }, []);
+
+  // Mouse wheel zoom
+  const handleWheel = useCallback((e: React.WheelEvent) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? 0.9 : 1.1;
+    setTransform(prev => ({
+      ...prev,
+      scale: Math.min(Math.max(prev.scale * delta, 0.2), 5)
+    }));
+  }, []);
+
+  // Pan functionality
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (e.target === svgRef.current) {
+      setIsDragging(true);
+      setDragStart({ x: e.clientX - transform.x, y: e.clientY - transform.y });
+    }
+  }, [transform]);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (isDragging) {
+      setTransform(prev => ({
+        ...prev,
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y
+      }));
+    }
+  }, [isDragging, dragStart]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
 
   return (
     <div className="w-full h-full bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
@@ -265,24 +312,24 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={handleZoomOut}
-              className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg"
+              className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               title="Zoom Out"
             >
               <ZoomOut size={16} />
             </button>
-            <span className="text-sm text-gray-600 min-w-12 text-center">
-              {Math.round(zoom * 100)}%
+            <span className="text-sm text-gray-600 min-w-16 text-center">
+              {Math.round(transform.scale * 100)}%
             </span>
             <button
               onClick={handleZoomIn}
-              className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg"
+              className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               title="Zoom In"
             >
               <ZoomIn size={16} />
             </button>
             <button
               onClick={handleReset}
-              className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg"
+              className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               title="Reset View"
             >
               <RotateCcw size={16} />
@@ -306,19 +353,32 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
           </div>
           <div className="flex items-center gap-2">
             <Info size={14} className="text-gray-400" />
-            <span className="text-gray-600">Click nodes to explore • Arrows show prerequisites</span>
+            <span className="text-gray-600">Click nodes to explore • Scroll to zoom • Drag to pan</span>
           </div>
         </div>
       </div>
 
       {/* Network Visualization */}
-      <div className="relative" style={{ height: height }}>
+      <div 
+        ref={containerRef}
+        className="relative overflow-hidden" 
+        style={{ height: height }}
+        onWheel={handleWheel}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+      >
         <svg
           ref={svgRef}
           width={width}
           height={height}
-          className="w-full h-full"
-          style={{ transform: `scale(${zoom}) translate(${pan.x}px, ${pan.y}px)` }}
+          className="w-full h-full cursor-grab"
+          style={{ 
+            transform: `translate(${transform.x}px, ${transform.y}px) scale(${transform.scale})`,
+            transformOrigin: '0 0',
+            transition: isDragging ? 'none' : 'transform 0.1s ease-out'
+          }}
         >
           {/* Links */}
           <g className="links">
@@ -434,7 +494,7 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
 
         {/* Selected Node Info Panel */}
         {selectedNode && (
-          <div className="absolute top-4 right-4 bg-white rounded-lg shadow-lg border border-gray-200 p-4 max-w-80">
+          <div className="absolute top-4 right-4 bg-white rounded-lg shadow-lg border border-gray-200 p-4 max-w-80 z-10">
             <h3 className="font-semibold text-gray-900 mb-2">{selectedNode.name}</h3>
             <div className="space-y-2 text-sm">
               <div>
@@ -466,12 +526,21 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
                 </div>
               )}
             </div>
-            <button
-              onClick={() => setSelectedNode(null)}
-              className="mt-3 text-xs text-blue-600 hover:text-blue-800"
-            >
-              Close
-            </button>
+            <div className="mt-4 flex items-center gap-2">
+              <Link
+                to={`/library/skills/${selectedNode.id}`}
+                className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium"
+              >
+                <ExternalLink size={14} className="mr-1" />
+                View Details
+              </Link>
+              <button
+                onClick={() => setSelectedNode(null)}
+                className="text-xs text-gray-500 hover:text-gray-700"
+              >
+                Close
+              </button>
+            </div>
           </div>
         )}
       </div>
