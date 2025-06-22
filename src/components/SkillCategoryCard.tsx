@@ -7,6 +7,10 @@ import {
   Brain, 
   TrendingUp, 
   Settings,
+  Lightbulb,
+  Monitor,
+  Globe,
+  Building,
   ArrowRight 
 } from 'lucide-react';
 import { SkillCategory } from '../data/skills';
@@ -23,7 +27,11 @@ const SkillCategoryCard: React.FC<SkillCategoryCardProps> = ({ category }) => {
       Heart: <Heart className="w-6 h-6" />,
       Brain: <Brain className="w-6 h-6" />,
       TrendingUp: <TrendingUp className="w-6 h-6" />,
-      Settings: <Settings className="w-6 h-6" />
+      Settings: <Settings className="w-6 h-6" />,
+      Lightbulb: <Lightbulb className="w-6 h-6" />,
+      Monitor: <Monitor className="w-6 h-6" />,
+      Globe: <Globe className="w-6 h-6" />,
+      Building: <Building className="w-6 h-6" />
     };
     return icons[iconName] || <Brain className="w-6 h-6" />;
   };
@@ -65,6 +73,30 @@ const SkillCategoryCard: React.FC<SkillCategoryCardProps> = ({ category }) => {
         border: 'border-teal-200', 
         text: 'text-teal-900', 
         icon: 'text-teal-600' 
+      },
+      red: { 
+        bg: 'bg-red-50', 
+        border: 'border-red-200', 
+        text: 'text-red-900', 
+        icon: 'text-red-600' 
+      },
+      emerald: { 
+        bg: 'bg-emerald-50', 
+        border: 'border-emerald-200', 
+        text: 'text-emerald-900', 
+        icon: 'text-emerald-600' 
+      },
+      pink: { 
+        bg: 'bg-pink-50', 
+        border: 'border-pink-200', 
+        text: 'text-pink-900', 
+        icon: 'text-pink-600' 
+      },
+      slate: { 
+        bg: 'bg-slate-50', 
+        border: 'border-slate-200', 
+        text: 'text-slate-900', 
+        icon: 'text-slate-600' 
       }
     };
     return colorMap[color] || colorMap.blue;

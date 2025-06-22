@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Search, Filter, ZoomIn, ZoomOut, RotateCcw, Info } from 'lucide-react';
+import { skills } from '../data/skills';
 
 interface NetworkNode {
   id: string;
   name: string;
   category: string;
-  level: 'Foundational' | 'Bridge' | 'Advanced';
+  level: 'foundational' | 'bridge' | 'advanced';
   prerequisites: string[];
   x?: number;
   y?: number;
@@ -37,85 +38,65 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
 
-  // Load skills data from the complete skill graph
+  // Convert skills data to network format
   const [skillsData, setSkillsData] = useState<NetworkNode[]>([]);
   const [linksData, setLinksData] = useState<NetworkLink[]>([]);
 
   useEffect(() => {
-    // Load the complete skill graph data
-    fetch('/src/data/complete_skill_graph.json')
-      .then(response => response.json())
-      .then(data => {
-        const nodes: NetworkNode[] = data.map((skill: any) => ({
-          id: skill.skill.toLowerCase().replace(/[^a-z0-9]/g, '-'),
-          name: skill.skill,
-          category: skill.category,
-          level: skill.level,
-          prerequisites: skill.prerequisites || []
-        }));
+    // Convert skills to network nodes
+    const nodes: NetworkNode[] = skills.map(skill => ({
+      id: skill.id,
+      name: skill.name,
+      category: skill.category,
+      level: skill.level,
+      prerequisites: skill.prerequisites || []
+    }));
 
-        const links: NetworkLink[] = [];
-        nodes.forEach(node => {
-          node.prerequisites.forEach(prereq => {
-            const prereqId = prereq.toLowerCase().replace(/[^a-z0-9]/g, '-');
-            const sourceNode = nodes.find(n => n.id === prereqId);
-            if (sourceNode) {
-              links.push({
-                source: sourceNode.id,
-                target: node.id
-              });
-            }
-          });
+    // Create links based on prerequisites
+    const links: NetworkLink[] = [];
+    nodes.forEach(node => {
+      if (node.prerequisites) {
+        node.prerequisites.forEach(prereqName => {
+          // Find the prerequisite skill by name
+          const prereqSkill = skills.find(s => s.name === prereqName);
+          if (prereqSkill) {
+            links.push({
+              source: prereqSkill.id,
+              target: node.id
+            });
+          }
         });
+      }
+    });
 
-        setSkillsData(nodes);
-        setLinksData(links);
-      })
-      .catch(error => {
-        console.error('Error loading skills data:', error);
-        // Fallback to mock data
-        const mockNodes: NetworkNode[] = [
-          { id: 'communication', name: 'Communication Framing', category: 'Communication & Feedback', level: 'Foundational', prerequisites: [] },
-          { id: 'empathy', name: 'Empathy in Action', category: 'Relational & Social Intelligence', level: 'Foundational', prerequisites: [] },
-          { id: 'feedback', name: 'Feedback Delivery', category: 'Communication & Feedback', level: 'Bridge', prerequisites: ['communication'] },
-          { id: 'difficult-conversations', name: 'Difficult Conversations', category: 'Communication & Feedback', level: 'Advanced', prerequisites: ['feedback', 'empathy'] }
-        ];
-        
-        const mockLinks: NetworkLink[] = [
-          { source: 'communication', target: 'feedback' },
-          { source: 'feedback', target: 'difficult-conversations' },
-          { source: 'empathy', target: 'difficult-conversations' }
-        ];
-
-        setSkillsData(mockNodes);
-        setLinksData(mockLinks);
-      });
+    setSkillsData(nodes);
+    setLinksData(links);
   }, []);
 
   const categories = Array.from(new Set(skillsData.map(node => node.category)));
-  const levels = ['Foundational', 'Bridge', 'Advanced'];
+  const levels = ['foundational', 'bridge', 'advanced'];
 
   const getCategoryColor = (category: string): string => {
     const colors: Record<string, string> = {
-      'Communication & Feedback': '#3B82F6',
-      'Relational & Social Intelligence': '#10B981',
-      'Influence & Leadership': '#8B5CF6',
-      'Analytical Thinking & Strategy': '#6366F1',
-      'Execution & Process Agility': '#06B6D4',
-      'Self-Mastery & Personal Development': '#F59E0B',
-      'Innovation & Creative Thinking': '#EF4444',
-      'Digital Dexterity & Tech Fluency': '#84CC16',
-      'Cultural Fluency & Inclusion': '#EC4899',
-      'Organizational Navigation & Career Capital': '#64748B'
+      'communication-feedback': '#3B82F6',
+      'relational-social': '#10B981',
+      'influence-leadership': '#8B5CF6',
+      'analytical-strategy': '#6366F1',
+      'execution-process': '#06B6D4',
+      'self-mastery': '#F59E0B',
+      'innovation-creative': '#EF4444',
+      'digital-tech': '#10B981',
+      'cultural-inclusion': '#EC4899',
+      'organizational-career': '#64748B'
     };
     return colors[category] || '#6B7280';
   };
 
   const getLevelSize = (level: string): number => {
     const sizes = {
-      'Foundational': 8,
-      'Bridge': 10,
-      'Advanced': 12
+      'foundational': 8,
+      'bridge': 10,
+      'advanced': 12
     };
     return sizes[level as keyof typeof sizes] || 8;
   };
@@ -260,7 +241,9 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
           >
             <option value="all">All Categories</option>
             {categories.map(category => (
-              <option key={category} value={category}>{category}</option>
+              <option key={category} value={category}>
+                {category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+              </option>
             ))}
           </select>
 
@@ -272,7 +255,9 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
           >
             <option value="all">All Levels</option>
             {levels.map(level => (
-              <option key={level} value={level}>{level}</option>
+              <option key={level} value={level}>
+                {level.charAt(0).toUpperCase() + level.slice(1)}
+              </option>
             ))}
           </select>
 
@@ -348,8 +333,14 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
               const isHighlighted = selectedNode && (
                 selectedNode.id === sourceNode.id || 
                 selectedNode.id === targetNode.id ||
-                selectedNode.prerequisites.includes(sourceNode.name) ||
-                sourceNode.prerequisites.includes(selectedNode.name)
+                selectedNode.prerequisites.some(prereq => {
+                  const prereqSkill = skills.find(s => s.name === prereq);
+                  return prereqSkill?.id === sourceNode.id;
+                }) ||
+                sourceNode.prerequisites.some(prereq => {
+                  const prereqSkill = skills.find(s => s.name === prereq);
+                  return prereqSkill?.id === selectedNode.id;
+                })
               );
 
               return (
@@ -393,15 +384,21 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
 
               const isSelected = selectedNode?.id === node.id;
               const isConnected = selectedNode && (
-                selectedNode.prerequisites.includes(node.name) ||
-                node.prerequisites.includes(selectedNode.name)
+                selectedNode.prerequisites.some(prereq => {
+                  const prereqSkill = skills.find(s => s.name === prereq);
+                  return prereqSkill?.id === node.id;
+                }) ||
+                node.prerequisites.some(prereq => {
+                  const prereqSkill = skills.find(s => s.name === prereq);
+                  return prereqSkill?.id === selectedNode.id;
+                })
               );
               const isHighlighted = isSelected || isConnected;
 
               const levelColors = {
-                'Foundational': '#10B981',
-                'Bridge': '#3B82F6', 
-                'Advanced': '#8B5CF6'
+                'foundational': '#10B981',
+                'bridge': '#3B82F6', 
+                'advanced': '#8B5CF6'
               };
 
               return (
@@ -442,13 +439,15 @@ const SkillsNetwork: React.FC<SkillsNetworkProps> = ({
             <div className="space-y-2 text-sm">
               <div>
                 <span className="font-medium text-gray-700">Category:</span>
-                <span className="ml-2 text-gray-600">{selectedNode.category}</span>
+                <span className="ml-2 text-gray-600">
+                  {selectedNode.category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                </span>
               </div>
               <div>
                 <span className="font-medium text-gray-700">Level:</span>
                 <span className={`ml-2 px-2 py-1 rounded-full text-xs font-medium ${
-                  selectedNode.level === 'Foundational' ? 'bg-green-100 text-green-800' :
-                  selectedNode.level === 'Bridge' ? 'bg-blue-100 text-blue-800' :
+                  selectedNode.level === 'foundational' ? 'bg-green-100 text-green-800' :
+                  selectedNode.level === 'bridge' ? 'bg-blue-100 text-blue-800' :
                   'bg-purple-100 text-purple-800'
                 }`}>
                   {selectedNode.level}
