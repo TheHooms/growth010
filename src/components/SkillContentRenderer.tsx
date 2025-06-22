@@ -328,6 +328,88 @@ const SkillContentRenderer: React.FC<SkillContentProps> = ({ content }) => {
                 </div>
               )}
 
+              {/* Escalation Guidance Section */}
+              {content.commonPitfalls.escalationGuidance && (
+                <div className="mb-8">
+                  <h4 className="font-semibold text-gray-900 mb-3">{content.commonPitfalls.escalationGuidance.title || "When and How to Escalate"}</h4>
+                  <p className="text-gray-700 mb-4">{content.commonPitfalls.escalationGuidance.description}</p>
+                  
+                  {content.commonPitfalls.escalationGuidance.principles && Array.isArray(content.commonPitfalls.escalationGuidance.principles) && (
+                    <div className="bg-blue-50 border border-blue-100 rounded-lg p-5 mb-4">
+                      <h5 className="font-medium text-blue-900 mb-3">Core Principles</h5>
+                      <ul className="space-y-2">
+                        {content.commonPitfalls.escalationGuidance.principles.map((principle: string, index: number) => (
+                          <li key={index} className="flex items-start">
+                            <span className="text-blue-500 mr-2 mt-1">•</span>
+                            <span className="text-gray-700">{principle}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {content.commonPitfalls.escalationGuidance.escalationProcess && (
+                    <div className="bg-green-50 border border-green-100 rounded-lg p-5 mb-4">
+                      <h5 className="font-medium text-green-900 mb-3">{content.commonPitfalls.escalationGuidance.escalationProcess.title}</h5>
+                      <ol className="space-y-2">
+                        {content.commonPitfalls.escalationGuidance.escalationProcess.steps.map((step: string, index: number) => (
+                          <li key={index} className="flex items-start">
+                            <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                              <span className="text-green-700 font-bold text-xs">{index + 1}</span>
+                            </div>
+                            <span className="text-gray-700">{step}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  )}
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    {content.commonPitfalls.escalationGuidance.whenToEscalate && (
+                      <div className="bg-indigo-50 border border-indigo-100 rounded-lg p-5">
+                        <h5 className="font-medium text-indigo-900 mb-3">{content.commonPitfalls.escalationGuidance.whenToEscalate.title}</h5>
+                        <ul className="space-y-2">
+                          {content.commonPitfalls.escalationGuidance.whenToEscalate.examples.map((example: string, index: number) => (
+                            <li key={index} className="flex items-start">
+                              <CheckCircle className="w-4 h-4 text-indigo-500 mr-2 mt-0.5" />
+                              <span className="text-gray-700">{example}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    
+                    {content.commonPitfalls.escalationGuidance.whenNotToEscalate && (
+                      <div className="bg-red-50 border border-red-100 rounded-lg p-5">
+                        <h5 className="font-medium text-red-900 mb-3">{content.commonPitfalls.escalationGuidance.whenNotToEscalate.title}</h5>
+                        <ul className="space-y-2">
+                          {content.commonPitfalls.escalationGuidance.whenNotToEscalate.examples.map((example: string, index: number) => (
+                            <li key={index} className="flex items-start">
+                              <XCircle className="w-4 h-4 text-red-500 mr-2 mt-0.5" />
+                              <span className="text-gray-700">{example}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {content.commonPitfalls.escalationGuidance.impactOfPrematureEscalation && (
+                    <div className="bg-amber-50 border border-amber-100 rounded-lg p-5">
+                      <h5 className="font-medium text-amber-900 mb-3">{content.commonPitfalls.escalationGuidance.impactOfPrematureEscalation.title}</h5>
+                      <ul className="space-y-2">
+                        {content.commonPitfalls.escalationGuidance.impactOfPrematureEscalation.consequences.map((consequence: string, index: number) => (
+                          <li key={index} className="flex items-start">
+                            <AlertTriangle className="w-4 h-4 text-amber-500 mr-2 mt-0.5" />
+                            <span className="text-gray-700">{consequence}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+
               {content.commonPitfalls.clarityNote && (
                 <div className="mb-8 bg-gray-50 border-l-4 border-gray-300 rounded-r-lg p-4">
                   <p className="text-gray-700 italic">{content.commonPitfalls.clarityNote}</p>
