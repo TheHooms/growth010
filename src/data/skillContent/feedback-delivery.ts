@@ -97,19 +97,19 @@ export const feedbackDeliveryContent = {
   roleLevelVariants: [
     {
       role: 'Individual Contributor',
-      focus: 'Gives and receives peer feedback regularly, with tact and intent.'
+      focus: 'Shares and receives feedback among peers. Focuses on behavior, impact, and collaboration.'
     },
     {
       role: 'Manager',
-      focus: 'Provides structured, developmental feedback during projects and reviews.'
+      focus: 'Provides structured and performance feedback regularly. Balances direction with development.'
     },
     {
       role: 'Cross-Functional Lead',
-      focus: 'Shares feedback across functions where authority is shared.'
+      focus: 'Many organizations struggle to handle conflict and complexity. Builds psychological safety.'
     },
     {
       role: 'Executive',
-      focus: 'Models high-quality feedback to reinforce culture and strategy.'
+      focus: 'Models high-quality feedback culture and sets expectations. Feedback flows up and down.'
     }
   ],
 
