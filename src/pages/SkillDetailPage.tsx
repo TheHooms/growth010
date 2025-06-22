@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
   ArrowLeft, 
@@ -9,17 +9,32 @@ import {
   Target,
   CheckCircle,
   ArrowRight,
-  Users
+  Users,
+  Brain
 } from 'lucide-react';
 import { getSkillById, getRelatedSkills, skillCategories } from '../data/skills';
+import { feedbackDeliveryContent } from '../data/skillContent/feedback-delivery';
 import SkillCard from '../components/SkillCard';
+import SkillContentRenderer from '../components/SkillContentRenderer';
+import Card from './Card';
+import Button from './Button';
 
 const SkillDetailPage: React.FC = () => {
   const { skillId } = useParams<{ skillId: string }>();
+  const [showFullContent, setShowFullContent] = useState(false);
   
   const skill = skillId ? getSkillById(skillId) : null;
   const relatedSkills = skillId ? getRelatedSkills(skillId) : [];
   const category = skill ? skillCategories.find(cat => cat.id === skill.category) : null;
+
+  // Check if we have detailed content for this skill
+  const hasDetailedContent = skillId === 'feedback-delivery';
+  const skillContent = hasDetailedContent ? feedbackDeliveryContent : null;
+
+  useEffect(() => {
+    // Reset content view when skill changes
+    setShowFullContent(false);
+  }, [skillId]);
 
   if (!skill) {
     return (
@@ -42,7 +57,9 @@ const SkillDetailPage: React.FC = () => {
   const getLevelColor = (level: string) => {
     return level === 'foundational' 
       ? 'bg-green-100 text-green-800 border-green-200' 
-      : 'bg-purple-100 text-purple-800 border-purple-200';
+      : level === 'bridge'
+        ? 'bg-blue-100 text-blue-800 border-blue-200'
+        : 'bg-purple-100 text-purple-800 border-purple-200';
   };
 
   return (
@@ -93,6 +110,42 @@ const SkillDetailPage: React.FC = () => {
               </div>
             </div>
 
+            {/* AI Skill Engine Insights */}
+            {skillId === 'feedback-delivery' && (
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6">
+                <div className="flex items-start">
+                  <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl mr-4">
+                    <Brain className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">AI Skill Engine Insights</h3>
+                    <p className="text-gray-700 mb-4">
+                      Feedback Delivery is a high-impact skill that forms the foundation for effective workplace relationships. 
+                      Based on your profile, this skill would significantly enhance your influence and team effectiveness.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
+                        High ROI Skill
+                      </span>
+                      <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                        Complements Your Archetype
+                      </span>
+                      <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">
+                        Builds on Your Strengths
+                      </span>
+                    </div>
+                    <Link
+                      to="/skill-engine"
+                      className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center"
+                    >
+                      View Full Skill Analysis
+                      <ArrowRight size={14} className="ml-1" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Prerequisites */}
             {skill.prerequisites && skill.prerequisites.length > 0 && (
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
@@ -109,108 +162,136 @@ const SkillDetailPage: React.FC = () => {
                       key={prereq}
                       className="bg-amber-100 text-amber-800 text-sm px-3 py-1 rounded-full border border-amber-300"
                     >
-                      {prereq.charAt(0).toUpperCase() + prereq.slice(1).replace('-', ' ')}
+                      {prereq}
                     </span>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Key Techniques */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Key Techniques</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {skill.keyTechniques.map((technique, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-0.5">
-                      <span className="text-blue-600 font-bold text-xs">{index + 1}</span>
-                    </div>
-                    <span className="text-gray-700">{technique}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Practical Applications */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Practical Applications</h3>
-              <div className="space-y-3">
-                {skill.practicalApplications.map((application, index) => (
-                  <div key={index} className="flex items-start">
-                    <Target className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
-                    <span className="text-gray-700">{application}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Learning Resources */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">Learning Resources</h3>
-              
-              <div className="space-y-6">
-                {/* Articles */}
-                {skill.resources.articles && skill.resources.articles.length > 0 && (
-                  <div>
-                    <h4 className="font-medium text-gray-900 mb-3 flex items-center">
-                      <FileText className="w-4 h-4 mr-2" />
-                      Articles
-                    </h4>
-                    <div className="space-y-3">
-                      {skill.resources.articles.map((article, index) => (
-                        <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                          <div>
-                            <h5 className="font-medium text-gray-900">{article.title}</h5>
-                            <p className="text-sm text-gray-600">{article.readingTime}</p>
-                          </div>
-                          <ArrowRight className="w-4 h-4 text-gray-400" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+            {/* Detailed Content or Standard Content */}
+            {hasDetailedContent && skillContent ? (
+              <>
+                {showFullContent ? (
+                  <SkillContentRenderer content={skillContent} />
+                ) : (
+                  <Card className="text-center py-8">
+                    <BookOpen className="w-12 h-12 text-blue-500 mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      Comprehensive Skill Guide Available
+                    </h3>
+                    <p className="text-gray-600 mb-6 max-w-lg mx-auto">
+                      This skill has a detailed learning guide with examples, practice scenarios, 
+                      and expert recommendations to help you master it effectively.
+                    </p>
+                    <Button
+                      onClick={() => setShowFullContent(true)}
+                      className="mx-auto"
+                    >
+                      View Complete Skill Guide
+                    </Button>
+                  </Card>
                 )}
-
-                {/* Videos */}
-                {skill.resources.videos && skill.resources.videos.length > 0 && (
-                  <div>
-                    <h4 className="font-medium text-gray-900 mb-3 flex items-center">
-                      <Play className="w-4 h-4 mr-2" />
-                      Videos
-                    </h4>
-                    <div className="space-y-3">
-                      {skill.resources.videos.map((video, index) => (
-                        <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                          <div>
-                            <h5 className="font-medium text-gray-900">{video.title}</h5>
-                            <p className="text-sm text-gray-600">{video.duration}</p>
-                          </div>
-                          <ArrowRight className="w-4 h-4 text-gray-400" />
+              </>
+            ) : (
+              <>
+                {/* Key Techniques */}
+                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Key Techniques</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {skill.keyTechniques.map((technique, index) => (
+                      <div key={index} className="flex items-start">
+                        <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-0.5">
+                          <span className="text-blue-600 font-bold text-xs">{index + 1}</span>
                         </div>
-                      ))}
-                    </div>
+                        <span className="text-gray-700">{technique}</span>
+                      </div>
+                    ))}
                   </div>
-                )}
+                </div>
 
-                {/* Exercises */}
-                {skill.resources.exercises && skill.resources.exercises.length > 0 && (
-                  <div>
-                    <h4 className="font-medium text-gray-900 mb-3 flex items-center">
-                      <Target className="w-4 h-4 mr-2" />
-                      Practice Exercises
-                    </h4>
-                    <div className="space-y-3">
-                      {skill.resources.exercises.map((exercise, index) => (
-                        <div key={index} className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                          <h5 className="font-medium text-blue-900 mb-2">{exercise.title}</h5>
-                          <p className="text-blue-800 text-sm mb-2">{exercise.description}</p>
-                          <p className="text-blue-600 text-xs">Time required: {exercise.timeRequired}</p>
-                        </div>
-                      ))}
-                    </div>
+                {/* Practical Applications */}
+                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Practical Applications</h3>
+                  <div className="space-y-3">
+                    {skill.practicalApplications.map((application, index) => (
+                      <div key={index} className="flex items-start">
+                        <Target className="w-5 h-5 text-green-500 mr-3 mt-0.5" />
+                        <span className="text-gray-700">{application}</span>
+                      </div>
+                    ))}
                   </div>
-                )}
-              </div>
-            </div>
+                </div>
+
+                {/* Learning Resources */}
+                <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-6">Learning Resources</h3>
+                  
+                  <div className="space-y-6">
+                    {/* Articles */}
+                    {skill.resources.articles && skill.resources.articles.length > 0 && (
+                      <div>
+                        <h4 className="font-medium text-gray-900 mb-3 flex items-center">
+                          <FileText className="w-4 h-4 mr-2" />
+                          Articles
+                        </h4>
+                        <div className="space-y-3">
+                          {skill.resources.articles.map((article, index) => (
+                            <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                              <div>
+                                <h5 className="font-medium text-gray-900">{article.title}</h5>
+                                <p className="text-sm text-gray-600">{article.readingTime}</p>
+                              </div>
+                              <ArrowRight className="w-4 h-4 text-gray-400" />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Videos */}
+                    {skill.resources.videos && skill.resources.videos.length > 0 && (
+                      <div>
+                        <h4 className="font-medium text-gray-900 mb-3 flex items-center">
+                          <Play className="w-4 h-4 mr-2" />
+                          Videos
+                        </h4>
+                        <div className="space-y-3">
+                          {skill.resources.videos.map((video, index) => (
+                            <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                              <div>
+                                <h5 className="font-medium text-gray-900">{video.title}</h5>
+                                <p className="text-sm text-gray-600">{video.duration}</p>
+                              </div>
+                              <ArrowRight className="w-4 h-4 text-gray-400" />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Exercises */}
+                    {skill.resources.exercises && skill.resources.exercises.length > 0 && (
+                      <div>
+                        <h4 className="font-medium text-gray-900 mb-3 flex items-center">
+                          <Target className="w-4 h-4 mr-2" />
+                          Practice Exercises
+                        </h4>
+                        <div className="space-y-3">
+                          {skill.resources.exercises.map((exercise, index) => (
+                            <div key={index} className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                              <h5 className="font-medium text-blue-900 mb-2">{exercise.title}</h5>
+                              <p className="text-blue-800 text-sm mb-2">{exercise.description}</p>
+                              <p className="text-blue-600 text-xs">Time required: {exercise.timeRequired}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -276,6 +357,24 @@ const SkillDetailPage: React.FC = () => {
                 </div>
               </div>
             )}
+
+            {/* AI Skill Engine Recommendation */}
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6">
+              <div className="flex items-center mb-3">
+                <Brain className="w-5 h-5 text-blue-600 mr-2" />
+                <h3 className="font-semibold text-gray-900">AI Skill Engine</h3>
+              </div>
+              <p className="text-gray-700 text-sm mb-4">
+                Get personalized learning recommendations and pathways for mastering this skill.
+              </p>
+              <Link
+                to="/skill-engine"
+                className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium"
+              >
+                View Personalized Pathway
+                <ArrowRight size={14} className="ml-1" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
