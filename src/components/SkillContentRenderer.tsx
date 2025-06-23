@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { CheckCircle, XCircle, Users, AlertTriangle, BookOpen, Play, FileText, Headphones, Monitor, PenTool as Tool, ChevronDown, ChevronUp, Target, Award, Clock, MessageCircle } from 'lucide-react';
 import Card from './Card';
+import PracticeScenario from './PracticeScenario';
 
 interface SkillContentProps {
   content: any;
 }
 
 const SkillContentRenderer: React.FC<SkillContentProps> = ({ content }) => {
-  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(['definition', 'pitfalls']));
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(['definition', 'pitfalls', 'scenarios']));
 
   // Early return if content is not available
   if (!content) {
@@ -153,44 +154,13 @@ const SkillContentRenderer: React.FC<SkillContentProps> = ({ content }) => {
           {expandedSections.has('scenarios') && (
             <div className="p-6 space-y-6 bg-white">
               {content.microScenarios.map((scenario: any) => (
-                <div key={scenario.id} className="border border-gray-200 rounded-lg overflow-hidden">
-                  <div className="bg-gray-50 p-4 border-b border-gray-200">
-                    <h4 className="font-semibold text-gray-900">Scenario {scenario.id}: {scenario.title}</h4>
-                  </div>
-                  <div className="p-4">
-                    <p className="text-gray-700 mb-4">{scenario.scenario}</p>
-                    {scenario.options && Array.isArray(scenario.options) && (
-                      <div className="space-y-3">
-                        {scenario.options.map((option: any) => (
-                          <div 
-                            key={option.id} 
-                            className={`flex items-center p-4 rounded-lg border ${
-                              option.isRecommended 
-                                ? 'bg-green-50 border-green-200' 
-                                : 'bg-gray-50 border-gray-200'
-                            }`}
-                          >
-                            <div className="mr-3 flex-shrink-0">
-                              {option.isRecommended ? (
-                                <CheckCircle className="w-5 h-5 text-green-600" />
-                              ) : (
-                                <XCircle className="w-5 h-5 text-gray-400" />
-                              )}
-                            </div>
-                            <div>
-                              <span className="font-medium mr-2 text-gray-900">
-                                {option.id ? option.id.toUpperCase() : ''}:
-                              </span>
-                              <span className="text-gray-700">
-                                {option.text}
-                              </span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
+                <PracticeScenario
+                  key={scenario.id}
+                  id={scenario.id}
+                  title={scenario.title}
+                  scenario={scenario.scenario}
+                  options={scenario.options}
+                />
               ))}
             </div>
           )}
