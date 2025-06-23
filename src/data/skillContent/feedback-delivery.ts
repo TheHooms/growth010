@@ -20,28 +20,33 @@ export const feedbackDeliveryContent = {
   maturityLevels: [
     {
       level: 1,
-      name: 'Novice',
-      description: 'Avoids giving feedback or shares only positive praise vaguely. Uncomfortable with constructive feedback in professional contexts.'
+      name: 'Avoidant',
+      description: 'Avoids giving feedback or only shares vague praise. Often uncomfortable with constructive conversations in professional settings.',
+      nextStep: 'Learn to name specific behaviors and start small—practice low-risk feedback moments.'
     },
     {
       level: 2,
-      name: 'Emerging',
-      description: 'Attempts to give feedback but struggles with timing, delivery, or tone. Feedback may be too harsh, too vague, or poorly timed.'
+      name: 'Trying',
+      description: 'Attempts feedback but struggles with tone, timing, or clarity. Delivery may feel too blunt, too soft, or emotionally charged.',
+      nextStep: '→ Focus on structure (like the SBI model) and emotional regulation during feedback moments.'
     },
     {
       level: 3,
       name: 'Practicing',
-      description: 'Gives feedback that is timely, clear, and focused on behavior. Balances positive and constructive feedback appropriately.'
+      description: 'Delivers feedback that is timely, balanced, and behavior-focused. Learns to match tone to the situation and adjusts based on trust level.',
+      nextStep: '• Build consistency and tailor your approach to different personalities and dynamics.'
     },
     {
       level: 4,
       name: 'Fluent',
-      description: 'Adapts feedback to different personalities, roles, and situations. Delivers feedback with confidence and skill in various contexts.'
+      description: 'Comfortably gives feedback across situations, adapting for audience and context. Uses language that balances clarity with care.',
+      nextStep: '✓ Help peers grow their feedback skills and model healthy feedback norms for the team.'
     },
     {
       level: 5,
       name: 'Shaping',
-      description: 'Coaches others to give feedback effectively and models best practices consistently. Builds systems and culture that normalize constructive feedback.'
+      description: 'Coaches others on feedback delivery and builds team norms that support psychological safety. Leads by example and champions feedback culture.',
+      nextStep: '★ Institutionalize feedback practices across teams and ensure upward, downward, and lateral feedback flows consistently.'
     }
   ],
 
