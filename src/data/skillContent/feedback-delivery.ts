@@ -6,8 +6,8 @@ export const feedbackDeliveryContent = {
   definition: {
     title: 'Skill Definition & Importance',
     description: 'Feedback Delivery is the ability to share observations, praise, or critique in a timely, respectful, and actionable way that promotes learning, alignment, and trust.',
-    coreMessage: 'Feedback is a gift. It is something thoughtfully offered intended to help the receiver grow—not to punish, control, or release frustration. Effective feedback is specific, balanced, and constructive.',
-    whyItMatters: 'Effective feedback fuels growth, shapes performance, builds culture, and strengthens relationships. Poor or avoided feedback leads to confusion, stagnation, and tension.',
+    coreMessage: 'Feedback is a gift.  It is a deliberate, thoughtful offering intended to help the receiver reflect, improve, or grow. Like any meaningful gift, it must be given with respect and received with openness. It is not a tool for control, punishment, or venting frustration. True feedback stems from care and a desire to see the other person succeed—not a need to assert authority or release emotion.',
+    whyItMatters: 'Effective feedback fuels growth, shapes performance, builds culture, and strengthens relationships. Poor or avoided feedback leads to confusion, stagnation, and tension. It is one of the fastest paths to growth. Done right, it can help you: Improve your performance and skill mastery.Understand how you’re perceived.Strengthen trust and alignment with your team.Build your reputation as a reflective and collaborative professional.',
     trustFoundation: 'Feedback only works when there\'s psychological safety. Without trust, even well-meaning, constructive feedback may feel threatening.',
     riskOfPoorFeedback: [
       'Avoidance of important conversations',
