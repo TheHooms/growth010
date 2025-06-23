@@ -54,6 +54,11 @@ const SkillContentRenderer: React.FC<SkillContentProps> = ({ content }) => {
     </button>
   );
 
+  // Function to safely render HTML content
+  const renderHTML = (htmlContent: string) => {
+    return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />;
+  };
+
   return (
     <div className="space-y-6">
       {/* Definition & Importance */}
@@ -77,7 +82,9 @@ const SkillContentRenderer: React.FC<SkillContentProps> = ({ content }) => {
                 {content.definition.whyItMatters && (
                   <>
                     <h4 className="font-semibold text-gray-900 mb-2">Why It Matters</h4>
-                    <p className="text-gray-700 mb-3">{content.definition.whyItMatters}</p>
+                    <div className="text-gray-700 mb-3">
+                      {renderHTML(content.definition.whyItMatters)}
+                    </div>
                   </>
                 )}
                 {content.definition.trustFoundation && (
