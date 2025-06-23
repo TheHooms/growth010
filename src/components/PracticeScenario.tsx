@@ -66,7 +66,7 @@ const PracticeScenario: React.FC<PracticeScenarioProps> = ({
               </div>
               <div className="text-left">
                 <span className="font-medium mr-2 text-gray-900">
-                  Option {option.id.toUpperCase()}:
+                  {option.id.toUpperCase()}:
                 </span>
                 <span className="text-gray-700">
                   {option.text}
