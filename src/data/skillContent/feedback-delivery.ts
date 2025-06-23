@@ -92,7 +92,7 @@ export const feedbackDeliveryContent = {
           id: 'c',
           text: 'Reach out to them privately and share your observations in a constructive tone, using language that emphasizes collaboration rather than critique.',
           isRecommended: true,
-          explanation: 'This approach respects your colleague\'s agency by asking permission, focuses on specific issues rather than general criticism, and maintains the relationship. By sharing observations about the errors and their impact on the project, you provide actionable information that helps them improve.'
+          explanation: 'This approach works well because it frames the issue as a shared opportunity to improve rather than a personal failing. It emphasizes collaboration through respectful, private conversation, which protects trust and reduces defensiveness. By focusing on specific observations, it encourages clarity and positive change without assigning blame.'
         }
       ]
     },
