@@ -554,8 +554,9 @@ const SkillDetailPage: React.FC = () => {
                       <span className="text-gray-700 font-bold">1</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900">Novice</h4>
-                      <p className="text-gray-700">Avoids giving feedback or shares only positive praise vaguely. Uncomfortable with constructive feedback in professional contexts.</p>
+                      <h4 className="font-semibold text-gray-900">Avoidant</h4>
+                      <p className="text-gray-700 mb-2">Avoids giving feedback or only shares vague praise. Often uncomfortable with constructive conversations in professional settings.</p>
+                      <p className="text-gray-600 italic">Next step: Learn to name specific behaviors and start small—practice low-risk feedback moments.</p>
                     </div>
                   </div>
                   
@@ -565,8 +566,9 @@ const SkillDetailPage: React.FC = () => {
                       <span className="text-blue-700 font-bold">2</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900">Emerging</h4>
-                      <p className="text-gray-700">Attempts to give feedback but struggles with timing, delivery, or tone. Feedback may be too harsh, too vague, or poorly timed.</p>
+                      <h4 className="font-semibold text-gray-900">Trying</h4>
+                      <p className="text-gray-700 mb-2">Attempts feedback but struggles with tone, timing, or clarity. Delivery may feel too blunt, too soft, or emotionally charged.</p>
+                      <p className="text-blue-700 italic">→ Focus on structure (like the SBI model) and emotional regulation during feedback moments.</p>
                     </div>
                   </div>
                   
@@ -577,7 +579,8 @@ const SkillDetailPage: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Practicing</h4>
-                      <p className="text-gray-700">Gives feedback that is timely, clear, and focused on behavior. Balances positive and constructive feedback appropriately.</p>
+                      <p className="text-gray-700 mb-2">Delivers feedback that is timely, balanced, and behavior-focused. Learns to match tone to the situation and adjusts based on trust level.</p>
+                      <p className="text-green-700 italic">• Build consistency and tailor your approach to different personalities and dynamics.</p>
                     </div>
                   </div>
                   
@@ -588,7 +591,8 @@ const SkillDetailPage: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Fluent</h4>
-                      <p className="text-gray-700">Adapts feedback to different personalities, roles, and situations. Delivers feedback with confidence and skill in various contexts.</p>
+                      <p className="text-gray-700 mb-2">Comfortably gives feedback across situations, adapting for audience and context. Uses language that balances clarity with care.</p>
+                      <p className="text-purple-700 italic">✓ Help peers grow their feedback skills and model healthy feedback norms for the team.</p>
                     </div>
                   </div>
                   
@@ -599,7 +603,8 @@ const SkillDetailPage: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Shaping</h4>
-                      <p className="text-gray-700">Coaches others to give feedback effectively and models best practices consistently. Builds systems and culture that normalize constructive feedback.</p>
+                      <p className="text-gray-700 mb-2">Coaches others on feedback delivery and builds team norms that support psychological safety. Leads by example and champions feedback culture.</p>
+                      <p className="text-indigo-700 italic">★ Institutionalize feedback practices across teams and ensure upward, downward, and lateral feedback flows consistently.</p>
                     </div>
                   </div>
                 </div>
