@@ -7,7 +7,7 @@ export const feedbackDeliveryContent = {
     title: 'Skill Definition & Importance',
     description: 'Feedback Delivery is the ability to share observations, praise, or critique in a timely, respectful, and actionable way that promotes learning, alignment, and trust.',
     coreMessage: 'Feedback is a gift.  It is a deliberate, thoughtful offering intended to help the receiver reflect, improve, or grow. Like any meaningful gift, it must be given with respect and received with openness. It is not a tool for control, punishment, or venting frustration. True feedback stems from care and a desire to see the other person succeed—not a need to assert authority or release emotion.',
-    whyItMatters: 'Effective feedback fuels growth, shapes performance, builds culture, and strengthens relationships. Poor or avoided feedback leads to confusion, stagnation, and tension. It is one of the fastest paths to growth. Done right, it can help you: Improve your performance and skill mastery.Understand how you’re perceived.Strengthen trust and alignment with your team.Build your reputation as a reflective and collaborative professional.',
+    whyItMatters: 'Effective feedback fuels growth, shapes performance, builds culture, and strengthens relationships. Poor or avoided feedback leads to confusion, stagnation, and tension. It is one of the fastest paths to growth. Done right, it can help you:\n• Improve your performance and skill mastery\n• Understand how you\'re perceived\n• Strengthen trust and alignment with your team\n• Build your reputation as a reflective and collaborative professional',
     trustFoundation: 'Feedback only works when there\'s psychological safety. Without trust, even well-meaning, constructive feedback may feel threatening.',
     riskOfPoorFeedback: [
       'Avoidance of important conversations',
@@ -117,7 +117,7 @@ export const feedbackDeliveryContent = {
           id: 'c',
           text: 'Request a 1:1 to share how the current direction is affecting your work, using specific examples. Frame the conversation around shared goals and your need for clarity to stay aligned.',
           isRecommended: true,
-          explanation: 'This approach models effective upward feedback by focusing on impact, not blame. Instead of calling out the manager’s behavior as vague, you highlight how clarity supports shared goals and delivery. By using examples and framing the conversation around alignment and effectiveness, you reduce defensiveness and demonstrate maturity. This builds trust while encouraging a shift in leadership style—without undermining authority or escalating prematurely.'
+          explanation: 'This approach models effective upward feedback by focusing on impact, not blame. Instead of calling out the manager's behavior as vague, you highlight how clarity supports shared goals and delivery. By using examples and framing the conversation around alignment and effectiveness, you reduce defensiveness and demonstrate maturity. This builds trust while encouraging a shift in leadership style—without undermining authority or escalating prematurely.'
         }
       ]
     },
@@ -134,7 +134,7 @@ export const feedbackDeliveryContent = {
         },
         {
           id: 'b',
-          text: 'Check in with them privately to share how the delays are affecting your work, and ask if there’s anything going on that’s getting in the way. Work together on how to stay on track as a team.',
+          text: 'Check in with them privately to share how the delays are affecting your work, and ask if there's anything going on that's getting in the way. Work together on how to stay on track as a team.',
           isRecommended: true,
           explanation: 'This approach addresses the issue directly while demonstrating empathy and curiosity. Instead of assuming poor performance, it creates space to explore whether your colleague is facing personal, structural, or workload challenges. By sharing how their delays affect the team and inviting context, you strengthen the relationship and model a solutions-oriented mindset. This builds trust, preserves psychological safety, and sets the stage for meaningful accountability.'
         },
