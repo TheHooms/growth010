@@ -90,7 +90,7 @@ export const feedbackDeliveryContent = {
         },
         {
           id: 'c',
-          text: 'Ask if they\'re open to feedback, and share with care.',
+          text: 'Reach out to them privately and share your observations in a constructive tone, using language that emphasizes collaboration rather than critique.',
           isRecommended: true,
           explanation: 'This approach respects your colleague\'s agency by asking permission, focuses on specific issues rather than general criticism, and maintains the relationship. By sharing observations about the errors and their impact on the project, you provide actionable information that helps them improve.'
         }
