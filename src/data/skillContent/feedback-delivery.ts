@@ -134,9 +134,9 @@ export const feedbackDeliveryContent = {
         },
         {
           id: 'b',
-          text: 'Have a private conversation focused on impact and solutions.',
+          text: 'Check in with them privately to share how the delays are affecting your work, and ask if there’s anything going on that’s getting in the way. Work together on how to stay on track as a team.',
           isRecommended: true,
-          explanation: 'This approach maintains privacy and dignity while addressing the issue directly. By focusing on the impact of missed deadlines and collaboratively exploring solutions, you create an opportunity for improvement without damaging the relationship or team dynamics.'
+          explanation: 'This approach addresses the issue directly while demonstrating empathy and curiosity. Instead of assuming poor performance, it creates space to explore whether your colleague is facing personal, structural, or workload challenges. By sharing how their delays affect the team and inviting context, you strengthen the relationship and model a solutions-oriented mindset. This builds trust, preserves psychological safety, and sets the stage for meaningful accountability.'
         },
         {
           id: 'c',
