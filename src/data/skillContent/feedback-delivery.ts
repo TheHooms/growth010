@@ -7,13 +7,13 @@ export const feedbackDeliveryContent = {
     title: 'Skill Definition & Importance',
     description: 'Feedback Delivery is the ability to share observations, praise, or critique in a timely, respectful, and actionable way that promotes learning, alignment, and trust.',
     coreMessage: 'Feedback is a gift.  It is a deliberate, thoughtful offering intended to help the receiver reflect, improve, or grow. Like any meaningful gift, it must be given with respect and received with openness. It is not a tool for control, punishment, or venting frustration. True feedback stems from care and a desire to see the other person succeed—not a need to assert authority or release emotion.',
-    whyItMatters: 'Effective feedback fuels growth, shapes performance, builds culture, and strengthens relationships. Poor or avoided feedback leads to confusion, stagnation, and tension. It is one of the fastest paths to growth. Done right, it can help you: <ul><li>* Improve your performance and skill mastery</li><li>* Understand how you are perceived</li><li>* Strengthen trust and alignment with your team</li><li>* Build your reputation as a reflective and collaborative professional</li></ul><br/>Imagine putting in long hours on a project and receiving no response—or worse, vague criticism laced with frustration. You’d feel confused, frustrated or even undervalued. That’s the cost of poor feedback. On the other hand, clear and timely feedback builds clarity, confidence, and momentum.<br/> When feedback is missing or poorly delivered, frustration, confusion, and stagnation follow. You lose time, damage relationships, and miss key learning moments. Feedback helps you stay on course, build confidence, and unlock your potential.',
-    trustFoundation: 'Feedback only works when there\'s psychological safety. Without trust, even well-meaning, constructive feedback may feel threatening.',
+    whyItMatters: 'Effective feedback fuels growth, shapes performance, builds culture, and strengthens relationships. Poor or avoided feedback leads to confusion, stagnation, and tension. It is one of the fastest paths to growth. Done right, it can help you: <ul><li>Improve your performance and skill mastery</li><li>Understand how you are perceived</li><li>Strengthen trust and alignment with your team</li><li>Build your reputation as a reflective and collaborative professional</li></ul><br/>Imagine putting in long hours on a project and receiving no response—or worse, vague criticism laced with frustration. You'd feel confused, frustrated or even undervalued. That's the cost of poor feedback. On the other hand, clear and timely feedback builds clarity, confidence, and momentum.<br/> When feedback is missing or poorly delivered, frustration, confusion, and stagnation follow. You lose time, damage relationships, and miss key learning moments. Feedback helps you stay on course, build confidence, and unlock your potential.',
+    trustFoundation: 'Feedback only works when there\'s psychological safety. Without trust, even well-meaning feedback may feel threatening. Trust is built by consistently showing respect, transparency, and integrity. It helps the recipient stay open, listen generously, and assume good intent.\n\n🔹 If there\'s no trust, feedback won\'t land—no matter how well it\'s worded.\n\n📚 Want to go deeper? Explore the related skill: Building Trust in Professional Relationships.',
     riskOfPoorFeedback: [
-      'Avoidance of important conversations',
-      'Repeated mistakes and poor performance',
-      'Low morale, unresolved tension',
-      'Mistrust and broken collaboration'
+      'Crucial issues remain unspoken, leading to misalignment and stagnation.',
+      'Mistakes repeat and small tensions grow into big ones.',
+      'People feel unseen, underappreciated, or confused.',
+      'Trust erodes, and collaboration breaks down.'
     ]
   },
 

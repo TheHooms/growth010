@@ -56,7 +56,7 @@ const SkillContentRenderer: React.FC<SkillContentProps> = ({ content }) => {
 
   // Function to safely render HTML content
   const renderHTML = (htmlContent: string) => {
-    return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />;
+    return <div dangerouslySetInnerHTML={{ __html: htmlContent }} className="skill-content" />;
   };
 
   return (
@@ -82,19 +82,24 @@ const SkillContentRenderer: React.FC<SkillContentProps> = ({ content }) => {
                 {content.definition.whyItMatters && (
                   <>
                     <h4 className="font-semibold text-gray-900 mb-2">Why It Matters</h4>
-                    <div className="text-gray-700 mb-3">
+                    <div className="text-gray-700 mb-3 skill-content">
                       {renderHTML(content.definition.whyItMatters)}
                     </div>
                   </>
                 )}
                 {content.definition.trustFoundation && (
-                  <p className="text-gray-700 mb-3">{content.definition.trustFoundation}</p>
+                  <div className="mb-3">
+                    <h4 className="font-semibold text-gray-900 mb-2">The Trust Foundation</h4>
+                    <p className="text-gray-700">{content.definition.trustFoundation}</p>
+                    <p className="text-blue-600 mt-3 mb-3">🔹 If there's no trust, feedback won't land—no matter how well it's worded.</p>
+                    <p className="text-gray-700">📚 Want to go deeper? Explore the related skill: Building Trust in Professional Relationships.</p>
+                  </div>
                 )}
               </div>
 
               {content.definition.riskOfPoorFeedback && Array.isArray(content.definition.riskOfPoorFeedback) && (
                 <div className="bg-red-50 border border-red-100 rounded-lg p-4">
-                  <h4 className="font-semibold text-red-900 mb-2">Risk of Poor Feedback</h4>
+                  <h4 className="font-semibold text-red-900 mb-2">Common Risks of Avoiding Feedback</h4>
                   <ul className="space-y-1">
                     {content.definition.riskOfPoorFeedback.map((risk: string, index: number) => (
                       <li key={index} className="flex items-start text-red-800">
@@ -105,6 +110,10 @@ const SkillContentRenderer: React.FC<SkillContentProps> = ({ content }) => {
                   </ul>
                 </div>
               )}
+              
+              <p className="text-gray-700">
+                Whether you're giving feedback to a peer, receiving feedback from your manager, or navigating cross-functional tension, your ability to handle these moments with care and clarity is critical to your success.
+              </p>
             </div>
           )}
         </Card>
@@ -524,8 +533,6 @@ const SkillContentRenderer: React.FC<SkillContentProps> = ({ content }) => {
         </Card>
       )}
 
-      {/* Other sections follow the same pattern... */}
-      
       {/* Learning Resources */}
       {content.learningResources && Array.isArray(content.learningResources) && (
         <Card className="border border-gray-200 overflow-hidden">
