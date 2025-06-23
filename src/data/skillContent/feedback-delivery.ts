@@ -65,9 +65,9 @@ export const feedbackDeliveryContent = {
         },
         {
           id: 'c',
-          text: 'Invite them for a 1:1 and share your observations.',
+          text: 'Assess the relationship and environment. If it feels psychologically safe, invite them for a 1:1 and share your observations. If not, raise the concern with your manager or team lead.',
           isRecommended: true,
-          explanation: 'This approach respects privacy, maintains psychological safety, and allows for a constructive conversation. By sharing specific observations about behaviors and their impact, you give your colleague an opportunity to reflect and adjust without public embarrassment.'
+          explanation: 'Feedback should be shared directly only when there is enough trust and psychological safety to support a constructive conversation. If you believe the colleague will be receptive and open to dialogue, a private 1:1 is ideal. However, if the dynamic feels risky or you are unsure how it will land, escalate thoughtfully—perhaps by sharing the pattern with your manager or suggesting a neutral facilitator. Protecting your own safety and ensuring impact matters as much as intent.'
         }
       ]
     },
