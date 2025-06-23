@@ -115,9 +115,9 @@ export const feedbackDeliveryContent = {
         },
         {
           id: 'c',
-          text: 'Request a 1:1 and share the specific impact with examples.',
+          text: 'Request a 1:1 to share how the current direction is affecting your work, using specific examples. Frame the conversation around shared goals and your need for clarity to stay aligned.',
           isRecommended: true,
-          explanation: 'This approach shows respect while addressing the issue directly. By focusing on specific examples and their impact on your work, you provide actionable feedback that helps your manager understand the problem. Framing it as a way to improve your effectiveness makes it more likely to be well-received.'
+          explanation: 'This approach models effective upward feedback by focusing on impact, not blame. Instead of calling out the manager’s behavior as vague, you highlight how clarity supports shared goals and delivery. By using examples and framing the conversation around alignment and effectiveness, you reduce defensiveness and demonstrate maturity. This builds trust while encouraging a shift in leadership style—without undermining authority or escalating prematurely.'
         }
       ]
     },
