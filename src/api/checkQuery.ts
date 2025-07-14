@@ -5,7 +5,7 @@ async function checkQuery() {
     // Test specific subtopic query
     console.log('\nChecking specific subtopic...');
     const topicSlug = 'foundational-mindsets';
-    const subtopicSlug = 'decisive-action';
+    const subtopicSlug = 'emotional-intelligence';
     
     console.log('Query parameters:', { topicSlug, subtopicSlug });
 
@@ -31,20 +31,13 @@ async function checkQuery() {
     // Then get the subtopic
     const { data: subtopic, error: subtopicError } = await supabase
       .from('subtopics')
-      .select(`
-        *,
-        videos (*),
-        interactives (*),
-        articles (*)
-      `)
-      .eq('topic_id', topic.id)
-      .eq('slug', subtopicSlug)
-      .single();
+      .select('*')
+      .eq('topic_id', topic.id);
 
     if (subtopicError) {
       console.error('Error fetching subtopic:', subtopicError);
     } else {
-      console.log('Subtopic found:', subtopic);
+      console.log('Subtopics found:', subtopic);
     }
 
     // List all available subtopics for reference

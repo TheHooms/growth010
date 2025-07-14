@@ -58,8 +58,8 @@ export async function getTopic(slug: string) {
 export async function getSubtopic(topicSlug: string, subtopicSlug: string) {
   try {
     // Normalize the input slugs
-    const normalizedTopicSlug = topicSlug.toLowerCase().replace(/[^a-z0-9-]/g, '').replace(/\s+/g, '-');
-    const normalizedSubtopicSlug = subtopicSlug.toLowerCase().replace(/[^a-z0-9-]/g, '').replace(/\s+/g, '-');
+    const normalizedTopicSlug = topicSlug.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/\s+/g, '-');
+    const normalizedSubtopicSlug = subtopicSlug.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/\s+/g, '-');
     
     console.log('Getting subtopic with params:', { 
       originalTopic: topicSlug, 
@@ -71,7 +71,7 @@ export async function getSubtopic(topicSlug: string, subtopicSlug: string) {
     // First, verify the topic exists
     const { data: topic, error: topicError } = await supabase
       .from('topics')
-      .select('id')
+      .select('id, slug')
       .eq('slug', normalizedTopicSlug)
       .single();
 
@@ -94,20 +94,19 @@ export async function getSubtopic(topicSlug: string, subtopicSlug: string) {
         articles (*)
       `)
       .eq('topic_id', topic.id)
-      .eq('slug', normalizedSubtopicSlug)
-      .single();
+      .or(`slug.eq.${normalizedSubtopicSlug},display_slug.eq.${normalizedSubtopicSlug}`);
 
     if (subtopicError) {
       console.error('Error fetching subtopic:', subtopicError);
+      throw new Error(`Subtopic not found: ${subtopicSlug} (${subtopicError.message})`);
+    }
+
+    if (!subtopic || subtopic.length === 0) {
       throw new Error(`Subtopic not found: ${subtopicSlug}`);
     }
 
-    if (!subtopic) {
-      throw new Error(`Subtopic not found: ${subtopicSlug}`);
-    }
-
-    console.log('Found subtopic:', subtopic);
-    return subtopic;
+    console.log('Found subtopics:', subtopic);
+    return subtopic[0]; // Return the first matching subtopic
   } catch (error) {
     console.error('Error in getSubtopic:', error);
     return null;

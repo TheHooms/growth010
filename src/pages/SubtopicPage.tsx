@@ -22,9 +22,8 @@ const SubtopicPage: React.FC = () => {
           throw new Error('Topic slug and Subtopic slug are required');
         }
 
-        // Resolve the subtopic slug to its canonical form
-        // The resolveSubtopicSlug function now handles URI decoding internally
-        const canonicalSlug = await resolveSubtopicSlug(subtopicSlug);
+        // Use the subtopic slug directly for now to debug the issue
+        const canonicalSlug = subtopicSlug;
         
         console.log('Loading subtopic with params:', { topicSlug, subtopicSlug, canonicalSlug });
         
@@ -105,7 +104,7 @@ const SubtopicPage: React.FC = () => {
             className="inline-flex items-center text-blue-600 hover:text-blue-800"
           >
             <ArrowLeft size={16} className="mr-1" />
-            Back to Topic
+            Back to {topicSlug ? topicSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Topic'}
           </Link>
         </div>
 
