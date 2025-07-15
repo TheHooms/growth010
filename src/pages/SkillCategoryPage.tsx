@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { skillCategories, getSkillsByCategory } from '../data/skills';
 import SkillCard from '../components/SkillCard';
+import Card from '../components/Card';
 
 const SkillCategoryPage: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -31,6 +32,15 @@ const SkillCategoryPage: React.FC = () => {
   const foundationalSkills = skills.filter(skill => skill.level === 'foundational');
   const bridgeSkills = skills.filter(skill => skill.level === 'bridge');
   const advancedSkills = skills.filter(skill => skill.level === 'advanced');
+  
+  const getColorForLevel = (level: string) => {
+    switch(level) {
+      case 'foundational': return 'bg-green-100 text-green-800';
+      case 'bridge': return 'bg-blue-100 text-blue-800';
+      case 'advanced': return 'bg-purple-100 text-purple-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -48,72 +58,35 @@ const SkillCategoryPage: React.FC = () => {
           <p className="text-xl text-gray-600 mt-2">{category.description}</p>
         </div>
 
-        {/* Foundational Skills */}
-        {foundationalSkills.length > 0 && (
-          <div className="mb-12">
-            <div className="flex items-center mb-6">
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                <span className="text-green-600 font-bold text-sm">F</span>
-              </div>
-              <h2 className="text-2xl font-semibold text-gray-900">
-                Foundational Skills ({foundationalSkills.length})
-              </h2>
-            </div>
-            <p className="text-gray-600 mb-6">
-              Core skills that form the foundation for this category. Start here if you're new to these concepts.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {foundationalSkills.map((skill) => (
-                <SkillCard key={skill.id} skill={skill} />
-              ))}
-            </div>
+        <Card className="mb-8">
+          <div className="flex flex-wrap gap-4 mb-6">
+            <span className={`px-3 py-1 rounded-full text-sm font-medium ${getColorForLevel('foundational')}`}>
+              Foundational ({foundationalSkills.length})
+            </span>
+            <span className={`px-3 py-1 rounded-full text-sm font-medium ${getColorForLevel('bridge')}`}>
+              Bridge ({bridgeSkills.length})
+            </span>
+            <span className={`px-3 py-1 rounded-full text-sm font-medium ${getColorForLevel('advanced')}`}>
+              Advanced ({advancedSkills.length})
+            </span>
+            <span className="text-sm text-gray-500 ml-auto">
+              {skills.length} skills total
+            </span>
           </div>
-        )}
-
-        {/* Applied Skills */}
-        {/* Bridge Skills */}
-        {bridgeSkills.length > 0 && (
-          <div>
-            <div className="flex items-center mb-6">
-              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                <span className="text-blue-600 font-bold text-sm">B</span>
-              </div>
-              <h2 className="text-2xl font-semibold text-gray-900">
-                Bridge Skills ({bridgeSkills.length})
-              </h2>
-            </div>
-            <p className="text-gray-600 mb-6">
-              Intermediate skills that connect foundational concepts to advanced applications. These build on foundational skills.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {bridgeSkills.map((skill) => (
-                <SkillCard key={skill.id} skill={skill} />
-              ))}
-            </div>
+          
+          <p className="text-gray-600 mb-4">
+            Skills are organized by complexity level. Start with foundational skills, then progress to bridge and advanced skills.
+          </p>
+        </Card>
+        
+        <div className="space-y-12">
+          {/* All Skills */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skills.map((skill) => (
+              <SkillCard key={skill.id} skill={skill} />
+            ))}
           </div>
-        )}
-
-        {/* Advanced Skills */}
-        {advancedSkills.length > 0 && (
-          <div>
-            <div className="flex items-center mb-6">
-              <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
-                <span className="text-purple-600 font-bold text-sm">A</span>
-              </div>
-              <h2 className="text-2xl font-semibold text-gray-900">
-                Advanced Skills ({advancedSkills.length})
-              </h2>
-            </div>
-            <p className="text-gray-600 mb-6">
-              Complex skills for leadership and expertise. These build on bridge skills and require significant practice.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {advancedSkills.map((skill) => (
-                <SkillCard key={skill.id} skill={skill} />
-              ))}
-            </div>
-          </div>
-        )}
+        </div>
 
         {skills.length === 0 && (
           <div className="text-center py-12 bg-white rounded-lg border border-gray-200">
