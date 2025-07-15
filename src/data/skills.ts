@@ -1040,18 +1040,8 @@ export const skills: Skill[] = skillsFromGraph.map((skillData, index) => {
 });
 
 export const getSkillsByCategory = (categoryId: string): Skill[] => {
-  // Convert both to lowercase for case-insensitive comparison
-  // and handle hyphenated vs non-hyphenated format
-  return skills.filter(skill => {
-    const normalizedSkillCategory = skill.category.toLowerCase().replace(/\s+/g, '-');
-    const normalizedCategoryId = categoryId.toLowerCase().replace(/\s+/g, '-');
-    
-    // Check if categories match after normalization
-    return normalizedSkillCategory === normalizedCategoryId || 
-           // Also check if the category contains the ID (for partial matches)
-           normalizedSkillCategory.includes(normalizedCategoryId) ||
-           normalizedCategoryId.includes(normalizedSkillCategory);
-  });
+  // Direct comparison with the category ID
+  return skills.filter(skill => skill.category === categoryId);
 };
 
 export const getSkillById = (skillId: string): Skill | undefined => {
