@@ -29,7 +29,8 @@ const SkillCategoryPage: React.FC = () => {
   }
 
   const foundationalSkills = skills.filter(skill => skill.level === 'foundational');
-  const appliedSkills = skills.filter(skill => skill.level === 'applied');
+  const bridgeSkills = skills.filter(skill => skill.level === 'bridge');
+  const advancedSkills = skills.filter(skill => skill.level === 'advanced');
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -70,21 +71,44 @@ const SkillCategoryPage: React.FC = () => {
         )}
 
         {/* Applied Skills */}
-        {appliedSkills.length > 0 && (
+        {/* Bridge Skills */}
+        {bridgeSkills.length > 0 && (
+          <div>
+            <div className="flex items-center mb-6">
+              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                <span className="text-blue-600 font-bold text-sm">B</span>
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-900">
+                Bridge Skills ({bridgeSkills.length})
+              </h2>
+            </div>
+            <p className="text-gray-600 mb-6">
+              Intermediate skills that connect foundational concepts to advanced applications. These build on foundational skills.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {bridgeSkills.map((skill) => (
+                <SkillCard key={skill.id} skill={skill} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Advanced Skills */}
+        {advancedSkills.length > 0 && (
           <div>
             <div className="flex items-center mb-6">
               <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
                 <span className="text-purple-600 font-bold text-sm">A</span>
               </div>
               <h2 className="text-2xl font-semibold text-gray-900">
-                Applied Skills ({appliedSkills.length})
+                Advanced Skills ({advancedSkills.length})
               </h2>
             </div>
             <p className="text-gray-600 mb-6">
-              Advanced skills for complex situations. These build on foundational skills and require more practice.
+              Complex skills for leadership and expertise. These build on bridge skills and require significant practice.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {appliedSkills.map((skill) => (
+              {advancedSkills.map((skill) => (
                 <SkillCard key={skill.id} skill={skill} />
               ))}
             </div>
